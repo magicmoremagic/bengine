@@ -1,0 +1,8 @@
+`
+if (#$ > 0) {
+   `default`
+   with each $ using # {
+      ` ` ninja_escape($)
+   }
+}
+`

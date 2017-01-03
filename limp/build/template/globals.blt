@@ -1,0 +1,4 @@
+`
+global_template = get_template('global')
+with each $ using # global_template($)
+`

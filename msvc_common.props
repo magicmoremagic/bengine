@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  
+  <PropertyGroup>
+    <TargetName>$(ProjectName)-$(Configuration)</TargetName>
+    <OutDir>$(SolutionDir)msvc_out\</OutDir>
+    <IntDir>$(SolutionDir)msvc_build\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)include;$(SolutionDir)deps;$(SolutionDir)ext_include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)msvc_out;$(SolutionDir)ext_lib;$(LibraryPath)</LibraryPath>
+    <BeTestMode>none</BeTestMode>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)'=='debug'">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='release'">
+    <TargetName>$(ProjectName)</TargetName>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="$(ProjectName.EndsWith('-test'))">
+    <BeTestMode>test</BeTestMode>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="$(ProjectName.EndsWith('-perf'))">
+    <BeTestMode>perf</BeTestMode>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <!-- These need to be after the configuration-specific PropertyGroups in case we changed $(TargetName) -->
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)stage\</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(SolutionDir)stage\$(TargetName)$(TargetExt)</LocalDebuggerCommand>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <OptimizeReferences>false</OptimizeReferences>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)%(RelativeDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>BE_TARGET=$(ProjectName);GLM_FORCE_SSE4;BE_ID_EXTERNS;BOOST_NO_TYPEID;BOOST_NO_RTTI;SQLITE_WIN32_GETVERSIONEX=0;_WIN32;WIN32;_WIN32_WINNT=0x0601;NOMINMAX;_HAS_AUTO_PTR_ETC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4201;4324;4458;4503;4592;5030</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  <!-- Ignore source files with no exported symbols (ie. tests) when building libraries -->
+  <ItemDefinitionGroup Condition="'$(ConfigurationType)'=='StaticLibrary'">
+    <ClCompile>
+      <PreprocessorDefinitions>BE_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/IGNORE:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  
+  <!-- Copy .exes and .dlls to stage/ -->
+  <ItemDefinitionGroup Condition="'$(ConfigurationType)'!='StaticLibrary'">
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetPath)" "$(SolutionDir)stage\" >nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  
+  <!-- Test/Perf Projects -->
+  <ItemDefinitionGroup Condition="'$(BeTestMode)'=='test' Or '$(BeTestMode)'=='perf'">
+    <ClCompile>
+      <DisableSpecificWarnings>4201;4324;4458;4503;4592;4702;5030</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(BeTestMode)'=='test'">
+    <ClCompile>
+      <PreprocessorDefinitions>BE_TEST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(BeTestMode)'=='perf'">
+    <ClCompile>
+      <PreprocessorDefinitions>BE_TEST_PERF;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <!-- Debug Configurations -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;BE_DEBUG;BE_DEBUG_TIMERS;BE_ENABLE_MAIN_THREAD_ASSERTIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <!-- Release configurations -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='release'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>NDEBUG;GSL_UNENFORCED_ON_CONTRACT_VIOLATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <!-- Make sure we only optimize exports for apps so we don't lose any symbol exports from our static libs -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='release' And '$(ConfigurationType)'=='Application'">
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

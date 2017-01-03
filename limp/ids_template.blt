@@ -1,0 +1,42 @@
+` rep = string.rep  tolower = string.lower
+`#pragma once
+#ifndef `header_guard`
+#define `header_guard`
+
+#include <be/core/id.hpp>
+`
+with each id using # {
+    nl `#define BEIDN_` rpad(symbol, $$$.symbol_column_width) quoted_string
+    nl `#define  BEID_` rpad(symbol, $$$.symbol_column_width) hash
+}
+`
+
+#ifdef BE_ID_EXTERNS
+
+namespace be {
+namespace ids {
+`
+with each id using # {
+    nl `extern const Id ` tolower(symbol) `;`
+}
+`
+
+} // be::ids
+} // be
+
+#endif
+#endif
+#ifdef BE_ID_STATICS
+
+namespace be {
+namespace ids {
+`
+with each id using # {
+    nl `const Id ` tolower(symbol) ` = Id(BEIDN_` symbol `);`
+}
+`
+
+} // be::ids
+} // be
+
+#endif
