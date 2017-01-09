@@ -1,23 +1,30 @@
-make_global('rccmd', 'rc', 0)
 
-local rule_name
-function make_rc_job (res_path, rc_path, extra, implicit_inputs)
-   if not rule_name then
-      rule_name = 'rc'
-      make_rule(rule_name, '$rccmd /nologo $extra /i"$include_dir" /i"$deps_dir" /i"$ext_include_dir" /fo"$out" "$in"', 'rc $in', { deps = 'msvc' })
-   end 
+make_rule 'rc' {
+   command = table.concat ({
+      'rc',
+      '/nologo',
+      '$extra',
+      serialize_includes {
+         include_dir(),
+         deps_dir(),
+         ext_include_dir(),
+         nil
+      },
+      '/fo"$out"',
+      '"$in"'
+   }, ' '),
+   description = 'rc $in',
+   deps = 'msvc'
+}
 
-   local vars
-   if extra then
-      vars = {{ name = 'extra', value = extra }}
+function make_rc_target (res_path, rc_path)
+   if not res_path then error 'icon .res path not specified!' end
+   if not rc_path then error 'icon .rc path not specified!' end
+   return function (t)
+      t.rule = rule 'rc'
+      t.inputs = { rc_path }
+      t.order_only_inputs = { 'init!' }
+      t.outputs = { res_path }
+      return make_target(t)
    end
-
-   return job {
-      rule = rule_name,
-      inputs = { rc_path },
-      implicit_inputs = implicit_inputs,
-      order_only_inputs = { 'init!' },
-      outputs = { res_path },
-      vars = vars
-   }
 end

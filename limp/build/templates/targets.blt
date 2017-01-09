@@ -20,7 +20,7 @@ with each $ using # {
          ` ` ninja_escape($)
       }
    }
-   `: ` rule
+   `: ` $.rule
    if (inputs && #inputs > 0) {
       with each inputs using # {
          ` ` ninja_escape($)

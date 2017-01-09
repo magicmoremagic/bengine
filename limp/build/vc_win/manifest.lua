@@ -1,16 +1,16 @@
-local fs = be.fs
+local fs = require('be.fs')
 
 local manifests = { }
 function get_manifest_target (manifest_name, elevated, extra)
-   local manifest_file = fs.compose_path('$build_dir', manifest_name .. '.manifest')
-   local rc_file = fs.compose_path('$build_dir', manifest_name .. '.manifest.rc')
-   local res_file = fs.compose_path('$build_dir', manifest_name .. '.manifest.res')
+   local manifest_file = fs.compose_path(build_dir(), manifest_name .. '.manifest')
+   local rc_file = fs.compose_path(build_dir(), manifest_name .. '.manifest.rc')
+   local res_file = fs.compose_path(build_dir(), manifest_name .. '.manifest.res')
 
-   local uacLevel
+   local uac_level
    if elevated then
-      uacLevel = 'requireAdministrator'
+      uac_level = 'requireAdministrator'
    else
-      uacLevel = 'asInvoker'
+      uac_level = 'asInvoker'
    end
 
    local manifest_contents = [[
@@ -19,7 +19,7 @@ function get_manifest_target (manifest_name, elevated, extra)
    <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
       <security>
          <requestedPrivileges>
-            <requestedExecutionLevel level="]] .. uacLevel .. [[" uiAccess="false"/>
+            <requestedExecutionLevel level="]] .. uac_level .. [[" uiAccess="false"/>
          </requestedPrivileges>
       </security>
    </trustInfo>
@@ -33,11 +33,19 @@ function get_manifest_target (manifest_name, elevated, extra)
    else
       manifests[manifest_name] = manifest_contents
 
-      make_putfile_job(manifest_file, manifest_contents, nil, { 'init!' })
-      make_putfile_job(rc_file, [[
+      local rc_file_contents = [[
 #include <winuser.h>
-1 RT_MANIFEST "]] .. manifest_name .. '.manifest"', { manifest_file })
-      make_rc_job(res_file, rc_file)
+1 RT_MANIFEST "]] .. manifest_name .. '.manifest"'
+
+      make_putfile_target (manifest_file, manifest_contents) {
+         order_only_inputs = { 'init!' }
+      }
+      
+      make_putfile_target (rc_file, rc_file_contents) {
+         implicit_inputs = { manifest_file }
+      }
+
+      make_rc_target (res_file, rc_file) { }
    end
 
    return res_file

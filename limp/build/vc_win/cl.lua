@@ -1,209 +1,143 @@
-local table = table
-local fs = be.fs
+local fs = require('be.fs')
 
-make_global('clcmd', 'cl', 0)
-
-make_global('cl_base', table.concat({
-   '/nologo',
-   '/c',
-   '/showIncludes',
-   '/utf-8',
-   '/FS',
-   '/std:c++latest',
-   '/Gd',   -- __cdecl calling convention
-   '/Gm-',  -- Disable minimal rebuild
-   '/Gy',   -- Enable function-level linking
-   '/GF',   -- Enable string pooling
-   '/Zi',   -- Create PDB
-   '/EHs',  -- C++ exceptions
-   '/fp:precise',
-   '/volatile:iso',
-   '/w44746', -- Enable volatile access warning
-   '/Qpar',
-   '/Zc:rvalueCast'
-}, ' '), 2)
-
-make_global('cl_base_defines', table.concat({
-   '/D_WINDOWS',
-   '/DWIN32',
-   '/D_WIN32',
-   '/D_WIN32_WINNT=0x0601',
-   '/DBE_NO_LEAKCHECK' -- VLD installer only adds paths to MSBuild config, not vcvarsall.bat
-}, ' '), 2)
-
-local function get_clflags (project, debug, optref)
-   local options = { }
-   local function add_option (option)
-      options[#options+1] = option
-   end
-
-   local defines = { }
-   local function add_define (define)
-      defines[#defines+1] = define
-   end
-
-   if debug then
-      add_define '_DEBUG'
-      add_define 'DEBUG'
-
-      add_option '/Od'   -- Disable optimization
-      add_option '/MDd'  -- Multithreaded Debug DLL CRT
-      add_option '/RTC1' -- Runtime stack/uninitialized checks
-      add_option '/sdl-' -- Disable extra SDL checks
-      add_option '/GS'   -- buffer overrun check
+function serialize_define (symbol, value)
+   if not value or value == '' then
+      return '/D' .. symbol
+   elseif string.find(value, '%s') then
+      return '/D"' .. symbol .. '=' .. value .. '"'
    else
-      add_define 'NDEBUG'
-
-      add_option '/Ox'   -- Full optimization
-      add_option '/MD'   -- Multithreaded DLL CRT
-      add_option '/GL'   -- Whole Program Optimization
-      add_option '/sdl-' -- Disable extra SDL checks
-      add_option '/GS'   -- buffer overrun check
+      return '/D' .. symbol .. '=' .. value
    end
+end
 
-   if project.is_ext_lib then
-      add_define '_CRT_SECURE_NO_WARNINGS'
-
-      add_option '/W3'
-      add_option '/wd4334' -- result of 32-bit shift implicitly converted to 64 bits (Lua)
-   else
-      add_define 'BE_ID_EXTERNS'
-      add_define 'NOMINMAX'
-      add_define '_HAS_AUTO_PTR_ETC=1'
-      add_define 'GLM_FORCE_SSE4'
-      add_define 'SQLITE_WIN32_GETVERSIONEX=0'
-
-      if debug then
-         add_define 'BE_DEBUG'
-         add_define 'BE_DEBUG_TIMERS'
-         add_define 'BE_ENABLE_MAIN_THREAD_ASSERTIONS'
-      else
-         add_define 'GSL_UNENFORCED_ON_CONTRACT_VIOLATION'
-      end
-
-      add_option '/W4'     -- warning level 4
-      add_option '/WX'     -- warnings are errors
-      add_option '/wd4201' -- nameless struct/union
-      --add_option '/wd4310' -- cast truncates literal
-      add_option '/wd4324' -- struct padding due to alignas()
-      --add_option '/wd4351' -- elements of array 'array' will be default initialized
-      add_option '/wd4458' -- declaration hides class member
-      add_option '/wd4503' -- 'identifier' : decorated name length exceeded, name was truncated
-      add_option '/wd4592' -- symbol will be dynamically initialized
-      add_option '/wd5030' -- Unrecognized attribute
+function serialize_defines (defines)
+   local out, n = { }, 0
+   for k, v in pairs(defines) do
+      n = n + 1
+      out[n] = serialize_define(k, v)
    end
+   table.sort(out)
+   return table.concat(out, ' ')
+end
 
-   if project.is_lib then
-      add_define 'BE_STATIC_LIB'
+function serialize_include (include)
+   return '/I"' .. include .. '"'
+end
+
+function serialize_includes (includes)
+   local out = { }
+   for i = 1, #includes do
+      out[i] = serialize_include(includes[i])
    end
+   return table.concat(out, ' ')
+end
 
-   if project.test_type == 'perf' then
-      add_define 'BE_TEST_PERF'
-      add_option '/wd4702' -- Unreachable code
-   elseif project.test_type then
-      add_define 'BE_TEST'
-      add_option '/wd4702' -- Unreachable code
-   end
+include 'build/vc_win/cl_config'
 
-   if project.force_cxx then
-      add_option '/TP'
-   elseif project.force_c then
-      add_option '/TC'
-   end
+local cl_flags = { }
+local function ignore () end
 
-   if project.rtti then
-      add_option '/GR'
-   else
-      add_option '/GR-'
-      add_define 'BOOST_NO_TYPEID'
-      add_define 'BOOST_NO_RTTI'
-   end
-
-   if not project.is_dyn_lib then
-      add_option '/GA'   -- TLS Optimization
-   end
-
-   if optref then
-      add_option '/Gw'         -- Optimize globals
-      add_option '/Zc:inline'  -- Remove unused symbols
-   end
-
-   for i = 1, #defines do
-      local define = defines[i]
-      if define and define ~= '' then
-         if string.find(define, '%s') then
-            add_option('/D"' .. define .. '"')
-         else
-            add_option('/D' .. define)
-         end
-      end
-   end
-
-   return table.concat(options, ' ')
-end 
-
-local rule_name
-local clflags = { }
-function get_clflags_var (project, debug)
-   local name = { 'clflags' }
-   local function add_name_suffix (suffix)
-      name[#name+1] = '_'
-      name[#name+1] = suffix
-   end
-
-   if project.force_cxx then add_name_suffix 'cxx'
-   elseif project.force_c then add_name_suffix 'c'
-   end
-
-   if project.test_type then add_name_suffix(project.test_type) end
-   if project.rtti then add_name_suffix 'rtti' end
-
-   local optref
-   if project.is_dyn_lib then add_name_suffix 'dll'
-   elseif project.is_lib then add_name_suffix 'lib'
-   elseif project.is_ext_lib then add_name_suffix 'extlib'
-   else optref = true
-   end
-
-   if debug then add_name_suffix 'debug'
-   else add_name_suffix 'release'
-   end
+function get_cl_flags_var (configured)
+   local add_name_suffix, name = make_append_fn('_', nil, { 'cl_flags' })
+   configure_cl_flags(configured, ignore, ignore, ignore, add_name_suffix)
 
    name = table.concat(name)
+   if not cl_flags[name] then
+      local add_option, options = make_append_fn()
+      local disable_warning, disabled_warnings = make_append_fn(function (n) return '/wd' .. n end)
+      local defines = { }
+      local function add_define (define, value)
+         if value == nil then
+            defines[define] = false
+         else
+            defines[define] = tostring(value)
+         end
+      end
 
-   if clflags[name] then
-      return '$' .. name
+      configure_cl_flags(configured, add_define, disable_warning, add_option, ignore)
+      table.sort(disabled_warnings)
+      add_option(table.concat(disabled_warnings, ' '))
+      add_option(serialize_defines(defines))
+      cl_flags[name] = true
+      set_global(name, table.concat(options, ' '), cl_flags_global_group)
    end
-
-   if not rule_name then
-      rule_name = 'cl'
-      make_rule(rule_name, '$clcmd $cl_base $flags $cl_base_defines $extra /I"$include_dir" /I"$deps_dir" /I"$ext_include_dir" /Fo"$out" /Fd"$pdb" "$in"', 'cl $in', { deps = 'msvc' })
-   end 
-
-   local final = get_clflags(project, debug, optref)
-   clflags[name] = final
-   make_global(name, final, 2)
 
    return '$' .. name
 end
 
-function make_cl_job (obj_path, input_path, pdb_path, flags, extra, implicit_inputs)
-   job {
-      rule = rule_name,
-      inputs = { input_path },
-      implicit_inputs = implicit_inputs,
-      order_only_inputs = { 'init!' },
-      outputs = { obj_path },
-      vars = {
-         { name = 'pdb', value = pdb_path },
-         { name = 'flags', value = flags },
-         { name = 'extra', value = extra }
-      }
-   }
+function make_cl_target (obj_path, src_path, flags)
+   if not obj_path then error 'cl .obj file not specified!' end
+   if not src_path then error 'cl source file not specified!' end
+   if not flags then error 'cl flags not specified!' end
+   return function (t)
+      t.rule = rule 'cl'
+      t.inputs = { src_path }
+      t.order_only_inputs = { 'init!' }
+      t.outputs = { obj_path }
+      t.vars = {{ name = 'flags', value = flags }}
+
+      if t.pdb then
+         t.vars[#t.vars + 1] = { name = 'pdb', value = t.pdb }
+      end
+
+      if t.extra then
+         t.vars[#t.vars + 1] = { name = 'extra', value = t.extra }
+      end
+
+      return make_target(t)
+   end
 end
 
-function get_obj_path (project, src_path, debug)
-   local configuration = (debug and 'debug') or 'release'
-   local relative_path = fs.ancestor_relative(fs.compose_path(root_dir, src_path), project.path)
-   return fs.compose_path('$build_dir', configuration, project.name, fs.replace_extension(relative_path, '.obj'))
+function get_obj_path (configured, src_path)
+   local relative_path = fs.ancestor_relative(fs.compose_path(root_dir, src_path), configured.path)
+   build_dir();
+   return fs.compose_path('$build_dir', configured.configuration, configured.name, fs.replace_extension(relative_path, '.obj'))
+end
+
+function make_cl_targets (configured)
+   local add_obj, obj_paths = make_append_fn()
+
+   for i = 1, #configured.src_no_pch do
+      local src_path = configured.src_no_pch[i]
+      local obj_path = get_obj_path(configured, src_path)
+
+      make_cl_target(obj_path, src_path, configured.cl_flags) {
+         pdb = configured.build_pdb_path,
+         extra = configured.cl_extra
+      }
+      add_obj(obj_path)
+   end
+
+   local implicit_pch
+   if configured.pch_src then
+      local obj_path = get_obj_path(configured, configured.pch_src)
+      configured.cl_extra = configured.cl_extra .. ' /Fp"' .. configured.pch_path .. '"'
+      
+      make_cl_target(obj_path, configured.pch_src, configured.cl_flags) {
+         pdb = configured.build_pdb_path,
+         extra = configured.cl_extra .. ' /Yc"' .. configured.pch .. '"'
+      }
+      make_phony_target(configured.pch_path) {
+         inputs = { obj_path } -- pch was actually created at the same time as obj
+      }
+
+      implicit_pch = { configured.pch_path }
+      configured.cl_extra = configured.cl_extra .. ' /Yu"' .. configured.pch .. '"'
+   end
+
+   for i = 1, #configured.src do
+      local src_path = configured.src[i]
+      local obj_path = get_obj_path(configured, src_path)
+
+      if not configured.pch_src or not fs.equivalent(configured.pch_src, src_path) then
+         make_cl_target(obj_path, src_path, configured.cl_flags) {
+            pdb = configured.build_pdb_path,
+            extra = configured.cl_extra,
+            implicit_inputs = implicit_pch
+         }
+      end
+      add_obj(obj_path)
+   end
+
+   return obj_paths
 end

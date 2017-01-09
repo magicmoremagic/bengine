@@ -125,10 +125,7 @@ executed by the `limp` tool (included as part of bengine).
 > ninja -t targets
 
 :: Run all limp rules: (changes are not always detected normally by Ninja)
-> ninja limp!!
-
-:: Copy certain binaries from stage/ to bin/:
-> ninja deploy!!
+> ninja limp!
 
 :: Clean up intermediate ninja build files and libraries:
 > ninja clean!

@@ -1,137 +1,91 @@
-local table = table
-local fs = be.fs
+local fs = require('be.fs')
 
-make_global('linkcmd', 'link', 0)
-make_global('pdbcmd', 'mspdbcmf', 0)
+local pdb_targets = { }
+function make_pdb_target (target, pdb_path)
+   return function (t)
+      pdb_targets[#pdb_targets+1] = target
 
-make_global('link_base', table.concat({
-   '/NOLOGO',
-   '/MACHINE:X64',
-   '/DYNAMICBASE',
-   '/DEBUG:FASTLINK',
-   '/NXCOMPAT',
-   '/LIBPATH:"$ext_lib_dir"',
-   '/MANIFEST:NO'
-}, ' '), 9)
+      t.rule = rule 'pdb'
+      t.inputs = { pdb_path }
+      t.outputs = { target }
 
-make_global('link_baselibs', table.concat({
-   'kernel32.lib',
-   'user32.lib',
-   'gdi32.lib',
-   'comdlg32.lib',
-   'advapi32.lib',
-   'shell32.lib',
-   'ole32.lib'
-}, ' '), 9)
-
-local function get_linkflags (project, debug)
-   local options = { }
-   local function add_option (option)
-      options[#options+1] = option
+      return make_target(t)
    end
-
-   if not project.is_ext_lib then
-      add_option '/LIBPATH:"$out_dir"'
-      add_option '/WX'  -- warnings are errors
-      add_option '/IGNORE:4221' -- No public symbols
-   end
-
-   if debug then
-      add_option '/INCREMENTAL'
-   else
-      add_option '/LTCG'   -- Link-time codegen
-      add_option '/OPT:REF,ICF'
-   end
-
-   if project.console then
-      add_option '/SUBSYSTEM:CONSOLE'
-   else
-      add_option '/SUBSYSTEM:WINDOWS'
-   end
-
-   return table.concat(options, ' ')
 end
 
-local rule_name
-local linkflags = { }
-function get_linkflags_var (project, debug)
-   local name = { 'linkflags' }
-   local function add_name_suffix (suffix)
-      name[#name+1] = '_'
-      name[#name+1] = suffix
-   end
-   
-   if project.console then add_name_suffix 'console' end
-   if project.is_ext_lib then add_name_suffix 'extlib' end
+function make_meta_pdb_target ()
+   return make_phony_target 'pdb!' {
+      inputs = pdb_targets
+   }
+end
 
-   if debug then add_name_suffix 'debug'
-   else add_name_suffix 'release'
-   end
+
+include 'build/vc_win/link_config'
+
+local link_flags = { }
+local function ignore () end
+
+function get_link_flags_var (configured, debug)
+   local add_name_suffix, name = make_append_fn('_', nil, { 'link_flags' })
+   configure_link_flags(configured, ignore, ignore, add_name_suffix)
 
    name = table.concat(name)
+   if not link_flags[name] then
+      local add_option, options = make_append_fn()
+      local disable_warning, disabled_warnings = make_append_fn(function (n) return '/IGNORE:' .. n end)
 
-   if linkflags[name] then
-      return '$' .. name
+      configure_link_flags(configured, disable_warning, add_option, ignore)
+      table.sort(disabled_warnings)
+      add_option(table.concat(disabled_warnings, ' '))
+      
+      link_flags[name] = true
+      set_global(name, table.concat(options, ' '), link_flags_global_group)
    end
-
-   if not rule_name then
-      rule_name = 'link'
-      make_rule(rule_name, '$linkcmd $link_base $flags $extra /PDB:"$pdb" /OUT:"$out" @${build_dir}\\${out_file}.in', 'link $out', {
-         rspfile = '${build_dir}\\${out_file}.in',
-         rspfile_content = '$link_baselibs $in_newline'
-      })
-   end
-
-   local final = get_linkflags(project, debug)
-   linkflags[name] = final
-   make_global(name, final, 9)
 
    return '$' .. name
 end
 
-local pdb_rule_name
-local pdb_jobs = { }
-function make_pdb_job (target, pdb_path, implicit_inputs)
-   if not pdb_rule_name then
-      pdb_rule_name = 'pdb'
-      make_rule(pdb_rule_name, '$pdbcmd $in', 'pdb $in')
-   end
-
-   pdb_jobs[#pdb_jobs+1] = target
-
-   return job {
-      rule = pdb_rule_name,
-      inputs = { pdb_path },
-      implicit_inputs = implicit_inputs,
-      outputs = { target }
-   }
-end
-
-function make_meta_pdb_job (target)
-   return make_phony_job(target, pdb_jobs)
-end
-
-function make_link_job (out_path, pdb_path, input_paths, debug, flags, extra, implicit_inputs, implicit_outputs)
-   local imp_outputs = { pdb_path }
-   if implicit_outputs then
-      for i = 1, #implicit_outputs do
-         imp_outputs[#imp_outputs] = implicit_outputs[i]
+function make_link_target (configured, obj_paths)
+   return function (t)
+      t.rule = rule 'link'
+      t.outputs = { configured.output_path }
+      t.implicit_outputs = append_sequence({ configured.pdb_path }, t.implicit_outputs)
+      t.order_only_inputs = { 'init!' }
+      t.inputs = { }
+      for i = 1, #configured.link_internal do
+         t.inputs[i] = fs.replace_extension(configured.link_internal[i], '.lib')
       end
-   end
 
-   job {
-      rule = rule_name,
-      inputs = input_paths,
-      implicit_inputs = implicit_inputs,
-      order_only_inputs = { 'init!' },
-      outputs = { out_path },
-      implicit_outputs = imp_outputs,
-      vars = {
-         { name = 'out_file', value = fs.path_filename(out_path) },
-         { name = 'pdb', value = pdb_path },
-         { name = 'flags', value = flags },
-         { name = 'extra', value = extra }
+      table.sort(t.inputs)
+      append_sequence(obj_paths, t.inputs)
+
+      if configured.icon then
+         local icon_rc_path = fs.compose_path(build_dir(), configured.output_base .. '.icon.rc')
+         local icon_res_path = fs.compose_path(build_dir(), configured.output_base .. '.icon.res')
+         make_icon_rc_target(icon_res_path, icon_rc_path, configured.icon) { }
+         t.inputs[#t.inputs+1] = icon_res_path
+      end
+
+      if configured.require_admin then
+         t.inputs[#t.inputs+1] = get_manifest_target('elevated', true)
+      else
+         t.inputs[#t.inputs+1] = get_manifest_target('default')
+      end
+
+      local extra = { }
+      for i = 1, #configured.link do
+         extra[i] = fs.replace_extension(configured.link[i], '.lib')
+      end
+
+      t.vars = {
+         { name = 'out_file', value = configured.output_filename },
+         { name = 'pdb', value = configured.pdb_path },
+         { name = 'flags', value = get_link_flags_var(configured) },
+         { name = 'extra', value = table.concat(extra, ' ') }
       }
-   }
-   make_pdb_job(pdb_path .. '!', pdb_path)
+
+      make_pdb_target(configured.pdb_path .. '!', configured.pdb_path) { }
+
+      return make_target(t)
+   end
 end
