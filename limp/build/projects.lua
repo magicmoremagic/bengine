@@ -107,6 +107,12 @@ function configure_project (project, toolchain, configuration, configured_group)
    configured.is_ext = configured.type == 'ext_lib'
    configured.is_ext_lib = configured.type == 'ext_lib'
 
+   if configured.is_ext_lib then
+      configured.output_dir, configured.output_dir_abs = ext_lib_dir()
+   else
+      configured.output_dir, configured.output_dir_abs = out_dir()
+   end
+
    if configured.is_lib or configured.is_dyn_lib then
       configured_group.has_include_headers = true
    end
@@ -183,7 +189,7 @@ local function link_project (configured_project, project_name_to_link)
    end
    
    local config_to_link = project_to_link.configurations[configured.configuration]
-   local link_spec = config_to_link.name .. config_to_link.configuration_suffix
+   local link_spec = fs.compose_path(config_to_link.output_dir, config_to_link.name .. config_to_link.configuration_suffix)
    
    append_sequence(config_to_link.link, configured.link, true)
    append_sequence({ link_spec }, configured.link_internal, true)

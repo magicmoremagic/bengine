@@ -18,5 +18,5 @@ if not exist %_vcvarsall% (
 )
 
 call %_vcvarsall% x64
-ninja all-ext!
+ninja externals!
 popd

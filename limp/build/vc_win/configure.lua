@@ -35,7 +35,7 @@ end
 function hooks.preprocess_project (configured)
    configure_init_project(configured)
 
-   local dir, ext = out_dir, ''
+   local ext = ''
    if configured.is_app then
       ext = '.exe'
    elseif configured.is_lib then
@@ -43,11 +43,11 @@ function hooks.preprocess_project (configured)
    elseif configured.is_dyn_lib then
       ext = '.dll'
    elseif configured.is_ext_lib then
-      dir = ext_lib_dir
       ext = '.lib'
    end
 
-   local rel_dir, abs_dir = dir()
+   local rel_dir = configured.output_dir
+   local abs_dir = configured.output_dir_abs
    local rel_build_dir, abs_build_dir = build_dir()
    local base = configured.output_base
 

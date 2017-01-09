@@ -84,6 +84,7 @@ function configure_cl_flags (configured, define, disable_warning, option, name_s
       define '_CRT_SECURE_NO_WARNINGS'
       option '/W3'
       disable_warning(4334) -- result of 32-bit shift implicitly converted to 64 bits (Lua)
+      disable_warning(4267) -- narrowing conversion (zlib)
    else
       if configured.is_dyn_lib then
          name_suffix 'dll'

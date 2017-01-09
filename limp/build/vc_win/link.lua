@@ -84,7 +84,9 @@ function make_link_target (configured, obj_paths)
          { name = 'extra', value = table.concat(extra, ' ') }
       }
 
-      make_pdb_target(configured.pdb_path .. '!', configured.pdb_path) { }
+      if configured.configuration == 'debug' then
+         make_pdb_target(configured.pdb_path .. '!', configured.pdb_path) { }
+      end
 
       return make_target(t)
    end

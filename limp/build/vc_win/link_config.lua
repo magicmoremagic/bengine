@@ -6,7 +6,6 @@ set_global('link_base_flags', table.concat({
    '/NOLOGO',
    '/MACHINE:X64',
    '/DYNAMICBASE',
-   '/DEBUG:FASTLINK',
    '/NXCOMPAT',
    '/LIBPATH:"' .. ext_lib_dir() .. '"',
    '/MANIFEST:NO'
@@ -40,7 +39,7 @@ make_rule 'link' {
 }
 
 make_rule 'pdb' {
-   command = 'mspdbcmf $in',
+   command = 'mspdbcmf /nologo $in',
    description = 'pdb $in'
 }
 
@@ -63,6 +62,7 @@ function configure_link_flags (configured, ignore_warning, option, name_suffix)
    if configured.configuration == 'debug' then
       name_suffix 'debug'
       option '/INCREMENTAL'
+      option '/DEBUG:FASTLINK'
    else
       name_suffix 'release'
       option '/LTCG'   -- Link-time codegen
