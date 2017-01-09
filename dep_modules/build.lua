@@ -2,9 +2,9 @@ deps {
    ext_include_dir 'glm'      { path 'glm/glm' },
    ext_include_dir 'gsl'      { path 'gsl/gsl' },
    ext_include_dir 'glfw'     { path 'glfw/include/GLFW' },
-   ext_include_dir 'lua'      { path 'lua/src' },
    ext_include_dir 'pugixml'  { path 'pugixml/src' },
    ext_include_dir 'catch'    { path 'catch/single_include' },
+   ext_include_dir 'lua' { },
    ext_include_dir 'stb' { },
    ext_include_dir 'zlib' { },
 
@@ -45,9 +45,9 @@ deps {
       path 'lua',
       force_cxx,
       src {
-         'src/*.c',
-         exclude 'src/lua.c',
-         exclude 'src/luac.c'
+         '*.c',
+         exclude 'lua.c',
+         exclude 'luac.c'
       }
    }
 }

@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win') !! 3321 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win') !! 3329 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.7
 
@@ -159,9 +159,9 @@ build $ext_lib_dir: mkdir
 build $ext_include_dir\glm: lndir dep_modules\glm\glm | $ext_include_dir
 build $ext_include_dir\gsl: lndir dep_modules\gsl\gsl | $ext_include_dir
 build $ext_include_dir\glfw: lndir dep_modules\glfw\include\GLFW | $ext_include_dir
-build $ext_include_dir\lua: lndir dep_modules\lua\src | $ext_include_dir
 build $ext_include_dir\pugixml: lndir dep_modules\pugixml\src | $ext_include_dir
 build $ext_include_dir\catch: lndir dep_modules\catch\single_include | $ext_include_dir
+build $ext_include_dir\lua: lndir dep_modules\lua | $ext_include_dir
 build $ext_include_dir\stb: lndir dep_modules\stb | $ext_include_dir
 build $ext_include_dir\zlib: lndir dep_modules\zlib | $ext_include_dir
 build $include_dir\be: mkdir | $include_dir
@@ -182,7 +182,7 @@ build $build_dir\.boost_log: build_boost | $build_dir
 build %BOOST_HOME%\boost: phony $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
 
-build init!!: touch | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glfw $ext_include_dir\lua $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+build init!!: touch | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
    path = $build_dir\.i9d
 
 build $build_dir\.i9d: superninja
@@ -548,276 +548,284 @@ build $ext_lib_dir\glfw.lib: lib $build_dir\release\glfw\src\context.obj $build_
 build project-glfw-release!: phony $ext_lib_dir\glfw.lib
 build project-glfw!: phony project-glfw-debug! project-glfw-release!
 
-build $build_dir\debug\luaxx\src\lapi.obj: cl dep_modules\lua\src\lapi.c || init!
+build $build_dir\debug\luaxx\lapi.obj: cl dep_modules\lua\lapi.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lauxlib.obj: cl dep_modules\lua\src\lauxlib.c || init!
+build $build_dir\debug\luaxx\lauxlib.obj: cl dep_modules\lua\lauxlib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lbaselib.obj: cl dep_modules\lua\src\lbaselib.c || init!
+build $build_dir\debug\luaxx\lbaselib.obj: cl dep_modules\lua\lbaselib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lbitlib.obj: cl dep_modules\lua\src\lbitlib.c || init!
+build $build_dir\debug\luaxx\lbitlib.obj: cl dep_modules\lua\lbitlib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lcode.obj: cl dep_modules\lua\src\lcode.c || init!
+build $build_dir\debug\luaxx\lcode.obj: cl dep_modules\lua\lcode.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lcorolib.obj: cl dep_modules\lua\src\lcorolib.c || init!
+build $build_dir\debug\luaxx\lcorolib.obj: cl dep_modules\lua\lcorolib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lctype.obj: cl dep_modules\lua\src\lctype.c || init!
+build $build_dir\debug\luaxx\lctype.obj: cl dep_modules\lua\lctype.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\ldblib.obj: cl dep_modules\lua\src\ldblib.c || init!
+build $build_dir\debug\luaxx\ldblib.obj: cl dep_modules\lua\ldblib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\ldebug.obj: cl dep_modules\lua\src\ldebug.c || init!
+build $build_dir\debug\luaxx\ldebug.obj: cl dep_modules\lua\ldebug.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\ldo.obj: cl dep_modules\lua\src\ldo.c || init!
+build $build_dir\debug\luaxx\ldo.obj: cl dep_modules\lua\ldo.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\ldump.obj: cl dep_modules\lua\src\ldump.c || init!
+build $build_dir\debug\luaxx\ldump.obj: cl dep_modules\lua\ldump.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lfunc.obj: cl dep_modules\lua\src\lfunc.c || init!
+build $build_dir\debug\luaxx\lfunc.obj: cl dep_modules\lua\lfunc.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lgc.obj: cl dep_modules\lua\src\lgc.c || init!
+build $build_dir\debug\luaxx\lgc.obj: cl dep_modules\lua\lgc.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\linit.obj: cl dep_modules\lua\src\linit.c || init!
+build $build_dir\debug\luaxx\linit.obj: cl dep_modules\lua\linit.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\liolib.obj: cl dep_modules\lua\src\liolib.c || init!
+build $build_dir\debug\luaxx\liolib.obj: cl dep_modules\lua\liolib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\llex.obj: cl dep_modules\lua\src\llex.c || init!
+build $build_dir\debug\luaxx\llex.obj: cl dep_modules\lua\llex.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lmathlib.obj: cl dep_modules\lua\src\lmathlib.c || init!
+build $build_dir\debug\luaxx\lmathlib.obj: cl dep_modules\lua\lmathlib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lmem.obj: cl dep_modules\lua\src\lmem.c || init!
+build $build_dir\debug\luaxx\lmem.obj: cl dep_modules\lua\lmem.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\loadlib.obj: cl dep_modules\lua\src\loadlib.c || init!
+build $build_dir\debug\luaxx\loadlib.obj: cl dep_modules\lua\loadlib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lobject.obj: cl dep_modules\lua\src\lobject.c || init!
+build $build_dir\debug\luaxx\lobject.obj: cl dep_modules\lua\lobject.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lopcodes.obj: cl dep_modules\lua\src\lopcodes.c || init!
+build $build_dir\debug\luaxx\lopcodes.obj: cl dep_modules\lua\lopcodes.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\loslib.obj: cl dep_modules\lua\src\loslib.c || init!
+build $build_dir\debug\luaxx\loslib.obj: cl dep_modules\lua\loslib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lparser.obj: cl dep_modules\lua\src\lparser.c || init!
+build $build_dir\debug\luaxx\lparser.obj: cl dep_modules\lua\lparser.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lstate.obj: cl dep_modules\lua\src\lstate.c || init!
+build $build_dir\debug\luaxx\lstate.obj: cl dep_modules\lua\lstate.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lstring.obj: cl dep_modules\lua\src\lstring.c || init!
+build $build_dir\debug\luaxx\lstring.obj: cl dep_modules\lua\lstring.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lstrlib.obj: cl dep_modules\lua\src\lstrlib.c || init!
+build $build_dir\debug\luaxx\lstrlib.obj: cl dep_modules\lua\lstrlib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\ltable.obj: cl dep_modules\lua\src\ltable.c || init!
+build $build_dir\debug\luaxx\ltable.obj: cl dep_modules\lua\ltable.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\ltablib.obj: cl dep_modules\lua\src\ltablib.c || init!
+build $build_dir\debug\luaxx\ltablib.obj: cl dep_modules\lua\ltablib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\ltm.obj: cl dep_modules\lua\src\ltm.c || init!
+build $build_dir\debug\luaxx\ltests.obj: cl dep_modules\lua\ltests.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lundump.obj: cl dep_modules\lua\src\lundump.c || init!
+build $build_dir\debug\luaxx\ltm.obj: cl dep_modules\lua\ltm.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lutf8lib.obj: cl dep_modules\lua\src\lutf8lib.c || init!
+build $build_dir\debug\luaxx\lundump.obj: cl dep_modules\lua\lundump.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lvm.obj: cl dep_modules\lua\src\lvm.c || init!
+build $build_dir\debug\luaxx\lutf8lib.obj: cl dep_modules\lua\lutf8lib.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $build_dir\debug\luaxx\src\lzio.obj: cl dep_modules\lua\src\lzio.c || init!
+build $build_dir\debug\luaxx\lvm.obj: cl dep_modules\lua\lvm.c || init!
    flags = $cl_flags_cxx_extlib_debug
    pdb = $build_dir\luaxx-debug.pdb
 
-build $ext_lib_dir\luaxx-debug.lib: lib $build_dir\debug\luaxx\src\lapi.obj $build_dir\debug\luaxx\src\lauxlib.obj $build_dir\debug\luaxx\src\lbaselib.obj $build_dir\debug\luaxx\src\lbitlib.obj $build_dir\debug\luaxx\src\lcode.obj $build_dir\debug\luaxx\src\lcorolib.obj $build_dir\debug\luaxx\src\lctype.obj $build_dir\debug\luaxx\src\ldblib.obj $build_dir\debug\luaxx\src\ldebug.obj $build_dir\debug\luaxx\src\ldo.obj $build_dir\debug\luaxx\src\ldump.obj $build_dir\debug\luaxx\src\lfunc.obj $build_dir\debug\luaxx\src\lgc.obj $build_dir\debug\luaxx\src\linit.obj $build_dir\debug\luaxx\src\liolib.obj $build_dir\debug\luaxx\src\llex.obj $build_dir\debug\luaxx\src\lmathlib.obj $build_dir\debug\luaxx\src\lmem.obj $build_dir\debug\luaxx\src\loadlib.obj $build_dir\debug\luaxx\src\lobject.obj $build_dir\debug\luaxx\src\lopcodes.obj $build_dir\debug\luaxx\src\loslib.obj $build_dir\debug\luaxx\src\lparser.obj $build_dir\debug\luaxx\src\lstate.obj $build_dir\debug\luaxx\src\lstring.obj $build_dir\debug\luaxx\src\lstrlib.obj $build_dir\debug\luaxx\src\ltable.obj $build_dir\debug\luaxx\src\ltablib.obj $build_dir\debug\luaxx\src\ltm.obj $build_dir\debug\luaxx\src\lundump.obj $build_dir\debug\luaxx\src\lutf8lib.obj $build_dir\debug\luaxx\src\lvm.obj $build_dir\debug\luaxx\src\lzio.obj || init!
+build $build_dir\debug\luaxx\lzio.obj: cl dep_modules\lua\lzio.c || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\luaxx-debug.pdb
+
+build $ext_lib_dir\luaxx-debug.lib: lib $build_dir\debug\luaxx\lapi.obj $build_dir\debug\luaxx\lauxlib.obj $build_dir\debug\luaxx\lbaselib.obj $build_dir\debug\luaxx\lbitlib.obj $build_dir\debug\luaxx\lcode.obj $build_dir\debug\luaxx\lcorolib.obj $build_dir\debug\luaxx\lctype.obj $build_dir\debug\luaxx\ldblib.obj $build_dir\debug\luaxx\ldebug.obj $build_dir\debug\luaxx\ldo.obj $build_dir\debug\luaxx\ldump.obj $build_dir\debug\luaxx\lfunc.obj $build_dir\debug\luaxx\lgc.obj $build_dir\debug\luaxx\linit.obj $build_dir\debug\luaxx\liolib.obj $build_dir\debug\luaxx\llex.obj $build_dir\debug\luaxx\lmathlib.obj $build_dir\debug\luaxx\lmem.obj $build_dir\debug\luaxx\loadlib.obj $build_dir\debug\luaxx\lobject.obj $build_dir\debug\luaxx\lopcodes.obj $build_dir\debug\luaxx\loslib.obj $build_dir\debug\luaxx\lparser.obj $build_dir\debug\luaxx\lstate.obj $build_dir\debug\luaxx\lstring.obj $build_dir\debug\luaxx\lstrlib.obj $build_dir\debug\luaxx\ltable.obj $build_dir\debug\luaxx\ltablib.obj $build_dir\debug\luaxx\ltests.obj $build_dir\debug\luaxx\ltm.obj $build_dir\debug\luaxx\lundump.obj $build_dir\debug\luaxx\lutf8lib.obj $build_dir\debug\luaxx\lvm.obj $build_dir\debug\luaxx\lzio.obj || init!
    out_file = luaxx-debug.lib
    flags = $lib_flags_extlib_debug
 build project-luaxx-debug!: phony $ext_lib_dir\luaxx-debug.lib
 
-build $build_dir\release\luaxx\src\lapi.obj: cl dep_modules\lua\src\lapi.c || init!
+build $build_dir\release\luaxx\lapi.obj: cl dep_modules\lua\lapi.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lauxlib.obj: cl dep_modules\lua\src\lauxlib.c || init!
+build $build_dir\release\luaxx\lauxlib.obj: cl dep_modules\lua\lauxlib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lbaselib.obj: cl dep_modules\lua\src\lbaselib.c || init!
+build $build_dir\release\luaxx\lbaselib.obj: cl dep_modules\lua\lbaselib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lbitlib.obj: cl dep_modules\lua\src\lbitlib.c || init!
+build $build_dir\release\luaxx\lbitlib.obj: cl dep_modules\lua\lbitlib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lcode.obj: cl dep_modules\lua\src\lcode.c || init!
+build $build_dir\release\luaxx\lcode.obj: cl dep_modules\lua\lcode.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lcorolib.obj: cl dep_modules\lua\src\lcorolib.c || init!
+build $build_dir\release\luaxx\lcorolib.obj: cl dep_modules\lua\lcorolib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lctype.obj: cl dep_modules\lua\src\lctype.c || init!
+build $build_dir\release\luaxx\lctype.obj: cl dep_modules\lua\lctype.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\ldblib.obj: cl dep_modules\lua\src\ldblib.c || init!
+build $build_dir\release\luaxx\ldblib.obj: cl dep_modules\lua\ldblib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\ldebug.obj: cl dep_modules\lua\src\ldebug.c || init!
+build $build_dir\release\luaxx\ldebug.obj: cl dep_modules\lua\ldebug.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\ldo.obj: cl dep_modules\lua\src\ldo.c || init!
+build $build_dir\release\luaxx\ldo.obj: cl dep_modules\lua\ldo.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\ldump.obj: cl dep_modules\lua\src\ldump.c || init!
+build $build_dir\release\luaxx\ldump.obj: cl dep_modules\lua\ldump.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lfunc.obj: cl dep_modules\lua\src\lfunc.c || init!
+build $build_dir\release\luaxx\lfunc.obj: cl dep_modules\lua\lfunc.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lgc.obj: cl dep_modules\lua\src\lgc.c || init!
+build $build_dir\release\luaxx\lgc.obj: cl dep_modules\lua\lgc.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\linit.obj: cl dep_modules\lua\src\linit.c || init!
+build $build_dir\release\luaxx\linit.obj: cl dep_modules\lua\linit.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\liolib.obj: cl dep_modules\lua\src\liolib.c || init!
+build $build_dir\release\luaxx\liolib.obj: cl dep_modules\lua\liolib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\llex.obj: cl dep_modules\lua\src\llex.c || init!
+build $build_dir\release\luaxx\llex.obj: cl dep_modules\lua\llex.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lmathlib.obj: cl dep_modules\lua\src\lmathlib.c || init!
+build $build_dir\release\luaxx\lmathlib.obj: cl dep_modules\lua\lmathlib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lmem.obj: cl dep_modules\lua\src\lmem.c || init!
+build $build_dir\release\luaxx\lmem.obj: cl dep_modules\lua\lmem.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\loadlib.obj: cl dep_modules\lua\src\loadlib.c || init!
+build $build_dir\release\luaxx\loadlib.obj: cl dep_modules\lua\loadlib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lobject.obj: cl dep_modules\lua\src\lobject.c || init!
+build $build_dir\release\luaxx\lobject.obj: cl dep_modules\lua\lobject.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lopcodes.obj: cl dep_modules\lua\src\lopcodes.c || init!
+build $build_dir\release\luaxx\lopcodes.obj: cl dep_modules\lua\lopcodes.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\loslib.obj: cl dep_modules\lua\src\loslib.c || init!
+build $build_dir\release\luaxx\loslib.obj: cl dep_modules\lua\loslib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lparser.obj: cl dep_modules\lua\src\lparser.c || init!
+build $build_dir\release\luaxx\lparser.obj: cl dep_modules\lua\lparser.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lstate.obj: cl dep_modules\lua\src\lstate.c || init!
+build $build_dir\release\luaxx\lstate.obj: cl dep_modules\lua\lstate.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lstring.obj: cl dep_modules\lua\src\lstring.c || init!
+build $build_dir\release\luaxx\lstring.obj: cl dep_modules\lua\lstring.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lstrlib.obj: cl dep_modules\lua\src\lstrlib.c || init!
+build $build_dir\release\luaxx\lstrlib.obj: cl dep_modules\lua\lstrlib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\ltable.obj: cl dep_modules\lua\src\ltable.c || init!
+build $build_dir\release\luaxx\ltable.obj: cl dep_modules\lua\ltable.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\ltablib.obj: cl dep_modules\lua\src\ltablib.c || init!
+build $build_dir\release\luaxx\ltablib.obj: cl dep_modules\lua\ltablib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\ltm.obj: cl dep_modules\lua\src\ltm.c || init!
+build $build_dir\release\luaxx\ltests.obj: cl dep_modules\lua\ltests.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lundump.obj: cl dep_modules\lua\src\lundump.c || init!
+build $build_dir\release\luaxx\ltm.obj: cl dep_modules\lua\ltm.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lutf8lib.obj: cl dep_modules\lua\src\lutf8lib.c || init!
+build $build_dir\release\luaxx\lundump.obj: cl dep_modules\lua\lundump.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lvm.obj: cl dep_modules\lua\src\lvm.c || init!
+build $build_dir\release\luaxx\lutf8lib.obj: cl dep_modules\lua\lutf8lib.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $build_dir\release\luaxx\src\lzio.obj: cl dep_modules\lua\src\lzio.c || init!
+build $build_dir\release\luaxx\lvm.obj: cl dep_modules\lua\lvm.c || init!
    flags = $cl_flags_cxx_extlib_release
    pdb = $build_dir\luaxx.pdb
 
-build $ext_lib_dir\luaxx.lib: lib $build_dir\release\luaxx\src\lapi.obj $build_dir\release\luaxx\src\lauxlib.obj $build_dir\release\luaxx\src\lbaselib.obj $build_dir\release\luaxx\src\lbitlib.obj $build_dir\release\luaxx\src\lcode.obj $build_dir\release\luaxx\src\lcorolib.obj $build_dir\release\luaxx\src\lctype.obj $build_dir\release\luaxx\src\ldblib.obj $build_dir\release\luaxx\src\ldebug.obj $build_dir\release\luaxx\src\ldo.obj $build_dir\release\luaxx\src\ldump.obj $build_dir\release\luaxx\src\lfunc.obj $build_dir\release\luaxx\src\lgc.obj $build_dir\release\luaxx\src\linit.obj $build_dir\release\luaxx\src\liolib.obj $build_dir\release\luaxx\src\llex.obj $build_dir\release\luaxx\src\lmathlib.obj $build_dir\release\luaxx\src\lmem.obj $build_dir\release\luaxx\src\loadlib.obj $build_dir\release\luaxx\src\lobject.obj $build_dir\release\luaxx\src\lopcodes.obj $build_dir\release\luaxx\src\loslib.obj $build_dir\release\luaxx\src\lparser.obj $build_dir\release\luaxx\src\lstate.obj $build_dir\release\luaxx\src\lstring.obj $build_dir\release\luaxx\src\lstrlib.obj $build_dir\release\luaxx\src\ltable.obj $build_dir\release\luaxx\src\ltablib.obj $build_dir\release\luaxx\src\ltm.obj $build_dir\release\luaxx\src\lundump.obj $build_dir\release\luaxx\src\lutf8lib.obj $build_dir\release\luaxx\src\lvm.obj $build_dir\release\luaxx\src\lzio.obj || init!
+build $build_dir\release\luaxx\lzio.obj: cl dep_modules\lua\lzio.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $ext_lib_dir\luaxx.lib: lib $build_dir\release\luaxx\lapi.obj $build_dir\release\luaxx\lauxlib.obj $build_dir\release\luaxx\lbaselib.obj $build_dir\release\luaxx\lbitlib.obj $build_dir\release\luaxx\lcode.obj $build_dir\release\luaxx\lcorolib.obj $build_dir\release\luaxx\lctype.obj $build_dir\release\luaxx\ldblib.obj $build_dir\release\luaxx\ldebug.obj $build_dir\release\luaxx\ldo.obj $build_dir\release\luaxx\ldump.obj $build_dir\release\luaxx\lfunc.obj $build_dir\release\luaxx\lgc.obj $build_dir\release\luaxx\linit.obj $build_dir\release\luaxx\liolib.obj $build_dir\release\luaxx\llex.obj $build_dir\release\luaxx\lmathlib.obj $build_dir\release\luaxx\lmem.obj $build_dir\release\luaxx\loadlib.obj $build_dir\release\luaxx\lobject.obj $build_dir\release\luaxx\lopcodes.obj $build_dir\release\luaxx\loslib.obj $build_dir\release\luaxx\lparser.obj $build_dir\release\luaxx\lstate.obj $build_dir\release\luaxx\lstring.obj $build_dir\release\luaxx\lstrlib.obj $build_dir\release\luaxx\ltable.obj $build_dir\release\luaxx\ltablib.obj $build_dir\release\luaxx\ltests.obj $build_dir\release\luaxx\ltm.obj $build_dir\release\luaxx\lundump.obj $build_dir\release\luaxx\lutf8lib.obj $build_dir\release\luaxx\lvm.obj $build_dir\release\luaxx\lzio.obj || init!
    out_file = luaxx.lib
    flags = $lib_flags_extlib_release
 build project-luaxx-release!: phony $ext_lib_dir\luaxx.lib

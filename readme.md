@@ -70,15 +70,15 @@ force-pushes.
 
 ## Libraries 
  - [Boost](http://www.boost.org/) (External; 1.63 or newer recommended)
- - [Catch 1.5.6](https://github.com/philsquared/Catch)
+ - [Catch 1.5.9](https://github.com/philsquared/Catch)
  - [GLFW 3.1.2](https://github.com/bcrist/glfw) (Fork)
- - [GLM 0.9.7](https://github.com/bcrist/glm) (Fork)
+ - [GLM 0.9.8](https://github.com/bcrist/glm) (Fork)
  - [GSL](https://github.com/Microsoft/GSL)
- - [Lua 5.3](https://github.com/bcrist/lua) (Fork)
- - [pugixml 1.7](https://github.com/zeux/pugixml)
+ - [Lua 5.3.3](https://github.com/bcrist/lua) (Fork)
+ - [pugixml 1.9](https://github.com/zeux/pugixml)
  - [STB](https://github.com/nothings/stb)
  - [SQLite 3.15.2](http://sqlite.org/) (Internal)
- - [zlib 1.2.8](https://github.com/madler/zlib)
+ - [zlib 1.2.10](https://github.com/madler/zlib)
 
 The SQLite source amalgamation is distributed within this repository.  With the
 exception of Boost, all of the other above libraries are referenced as git
@@ -107,7 +107,7 @@ executed by the `limp` tool (included as part of bengine).
 :: Ensure BOOST_HOME environment variable is set:
 > SET BOOST_HOME=C:\path\to\boost
 
-:: Clone submodule repositories and build external libraries:
+:: Clone submodule repositories and build external libraries (requires elevation for mklink):
 > setup
 
 :: Open a VS command prompt for development and testing:
