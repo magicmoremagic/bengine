@@ -5,15 +5,16 @@ function build_scripts.env.when (fn)
          error 'Expected table!'
       end
       return function (configured)
-         if type(fn) ~= 'function' then
-            local newfn = load('return ' .. tostring(fn), 'when()', 't', configured)
-            if not newfn then
-               error('Invalid when expression: ' .. fn)
+         local func = fn
+         if type(func) ~= 'function' then
+            local err
+            func, err = load('return ' .. fn, 'when()', 't', configured)
+            if not func then
+               error(err .. ' When expression: ' .. fn)
             end
-            fn = newfn
          end
 
-         if fn(configured) then
+         if func(configured) then
             for i = 1, #t do
                t[i](configured)
             end

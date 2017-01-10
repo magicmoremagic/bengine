@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win') !! 3329 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win') !! 3363 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.7
 
@@ -3271,7 +3271,41 @@ build group-sysinfo-debug!: phony project-sysinfo-debug!
 build group-sysinfo-release!: phony project-sysinfo-release!
 build group-sysinfo!: phony project-sysinfo!
 build project-wedo-debug!: phony
-build project-wedo-release!: phony
+
+build $build_dir\release\wedo\src\wedo.obj: cl tools\wedo\src\wedo.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\wedo.pdb
+   extra = /DBE_TARGET=wedo /DBE_TARGET_BASE=wedo /I"include"
+
+build $build_dir\wedo.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\wedo.icon.res: rc $build_dir\wedo.icon.rc || init!
+
+build $build_dir\elevated.manifest: putfile || init!
+   contents = ^<?xml version=^"1.0^" encoding=^"UTF-8^" standalone=^"yes^"?^>&echo:$
+^<assembly xmlns=^"urn:schemas-microsoft-com:asm.v1^" manifestVersion=^"1.0^"^>&echo:$
+   ^<trustInfo xmlns=^"urn:schemas-microsoft-com:asm.v3^"^>&echo:$
+      ^<security^>&echo:$
+         ^<requestedPrivileges^>&echo:$
+            ^<requestedExecutionLevel level=^"requireAdministrator^" uiAccess=^"false^"/^>&echo:$
+         ^</requestedPrivileges^>&echo:$
+      ^</security^>&echo:$
+   ^</trustInfo^>&echo:$
+^</assembly^>
+
+build $build_dir\elevated.manifest.rc: putfile | $build_dir\elevated.manifest
+   contents = #include ^<winuser.h^>&echo:$
+1 RT_MANIFEST ^"elevated.manifest^"
+build $build_dir\elevated.manifest.res: rc $build_dir\elevated.manifest.rc || init!
+
+build $out_dir\wedo.exe | $out_dir\wedo.pdb: link $build_dir\release\wedo\src\wedo.obj $build_dir\wedo.icon.res $build_dir\elevated.manifest.res || init!
+   out_file = wedo.exe
+   pdb = $out_dir\wedo.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\wedo.exe: cp $out_dir\wedo.exe
+build project-wedo-release!: phony $stage_dir\wedo.exe
 build project-wedo!: phony project-wedo-debug! project-wedo-release!
 build group-wedo-debug!: phony project-wedo-debug!
 build group-wedo-release!: phony project-wedo-release!
