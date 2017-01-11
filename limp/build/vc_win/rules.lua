@@ -1,21 +1,21 @@
 
 make_rule 'superninja' {
-   command = '"$bin_dir\\wedo.exe" ninja $targets $extra',
+   command = '"$bin_dir\\wedo.exe" ninja -f $file $targets $extra',
    description = 'sudo ninja $targets',
    generator = 'true'
 }
 make_rule 'ninja' {
-   command = 'ninja $targets $extra',
+   command = 'ninja -f $file $targets $extra',
    description = 'ninja $targets',
    generator = 'true'
 }
 
 make_rule 'superninjatool' {
-   command = '"$bin_dir\\wedo.exe" ninja -t $tool $extra',
+   command = '"$bin_dir\\wedo.exe" ninja -f $file -t $tool $extra',
    description = 'sudo ninja -t $tool'
 }
 make_rule 'ninjatool'{
-   command = 'ninja -t $tool $extra',
+   command = 'ninja -f $file -t $tool $extra',
    description = 'ninja -t $tool'
 }
 

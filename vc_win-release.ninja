@@ -1,0 +1,1861 @@
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 1860 ##
+# ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
+ninja_required_version = 1.5
+
+bin_dir = bin
+build_dir = build
+deps_dir = deps
+ext_include_dir = ext_include
+ext_lib_dir = ext_lib
+include_dir = include
+msvc_build_dir = msvc_build
+msvc_debug_dir = Debug
+msvc_ipch_dir = ipch
+msvc_out_dir = msvc_out
+out_dir = out
+stage_dir = stage
+
+cl_base_defines = /DWIN32 /D_WIN32 /D_WIN32_WINNT=0x0601 /D_WINDOWS
+cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /std:c++latest /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast
+cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Ox /MD /GL /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS
+cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Ox /MD /GL /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS
+cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /sdl- /GS /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /sdl- /GS /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /sdl- /GS /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /sdl- /GS /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /sdl- /GS /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+
+lib_base_flags = /NOLOGO /MACHINE:X64
+lib_flags_extlib_release = /LTCG 
+lib_flags_release = /WX /LTCG /IGNORE:4221
+
+link_base_flags = /NOLOGO /MACHINE:X64 /DYNAMICBASE /NXCOMPAT /LIBPATH:"$ext_lib_dir" /MANIFEST:NO
+link_base_libs = kernel32.lib user32.lib gdi32.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib
+link_flags_console_release = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG /LTCG /OPT:REF,ICF /IGNORE:4221
+
+
+rule superninja
+   command = "$bin_dir\wedo.exe" ninja -f $file $targets $extra
+   description = sudo ninja $targets
+   generator = true
+
+rule ninjatool
+   command = ninja -f $file -t $tool $extra
+   description = ninja -t $tool
+
+rule limp
+   command = "$bin_dir\limp.exe" $extra $path
+   description = limp $path
+   generator = true
+
+rule mkdir
+   command = cmd /s /c "if not exist "$out" md "$out""
+   description = mkdir $out
+   generator = true
+
+rule touch
+   command = cmd /s /c "echo:>nul 2>>"$path""
+   description = touch $path
+
+rule putfile
+   command = cmd /s /c "(echo:$contents)>"$out""
+   description = putfile $out
+
+rule cp
+   command = cmd /s /c "copy /Y /B "$in" "$out" /B >nul"
+   description = cp $out
+
+rule rmdir
+   command = cmd /s /c "if exist "$path" rd /Q /S "$path""
+   description = rm $path
+
+rule rmfile
+   command = cmd /s /c "if exist "$path" del /F /Q "$path""
+   description = rm $path
+
+rule rmfiles
+   command = cmd /s /c "del /F /Q $paths >nul 2>&1 || echo. >nul"
+   description = rm $paths
+
+rule lndir
+   command = cmd /s /c "if not exist "$out" mklink /J "$out" "$in" >nul"
+   description = ln $out
+   generator = true
+   restat = true
+
+rule cl
+   command = cl $cl_base_flags $flags $cl_base_defines $extra /I"$include_dir" /I"$deps_dir" /I"$ext_include_dir" /Fo"$out" /Fd"$pdb" "$in"
+   deps = msvc
+   description = cl $in
+
+rule rc
+   command = rc /nologo $extra /I"$include_dir" /I"$deps_dir" /I"$ext_include_dir" /fo"$out" "$in"
+   deps = msvc
+   description = rc $in
+
+rule lib
+   command = lib $lib_base_flags $flags $extra /OUT:"$out" @$build_dir\${out_file}.in
+   description = lib $out
+   rspfile = $build_dir\${out_file}.in
+   rspfile_content = $in_newline
+
+rule link
+   command = link $link_base_flags $flags $extra /PDB:"$pdb" /OUT:"$out" @$build_dir\${out_file}.in
+   description = link $out
+   rspfile = $build_dir\${out_file}.in
+   rspfile_content = $link_base_libs $in_newline
+
+rule build_boost
+   command = cmd /s /c "call build_boost.cmd"
+   description = build_boost
+   generator = true
+   rspfile = build_boost.cmd
+   rspfile_content = @echo off & $
+cd %BOOST_HOME% & $
+(if not exist b2.exe call bootstrap.bat) & $
+((.\b2.exe "--stagedir=%~dp0$ext_lib_dir" "--build-dir=%~dp0$build_dir" $
+--build-type=complete -d1 -j4 --with-system --with-locale --with-type_erasure $
+define=BOOST_NO_RTTI define=BOOST_NO_TYPEID link=static threading=multi runtime-link=shared address-model=64 $
+stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
+(move /Y %~dp0$ext_lib_dir\lib\*.lib %~dp0$ext_lib_dir && $
+rd /Q /S %~dp0$ext_lib_dir\lib ) >nul )
+
+rule configure
+   command = "$bin_dir\limp.exe" -f vc_win-release.ninja
+   description = configure
+   generator = true
+
+rule ragel
+   command = ragel $flags -o $out $in
+   description = ragel $out
+   generator = true
+   restat = true
+
+build configure!: configure
+build $build_dir: mkdir
+build $out_dir: mkdir
+build $include_dir: mkdir
+build $stage_dir: mkdir
+build $bin_dir: mkdir
+build $deps_dir: mkdir
+build $ext_include_dir: mkdir
+build $ext_lib_dir: mkdir
+build $ext_include_dir\glm: lndir dep_modules\glm\glm | $ext_include_dir
+build $ext_include_dir\gsl: lndir dep_modules\gsl\gsl | $ext_include_dir
+build $ext_include_dir\glfw: lndir dep_modules\glfw\include\GLFW | $ext_include_dir
+build $ext_include_dir\pugixml: lndir dep_modules\pugixml\src | $ext_include_dir
+build $ext_include_dir\catch: lndir dep_modules\catch\single_include | $ext_include_dir
+build $ext_include_dir\lua: lndir dep_modules\lua | $ext_include_dir
+build $ext_include_dir\stb: lndir dep_modules\stb | $ext_include_dir
+build $ext_include_dir\zlib: lndir dep_modules\zlib | $ext_include_dir
+build $include_dir\be: mkdir | $include_dir
+build $include_dir\be\blt: lndir modules\blt\include | $include_dir\be
+build $include_dir\be\cli: lndir modules\cli\include | $include_dir\be
+build $include_dir\be\core: lndir modules\core\include | $include_dir\be
+build $include_dir\be\ctable: lndir modules\ctable\include | $include_dir\be
+build $include_dir\be\luablt: lndir modules\luablt\include | $include_dir\be
+build $include_dir\be\luacore: lndir modules\luacore\include | $include_dir\be
+build $include_dir\be\luautil: lndir modules\luautil\include | $include_dir\be
+build $include_dir\be\perf: lndir modules\perf\include | $include_dir\be
+build $include_dir\be\platform: lndir modules\platform\include | $include_dir\be
+build $include_dir\be\sqlite: lndir modules\sqlite\include | $include_dir\be
+build $include_dir\be\testing: lndir modules\testing\include | $include_dir\be
+build $include_dir\be\util: lndir modules\util\include | $include_dir\be
+build init_include_links!: phony $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\luablt $include_dir\be\luacore $include_dir\be\luautil $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\util
+build $build_dir\.boost_log: build_boost | $build_dir
+build %BOOST_HOME%\boost: phony $build_dir\.boost_log
+build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
+
+build init!!: touch | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+   path = $build_dir\.i9d
+
+build $build_dir\.i9d: superninja
+   file = vc_win-release.ninja
+   targets = init!!
+build init!: phony $build_dir\.i9d
+
+build clean-ninja!: ninjatool
+   tool = clean
+   file = vc_win-release.ninja
+
+build clean-rm-out_dir!: rmfiles | clean-ninja!
+   paths = $out_dir\*.*
+
+build clean-rm-pch!: rmfiles
+   paths = $build_dir\*.pch
+
+build clean-rm-pdb!: rmfiles
+   paths = $build_dir\*.pdb
+build clean!: phony clean-ninja! clean-rm-out_dir! clean-rm-pch! clean-rm-pdb!
+
+build rm_build_dir!: rmdir | clean-ninja! clean-rm-out_dir! clean-rm-pch! clean-rm-pdb!
+   path = $build_dir
+
+build rm_out_dir!: rmdir | clean-ninja! clean-rm-out_dir! clean-rm-pch! clean-rm-pdb!
+   path = $out_dir
+
+build rm_include_dir!: rmdir | clean-ninja! clean-rm-out_dir! clean-rm-pch! clean-rm-pdb!
+   path = $include_dir
+
+build rm_ext_include_dir!: rmdir | clean-ninja! clean-rm-out_dir! clean-rm-pch! clean-rm-pdb!
+   path = $ext_include_dir
+
+build rm_ext_lib_dir!: rmdir | clean-ninja! clean-rm-out_dir! clean-rm-pch! clean-rm-pdb!
+   path = $ext_lib_dir
+
+build rm_msvc_build_dir!: rmdir
+   path = $msvc_build_dir
+
+build rm_msvc_out_dir!: rmdir
+   path = $msvc_out_dir
+
+build rm_msvc_ipch_dir!: rmdir
+   path = $msvc_ipch_dir
+
+build rm_msvc_debug_dir!: rmdir
+   path = $msvc_debug_dir
+
+build rm_msvc_db!: rmfile
+   path = msvc.VC.db
+
+build rm_vscode_db!: rmfile
+   path = .vscode\.browse.VC.db
+build deinit!: phony rm_build_dir! rm_out_dir! rm_include_dir! rm_ext_include_dir! rm_ext_lib_dir! rm_msvc_build_dir! rm_msvc_out_dir! rm_msvc_ipch_dir! rm_msvc_debug_dir! rm_msvc_db! rm_vscode_db!
+
+build $build_dir\release\zlib-static\adler32.obj: cl dep_modules\zlib\adler32.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\compress.obj: cl dep_modules\zlib\compress.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\crc32.obj: cl dep_modules\zlib\crc32.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\deflate.obj: cl dep_modules\zlib\deflate.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\gzclose.obj: cl dep_modules\zlib\gzclose.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\gzlib.obj: cl dep_modules\zlib\gzlib.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\gzread.obj: cl dep_modules\zlib\gzread.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\gzwrite.obj: cl dep_modules\zlib\gzwrite.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\infback.obj: cl dep_modules\zlib\infback.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\inffast.obj: cl dep_modules\zlib\inffast.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\inflate.obj: cl dep_modules\zlib\inflate.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\inftrees.obj: cl dep_modules\zlib\inftrees.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\trees.obj: cl dep_modules\zlib\trees.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\uncompr.obj: cl dep_modules\zlib\uncompr.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $build_dir\release\zlib-static\zutil.obj: cl dep_modules\zlib\zutil.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\zlib-static.pdb
+   extra = /DNO_FSEEKO /D_CRT_NONSTDC_NO_DEPRECATE /D_CRT_SECURE_NO_DEPRECATE
+
+build $ext_lib_dir\zlib-static.lib: lib $build_dir\release\zlib-static\adler32.obj $build_dir\release\zlib-static\compress.obj $build_dir\release\zlib-static\crc32.obj $build_dir\release\zlib-static\deflate.obj $build_dir\release\zlib-static\gzclose.obj $build_dir\release\zlib-static\gzlib.obj $build_dir\release\zlib-static\gzread.obj $build_dir\release\zlib-static\gzwrite.obj $build_dir\release\zlib-static\infback.obj $build_dir\release\zlib-static\inffast.obj $build_dir\release\zlib-static\inflate.obj $build_dir\release\zlib-static\inftrees.obj $build_dir\release\zlib-static\trees.obj $build_dir\release\zlib-static\uncompr.obj $build_dir\release\zlib-static\zutil.obj || init!
+   out_file = zlib-static.lib
+   flags = $lib_flags_extlib_release
+build project-zlib-static-release!: phony $ext_lib_dir\zlib-static.lib
+build project-zlib-static!: phony project-zlib-static-release!
+
+build $build_dir\release\glfw\src\context.obj: cl dep_modules\glfw\src\context.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\egl_context.obj: cl dep_modules\glfw\src\egl_context.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\init.obj: cl dep_modules\glfw\src\init.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\input.obj: cl dep_modules\glfw\src\input.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\monitor.obj: cl dep_modules\glfw\src\monitor.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\vulkan.obj: cl dep_modules\glfw\src\vulkan.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\wgl_context.obj: cl dep_modules\glfw\src\wgl_context.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\win32_init.obj: cl dep_modules\glfw\src\win32_init.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\win32_joystick.obj: cl dep_modules\glfw\src\win32_joystick.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\win32_monitor.obj: cl dep_modules\glfw\src\win32_monitor.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\win32_time.obj: cl dep_modules\glfw\src\win32_time.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\win32_tls.obj: cl dep_modules\glfw\src\win32_tls.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\win32_window.obj: cl dep_modules\glfw\src\win32_window.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $build_dir\release\glfw\src\window.obj: cl dep_modules\glfw\src\window.c || init!
+   flags = $cl_flags_c_extlib_release
+   pdb = $build_dir\glfw.pdb
+   extra = /D_GLFW_WIN32 /I"dep_modules\glfw\include" /I"dep_modules\glfw\src" /I"include"
+
+build $ext_lib_dir\glfw.lib: lib $build_dir\release\glfw\src\context.obj $build_dir\release\glfw\src\egl_context.obj $build_dir\release\glfw\src\init.obj $build_dir\release\glfw\src\input.obj $build_dir\release\glfw\src\monitor.obj $build_dir\release\glfw\src\vulkan.obj $build_dir\release\glfw\src\wgl_context.obj $build_dir\release\glfw\src\win32_init.obj $build_dir\release\glfw\src\win32_joystick.obj $build_dir\release\glfw\src\win32_monitor.obj $build_dir\release\glfw\src\win32_time.obj $build_dir\release\glfw\src\win32_tls.obj $build_dir\release\glfw\src\win32_window.obj $build_dir\release\glfw\src\window.obj || init!
+   out_file = glfw.lib
+   flags = $lib_flags_extlib_release
+build project-glfw-release!: phony $ext_lib_dir\glfw.lib
+build project-glfw!: phony project-glfw-release!
+
+build $build_dir\release\luaxx\lapi.obj: cl dep_modules\lua\lapi.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lauxlib.obj: cl dep_modules\lua\lauxlib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lbaselib.obj: cl dep_modules\lua\lbaselib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lbitlib.obj: cl dep_modules\lua\lbitlib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lcode.obj: cl dep_modules\lua\lcode.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lcorolib.obj: cl dep_modules\lua\lcorolib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lctype.obj: cl dep_modules\lua\lctype.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ldblib.obj: cl dep_modules\lua\ldblib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ldebug.obj: cl dep_modules\lua\ldebug.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ldo.obj: cl dep_modules\lua\ldo.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ldump.obj: cl dep_modules\lua\ldump.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lfunc.obj: cl dep_modules\lua\lfunc.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lgc.obj: cl dep_modules\lua\lgc.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\linit.obj: cl dep_modules\lua\linit.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\liolib.obj: cl dep_modules\lua\liolib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\llex.obj: cl dep_modules\lua\llex.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lmathlib.obj: cl dep_modules\lua\lmathlib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lmem.obj: cl dep_modules\lua\lmem.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\loadlib.obj: cl dep_modules\lua\loadlib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lobject.obj: cl dep_modules\lua\lobject.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lopcodes.obj: cl dep_modules\lua\lopcodes.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\loslib.obj: cl dep_modules\lua\loslib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lparser.obj: cl dep_modules\lua\lparser.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lstate.obj: cl dep_modules\lua\lstate.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lstring.obj: cl dep_modules\lua\lstring.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lstrlib.obj: cl dep_modules\lua\lstrlib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ltable.obj: cl dep_modules\lua\ltable.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ltablib.obj: cl dep_modules\lua\ltablib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ltests.obj: cl dep_modules\lua\ltests.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\ltm.obj: cl dep_modules\lua\ltm.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lundump.obj: cl dep_modules\lua\lundump.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lutf8lib.obj: cl dep_modules\lua\lutf8lib.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lvm.obj: cl dep_modules\lua\lvm.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $build_dir\release\luaxx\lzio.obj: cl dep_modules\lua\lzio.c || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\luaxx.pdb
+
+build $ext_lib_dir\luaxx.lib: lib $build_dir\release\luaxx\lapi.obj $build_dir\release\luaxx\lauxlib.obj $build_dir\release\luaxx\lbaselib.obj $build_dir\release\luaxx\lbitlib.obj $build_dir\release\luaxx\lcode.obj $build_dir\release\luaxx\lcorolib.obj $build_dir\release\luaxx\lctype.obj $build_dir\release\luaxx\ldblib.obj $build_dir\release\luaxx\ldebug.obj $build_dir\release\luaxx\ldo.obj $build_dir\release\luaxx\ldump.obj $build_dir\release\luaxx\lfunc.obj $build_dir\release\luaxx\lgc.obj $build_dir\release\luaxx\linit.obj $build_dir\release\luaxx\liolib.obj $build_dir\release\luaxx\llex.obj $build_dir\release\luaxx\lmathlib.obj $build_dir\release\luaxx\lmem.obj $build_dir\release\luaxx\loadlib.obj $build_dir\release\luaxx\lobject.obj $build_dir\release\luaxx\lopcodes.obj $build_dir\release\luaxx\loslib.obj $build_dir\release\luaxx\lparser.obj $build_dir\release\luaxx\lstate.obj $build_dir\release\luaxx\lstring.obj $build_dir\release\luaxx\lstrlib.obj $build_dir\release\luaxx\ltable.obj $build_dir\release\luaxx\ltablib.obj $build_dir\release\luaxx\ltests.obj $build_dir\release\luaxx\ltm.obj $build_dir\release\luaxx\lundump.obj $build_dir\release\luaxx\lutf8lib.obj $build_dir\release\luaxx\lvm.obj $build_dir\release\luaxx\lzio.obj || init!
+   out_file = luaxx.lib
+   flags = $lib_flags_extlib_release
+build project-luaxx-release!: phony $ext_lib_dir\luaxx.lib
+build project-luaxx!: phony project-luaxx-release!
+build group-deps-release!: phony project-zlib-static-release! project-glfw-release! project-luaxx-release!
+build group-deps!: phony project-zlib-static! project-glfw! project-luaxx!
+
+build modules\blt\src\lexer.cpp: ragel modules\blt\meta\lexer.rl
+   flags = -s -C -L -G2
+
+build $build_dir\release\blt\src\pch.obj: cl modules\blt\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\blt.pdb
+   extra = /DBE_BLT_IMPL /DBE_TARGET=blt /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include" /Fp"$build_dir\blt.pch" /Yc"pch.hpp"
+build $build_dir\blt.pch: phony $build_dir\release\blt\src\pch.obj
+
+build $build_dir\release\blt\src\blt.obj: cl modules\blt\src\blt.cpp | $build_dir\blt.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\blt.pdb
+   extra = /DBE_BLT_IMPL /DBE_TARGET=blt /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include" /Fp"$build_dir\blt.pch" /Yu"pch.hpp"
+
+build $build_dir\release\blt\src\lexer.obj: cl modules\blt\src\lexer.cpp | $build_dir\blt.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\blt.pdb
+   extra = /DBE_BLT_IMPL /DBE_TARGET=blt /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include" /Fp"$build_dir\blt.pch" /Yu"pch.hpp"
+
+build $build_dir\release\blt\src\parser.obj: cl modules\blt\src\parser.cpp | $build_dir\blt.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\blt.pdb
+   extra = /DBE_BLT_IMPL /DBE_TARGET=blt /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include" /Fp"$build_dir\blt.pch" /Yu"pch.hpp"
+
+build $build_dir\release\blt\src\token_data.obj: cl modules\blt\src\token_data.cpp | $build_dir\blt.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\blt.pdb
+   extra = /DBE_BLT_IMPL /DBE_TARGET=blt /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include" /Fp"$build_dir\blt.pch" /Yu"pch.hpp"
+
+build $build_dir\release\blt\src\token_type.obj: cl modules\blt\src\token_type.cpp | $build_dir\blt.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\blt.pdb
+   extra = /DBE_BLT_IMPL /DBE_TARGET=blt /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include" /Fp"$build_dir\blt.pch" /Yu"pch.hpp"
+
+build $out_dir\blt.lib: lib $build_dir\release\blt\src\blt.obj $build_dir\release\blt\src\lexer.obj $build_dir\release\blt\src\parser.obj $build_dir\release\blt\src\pch.obj $build_dir\release\blt\src\token_data.obj $build_dir\release\blt\src\token_type.obj || init!
+   out_file = blt.lib
+   flags = $lib_flags_release
+build project-blt-release!: phony $out_dir\blt.lib
+build project-blt!: phony project-blt-release!
+build group-blt-release!: phony project-blt-release!
+build group-blt!: phony project-blt!
+
+build modules\cli\include\section_ids.hpp!: limp
+   path = modules\cli\include\section_ids.hpp
+
+build $build_dir\release\cli\src\pch.obj: cl modules\cli\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yc"pch.hpp"
+build $build_dir\cli.pch: phony $build_dir\release\cli\src\pch.obj
+
+build $build_dir\release\cli\src\app_name.obj: cl modules\cli\src\app_name.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $build_dir\release\cli\src\default_option_parser.obj: cl modules\cli\src\default_option_parser.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $build_dir\release\cli\src\describe_config.obj: cl modules\cli\src\describe_config.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $build_dir\release\cli\src\handler_context.obj: cl modules\cli\src\handler_context.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $build_dir\release\cli\src\ids.obj: cl modules\cli\src\ids.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $build_dir\release\cli\src\native\vc_win\escape_cli_arg.obj: cl modules\cli\src\native\vc_win\escape_cli_arg.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $build_dir\release\cli\src\processor.obj: cl modules\cli\src\processor.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $build_dir\release\cli\src\verbosity_param.obj: cl modules\cli\src\verbosity_param.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
+build $out_dir\cli.lib: lib $build_dir\release\cli\src\app_name.obj $build_dir\release\cli\src\default_option_parser.obj $build_dir\release\cli\src\describe_config.obj $build_dir\release\cli\src\handler_context.obj $build_dir\release\cli\src\ids.obj $build_dir\release\cli\src\native\vc_win\escape_cli_arg.obj $build_dir\release\cli\src\pch.obj $build_dir\release\cli\src\processor.obj $build_dir\release\cli\src\verbosity_param.obj || init!
+   out_file = cli.lib
+   flags = $lib_flags_release
+build project-cli-release!: phony $out_dir\cli.lib
+build project-cli!: phony project-cli-release!
+build group-cli-release!: phony project-cli-release!
+build group-cli!: phony project-cli!
+
+build modules\core\include\log_attrib_ids.hpp!: limp
+   path = modules\core\include\log_attrib_ids.hpp
+
+build modules\core\include\service_ids.hpp!: limp
+   path = modules\core\include\service_ids.hpp
+
+build $build_dir\release\core\src\pch.obj: cl modules\core\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yc"pch.hpp"
+build $build_dir\core.pch: phony $build_dir\release\core\src\pch.obj
+
+build $build_dir\release\core\src\a3_vmm_alloc.obj: cl modules\core\src\a3_vmm_alloc.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\console_color.obj: cl modules\core\src\console_color.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\console_indent.obj: cl modules\core\src\console_indent.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\console_log_sink.obj: cl modules\core\src\console_log_sink.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\id_collision_handler.obj: cl modules\core\src\id_collision_handler.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\ids.obj: cl modules\core\src\ids.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\io_service_thread_pool.obj: cl modules\core\src\io_service_thread_pool.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\lifecycle.obj: cl modules\core\src\lifecycle.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\log.obj: cl modules\core\src\log.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\log_expr_ops.obj: cl modules\core\src\log_expr_ops.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\log_processor.obj: cl modules\core\src\log_processor.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\memory_status.obj: cl modules\core\src\memory_status.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\console.obj: cl modules\core\src\native\vc_win\console.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\console_color.obj: cl modules\core\src\native\vc_win\console_color.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\filesystem.obj: cl modules\core\src\native\vc_win\filesystem.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\lifecycle.obj: cl modules\core\src\native\vc_win\lifecycle.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\memory.obj: cl modules\core\src\native\vc_win\memory.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\native.obj: cl modules\core\src\native\vc_win\native.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\stack_trace.obj: cl modules\core\src\native\vc_win\stack_trace.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\time.obj: cl modules\core\src\native\vc_win\time.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj: cl modules\core\src\native\vc_win\utf16_widen_narrow.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\service_io_service.obj: cl modules\core\src\service_io_service.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\service_io_service_thread_pool.obj: cl modules\core\src\service_io_service_thread_pool.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\service_log.obj: cl modules\core\src\service_log.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\service_simple_single_thread_executor.obj: cl modules\core\src\service_simple_single_thread_executor.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\stack_trace.obj: cl modules\core\src\stack_trace.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\time.obj: cl modules\core\src\time.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\zlib.obj: cl modules\core\src\zlib.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $out_dir\core.lib: lib $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\memory_status.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\filesystem.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\release\core\src\pch.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\zlib.obj || init!
+   out_file = core.lib
+   flags = $lib_flags_release
+build project-core-release!: phony $out_dir\core.lib
+build project-core!: phony project-core-release!
+
+build $build_dir\release\core-id\src\id.obj: cl modules\core\src\id.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core-id.pdb
+   extra = /DBE_CORE_ID_IMPL /DBE_CORE_IMPL /DBE_TARGET=core-id /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-id\src\namespaced_id.obj: cl modules\core\src\namespaced_id.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core-id.pdb
+   extra = /DBE_CORE_ID_IMPL /DBE_CORE_IMPL /DBE_TARGET=core-id /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $out_dir\core-id.lib: lib $build_dir\release\core-id\src\id.obj $build_dir\release\core-id\src\namespaced_id.obj || init!
+   out_file = core-id.lib
+   flags = $lib_flags_release
+build project-core-id-release!: phony $out_dir\core-id.lib
+build project-core-id!: phony project-core-id-release!
+
+build $build_dir\release\core-id-with-names\src\id.obj: cl modules\core\src\id.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core-id-with-names.pdb
+   extra = /DBE_CORE_ID_IMPL /DBE_CORE_IMPL /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-id-with-names /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-id-with-names\src\namespaced_id.obj: cl modules\core\src\namespaced_id.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core-id-with-names.pdb
+   extra = /DBE_CORE_ID_IMPL /DBE_CORE_IMPL /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-id-with-names /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $out_dir\core-id-with-names.lib: lib $build_dir\release\core-id-with-names\src\id.obj $build_dir\release\core-id-with-names\src\namespaced_id.obj || init!
+   out_file = core-id-with-names.lib
+   flags = $lib_flags_release
+build project-core-id-with-names-release!: phony $out_dir\core-id-with-names.lib
+build project-core-id-with-names!: phony project-core-id-with-names-release!
+
+build $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj: cl modules\core\test\test_a3_aligned_malloc_alloc.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_a3_buf_alloc.obj: cl modules\core\test\test_a3_buf_alloc.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_a3_malloc_alloc.obj: cl modules\core\test\test_a3_malloc_alloc.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_a3_null_alloc.obj: cl modules\core\test\test_a3_null_alloc.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_a3_static_alloc.obj: cl modules\core\test\test_a3_static_alloc.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_a3_vmm_alloc.obj: cl modules\core\test\test_a3_vmm_alloc.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_handles.obj: cl modules\core\test\test_handles.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_inline_executors.obj: cl modules\core\test\test_inline_executors.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_main.obj: cl modules\core\test\test_main.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_single_thread_executors.obj: cl modules\core\test\test_single_thread_executors.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_stack_trace.obj: cl modules\core\test\test_stack_trace.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_string_interpolation.obj: cl modules\core\test\test_string_interpolation.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-test\test\test_thread_pool_executors.obj: cl modules\core\test\test_thread_pool_executors.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\core-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\core-test.icon.res: rc $build_dir\core-test.icon.rc || init!
+
+build $build_dir\default.manifest: putfile || init!
+   contents = ^<?xml version=^"1.0^" encoding=^"UTF-8^" standalone=^"yes^"?^>&echo:$
+^<assembly xmlns=^"urn:schemas-microsoft-com:asm.v1^" manifestVersion=^"1.0^"^>&echo:$
+   ^<trustInfo xmlns=^"urn:schemas-microsoft-com:asm.v3^"^>&echo:$
+      ^<security^>&echo:$
+         ^<requestedPrivileges^>&echo:$
+            ^<requestedExecutionLevel level=^"asInvoker^" uiAccess=^"false^"/^>&echo:$
+         ^</requestedPrivileges^>&echo:$
+      ^</security^>&echo:$
+   ^</trustInfo^>&echo:$
+^</assembly^>
+
+build $build_dir\default.manifest.rc: putfile | $build_dir\default.manifest
+   contents = #include ^<winuser.h^>&echo:$
+1 RT_MANIFEST ^"default.manifest^"
+build $build_dir\default.manifest.res: rc $build_dir\default.manifest.rc || init!
+
+build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_handles.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_string_interpolation.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
+   out_file = core-test.exe
+   pdb = $out_dir\core-test.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\core-test.exe: cp $out_dir\core-test.exe
+build project-core-test-release!: phony $stage_dir\core-test.exe
+build project-core-test!: phony project-core-test-release!
+
+build $build_dir\release\core-perf\perf\perf_handle_retirement.obj: cl modules\core\perf\perf_handle_retirement.cpp || init!
+   flags = $cl_flags_perf_release
+   pdb = $build_dir\core-perf.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-perf\perf\perf_logging.obj: cl modules\core\perf\perf_logging.cpp || init!
+   flags = $cl_flags_perf_release
+   pdb = $build_dir\core-perf.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-perf\perf\perf_main.obj: cl modules\core\perf\perf_main.cpp || init!
+   flags = $cl_flags_perf_release
+   pdb = $build_dir\core-perf.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\release\core-perf\perf\perf_thread_local.obj: cl modules\core\perf\perf_thread_local.cpp || init!
+   flags = $cl_flags_perf_release
+   pdb = $build_dir\core-perf.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\core-perf.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\core-perf.icon.res: rc $build_dir\core-perf.icon.rc || init!
+
+build $out_dir\core-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\perf.lib $out_dir\testing.lib $build_dir\release\core-perf\perf\perf_handle_retirement.obj $build_dir\release\core-perf\perf\perf_logging.obj $build_dir\release\core-perf\perf\perf_main.obj $build_dir\release\core-perf\perf\perf_thread_local.obj $build_dir\core-perf.icon.res $build_dir\default.manifest.res || init!
+   out_file = core-perf.exe
+   pdb = $out_dir\core-perf.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\core-perf.exe: cp $out_dir\core-perf.exe
+build project-core-perf-release!: phony $stage_dir\core-perf.exe
+build project-core-perf!: phony project-core-perf-release!
+build group-core-release!: phony project-core-release! project-core-id-release! project-core-id-with-names-release! project-core-test-release! project-core-perf-release!
+build group-core!: phony project-core! project-core-id! project-core-id-with-names! project-core-test! project-core-perf!
+
+build $build_dir\release\ctable\src\pch.obj: cl modules\ctable\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yc"pch.hpp"
+build $build_dir\ctable.pch: phony $build_dir\release\ctable\src\pch.obj
+
+build $build_dir\release\ctable\src\border_config.obj: cl modules\ctable\src\border_config.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\box_config.obj: cl modules\ctable\src\box_config.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\cell.obj: cl modules\ctable\src\cell.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\cell_renderer.obj: cl modules\ctable\src\cell_renderer.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\column_sizer.obj: cl modules\ctable\src\column_sizer.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\row.obj: cl modules\ctable\src\row.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\row_renderer.obj: cl modules\ctable\src\row_renderer.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\row_sizer.obj: cl modules\ctable\src\row_sizer.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\table.obj: cl modules\ctable\src\table.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\table_renderer.obj: cl modules\ctable\src\table_renderer.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\table_sizer.obj: cl modules\ctable\src\table_sizer.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $build_dir\release\ctable\src\text_renderer.obj: cl modules\ctable\src\text_renderer.cpp | $build_dir\ctable.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\ctable.pdb
+   extra = /DBE_CTABLE_IMPL /DBE_TARGET=ctable /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include" /Fp"$build_dir\ctable.pch" /Yu"pch.hpp"
+
+build $out_dir\ctable.lib: lib $build_dir\release\ctable\src\border_config.obj $build_dir\release\ctable\src\box_config.obj $build_dir\release\ctable\src\cell.obj $build_dir\release\ctable\src\cell_renderer.obj $build_dir\release\ctable\src\column_sizer.obj $build_dir\release\ctable\src\pch.obj $build_dir\release\ctable\src\row.obj $build_dir\release\ctable\src\row_renderer.obj $build_dir\release\ctable\src\row_sizer.obj $build_dir\release\ctable\src\table.obj $build_dir\release\ctable\src\table_renderer.obj $build_dir\release\ctable\src\table_sizer.obj $build_dir\release\ctable\src\text_renderer.obj || init!
+   out_file = ctable.lib
+   flags = $lib_flags_release
+build project-ctable-release!: phony $out_dir\ctable.lib
+build project-ctable!: phony project-ctable-release!
+
+build $build_dir\release\ctable-test\test\test_ct_border_config.obj: cl modules\ctable\test\test_ct_border_config.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\ctable-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=ctable-test /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include"
+
+build $build_dir\release\ctable-test\test\test_main.obj: cl modules\ctable\test\test_main.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\ctable-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=ctable-test /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include"
+
+build $build_dir\ctable-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\ctable-test.icon.res: rc $build_dir\ctable-test.icon.rc || init!
+
+build $out_dir\ctable-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\ctable-test\test\test_ct_border_config.obj $build_dir\release\ctable-test\test\test_main.obj $build_dir\ctable-test.icon.res $build_dir\default.manifest.res || init!
+   out_file = ctable-test.exe
+   pdb = $out_dir\ctable-test.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\ctable-test.exe: cp $out_dir\ctable-test.exe
+build project-ctable-test-release!: phony $stage_dir\ctable-test.exe
+build project-ctable-test!: phony project-ctable-test-release!
+build group-ctable-release!: phony project-ctable-release! project-ctable-test-release!
+build group-ctable!: phony project-ctable! project-ctable-test!
+
+build modules\luablt\src\blt.cpp!: limp | modules\luablt\meta\blt.lua
+   path = modules\luablt\src\blt.cpp
+   extra = -f
+
+build $build_dir\release\luablt\src\blt.obj: cl modules\luablt\src\blt.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luablt.pdb
+   extra = /DBE_LUABLT_IMPL /DBE_TARGET=luablt /DBE_TARGET_BASE=luablt /I"include" /I"modules\luablt\include"
+
+build $build_dir\release\luablt\src\blt_debug.obj: cl modules\luablt\src\blt_debug.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luablt.pdb
+   extra = /DBE_LUABLT_IMPL /DBE_TARGET=luablt /DBE_TARGET_BASE=luablt /I"include" /I"modules\luablt\include"
+
+build $out_dir\luablt.lib: lib $build_dir\release\luablt\src\blt.obj $build_dir\release\luablt\src\blt_debug.obj || init!
+   out_file = luablt.lib
+   flags = $lib_flags_release
+build project-luablt-release!: phony $out_dir\luablt.lib
+build project-luablt!: phony project-luablt-release!
+build group-luablt-release!: phony project-luablt-release!
+build group-luablt!: phony project-luablt!
+
+build $build_dir\release\luacore\src\context.obj: cl modules\luacore\src\context.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $build_dir\release\luacore\src\id.obj: cl modules\luacore\src\id.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $build_dir\release\luacore\src\interpolate_string.obj: cl modules\luacore\src\interpolate_string.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $build_dir\release\luacore\src\logging.obj: cl modules\luacore\src\logging.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $build_dir\release\luacore\src\lua_exception.obj: cl modules\luacore\src\lua_exception.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $build_dir\release\luacore\src\lua_helpers.obj: cl modules\luacore\src\lua_helpers.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $build_dir\release\luacore\src\open_module.obj: cl modules\luacore\src\open_module.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $build_dir\release\luacore\src\time.obj: cl modules\luacore\src\time.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $out_dir\luacore.lib: lib $build_dir\release\luacore\src\context.obj $build_dir\release\luacore\src\id.obj $build_dir\release\luacore\src\interpolate_string.obj $build_dir\release\luacore\src\logging.obj $build_dir\release\luacore\src\lua_exception.obj $build_dir\release\luacore\src\lua_helpers.obj $build_dir\release\luacore\src\open_module.obj $build_dir\release\luacore\src\time.obj || init!
+   out_file = luacore.lib
+   flags = $lib_flags_release
+build project-luacore-release!: phony $out_dir\luacore.lib
+build project-luacore!: phony project-luacore-release!
+build group-luacore-release!: phony project-luacore-release!
+build group-luacore!: phony project-luacore!
+
+build $build_dir\release\luautil\src\fnv256.obj: cl modules\luautil\src\fnv256.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luautil.pdb
+   extra = /DBE_LUAUTIL_IMPL /DBE_TARGET=luautil /DBE_TARGET_BASE=luautil /I"include" /I"modules\luautil\include"
+
+build $build_dir\release\luautil\src\fs.obj: cl modules\luautil\src\fs.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luautil.pdb
+   extra = /DBE_LUAUTIL_IMPL /DBE_TARGET=luautil /DBE_TARGET_BASE=luautil /I"include" /I"modules\luautil\include"
+
+build $build_dir\release\luautil\src\util.obj: cl modules\luautil\src\util.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luautil.pdb
+   extra = /DBE_LUAUTIL_IMPL /DBE_TARGET=luautil /DBE_TARGET_BASE=luautil /I"include" /I"modules\luautil\include"
+
+build $out_dir\luautil.lib: lib $build_dir\release\luautil\src\fnv256.obj $build_dir\release\luautil\src\fs.obj $build_dir\release\luautil\src\util.obj || init!
+   out_file = luautil.lib
+   flags = $lib_flags_release
+build project-luautil-release!: phony $out_dir\luautil.lib
+build project-luautil!: phony project-luautil-release!
+build group-luautil-release!: phony project-luautil-release!
+build group-luautil!: phony project-luautil!
+
+build $build_dir\release\perf\src\pch.obj: cl modules\perf\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yc"pch.hpp"
+build $build_dir\perf.pch: phony $build_dir\release\perf\src\pch.obj
+
+build $build_dir\release\perf\src\counter.obj: cl modules\perf\src\counter.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\counter_stat.obj: cl modules\perf\src\counter_stat.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\counter_stats.obj: cl modules\perf\src\counter_stats.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\event.obj: cl modules\perf\src\event.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\event_stat.obj: cl modules\perf\src\event_stat.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\event_stats.obj: cl modules\perf\src\event_stats.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\service_stats.obj: cl modules\perf\src\service_stats.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\stats.obj: cl modules\perf\src\stats.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\timer.obj: cl modules\perf\src\timer.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\timer_stat.obj: cl modules\perf\src\timer_stat.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $build_dir\release\perf\src\timer_stats.obj: cl modules\perf\src\timer_stats.cpp | $build_dir\perf.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\perf.pdb
+   extra = /DBE_PERF_IMPL /DBE_TARGET=perf /DBE_TARGET_BASE=perf /I"include" /I"modules\perf\include" /Fp"$build_dir\perf.pch" /Yu"pch.hpp"
+
+build $out_dir\perf.lib: lib $build_dir\release\perf\src\counter.obj $build_dir\release\perf\src\counter_stat.obj $build_dir\release\perf\src\counter_stats.obj $build_dir\release\perf\src\event.obj $build_dir\release\perf\src\event_stat.obj $build_dir\release\perf\src\event_stats.obj $build_dir\release\perf\src\pch.obj $build_dir\release\perf\src\service_stats.obj $build_dir\release\perf\src\stats.obj $build_dir\release\perf\src\timer.obj $build_dir\release\perf\src\timer_stat.obj $build_dir\release\perf\src\timer_stats.obj || init!
+   out_file = perf.lib
+   flags = $lib_flags_release
+build project-perf-release!: phony $out_dir\perf.lib
+build project-perf!: phony project-perf-release!
+build group-perf-release!: phony project-perf-release!
+build group-perf!: phony project-perf!
+
+build $build_dir\release\platform\src\pch.obj: cl modules\platform\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yc"pch.hpp"
+build $build_dir\platform.pch: phony $build_dir\release\platform\src\pch.obj
+
+build $build_dir\release\platform\src\ids.obj: cl modules\platform\src\ids.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\native\vc_win\lifecycle.obj: cl modules\platform\src\native\vc_win\lifecycle.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $out_dir\platform.lib: lib $build_dir\release\platform\src\ids.obj $build_dir\release\platform\src\native\vc_win\lifecycle.obj $build_dir\release\platform\src\pch.obj || init!
+   out_file = platform.lib
+   flags = $lib_flags_release
+build project-platform-release!: phony $out_dir\platform.lib
+build project-platform!: phony project-platform-release!
+build group-platform-release!: phony project-platform-release!
+build group-platform!: phony project-platform!
+
+build modules\sqlite\include\transaction_type.hpp!: limp | modules\sqlite\meta\transaction_type.lua modules\sqlite\meta\transaction_type_hpp.blt
+   path = modules\sqlite\include\transaction_type.hpp
+   extra = -f
+
+build modules\sqlite\src\transaction_type.cpp!: limp | modules\sqlite\meta\transaction_type.lua modules\sqlite\meta\transaction_type_cpp.blt
+   path = modules\sqlite\src\transaction_type.cpp
+   extra = -f
+
+build modules\sqlite\include\result_type.hpp!: limp | modules\sqlite\meta\result_type.lua modules\sqlite\meta\result_type_hpp.blt
+   path = modules\sqlite\include\result_type.hpp
+   extra = -f
+
+build modules\sqlite\src\result_type.cpp!: limp | modules\sqlite\meta\result_type.lua modules\sqlite\meta\result_type_cpp.blt
+   path = modules\sqlite\src\result_type.cpp
+   extra = -f
+
+build $build_dir\release\sqlite\src\sqlite.obj: cl modules\sqlite\src\sqlite.c || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
+build $build_dir\release\sqlite\src\pch.obj: cl modules\sqlite\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yc"pch.hpp"
+build $build_dir\sqlite.pch: phony $build_dir\release\sqlite\src\pch.obj
+
+build $build_dir\release\sqlite\src\db.obj: cl modules\sqlite\src\db.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\exceptions.obj: cl modules\sqlite\src\exceptions.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\queries.obj: cl modules\sqlite\src\queries.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\result_type.obj: cl modules\sqlite\src\result_type.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\shared_stmt_cache.obj: cl modules\sqlite\src\shared_stmt_cache.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\static_stmt_cache.obj: cl modules\sqlite\src\static_stmt_cache.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\stmt.obj: cl modules\sqlite\src\stmt.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\stmt_base.obj: cl modules\sqlite\src\stmt_base.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\stmt_cache.obj: cl modules\sqlite\src\stmt_cache.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\stmt_proxy.obj: cl modules\sqlite\src\stmt_proxy.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\transaction.obj: cl modules\sqlite\src\transaction.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\transaction_type.obj: cl modules\sqlite\src\transaction_type.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $out_dir\sqlite.lib: lib $build_dir\release\sqlite\src\sqlite.obj $build_dir\release\sqlite\src\db.obj $build_dir\release\sqlite\src\exceptions.obj $build_dir\release\sqlite\src\pch.obj $build_dir\release\sqlite\src\queries.obj $build_dir\release\sqlite\src\result_type.obj $build_dir\release\sqlite\src\shared_stmt_cache.obj $build_dir\release\sqlite\src\static_stmt_cache.obj $build_dir\release\sqlite\src\stmt.obj $build_dir\release\sqlite\src\stmt_base.obj $build_dir\release\sqlite\src\stmt_cache.obj $build_dir\release\sqlite\src\stmt_proxy.obj $build_dir\release\sqlite\src\transaction.obj $build_dir\release\sqlite\src\transaction_type.obj || init!
+   out_file = sqlite.lib
+   flags = $lib_flags_release
+build project-sqlite-release!: phony $out_dir\sqlite.lib
+build project-sqlite!: phony project-sqlite-release!
+
+build $build_dir\release\sqlite-test\test\test_db.obj: cl modules\sqlite\test\test_db.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\sqlite-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
+build $build_dir\release\sqlite-test\test\test_main.obj: cl modules\sqlite\test\test_main.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\sqlite-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
+build $build_dir\release\sqlite-test\test\test_shared_stmt_cache.obj: cl modules\sqlite\test\test_shared_stmt_cache.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\sqlite-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
+build $build_dir\release\sqlite-test\test\test_static_stmt_cache.obj: cl modules\sqlite\test\test_static_stmt_cache.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\sqlite-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
+build $build_dir\release\sqlite-test\test\test_stmt.obj: cl modules\sqlite\test\test_stmt.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\sqlite-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
+build $build_dir\release\sqlite-test\test\test_transaction.obj: cl modules\sqlite\test\test_transaction.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\sqlite-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
+build $build_dir\sqlite-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\sqlite-test.icon.res: rc $build_dir\sqlite-test.icon.rc || init!
+
+build $out_dir\sqlite-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\sqlite.lib $out_dir\testing.lib $build_dir\release\sqlite-test\test\test_db.obj $build_dir\release\sqlite-test\test\test_main.obj $build_dir\release\sqlite-test\test\test_shared_stmt_cache.obj $build_dir\release\sqlite-test\test\test_static_stmt_cache.obj $build_dir\release\sqlite-test\test\test_stmt.obj $build_dir\release\sqlite-test\test\test_transaction.obj $build_dir\sqlite-test.icon.res $build_dir\default.manifest.res || init!
+   out_file = sqlite-test.exe
+   pdb = $out_dir\sqlite-test.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\sqlite-test.exe: cp $out_dir\sqlite-test.exe
+build project-sqlite-test-release!: phony $stage_dir\sqlite-test.exe
+build project-sqlite-test!: phony project-sqlite-test-release!
+build group-sqlite-release!: phony project-sqlite-release! project-sqlite-test-release!
+build group-sqlite!: phony project-sqlite! project-sqlite-test!
+
+build $build_dir\release\testing\src\pch.obj: cl modules\testing\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\testing.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing /DBE_TARGET_BASE=testing /DBE_TESTING_IMPL /I"include" /I"modules\testing\include" /Fp"$build_dir\testing.pch" /Yc"pch.hpp"
+build $build_dir\testing.pch: phony $build_dir\release\testing\src\pch.obj
+
+build $out_dir\testing.lib: lib $build_dir\release\testing\src\pch.obj || init!
+   out_file = testing.lib
+   flags = $lib_flags_release
+build project-testing-release!: phony $out_dir\testing.lib
+build project-testing!: phony project-testing-release!
+
+build $build_dir\release\testing-test\test\test_arbitrary.obj: cl modules\testing\test\test_arbitrary.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\testing-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing-test /DBE_TARGET_BASE=testing /I"include" /I"modules\testing\include"
+
+build $build_dir\release\testing-test\test\test_main.obj: cl modules\testing\test\test_main.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\testing-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing-test /DBE_TARGET_BASE=testing /I"include" /I"modules\testing\include"
+
+build $build_dir\testing-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\testing-test.icon.res: rc $build_dir\testing-test.icon.rc || init!
+
+build $out_dir\testing-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\testing-test\test\test_arbitrary.obj $build_dir\release\testing-test\test\test_main.obj $build_dir\testing-test.icon.res $build_dir\default.manifest.res || init!
+   out_file = testing-test.exe
+   pdb = $out_dir\testing-test.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\testing-test.exe: cp $out_dir\testing-test.exe
+build project-testing-test-release!: phony $stage_dir\testing-test.exe
+build project-testing-test!: phony project-testing-test-release!
+build group-testing-release!: phony project-testing-release! project-testing-test-release!
+build group-testing!: phony project-testing! project-testing-test!
+
+build $build_dir\release\util\src\pch.obj: cl modules\util\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yc"pch.hpp"
+build $build_dir\util.pch: phony $build_dir\release\util\src\pch.obj
+
+build $build_dir\release\util\src\binary_units.obj: cl modules\util\src\binary_units.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\files.obj: cl modules\util\src\files.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\fnv.obj: cl modules\util\src\fnv.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\ids.obj: cl modules\util\src\ids.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\native\vc_win\paths.obj: cl modules\util\src\native\vc_win\paths.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\path_glob.obj: cl modules\util\src\path_glob.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\paths.obj: cl modules\util\src\paths.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\pointer_to_string.obj: cl modules\util\src\pointer_to_string.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\service_split_mix_64.obj: cl modules\util\src\service_split_mix_64.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\service_xoroshiro_128_plus.obj: cl modules\util\src\service_xoroshiro_128_plus.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\service_xorshift_1024_star.obj: cl modules\util\src\service_xorshift_1024_star.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\service_xorshift_128_plus.obj: cl modules\util\src\service_xorshift_128_plus.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\utf8_codepoint.obj: cl modules\util\src\utf8_codepoint.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\utf8_iterator.obj: cl modules\util\src\utf8_iterator.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $out_dir\util.lib: lib $build_dir\release\util\src\binary_units.obj $build_dir\release\util\src\files.obj $build_dir\release\util\src\fnv.obj $build_dir\release\util\src\ids.obj $build_dir\release\util\src\native\vc_win\paths.obj $build_dir\release\util\src\path_glob.obj $build_dir\release\util\src\paths.obj $build_dir\release\util\src\pch.obj $build_dir\release\util\src\pointer_to_string.obj $build_dir\release\util\src\service_split_mix_64.obj $build_dir\release\util\src\service_xoroshiro_128_plus.obj $build_dir\release\util\src\service_xorshift_1024_star.obj $build_dir\release\util\src\service_xorshift_128_plus.obj $build_dir\release\util\src\utf8_codepoint.obj $build_dir\release\util\src\utf8_iterator.obj || init!
+   out_file = util.lib
+   flags = $lib_flags_release
+build project-util-release!: phony $out_dir\util.lib
+build project-util!: phony project-util-release!
+
+build $build_dir\release\util-test\test\test_binary_units.obj: cl modules\util\test\test_binary_units.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_chunked_list.obj: cl modules\util\test\test_chunked_list.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_main.obj: cl modules\util\test\test_main.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_split_mix_64.obj: cl modules\util\test\test_split_mix_64.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_utf8_iterator.obj: cl modules\util\test\test_utf8_iterator.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj: cl modules\util\test\test_xoroshiro_128_plus.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_xorshift_1024_star.obj: cl modules\util\test\test_xorshift_1024_star.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_xorshift_128_plus.obj: cl modules\util\test\test_xorshift_128_plus.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\util-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\util-test.icon.res: rc $build_dir\util-test.icon.rc || init!
+
+build $out_dir\util-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
+   out_file = util-test.exe
+   pdb = $out_dir\util-test.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\util-test.exe: cp $out_dir\util-test.exe
+build project-util-test-release!: phony $stage_dir\util-test.exe
+build project-util-test!: phony project-util-test-release!
+
+build $build_dir\release\util-perf\perf\associative_containers.obj: cl modules\util\perf\associative_containers.cpp || init!
+   flags = $cl_flags_perf_release
+   pdb = $build_dir\util-perf.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-perf /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-perf\perf\perf_main.obj: cl modules\util\perf\perf_main.cpp || init!
+   flags = $cl_flags_perf_release
+   pdb = $build_dir\util-perf.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-perf /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-perf\perf\sequence_containers.obj: cl modules\util\perf\sequence_containers.cpp || init!
+   flags = $cl_flags_perf_release
+   pdb = $build_dir\util-perf.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-perf /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
+build $build_dir\util-perf.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\util-perf.icon.res: rc $build_dir\util-perf.icon.rc || init!
+
+build $out_dir\util-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-perf\perf\associative_containers.obj $build_dir\release\util-perf\perf\perf_main.obj $build_dir\release\util-perf\perf\sequence_containers.obj $build_dir\util-perf.icon.res $build_dir\default.manifest.res || init!
+   out_file = util-perf.exe
+   pdb = $out_dir\util-perf.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\util-perf.exe: cp $out_dir\util-perf.exe
+build project-util-perf-release!: phony $stage_dir\util-perf.exe
+build project-util-perf!: phony project-util-perf-release!
+build group-util-release!: phony project-util-release! project-util-test-release! project-util-perf-release!
+build group-util!: phony project-util! project-util-test! project-util-perf!
+
+build $build_dir\release\bltc\src\bltc.obj: cl tools\bltc\src\bltc.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\bltc.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bltc /DBE_TARGET_BASE=bltc /I"include" /I"tools\bltc\include"
+
+build $build_dir\release\bltc\src\bltc_app.obj: cl tools\bltc\src\bltc_app.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\bltc.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bltc /DBE_TARGET_BASE=bltc /I"include" /I"tools\bltc\include"
+
+build $build_dir\bltc.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\bltc.icon.res: rc $build_dir\bltc.icon.rc || init!
+
+build $out_dir\bltc.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util.lib $build_dir\release\bltc\src\bltc.obj $build_dir\release\bltc\src\bltc_app.obj $build_dir\bltc.icon.res $build_dir\default.manifest.res || init!
+   out_file = bltc.exe
+   pdb = $out_dir\bltc.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\bltc.exe: cp $out_dir\bltc.exe
+build project-bltc-release!: phony $stage_dir\bltc.exe
+build project-bltc!: phony project-bltc-release!
+build group-bltc-release!: phony project-bltc-release!
+build group-bltc!: phony project-bltc!
+
+build tools\bstyle\src\cxx_lexer.cpp: ragel tools\bstyle\meta\cxx_lexer.rl
+   flags = -s -C -L -G2
+
+build $build_dir\release\bstyle\src\all_rules.obj: cl tools\bstyle\src\all_rules.cpp || init!
+   flags = $cl_flags_rtti_release
+   pdb = $build_dir\bstyle.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /I"include" /I"tools\bstyle\include"
+
+build $build_dir\release\bstyle\src\bstyle.obj: cl tools\bstyle\src\bstyle.cpp || init!
+   flags = $cl_flags_rtti_release
+   pdb = $build_dir\bstyle.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /I"include" /I"tools\bstyle\include"
+
+build $build_dir\release\bstyle\src\bstyle_app.obj: cl tools\bstyle\src\bstyle_app.cpp || init!
+   flags = $cl_flags_rtti_release
+   pdb = $build_dir\bstyle.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /I"include" /I"tools\bstyle\include"
+
+build $build_dir\release\bstyle\src\cxx_lexer.obj: cl tools\bstyle\src\cxx_lexer.cpp || init!
+   flags = $cl_flags_rtti_release
+   pdb = $build_dir\bstyle.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /I"include" /I"tools\bstyle\include"
+
+build $build_dir\release\bstyle\src\document.obj: cl tools\bstyle\src\document.cpp || init!
+   flags = $cl_flags_rtti_release
+   pdb = $build_dir\bstyle.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /I"include" /I"tools\bstyle\include"
+
+build $build_dir\release\bstyle\src\token.obj: cl tools\bstyle\src\token.cpp || init!
+   flags = $cl_flags_rtti_release
+   pdb = $build_dir\bstyle.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /I"include" /I"tools\bstyle\include"
+
+build $build_dir\release\bstyle\src\token_type.obj: cl tools\bstyle\src\token_type.cpp || init!
+   flags = $cl_flags_rtti_release
+   pdb = $build_dir\bstyle.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /I"include" /I"tools\bstyle\include"
+
+build $build_dir\bstyle.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\bstyle.icon.res: rc $build_dir\bstyle.icon.rc || init!
+
+build $out_dir\bstyle.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util.lib $build_dir\release\bstyle\src\all_rules.obj $build_dir\release\bstyle\src\bstyle.obj $build_dir\release\bstyle\src\bstyle_app.obj $build_dir\release\bstyle\src\cxx_lexer.obj $build_dir\release\bstyle\src\document.obj $build_dir\release\bstyle\src\token.obj $build_dir\release\bstyle\src\token_type.obj $build_dir\bstyle.icon.res $build_dir\default.manifest.res || init!
+   out_file = bstyle.exe
+   pdb = $out_dir\bstyle.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\bstyle.exe: cp $out_dir\bstyle.exe
+build project-bstyle-release!: phony $stage_dir\bstyle.exe
+build project-bstyle!: phony project-bstyle-release!
+build group-bstyle-release!: phony project-bstyle-release!
+build group-bstyle!: phony project-bstyle!
+
+build $build_dir\release\ccolor\src\ccolor.obj: cl tools\ccolor\src\ccolor.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\ccolor.pdb
+   extra = /DBE_TARGET=ccolor /DBE_TARGET_BASE=ccolor /I"include"
+
+build $build_dir\ccolor.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\ccolor.icon.res: rc $build_dir\ccolor.icon.rc || init!
+
+build $out_dir\ccolor.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $build_dir\release\ccolor\src\ccolor.obj $build_dir\ccolor.icon.res $build_dir\default.manifest.res || init!
+   out_file = ccolor.exe
+   pdb = $out_dir\ccolor.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\ccolor.exe: cp $out_dir\ccolor.exe
+build project-ccolor-release!: phony $stage_dir\ccolor.exe
+build project-ccolor!: phony project-ccolor-release!
+build group-ccolor-release!: phony project-ccolor-release!
+build group-ccolor!: phony project-ccolor!
+
+build $build_dir\release\idgen\src\idgen.obj: cl tools\idgen\src\idgen.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\idgen.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include"
+
+build $build_dir\idgen.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\idgen.icon.res: rc $build_dir\idgen.icon.rc || init!
+
+build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $build_dir\release\idgen\src\idgen.obj $build_dir\idgen.icon.res $build_dir\default.manifest.res || init!
+   out_file = idgen.exe
+   pdb = $out_dir\idgen.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\idgen.exe: cp $out_dir\idgen.exe
+build project-idgen-release!: phony $stage_dir\idgen.exe
+build project-idgen!: phony project-idgen-release!
+build group-idgen-release!: phony project-idgen-release!
+build group-idgen!: phony project-idgen!
+
+build tools\limp\include\limp_lua.hpp!: limp | tools\limp\meta\limp.lua
+   path = tools\limp\include\limp_lua.hpp
+   extra = -f
+
+build $build_dir\release\limp\src\limp.obj: cl tools\limp\src\limp.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\limp.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=limp /DBE_TARGET_BASE=limp /I"include" /I"tools\limp\include"
+
+build $build_dir\release\limp\src\limp_app.obj: cl tools\limp\src\limp_app.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\limp.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=limp /DBE_TARGET_BASE=limp /I"include" /I"tools\limp\include"
+
+build $build_dir\release\limp\src\limp_processor.obj: cl tools\limp\src\limp_processor.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\limp.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=limp /DBE_TARGET_BASE=limp /I"include" /I"tools\limp\include"
+
+build $build_dir\limp.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\limp.icon.res: rc $build_dir\limp.icon.rc || init!
+
+build $out_dir\limp.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\luablt.lib $out_dir\luacore.lib $out_dir\luautil.lib $out_dir\util.lib $build_dir\release\limp\src\limp.obj $build_dir\release\limp\src\limp_app.obj $build_dir\release\limp\src\limp_processor.obj $build_dir\limp.icon.res $build_dir\default.manifest.res || init!
+   out_file = limp.exe
+   pdb = $out_dir\limp.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\limp.exe: cp $out_dir\limp.exe
+build project-limp-release!: phony $stage_dir\limp.exe
+build project-limp!: phony project-limp-release!
+build group-limp-release!: phony project-limp-release!
+build group-limp!: phony project-limp!
+
+build $build_dir\release\sizeof\src\size_of_type.obj: cl tools\sizeof\src\size_of_type.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\sizeof.pdb
+   extra = /DBE_TARGET=sizeof /DBE_TARGET_BASE=sizeof /I"include" /I"tools\sizeof\include"
+
+build $build_dir\release\sizeof\src\sizeof.obj: cl tools\sizeof\src\sizeof.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\sizeof.pdb
+   extra = /DBE_TARGET=sizeof /DBE_TARGET_BASE=sizeof /I"include" /I"tools\sizeof\include"
+
+build $build_dir\sizeof.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\sizeof.icon.res: rc $build_dir\sizeof.icon.rc || init!
+
+build $out_dir\sizeof.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\util.lib $build_dir\release\sizeof\src\size_of_type.obj $build_dir\release\sizeof\src\sizeof.obj $build_dir\sizeof.icon.res $build_dir\default.manifest.res || init!
+   out_file = sizeof.exe
+   pdb = $out_dir\sizeof.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\sizeof.exe: cp $out_dir\sizeof.exe
+build project-sizeof-release!: phony $stage_dir\sizeof.exe
+build project-sizeof!: phony project-sizeof-release!
+build group-sizeof-release!: phony project-sizeof-release!
+build group-sizeof!: phony project-sizeof!
+
+build $build_dir\release\sysinfo\src\memory_status.obj: cl tools\sysinfo\src\memory_status.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\sysinfo.pdb
+   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /I"include" /I"tools\sysinfo\include"
+
+build $build_dir\release\sysinfo\src\monitor_info.obj: cl tools\sysinfo\src\monitor_info.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\sysinfo.pdb
+   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /I"include" /I"tools\sysinfo\include"
+
+build $build_dir\release\sysinfo\src\sysinfo.obj: cl tools\sysinfo\src\sysinfo.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\sysinfo.pdb
+   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /I"include" /I"tools\sysinfo\include"
+
+build $build_dir\release\sysinfo\src\versions.obj: cl tools\sysinfo\src\versions.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\sysinfo.pdb
+   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /I"include" /I"tools\sysinfo\include"
+
+build $build_dir\sysinfo.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\sysinfo.icon.res: rc $build_dir\sysinfo.icon.rc || init!
+
+build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\platform.lib $out_dir\util.lib $build_dir\release\sysinfo\src\memory_status.obj $build_dir\release\sysinfo\src\monitor_info.obj $build_dir\release\sysinfo\src\sysinfo.obj $build_dir\release\sysinfo\src\versions.obj $build_dir\sysinfo.icon.res $build_dir\default.manifest.res || init!
+   out_file = sysinfo.exe
+   pdb = $out_dir\sysinfo.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\sysinfo.exe: cp $out_dir\sysinfo.exe
+build project-sysinfo-release!: phony $stage_dir\sysinfo.exe
+build project-sysinfo!: phony project-sysinfo-release!
+build group-sysinfo-release!: phony project-sysinfo-release!
+build group-sysinfo!: phony project-sysinfo!
+
+build $build_dir\release\wedo\src\wedo.obj: cl tools\wedo\src\wedo.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\wedo.pdb
+   extra = /DBE_TARGET=wedo /DBE_TARGET_BASE=wedo /I"include"
+
+build $build_dir\wedo.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\wedo.icon.res: rc $build_dir\wedo.icon.rc || init!
+
+build $build_dir\elevated.manifest: putfile || init!
+   contents = ^<?xml version=^"1.0^" encoding=^"UTF-8^" standalone=^"yes^"?^>&echo:$
+^<assembly xmlns=^"urn:schemas-microsoft-com:asm.v1^" manifestVersion=^"1.0^"^>&echo:$
+   ^<trustInfo xmlns=^"urn:schemas-microsoft-com:asm.v3^"^>&echo:$
+      ^<security^>&echo:$
+         ^<requestedPrivileges^>&echo:$
+            ^<requestedExecutionLevel level=^"requireAdministrator^" uiAccess=^"false^"/^>&echo:$
+         ^</requestedPrivileges^>&echo:$
+      ^</security^>&echo:$
+   ^</trustInfo^>&echo:$
+^</assembly^>
+
+build $build_dir\elevated.manifest.rc: putfile | $build_dir\elevated.manifest
+   contents = #include ^<winuser.h^>&echo:$
+1 RT_MANIFEST ^"elevated.manifest^"
+build $build_dir\elevated.manifest.res: rc $build_dir\elevated.manifest.rc || init!
+
+build $out_dir\wedo.exe: link $build_dir\release\wedo\src\wedo.obj $build_dir\wedo.icon.res $build_dir\elevated.manifest.res || init!
+   out_file = wedo.exe
+   pdb = $out_dir\wedo.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\wedo.exe: cp $out_dir\wedo.exe
+build project-wedo-release!: phony $stage_dir\wedo.exe
+build project-wedo!: phony project-wedo-release!
+build group-wedo-release!: phony project-wedo-release!
+build group-wedo!: phony project-wedo!
+
+build $build_dir\release\consolecolors\src\consolecolors.obj: cl demos\consolecolors\src\consolecolors.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\consolecolors.pdb
+   extra = /DBE_TARGET=consolecolors /DBE_TARGET_BASE=consolecolors /I"include"
+
+build $build_dir\consolecolors.icon.rc: putfile | icon\bengine.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine.ico^"
+build $build_dir\consolecolors.icon.res: rc $build_dir\consolecolors.icon.rc || init!
+
+build $out_dir\consolecolors.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $build_dir\release\consolecolors\src\consolecolors.obj $build_dir\consolecolors.icon.res $build_dir\default.manifest.res || init!
+   out_file = consolecolors.exe
+   pdb = $out_dir\consolecolors.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\consolecolors.exe: cp $out_dir\consolecolors.exe
+build project-consolecolors-release!: phony $stage_dir\consolecolors.exe
+build project-consolecolors!: phony project-consolecolors-release!
+build group-consolecolors-release!: phony project-consolecolors-release!
+build group-consolecolors!: phony project-consolecolors!
+build all-release!: phony group-deps-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-luablt-release! group-luacore-release! group-luautil-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
+build all!: phony group-deps! group-blt! group-cli! group-core! group-ctable! group-luablt! group-luacore! group-luautil! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
+build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
+build limp!: phony modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\luablt\src\blt.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! tools\limp\include\limp_lua.hpp!
+build pdb!: phony
+
+default all!
+
+# ################ END OF GENERATED CODE ################ ##
+

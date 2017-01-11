@@ -61,10 +61,11 @@ function configure_link_flags (configured, ignore_warning, option, name_suffix)
 
    if configured.configuration == 'debug' then
       name_suffix 'debug'
-      option '/INCREMENTAL'
       option '/DEBUG:FASTLINK'
+      option '/INCREMENTAL'
    else
       name_suffix 'release'
+      option '/DEBUG'
       option '/LTCG'   -- Link-time codegen
       option '/OPT:REF,ICF'
    end

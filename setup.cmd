@@ -18,5 +18,6 @@ if not exist %_vcvarsall% (
 )
 
 call %_vcvarsall% x64
-ninja externals!
+copy /Y vc_win.ninja build.ninja
+ninja -f vc_win.ninja externals!
 popd

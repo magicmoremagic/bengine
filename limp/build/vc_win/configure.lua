@@ -12,7 +12,7 @@ include 'build/vc_win/init'
 local hooks = { }
 
 make_rule 'configure' {
-   command = '"$bin_dir\\limp.exe" -f "build.ninja"',
+   command = '"$bin_dir\\limp.exe" -f ' .. fs.ancestor_relative(file_path, root_dir),
    description = 'configure',
    generator = 'true'
 }

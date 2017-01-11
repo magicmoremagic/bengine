@@ -1,10 +1,9 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win') !! 3363 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win') !! 3373 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.7
 
 bin_dir = bin
 build_dir = build
-builddir = ninja
 deps_dir = deps
 ext_include_dir = ext_include
 ext_lib_dir = ext_lib
@@ -13,7 +12,6 @@ msvc_build_dir = msvc_build
 msvc_debug_dir = Debug
 msvc_ipch_dir = ipch
 msvc_out_dir = msvc_out
-ninja_dir = ninja
 out_dir = out
 stage_dir = stage
 
@@ -42,17 +40,17 @@ lib_flags_release = /WX /LTCG /IGNORE:4221
 
 link_base_flags = /NOLOGO /MACHINE:X64 /DYNAMICBASE /NXCOMPAT /LIBPATH:"$ext_lib_dir" /MANIFEST:NO
 link_base_libs = kernel32.lib user32.lib gdi32.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib
-link_flags_console_debug = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /INCREMENTAL /DEBUG:FASTLINK /IGNORE:4221
-link_flags_console_release = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /LTCG /OPT:REF,ICF /IGNORE:4221
+link_flags_console_debug = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG:FASTLINK /INCREMENTAL /IGNORE:4221
+link_flags_console_release = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG /LTCG /OPT:REF,ICF /IGNORE:4221
 
 
 rule superninja
-   command = "$bin_dir\wedo.exe" ninja $targets $extra
+   command = "$bin_dir\wedo.exe" ninja -f $file $targets $extra
    description = sudo ninja $targets
    generator = true
 
 rule ninjatool
-   command = ninja -t $tool $extra
+   command = ninja -f $file -t $tool $extra
    description = ninja -t $tool
 
 rule limp
@@ -137,7 +135,7 @@ stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
 rd /Q /S %~dp0$ext_lib_dir\lib ) >nul )
 
 rule configure
-   command = "$bin_dir\limp.exe" -f "build.ninja"
+   command = "$bin_dir\limp.exe" -f vc_win.ninja
    description = configure
    generator = true
 
@@ -186,11 +184,13 @@ build init!!: touch | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps
    path = $build_dir\.i9d
 
 build $build_dir\.i9d: superninja
+   file = vc_win.ninja
    targets = init!!
 build init!: phony $build_dir\.i9d
 
 build clean-ninja!: ninjatool
    tool = clean
+   file = vc_win.ninja
 
 build clean-rm-out_dir!: rmfiles | clean-ninja!
    paths = $out_dir\*.*
@@ -1559,7 +1559,7 @@ build $build_dir\core-test.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\core-test.icon.res: rc $build_dir\core-test.icon.rc || init!
 
-build $out_dir\core-test.exe | $out_dir\core-test.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_handles.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_string_interpolation.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_handles.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_string_interpolation.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
    out_file = core-test.exe
    pdb = $out_dir\core-test.pdb
    flags = $link_flags_console_release
@@ -1627,7 +1627,7 @@ build $build_dir\core-perf.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\core-perf.icon.res: rc $build_dir\core-perf.icon.rc || init!
 
-build $out_dir\core-perf.exe | $out_dir\core-perf.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\perf.lib $out_dir\testing.lib $build_dir\release\core-perf\perf\perf_handle_retirement.obj $build_dir\release\core-perf\perf\perf_logging.obj $build_dir\release\core-perf\perf\perf_main.obj $build_dir\release\core-perf\perf\perf_thread_local.obj $build_dir\core-perf.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\perf.lib $out_dir\testing.lib $build_dir\release\core-perf\perf\perf_handle_retirement.obj $build_dir\release\core-perf\perf\perf_logging.obj $build_dir\release\core-perf\perf\perf_main.obj $build_dir\release\core-perf\perf\perf_thread_local.obj $build_dir\core-perf.icon.res $build_dir\default.manifest.res || init!
    out_file = core-perf.exe
    pdb = $out_dir\core-perf.pdb
    flags = $link_flags_console_release
@@ -1821,7 +1821,7 @@ build $build_dir\ctable-test.icon.rc: putfile | icon\bengine-test-perf.ico || in
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\ctable-test.icon.res: rc $build_dir\ctable-test.icon.rc || init!
 
-build $out_dir\ctable-test.exe | $out_dir\ctable-test.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\ctable-test\test\test_ct_border_config.obj $build_dir\release\ctable-test\test\test_main.obj $build_dir\ctable-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\ctable-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\ctable-test\test\test_ct_border_config.obj $build_dir\release\ctable-test\test\test_main.obj $build_dir\ctable-test.icon.res $build_dir\default.manifest.res || init!
    out_file = ctable-test.exe
    pdb = $out_dir\ctable-test.pdb
    flags = $link_flags_console_release
@@ -1906,7 +1906,12 @@ build $build_dir\debug\luacore\src\open_module.obj: cl modules\luacore\src\open_
    pdb = $build_dir\luacore-debug.pdb
    extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
 
-build $out_dir\luacore-debug.lib: lib $build_dir\debug\luacore\src\context.obj $build_dir\debug\luacore\src\id.obj $build_dir\debug\luacore\src\interpolate_string.obj $build_dir\debug\luacore\src\logging.obj $build_dir\debug\luacore\src\lua_exception.obj $build_dir\debug\luacore\src\lua_helpers.obj $build_dir\debug\luacore\src\open_module.obj || init!
+build $build_dir\debug\luacore\src\time.obj: cl modules\luacore\src\time.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\luacore-debug.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $out_dir\luacore-debug.lib: lib $build_dir\debug\luacore\src\context.obj $build_dir\debug\luacore\src\id.obj $build_dir\debug\luacore\src\interpolate_string.obj $build_dir\debug\luacore\src\logging.obj $build_dir\debug\luacore\src\lua_exception.obj $build_dir\debug\luacore\src\lua_helpers.obj $build_dir\debug\luacore\src\open_module.obj $build_dir\debug\luacore\src\time.obj || init!
    out_file = luacore-debug.lib
    flags = $lib_flags_debug
 build project-luacore-debug!: phony $out_dir\luacore-debug.lib
@@ -1946,7 +1951,12 @@ build $build_dir\release\luacore\src\open_module.obj: cl modules\luacore\src\ope
    pdb = $build_dir\luacore.pdb
    extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
 
-build $out_dir\luacore.lib: lib $build_dir\release\luacore\src\context.obj $build_dir\release\luacore\src\id.obj $build_dir\release\luacore\src\interpolate_string.obj $build_dir\release\luacore\src\logging.obj $build_dir\release\luacore\src\lua_exception.obj $build_dir\release\luacore\src\lua_helpers.obj $build_dir\release\luacore\src\open_module.obj || init!
+build $build_dir\release\luacore\src\time.obj: cl modules\luacore\src\time.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\luacore.pdb
+   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
+
+build $out_dir\luacore.lib: lib $build_dir\release\luacore\src\context.obj $build_dir\release\luacore\src\id.obj $build_dir\release\luacore\src\interpolate_string.obj $build_dir\release\luacore\src\logging.obj $build_dir\release\luacore\src\lua_exception.obj $build_dir\release\luacore\src\lua_helpers.obj $build_dir\release\luacore\src\open_module.obj $build_dir\release\luacore\src\time.obj || init!
    out_file = luacore.lib
    flags = $lib_flags_release
 build project-luacore-release!: phony $out_dir\luacore.lib
@@ -2429,7 +2439,7 @@ build $build_dir\sqlite-test.icon.rc: putfile | icon\bengine-test-perf.ico || in
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\sqlite-test.icon.res: rc $build_dir\sqlite-test.icon.rc || init!
 
-build $out_dir\sqlite-test.exe | $out_dir\sqlite-test.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\sqlite.lib $out_dir\testing.lib $build_dir\release\sqlite-test\test\test_db.obj $build_dir\release\sqlite-test\test\test_main.obj $build_dir\release\sqlite-test\test\test_shared_stmt_cache.obj $build_dir\release\sqlite-test\test\test_static_stmt_cache.obj $build_dir\release\sqlite-test\test\test_stmt.obj $build_dir\release\sqlite-test\test\test_transaction.obj $build_dir\sqlite-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sqlite-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\sqlite.lib $out_dir\testing.lib $build_dir\release\sqlite-test\test\test_db.obj $build_dir\release\sqlite-test\test\test_main.obj $build_dir\release\sqlite-test\test\test_shared_stmt_cache.obj $build_dir\release\sqlite-test\test\test_static_stmt_cache.obj $build_dir\release\sqlite-test\test\test_stmt.obj $build_dir\release\sqlite-test\test\test_transaction.obj $build_dir\sqlite-test.icon.res $build_dir\default.manifest.res || init!
    out_file = sqlite-test.exe
    pdb = $out_dir\sqlite-test.pdb
    flags = $link_flags_console_release
@@ -2503,7 +2513,7 @@ build $build_dir\testing-test.icon.rc: putfile | icon\bengine-test-perf.ico || i
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\testing-test.icon.res: rc $build_dir\testing-test.icon.rc || init!
 
-build $out_dir\testing-test.exe | $out_dir\testing-test.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\testing-test\test\test_arbitrary.obj $build_dir\release\testing-test\test\test_main.obj $build_dir\testing-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\testing-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\testing-test\test\test_arbitrary.obj $build_dir\release\testing-test\test\test_main.obj $build_dir\testing-test.icon.res $build_dir\default.manifest.res || init!
    out_file = testing-test.exe
    pdb = $out_dir\testing-test.pdb
    flags = $link_flags_console_release
@@ -2777,7 +2787,7 @@ build $build_dir\util-test.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test.icon.res: rc $build_dir\util-test.icon.rc || init!
 
-build $out_dir\util-test.exe | $out_dir\util-test.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test.exe
    pdb = $out_dir\util-test.pdb
    flags = $link_flags_console_release
@@ -2835,7 +2845,7 @@ build $build_dir\util-perf.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-perf.icon.res: rc $build_dir\util-perf.icon.rc || init!
 
-build $out_dir\util-perf.exe | $out_dir\util-perf.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-perf\perf\associative_containers.obj $build_dir\release\util-perf\perf\perf_main.obj $build_dir\release\util-perf\perf\sequence_containers.obj $build_dir\util-perf.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-perf\perf\associative_containers.obj $build_dir\release\util-perf\perf\perf_main.obj $build_dir\release\util-perf\perf\sequence_containers.obj $build_dir\util-perf.icon.res $build_dir\default.manifest.res || init!
    out_file = util-perf.exe
    pdb = $out_dir\util-perf.pdb
    flags = $link_flags_console_release
@@ -2886,7 +2896,7 @@ build $build_dir\bltc.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\bltc.icon.res: rc $build_dir\bltc.icon.rc || init!
 
-build $out_dir\bltc.exe | $out_dir\bltc.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util.lib $build_dir\release\bltc\src\bltc.obj $build_dir\release\bltc\src\bltc_app.obj $build_dir\bltc.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\bltc.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util.lib $build_dir\release\bltc\src\bltc.obj $build_dir\release\bltc\src\bltc_app.obj $build_dir\bltc.icon.res $build_dir\default.manifest.res || init!
    out_file = bltc.exe
    pdb = $out_dir\bltc.pdb
    flags = $link_flags_console_release
@@ -2990,7 +3000,7 @@ build $build_dir\bstyle.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\bstyle.icon.res: rc $build_dir\bstyle.icon.rc || init!
 
-build $out_dir\bstyle.exe | $out_dir\bstyle.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util.lib $build_dir\release\bstyle\src\all_rules.obj $build_dir\release\bstyle\src\bstyle.obj $build_dir\release\bstyle\src\bstyle_app.obj $build_dir\release\bstyle\src\cxx_lexer.obj $build_dir\release\bstyle\src\document.obj $build_dir\release\bstyle\src\token.obj $build_dir\release\bstyle\src\token_type.obj $build_dir\bstyle.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\bstyle.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util.lib $build_dir\release\bstyle\src\all_rules.obj $build_dir\release\bstyle\src\bstyle.obj $build_dir\release\bstyle\src\bstyle_app.obj $build_dir\release\bstyle\src\cxx_lexer.obj $build_dir\release\bstyle\src\document.obj $build_dir\release\bstyle\src\token.obj $build_dir\release\bstyle\src\token_type.obj $build_dir\bstyle.icon.res $build_dir\default.manifest.res || init!
    out_file = bstyle.exe
    pdb = $out_dir\bstyle.pdb
    flags = $link_flags_console_release
@@ -3031,7 +3041,7 @@ build $build_dir\ccolor.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\ccolor.icon.res: rc $build_dir\ccolor.icon.rc || init!
 
-build $out_dir\ccolor.exe | $out_dir\ccolor.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $build_dir\release\ccolor\src\ccolor.obj $build_dir\ccolor.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\ccolor.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $build_dir\release\ccolor\src\ccolor.obj $build_dir\ccolor.icon.res $build_dir\default.manifest.res || init!
    out_file = ccolor.exe
    pdb = $out_dir\ccolor.pdb
    flags = $link_flags_console_release
@@ -3072,7 +3082,7 @@ build $build_dir\idgen.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\idgen.icon.res: rc $build_dir\idgen.icon.rc || init!
 
-build $out_dir\idgen.exe | $out_dir\idgen.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $build_dir\release\idgen\src\idgen.obj $build_dir\idgen.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $build_dir\release\idgen\src\idgen.obj $build_dir\idgen.icon.res $build_dir\default.manifest.res || init!
    out_file = idgen.exe
    pdb = $out_dir\idgen.pdb
    flags = $link_flags_console_release
@@ -3137,7 +3147,7 @@ build $build_dir\limp.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\limp.icon.res: rc $build_dir\limp.icon.rc || init!
 
-build $out_dir\limp.exe | $out_dir\limp.pdb: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\luablt.lib $out_dir\luacore.lib $out_dir\luautil.lib $out_dir\util.lib $build_dir\release\limp\src\limp.obj $build_dir\release\limp\src\limp_app.obj $build_dir\release\limp\src\limp_processor.obj $build_dir\limp.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\limp.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\luablt.lib $out_dir\luacore.lib $out_dir\luautil.lib $out_dir\util.lib $build_dir\release\limp\src\limp.obj $build_dir\release\limp\src\limp_app.obj $build_dir\release\limp\src\limp_processor.obj $build_dir\limp.icon.res $build_dir\default.manifest.res || init!
    out_file = limp.exe
    pdb = $out_dir\limp.pdb
    flags = $link_flags_console_release
@@ -3188,7 +3198,7 @@ build $build_dir\sizeof.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\sizeof.icon.res: rc $build_dir\sizeof.icon.rc || init!
 
-build $out_dir\sizeof.exe | $out_dir\sizeof.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\util.lib $build_dir\release\sizeof\src\size_of_type.obj $build_dir\release\sizeof\src\sizeof.obj $build_dir\sizeof.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sizeof.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\util.lib $build_dir\release\sizeof\src\size_of_type.obj $build_dir\release\sizeof\src\sizeof.obj $build_dir\sizeof.icon.res $build_dir\default.manifest.res || init!
    out_file = sizeof.exe
    pdb = $out_dir\sizeof.pdb
    flags = $link_flags_console_release
@@ -3259,7 +3269,7 @@ build $build_dir\sysinfo.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\sysinfo.icon.res: rc $build_dir\sysinfo.icon.rc || init!
 
-build $out_dir\sysinfo.exe | $out_dir\sysinfo.pdb: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\platform.lib $out_dir\util.lib $build_dir\release\sysinfo\src\memory_status.obj $build_dir\release\sysinfo\src\monitor_info.obj $build_dir\release\sysinfo\src\sysinfo.obj $build_dir\release\sysinfo\src\versions.obj $build_dir\sysinfo.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\platform.lib $out_dir\util.lib $build_dir\release\sysinfo\src\memory_status.obj $build_dir\release\sysinfo\src\monitor_info.obj $build_dir\release\sysinfo\src\sysinfo.obj $build_dir\release\sysinfo\src\versions.obj $build_dir\sysinfo.icon.res $build_dir\default.manifest.res || init!
    out_file = sysinfo.exe
    pdb = $out_dir\sysinfo.pdb
    flags = $link_flags_console_release
@@ -3299,7 +3309,7 @@ build $build_dir\elevated.manifest.rc: putfile | $build_dir\elevated.manifest
 1 RT_MANIFEST ^"elevated.manifest^"
 build $build_dir\elevated.manifest.res: rc $build_dir\elevated.manifest.rc || init!
 
-build $out_dir\wedo.exe | $out_dir\wedo.pdb: link $build_dir\release\wedo\src\wedo.obj $build_dir\wedo.icon.res $build_dir\elevated.manifest.res || init!
+build $out_dir\wedo.exe: link $build_dir\release\wedo\src\wedo.obj $build_dir\wedo.icon.res $build_dir\elevated.manifest.res || init!
    out_file = wedo.exe
    pdb = $out_dir\wedo.pdb
    flags = $link_flags_console_release
@@ -3340,7 +3350,7 @@ build $build_dir\consolecolors.icon.rc: putfile | icon\bengine.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\consolecolors.icon.res: rc $build_dir\consolecolors.icon.rc || init!
 
-build $out_dir\consolecolors.exe | $out_dir\consolecolors.pdb: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $build_dir\release\consolecolors\src\consolecolors.obj $build_dir\consolecolors.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\consolecolors.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $build_dir\release\consolecolors\src\consolecolors.obj $build_dir\consolecolors.icon.res $build_dir\default.manifest.res || init!
    out_file = consolecolors.exe
    pdb = $out_dir\consolecolors.pdb
    flags = $link_flags_console_release
@@ -3361,3 +3371,4 @@ build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $o
 default all!
 
 # ################ END OF GENERATED CODE ################ ##
+

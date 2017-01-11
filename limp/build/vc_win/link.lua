@@ -49,7 +49,11 @@ function make_link_target (configured, obj_paths)
    return function (t)
       t.rule = rule 'link'
       t.outputs = { configured.output_path }
-      t.implicit_outputs = append_sequence({ configured.pdb_path }, t.implicit_outputs)
+
+      if configured.configuration == 'debug' then
+         t.implicit_outputs = append_sequence({ configured.pdb_path }, t.implicit_outputs)
+      end
+
       t.order_only_inputs = { 'init!' }
       t.inputs = { }
       for i = 1, #configured.link_internal do

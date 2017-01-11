@@ -1,3 +1,4 @@
+local fs = require('be.fs')
 
 local function set_srule (t, baserule)
    if t.super then
@@ -15,7 +16,9 @@ function make_ninja_target (target)
       end
       set_srule(t, 'ninja')
       t.outputs = { target }
-      t.vars = { }
+      t.vars = {
+         { name = 'file', value = fs.ancestor_relative(file_path, root_dir) }
+      }
       if t.targets then
          t.vars[#t.vars+1] = { name = 'targets', value = t.targets }
       end
@@ -33,7 +36,8 @@ function make_ninja_tool_target (target, tool)
       set_srule(t, 'ninjatool')
       t.outputs = { target }
       t.vars = {
-         { name = 'tool', value = tool }
+         { name = 'tool', value = tool },
+         { name = 'file', value = fs.ancestor_relative(file_path, root_dir) }
       }
       if t.extra then
          t.vars[#t.vars+1] = { name = 'extra', value = t.extra }
