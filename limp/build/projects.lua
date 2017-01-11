@@ -166,14 +166,6 @@ function configure_project (project, toolchain, configuration, configured_group)
       end
    end
 
-   be.log.short_verbose(table.concat({
-      configured.configured_group.type,
-      configured.type,
-      configured.name,
-      configured.toolchain,
-      configured.configuration
-   }, ' '))
-
    return configured
 end
 
