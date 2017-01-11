@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 1845 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 1834 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.7
 
@@ -34,11 +34,6 @@ link_base_libs = kernel32.lib user32.lib gdi32.lib comdlg32.lib advapi32.lib she
 link_flags_console_debug = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG:FASTLINK /INCREMENTAL /IGNORE:4221
 
 
-rule superninja
-   command = "$bin_dir\wedo.exe" ninja -f $file $targets $extra
-   description = sudo ninja $targets
-   generator = true
-
 rule ninjatool
    command = ninja -f $file -t $tool $extra
    description = ninja -t $tool
@@ -53,9 +48,9 @@ rule mkdir
    description = mkdir $out
    generator = true
 
-rule touch
-   command = cmd /s /c "echo:>nul 2>>"$path""
-   description = touch $path
+rule touchself
+   command = cmd /s /c "echo:>nul 2>>"$out""
+   description = touch $out
 
 rule putfile
    command = cmd /s /c "(echo:$contents)>"$out""
@@ -169,13 +164,7 @@ build init_include_links!: phony $include_dir\be\blt $include_dir\be\cli $includ
 build $build_dir\.boost_log: build_boost | $build_dir
 build %BOOST_HOME%\boost: phony $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
-
-build init!!: touch | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
-   path = $build_dir\.i9d
-
-build $build_dir\.i9d: superninja
-   file = vc_win-debug.ninja
-   targets = init!!
+build $build_dir\.i9d: touchself | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
 build init!: phony $build_dir\.i9d
 
 build clean-ninja!: ninjatool

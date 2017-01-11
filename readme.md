@@ -107,7 +107,7 @@ executed by the `limp` tool (included as part of bengine).
 :: Ensure BOOST_HOME environment variable is set:
 > SET BOOST_HOME=C:\path\to\boost
 
-:: Clone submodule repositories and build external libraries (requires elevation for mklink):
+:: Clone submodule repositories and build external libraries:
 > setup
 
 :: Open a VS command prompt for development and testing:

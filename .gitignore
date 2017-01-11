@@ -9,8 +9,10 @@ _*
 /build/
 /out/
 !limp/build/
-.ninja_deps
-.ninja_log
+*.limphash
+/.ninja_deps
+/.ninja_log
+/build.ninja
 
 /msvc_out/
 /msvc_build/
@@ -19,4 +21,3 @@ _*
 ipch/
 *.VC.db
 *.VC.opendb
-*.limphash

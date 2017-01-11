@@ -114,14 +114,9 @@ function configure_init_end ()
 
    local initialized_target = fs.compose_path(build_dir(), '.i9d')
 
-   make_touch_target 'init!!' {
+   make_touch_target(initialized_target) {
       path = initialized_target,
       implicit_inputs = init_targets
-   }
-
-   make_ninja_target(initialized_target) {
-      targets = 'init!!',
-      super = true
    }
 
    make_phony_target 'init!' {
