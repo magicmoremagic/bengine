@@ -1,7 +1,7 @@
 include 'build/perf'
-perf_begin('configure.lua')
+perf_begin 'configure.lua'
 
-perf_begin('general includes')
+perf_begin 'general includes'
 include 'build/build_scripts'
 include 'build/util'
 local groups = include 'build/groups'
@@ -18,7 +18,7 @@ include 'build/phony_targets'
 include 'build/shell_targets'
 include 'build/limp_targets'
 include 'build/custom_targets'
-perf_end('general includes')
+perf_end 'general includes'
 
 local tc, configs = ...
 configs = configs or { 'debug', 'release' }
@@ -26,32 +26,28 @@ if type(configs) ~= 'table' then
    configs = { configs }
 end
 
-perf_begin('toolchain include')
+perf_begin 'toolchain include'
 local toolchain_hooks = include('build/' .. tc .. '/configure') or { }
-perf_end('toolchain include')
+perf_end 'toolchain include'
 
-perf_begin('build script search')
-build_scripts.try 'dep_modules'
-build_scripts.search 'modules'
-build_scripts.search 'tools'
-build_scripts.search 'demos'
-perf_end('build script search')
-
+perf_begin 'build script search'
+include 'build_scripts'
+perf_end 'build script search'
 
 -- Initialization
 if toolchain_hooks.init then
-   perf_begin('toolchain init')
+   perf_begin 'toolchain init'
    toolchain_hooks.init(configs)
-   perf_end('toolchain init')
+   perf_end 'toolchain init'
 end
 
-perf_begin('build script execution')
+perf_begin 'build script execution'
 build_scripts.execute()
-perf_end('build script execution')
+perf_end 'build script execution'
 
 -- Configure groups & projects
-perf_begin('configure')
-perf_begin('configure groups')
+perf_begin 'configure'
+perf_begin 'configure groups'
 for g = 1, #groups do
    local group = groups[g]
    for c = 1, #configs do
@@ -59,9 +55,9 @@ for g = 1, #groups do
       configure_group(group, tc, config)
    end
 end
-perf_end('configure groups')
+perf_end 'configure groups'
 
-perf_begin('configure projects')
+perf_begin 'configure projects'
 for p = 1, #projects do
    local project = projects[p]
    for c = 1, #configs do
@@ -70,9 +66,9 @@ for p = 1, #projects do
       local configured = configure_project(project, tc, config, configured_group)
    end
 end
-perf_end('configure projects')
+perf_end 'configure projects'
 
-perf_begin('configure finalize projects')
+perf_begin 'configure finalize projects'
 for p = 1, #projects do
    local project = projects[p]
    for c = 1, #configs do
@@ -81,19 +77,19 @@ for p = 1, #projects do
       finalize_project_configuration(configured_project, groups, projects)
    end
 end
-perf_end('configure finalize projects')
-perf_end('configure')
+perf_end 'configure finalize projects'
+perf_end 'configure'
 
 -- Preprocessing
-perf_begin('preprocess')
+perf_begin 'preprocess'
 if toolchain_hooks.preprocess_begin then
-   perf_begin('toolchain preprocess_begin')
+   perf_begin 'toolchain preprocess_begin'
    toolchain_hooks.preprocess_begin(groups, projects, configs)
-   perf_end('toolchain preprocess_begin')
+   perf_end 'toolchain preprocess_begin'
 end
 
 if toolchain_hooks.preprocess_group then
-   perf_begin('toolchain preprocess_group')
+   perf_begin 'toolchain preprocess_group'
    for g = 1, #groups do
       local group = groups[g]
       for c = 1, #configs do
@@ -102,17 +98,17 @@ if toolchain_hooks.preprocess_group then
          toolchain_hooks.preprocess_group(configured_group)
       end
    end
-   perf_end('toolchain preprocess_group')
+   perf_end 'toolchain preprocess_group'
 end
 
 if toolchain_hooks.preprocess then
-   perf_begin('toolchain preprocess')
+   perf_begin 'toolchain preprocess'
    toolchain_hooks.preprocess(groups, projects, configs)
-   perf_end('toolchain preprocess')
+   perf_end 'toolchain preprocess'
 end
 
 if toolchain_hooks.preprocess_project then
-   perf_begin('toolchain preprocess_project')
+   perf_begin 'toolchain preprocess_project'
    for p = 1, #projects do
       local project = projects[p]
       for c = 1, #configs do
@@ -121,18 +117,18 @@ if toolchain_hooks.preprocess_project then
          toolchain_hooks.preprocess_project(configured_project)
       end
    end
-   perf_end('toolchain preprocess_project')
+   perf_end 'toolchain preprocess_project'
 end
 
 if toolchain_hooks.preprocess_end then
-   perf_begin('toolchain preprocess_end')
+   perf_begin 'toolchain preprocess_end'
    toolchain_hooks.preprocess_end(groups, projects, configs)
-   perf_end('toolchain preprocess_end')
+   perf_end 'toolchain preprocess_end'
 end
-perf_end('preprocess')
+perf_end 'preprocess'
 
 -- Processing
-perf_begin('process')
+perf_begin 'process'
 
 local external_targets = { }
 local all_targets = { }
@@ -251,17 +247,17 @@ make_phony_target 'externals!' {
 
 make_meta_limp_target()
 
-perf_end('process')
+perf_end 'process'
 
 -- Postprocessing
 if toolchain_hooks.postprocess_begin then
-   perf_begin('toolchain postprocess_begin')
+   perf_begin 'toolchain postprocess_begin'
    toolchain_hooks.postprocess_begin(groups, projects, configs)
-   perf_end('toolchain postprocess_begin')
+   perf_end 'toolchain postprocess_begin'
 end
 
 if toolchain_hooks.postprocess_project then
-   perf_begin('toolchain postprocess_project')
+   perf_begin 'toolchain postprocess_project'
    for p = 1, #projects do
       local project = projects[p]
       for c = 1, #configs do
@@ -270,17 +266,17 @@ if toolchain_hooks.postprocess_project then
          toolchain_hooks.postprocess_project(configured_project)
       end
    end
-   perf_end('toolchain postprocess_project')
+   perf_end 'toolchain postprocess_project'
 end
 
 if toolchain_hooks.postprocess then
-   perf_begin('toolchain postprocess')
+   perf_begin 'toolchain postprocess'
    toolchain_hooks.postprocess(groups, projects, configs)
-   perf_end('toolchain postprocess')
+   perf_end 'toolchain postprocess'
 end
 
 if toolchain_hooks.postprocess_group then
-   perf_begin('toolchain postprocess_group')
+   perf_begin 'toolchain postprocess_group'
    for g = 1, #groups do
       local group = groups[g]
       for c = 1, #configs do
@@ -289,27 +285,27 @@ if toolchain_hooks.postprocess_group then
          toolchain_hooks.postprocess_group(configured_group)
       end
    end
-   perf_end('toolchain postprocess_group')
+   perf_end 'toolchain postprocess_group'
 end
 
 if toolchain_hooks.postprocess_end then
-   perf_begin('toolchain postprocess_end')
+   perf_begin 'toolchain postprocess_end'
    toolchain_hooks.postprocess_end(groups, projects, configs)
-   perf_end('toolchain postprocess_end')
+   perf_end 'toolchain postprocess_end'
 end
 
 -- build.ninja serialization
-perf_begin('template serialization')
+perf_begin 'template serialization'
 write_globals()
 write_rules()
 write_targets()
-perf_end('template serialization')
+perf_end 'template serialization'
 
 -- Cleanup
 if toolchain_hooks.cleanup then
-   perf_begin('toolchain cleanup')
+   perf_begin 'toolchain cleanup'
    toolchain_hooks.cleanup()
-   perf_end('toolchain cleanup')
+   perf_end 'toolchain cleanup'
 end
 
-perf_end('configure.lua')
+perf_end 'configure.lua'
