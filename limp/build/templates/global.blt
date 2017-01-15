@@ -1,8 +1,0 @@
-`
-if comment {
-   with each explode(comment) using # {
-      `# ` $ nl
-   }
-}
-name ` = ` value
-`
