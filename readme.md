@@ -37,44 +37,44 @@ force-pushes.
 
 
 ## Modules
- - [blt](https://github.com/bcrist/bengine-blt)
- - [cli](https://github.com/bcrist/bengine-cli)
- - [core](https://github.com/bcrist/bengine-core)
- - [ctable](https://github.com/bcrist/bengine-ctable)
- - [perf](https://github.com/bcrist/bengine-perf)
- - [platform](https://github.com/bcrist/bengine-platform)
- - [sqlite](https://github.com/bcrist/bengine-sqlite)
- - [testing](https://github.com/bcrist/bengine-testing)
- - [util](https://github.com/bcrist/bengine-util)
+ - [blt](https://github.com/magicmoremagic/bengine-blt)
+ - [cli](https://github.com/magicmoremagic/bengine-cli)
+ - [core](https://github.com/magicmoremagic/bengine-core)
+ - [ctable](https://github.com/magicmoremagic/bengine-ctable)
+ - [perf](https://github.com/magicmoremagic/bengine-perf)
+ - [platform](https://github.com/magicmoremagic/bengine-platform)
+ - [sqlite](https://github.com/magicmoremagic/bengine-sqlite)
+ - [testing](https://github.com/magicmoremagic/bengine-testing)
+ - [util](https://github.com/magicmoremagic/bengine-util)
  
 ### Lua Interface Modules
- - [luablt](https://github.com/bcrist/bengine-luablt)
- - [luacore](https://github.com/bcrist/bengine-luacore)
- - [luautil](https://github.com/bcrist/bengine-luautil)
+ - [luablt](https://github.com/magicmoremagic/bengine-luablt)
+ - [luacore](https://github.com/magicmoremagic/bengine-luacore)
+ - [luautil](https://github.com/magicmoremagic/bengine-luautil)
 
 
 ## Tools
- - [`bltc`](https://github.com/bcrist/bengine-bltc)
- - [`bstyle`](https://github.com/bcrist/bengine-bstyle)
- - [`ccolor`](https://github.com/bcrist/bengine-ccolor)
- - [`idgen`](https://github.com/bcrist/bengine-idgen)
- - [`limp`](https://github.com/bcrist/bengine-limp)
- - [`sizeof`](https://github.com/bcrist/bengine-sizeof)
- - [`sysinfo`](https://github.com/bcrist/bengine-sysinfo)
- - [`wedo`](https://github.com/bcrist/bengine-wedo)
+ - [`bltc`](https://github.com/magicmoremagic/bengine-bltc)
+ - [`bstyle`](https://github.com/magicmoremagic/bengine-bstyle)
+ - [`ccolor`](https://github.com/magicmoremagic/bengine-ccolor)
+ - [`idgen`](https://github.com/magicmoremagic/bengine-idgen)
+ - [`limp`](https://github.com/magicmoremagic/bengine-limp)
+ - [`sizeof`](https://github.com/magicmoremagic/bengine-sizeof)
+ - [`sysinfo`](https://github.com/magicmoremagic/bengine-sysinfo)
+ - [`wedo`](https://github.com/magicmoremagic/bengine-wedo)
 
 
 ## Demos
- - [`consolecolors`](https://github.com/bcrist/consolecolors)
+ - [`consolecolors`](https://github.com/magicmoremagic/consolecolors)
 
 
 ## Libraries 
  - [Boost](http://www.boost.org/) (External; 1.63 or newer recommended)
  - [Catch 1.5.9](https://github.com/philsquared/Catch)
- - [GLFW 3.1.2](https://github.com/bcrist/glfw) (Fork)
- - [GLM 0.9.8](https://github.com/bcrist/glm) (Fork)
+ - [GLFW 3.1.2](https://github.com/magicmoremagic/glfw) (Fork)
+ - [GLM 0.9.8](https://github.com/magicmoremagic/glm) (Fork)
  - [GSL](https://github.com/Microsoft/GSL)
- - [Lua 5.3.3](https://github.com/bcrist/lua) (Fork)
+ - [Lua 5.3.3](https://github.com/magicmoremagic/lua) (Fork)
  - [pugixml 1.9](https://github.com/zeux/pugixml)
  - [STB](https://github.com/nothings/stb)
  - [SQLite 3.15.2](http://sqlite.org/) (Internal)
@@ -100,7 +100,7 @@ executed by the `limp` tool (included as part of bengine).
  - [Visual Studio 2015](https://www.visualstudio.com/) or [Visual C++ Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools) (Windows)
  - [Visual Leak Detector](https://vld.codeplex.com/) (Windows; optional)
  - [Ragel](http://www.colm.net/open-source/ragel/) (optional; code generation)
- - [Limp](https://github.com/bcrist/bengine-limp) (included; code generation)
+ - [Limp](https://github.com/magicmoremagic/bengine-limp) (included; code generation)
 
 ### Building on Windows
 ```

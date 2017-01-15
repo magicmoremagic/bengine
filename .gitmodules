@@ -1,13 +1,12 @@
 [submodule "dep_modules/glm"]
 	path = dep_modules/glm
-	url = https://github.com/bcrist/glm
-	branch = 0.9.7
+	url = https://github.com/magicmoremagic/glm
 [submodule "dep_modules/glfw"]
 	path = dep_modules/glfw
-	url = https://github.com/bcrist/glfw
+	url = https://github.com/magicmoremagic/glfw
 [submodule "dep_modules/lua"]
 	path = dep_modules/lua
-	url = https://github.com/bcrist/lua
+	url = https://github.com/magicmoremagic/lua
 [submodule "dep_modules/stb"]
 	path = dep_modules/stb
 	url = https://github.com/nothings/stb
@@ -23,72 +22,72 @@
 [submodule "dep_modules/pugixml"]
 	path = dep_modules/pugixml
 	url = https://github.com/zeux/pugixml
-[submodule "modules/core"]
-	path = modules/core
-	url = https://github.com/bcrist/bengine-core
-[submodule "modules/blt"]
-	path = modules/blt
-	url = https://github.com/bcrist/bengine-blt
-[submodule "modules/util"]
-	path = modules/util
-	url = https://github.com/bcrist/bengine-util
-[submodule "modules/luacore"]
-	path = modules/luacore
-	url = https://github.com/bcrist/bengine-luacore
-[submodule "modules/luablt"]
-	path = modules/luablt
-	url = https://github.com/bcrist/bengine-luablt
-[submodule "modules/luautil"]
-	path = modules/luautil
-	url = https://github.com/bcrist/bengine-luautil
-[submodule "modules/ctable"]
-	path = modules/ctable
-	url = https://github.com/bcrist/bengine-ctable
-[submodule "modules/perf"]
-	path = modules/perf
-	url = https://github.com/bcrist/bengine-perf
-[submodule "modules/platform"]
-	path = modules/platform
-	url = https://github.com/bcrist/bengine-platform
-[submodule "modules/sqlite"]
-	path = modules/sqlite
-	url = https://github.com/bcrist/bengine-sqlite
-[submodule "modules/testing"]
-	path = modules/testing
-	url = https://github.com/bcrist/bengine-testing
-[submodule "modules/cli"]
-	path = modules/cli
-	url = https://github.com/bcrist/bengine-cli
-[submodule "demos/consolecolors"]
-	path = demos/consolecolors
-	url = https://github.com/bcrist/bengine-consolecolors
-[submodule "tools/bltc"]
-	path = tools/bltc
-	url = https://github.com/bcrist/bengine-bltc
-[submodule "tools/bstyle"]
-	path = tools/bstyle
-	url = https://github.com/bcrist/bengine-bstyle
-[submodule "tools/ccolor"]
-	path = tools/ccolor
-	url = https://github.com/bcrist/bengine-ccolor
-[submodule "tools/idgen"]
-	path = tools/idgen
-	url = https://github.com/bcrist/bengine-idgen
-[submodule "tools/sizeof"]
-	path = tools/sizeof
-	url = https://github.com/bcrist/bengine-sizeof
-[submodule "tools/limp"]
-	path = tools/limp
-	url = https://github.com/bcrist/bengine-limp
-[submodule "tools/sysinfo"]
-	path = tools/sysinfo
-	url = https://github.com/bcrist/bengine-sysinfo
-[submodule "tools/wedo"]
-	path = tools/wedo
-	url = https://github.com/bcrist/bengine-wedo
 [submodule "limp/common"]
 	path = limp/common
-	url = https://github.com/bcrist/bengine-limp-common
+	url = https://github.com/magicmoremagic/bengine-limp-common
 [submodule "limp/build"]
 	path = limp/build
-	url = https://github.com/bcrist/bengine-limp-build
+	url = https://github.com/magicmoremagic/bengine-limp-build
+[submodule "modules/core"]
+	path = modules/core
+	url = https://github.com/magicmoremagic/bengine-core
+[submodule "modules/blt"]
+	path = modules/blt
+	url = https://github.com/magicmoremagic/bengine-blt
+[submodule "modules/util"]
+	path = modules/util
+	url = https://github.com/magicmoremagic/bengine-util
+[submodule "modules/luacore"]
+	path = modules/luacore
+	url = https://github.com/magicmoremagic/bengine-luacore
+[submodule "modules/luablt"]
+	path = modules/luablt
+	url = https://github.com/magicmoremagic/bengine-luablt
+[submodule "modules/luautil"]
+	path = modules/luautil
+	url = https://github.com/magicmoremagic/bengine-luautil
+[submodule "modules/ctable"]
+	path = modules/ctable
+	url = https://github.com/magicmoremagic/bengine-ctable
+[submodule "modules/perf"]
+	path = modules/perf
+	url = https://github.com/magicmoremagic/bengine-perf
+[submodule "modules/platform"]
+	path = modules/platform
+	url = https://github.com/magicmoremagic/bengine-platform
+[submodule "modules/sqlite"]
+	path = modules/sqlite
+	url = https://github.com/magicmoremagic/bengine-sqlite
+[submodule "modules/testing"]
+	path = modules/testing
+	url = https://github.com/magicmoremagic/bengine-testing
+[submodule "modules/cli"]
+	path = modules/cli
+	url = https://github.com/magicmoremagic/bengine-cli
+[submodule "demos/consolecolors"]
+	path = demos/consolecolors
+	url = https://github.com/magicmoremagic/bengine-consolecolors
+[submodule "tools/bltc"]
+	path = tools/bltc
+	url = https://github.com/magicmoremagic/bengine-bltc
+[submodule "tools/bstyle"]
+	path = tools/bstyle
+	url = https://github.com/magicmoremagic/bengine-bstyle
+[submodule "tools/ccolor"]
+	path = tools/ccolor
+	url = https://github.com/magicmoremagic/bengine-ccolor
+[submodule "tools/idgen"]
+	path = tools/idgen
+	url = https://github.com/magicmoremagic/bengine-idgen
+[submodule "tools/sizeof"]
+	path = tools/sizeof
+	url = https://github.com/magicmoremagic/bengine-sizeof
+[submodule "tools/limp"]
+	path = tools/limp
+	url = https://github.com/magicmoremagic/bengine-limp
+[submodule "tools/sysinfo"]
+	path = tools/sysinfo
+	url = https://github.com/magicmoremagic/bengine-sysinfo
+[submodule "tools/wedo"]
+	path = tools/wedo
+	url = https://github.com/magicmoremagic/bengine-wedo
