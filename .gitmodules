@@ -86,3 +86,9 @@
 [submodule "tools/wedo"]
 	path = tools/wedo
 	url = https://github.com/bcrist/bengine-wedo
+[submodule "limp/common"]
+	path = limp/common
+	url = https://github.com/bcrist/bengine-limp-common
+[submodule "limp/build"]
+	path = limp/build
+	url = https://github.com/bcrist/bengine-limp-build
