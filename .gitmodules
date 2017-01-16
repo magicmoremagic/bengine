@@ -1,9 +1,12 @@
-[submodule "dep_modules/glm"]
-	path = dep_modules/glm
-	url = https://github.com/magicmoremagic/glm
+[submodule "dep_modules/glbinding"]
+	path = dep_modules/glbinding
+	url = https://github.com/cginternals/glbinding
 [submodule "dep_modules/glfw"]
 	path = dep_modules/glfw
 	url = https://github.com/magicmoremagic/glfw
+[submodule "dep_modules/glm"]
+	path = dep_modules/glm
+	url = https://github.com/magicmoremagic/glm
 [submodule "dep_modules/lua"]
 	path = dep_modules/lua
 	url = https://github.com/magicmoremagic/lua
@@ -91,3 +94,4 @@
 [submodule "tools/wedo"]
 	path = tools/wedo
 	url = https://github.com/magicmoremagic/bengine-wedo
+
