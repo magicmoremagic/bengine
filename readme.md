@@ -70,7 +70,7 @@ force-pushes.
 
 ## Libraries 
  - [Boost](http://www.boost.org/) (External; 1.63 or newer recommended)
- - [Catch 1.5.9](https://github.com/philsquared/Catch)
+ - [Catch 1.6.0](https://github.com/philsquared/Catch)
  - [GLFW 3.1.2](https://github.com/magicmoremagic/glfw) (Fork)
  - [GLM 0.9.8](https://github.com/magicmoremagic/glm) (Fork)
  - [GSL](https://github.com/Microsoft/GSL)
@@ -78,7 +78,7 @@ force-pushes.
  - [pugixml 1.9](https://github.com/zeux/pugixml)
  - [STB](https://github.com/nothings/stb)
  - [SQLite 3.15.2](http://sqlite.org/) (Internal)
- - [zlib 1.2.10](https://github.com/madler/zlib)
+ - [zlib 1.2.11](https://github.com/madler/zlib)
 
 The SQLite source amalgamation is distributed within this repository.  With the
 exception of Boost, all of the other above libraries are referenced as git
