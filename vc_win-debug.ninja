@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2275 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2306 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.7
 
@@ -43,14 +43,14 @@ rule limp
    description = limp $path
    generator = true
 
+rule run
+   command = $cmd $extra
+   description = $cmd
+
 rule mkdir
    command = cmd /s /c "if not exist "$out" md "$out""
    description = mkdir $out
    generator = true
-
-rule touchself
-   command = cmd /s /c "echo:>nul 2>>"$out""
-   description = touch $out
 
 rule putfile
    command = cmd /s /c "(echo:$contents)>"$out""
@@ -163,9 +163,11 @@ build $include_dir\be\testing: lndir modules\testing\include | $include_dir\be
 build $include_dir\be\util: lndir modules\util\include | $include_dir\be
 build init_include_links!: phony $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\luablt $include_dir\be\luacore $include_dir\be\luautil $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\util
 build $build_dir\.boost_log: build_boost | $build_dir
-build %BOOST_HOME%\boost: phony $build_dir\.boost_log
+build %BOOST_HOME%\boost: phony || $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
-build $build_dir\.i9d: touchself | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+
+build $build_dir\.i9d: putfile | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+   contents = .
 build init!: phony $build_dir\.i9d
 
 build clean-ninja!: ninjatool
@@ -1340,6 +1342,10 @@ build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib
    flags = $link_flags_console_debug
    extra = 
 build $stage_dir\core-test-debug.exe: cp $out_dir\core-test-debug.exe
+
+build run-project-core-test-debug!: run | $stage_dir\core-test-debug.exe
+   cmd = $stage_dir\core-test-debug.exe
+   extra = 
 build project-core-test-debug!: phony $stage_dir\core-test-debug.exe
 build project-core-test!: phony project-core-test-debug!
 
@@ -1375,6 +1381,10 @@ build $out_dir\core-perf-debug.exe | $out_dir\core-perf-debug.pdb: link $ext_lib
    flags = $link_flags_console_debug
    extra = 
 build $stage_dir\core-perf-debug.exe: cp $out_dir\core-perf-debug.exe
+
+build run-project-core-perf-debug!: run | $stage_dir\core-perf-debug.exe
+   cmd = $stage_dir\core-perf-debug.exe
+   extra = 
 build project-core-perf-debug!: phony $stage_dir\core-perf-debug.exe
 build project-core-perf!: phony project-core-perf-debug!
 build group-core-debug!: phony project-core-debug! project-core-id-debug! project-core-id-with-names-debug! project-core-test-debug! project-core-perf-debug!
@@ -1474,6 +1484,10 @@ build $out_dir\ctable-test-debug.exe | $out_dir\ctable-test-debug.pdb: link $ext
    flags = $link_flags_console_debug
    extra = 
 build $stage_dir\ctable-test-debug.exe: cp $out_dir\ctable-test-debug.exe
+
+build run-project-ctable-test-debug!: run | $stage_dir\ctable-test-debug.exe
+   cmd = $stage_dir\ctable-test-debug.exe
+   extra = 
 build project-ctable-test-debug!: phony $stage_dir\ctable-test-debug.exe
 build project-ctable-test!: phony project-ctable-test-debug!
 build group-ctable-debug!: phony project-ctable-debug! project-ctable-test-debug!
@@ -1800,6 +1814,10 @@ build $out_dir\sqlite-test-debug.exe | $out_dir\sqlite-test-debug.pdb: link $ext
    flags = $link_flags_console_debug
    extra = 
 build $stage_dir\sqlite-test-debug.exe: cp $out_dir\sqlite-test-debug.exe
+
+build run-project-sqlite-test-debug!: run | $stage_dir\sqlite-test-debug.exe
+   cmd = $stage_dir\sqlite-test-debug.exe
+   extra = 
 build project-sqlite-test-debug!: phony $stage_dir\sqlite-test-debug.exe
 build project-sqlite-test!: phony project-sqlite-test-debug!
 build group-sqlite-debug!: phony project-sqlite-debug! project-sqlite-test-debug!
@@ -1808,8 +1826,7 @@ build group-sqlite!: phony project-sqlite! project-sqlite-test!
 build $build_dir\debug\testing\src\pch.obj: cl modules\testing\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\testing-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing /DBE_TARGET_BASE=testing /DBE_TESTING_IMPL /I"include" /I"modules\testing\include" /Fp"$build_dir\testing-debug.pch" /Yc"pch.hpp"
-build $build_dir\testing-debug.pch: phony $build_dir\debug\testing\src\pch.obj
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing /DBE_TARGET_BASE=testing /DBE_TESTING_IMPL /I"include" /I"modules\testing\include"
 
 build $out_dir\testing-debug.lib: lib $build_dir\debug\testing\src\pch.obj || init!
    out_file = testing-debug.lib
@@ -1839,6 +1856,10 @@ build $out_dir\testing-test-debug.exe | $out_dir\testing-test-debug.pdb: link $e
    flags = $link_flags_console_debug
    extra = 
 build $stage_dir\testing-test-debug.exe: cp $out_dir\testing-test-debug.exe
+
+build run-project-testing-test-debug!: run | $stage_dir\testing-test-debug.exe
+   cmd = $stage_dir\testing-test-debug.exe
+   extra = 
 build project-testing-test-debug!: phony $stage_dir\testing-test-debug.exe
 build project-testing-test!: phony project-testing-test-debug!
 build group-testing-debug!: phony project-testing-debug! project-testing-test-debug!
@@ -1978,6 +1999,10 @@ build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib
    flags = $link_flags_console_debug
    extra = 
 build $stage_dir\util-test-debug.exe: cp $out_dir\util-test-debug.exe
+
+build run-project-util-test-debug!: run | $stage_dir\util-test-debug.exe
+   cmd = $stage_dir\util-test-debug.exe
+   extra = 
 build project-util-test-debug!: phony $stage_dir\util-test-debug.exe
 build project-util-test!: phony project-util-test-debug!
 
@@ -2008,6 +2033,10 @@ build $out_dir\util-perf-debug.exe | $out_dir\util-perf-debug.pdb: link $ext_lib
    flags = $link_flags_console_debug
    extra = 
 build $stage_dir\util-perf-debug.exe: cp $out_dir\util-perf-debug.exe
+
+build run-project-util-perf-debug!: run | $stage_dir\util-perf-debug.exe
+   cmd = $stage_dir\util-perf-debug.exe
+   extra = 
 build project-util-perf-debug!: phony $stage_dir\util-perf-debug.exe
 build project-util-perf!: phony project-util-perf-debug!
 build group-util-debug!: phony project-util-debug! project-util-test-debug! project-util-perf-debug!
@@ -2268,6 +2297,8 @@ build all-debug!: phony group-deps-debug! group-blt-debug! group-cli-debug! grou
 build all!: phony group-deps! group-blt! group-cli! group-core! group-ctable! group-luablt! group-luacore! group-luautil! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\luaxx-debug.lib
 build limp!: phony modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\luablt\src\blt.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! tools\limp\include\limp_lua.hpp!
+build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
+build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb!
 
 default all!

@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2290 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2321 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.5
 
@@ -43,14 +43,14 @@ rule limp
    description = limp $path
    generator = true
 
+rule run
+   command = $cmd $extra
+   description = $cmd
+
 rule mkdir
    command = cmd /s /c "if not exist "$out" md "$out""
    description = mkdir $out
    generator = true
-
-rule touchself
-   command = cmd /s /c "echo:>nul 2>>"$out""
-   description = touch $out
 
 rule putfile
    command = cmd /s /c "(echo:$contents)>"$out""
@@ -159,9 +159,11 @@ build $include_dir\be\testing: lndir modules\testing\include | $include_dir\be
 build $include_dir\be\util: lndir modules\util\include | $include_dir\be
 build init_include_links!: phony $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\luablt $include_dir\be\luacore $include_dir\be\luautil $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\util
 build $build_dir\.boost_log: build_boost | $build_dir
-build %BOOST_HOME%\boost: phony $build_dir\.boost_log
+build %BOOST_HOME%\boost: phony || $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
-build $build_dir\.i9d: touchself | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+
+build $build_dir\.i9d: putfile | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+   contents = .
 build init!: phony $build_dir\.i9d
 
 build clean-ninja!: ninjatool
@@ -1335,6 +1337,10 @@ build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    flags = $link_flags_console_release
    extra = 
 build $stage_dir\core-test.exe: cp $out_dir\core-test.exe
+
+build run-project-core-test-release!: run | $stage_dir\core-test.exe
+   cmd = $stage_dir\core-test.exe
+   extra = 
 build project-core-test-release!: phony $stage_dir\core-test.exe
 build project-core-test!: phony project-core-test-release!
 
@@ -1369,6 +1375,10 @@ build $out_dir\core-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    flags = $link_flags_console_release
    extra = 
 build $stage_dir\core-perf.exe: cp $out_dir\core-perf.exe
+
+build run-project-core-perf-release!: run | $stage_dir\core-perf.exe
+   cmd = $stage_dir\core-perf.exe
+   extra = 
 build project-core-perf-release!: phony $stage_dir\core-perf.exe
 build project-core-perf!: phony project-core-perf-release!
 build group-core-release!: phony project-core-release! project-core-id-release! project-core-id-with-names-release! project-core-test-release! project-core-perf-release!
@@ -1467,6 +1477,10 @@ build $out_dir\ctable-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-
    flags = $link_flags_console_release
    extra = 
 build $stage_dir\ctable-test.exe: cp $out_dir\ctable-test.exe
+
+build run-project-ctable-test-release!: run | $stage_dir\ctable-test.exe
+   cmd = $stage_dir\ctable-test.exe
+   extra = 
 build project-ctable-test-release!: phony $stage_dir\ctable-test.exe
 build project-ctable-test!: phony project-ctable-test-release!
 build group-ctable-release!: phony project-ctable-release! project-ctable-test-release!
@@ -1792,6 +1806,10 @@ build $out_dir\sqlite-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-
    flags = $link_flags_console_release
    extra = 
 build $stage_dir\sqlite-test.exe: cp $out_dir\sqlite-test.exe
+
+build run-project-sqlite-test-release!: run | $stage_dir\sqlite-test.exe
+   cmd = $stage_dir\sqlite-test.exe
+   extra = 
 build project-sqlite-test-release!: phony $stage_dir\sqlite-test.exe
 build project-sqlite-test!: phony project-sqlite-test-release!
 build group-sqlite-release!: phony project-sqlite-release! project-sqlite-test-release!
@@ -1800,8 +1818,7 @@ build group-sqlite!: phony project-sqlite! project-sqlite-test!
 build $build_dir\release\testing\src\pch.obj: cl modules\testing\src\pch.cpp || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\testing.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing /DBE_TARGET_BASE=testing /DBE_TESTING_IMPL /I"include" /I"modules\testing\include" /Fp"$build_dir\testing.pch" /Yc"pch.hpp"
-build $build_dir\testing.pch: phony $build_dir\release\testing\src\pch.obj
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing /DBE_TARGET_BASE=testing /DBE_TESTING_IMPL /I"include" /I"modules\testing\include"
 
 build $out_dir\testing.lib: lib $build_dir\release\testing\src\pch.obj || init!
    out_file = testing.lib
@@ -1830,6 +1847,10 @@ build $out_dir\testing-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core
    flags = $link_flags_console_release
    extra = 
 build $stage_dir\testing-test.exe: cp $out_dir\testing-test.exe
+
+build run-project-testing-test-release!: run | $stage_dir\testing-test.exe
+   cmd = $stage_dir\testing-test.exe
+   extra = 
 build project-testing-test-release!: phony $stage_dir\testing-test.exe
 build project-testing-test!: phony project-testing-test-release!
 build group-testing-release!: phony project-testing-release! project-testing-test-release!
@@ -1968,6 +1989,10 @@ build $out_dir\util-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    flags = $link_flags_console_release
    extra = 
 build $stage_dir\util-test.exe: cp $out_dir\util-test.exe
+
+build run-project-util-test-release!: run | $stage_dir\util-test.exe
+   cmd = $stage_dir\util-test.exe
+   extra = 
 build project-util-test-release!: phony $stage_dir\util-test.exe
 build project-util-test!: phony project-util-test-release!
 
@@ -1997,6 +2022,10 @@ build $out_dir\util-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    flags = $link_flags_console_release
    extra = 
 build $stage_dir\util-perf.exe: cp $out_dir\util-perf.exe
+
+build run-project-util-perf-release!: run | $stage_dir\util-perf.exe
+   cmd = $stage_dir\util-perf.exe
+   extra = 
 build project-util-perf-release!: phony $stage_dir\util-perf.exe
 build project-util-perf!: phony project-util-perf-release!
 build group-util-release!: phony project-util-release! project-util-test-release! project-util-perf-release!
@@ -2283,6 +2312,8 @@ build all-release!: phony group-deps-release! group-blt-release! group-cli-relea
 build all!: phony group-deps! group-blt! group-cli! group-core! group-ctable! group-luablt! group-luacore! group-luautil! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
 build limp!: phony modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\luablt\src\blt.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! tools\limp\include\limp_lua.hpp!
+build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
+build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
 build pdb!: phony
 
 default all!
