@@ -77,12 +77,13 @@ force-pushes.
  - [STB](https://github.com/nothings/stb)
  - [Catch 1.6.1](https://github.com/philsquared/Catch)
  - [pugixml 1.9](https://github.com/zeux/pugixml)
- - [SQLite 3.16.2](http://sqlite.org/) (Internal)
  - [zlib 1.2.11](https://github.com/madler/zlib)
+ - [SQLite 3.16.2](http://sqlite.org/) (Internal)
 
-The SQLite source amalgamation is distributed within this repository.  With the
-exception of Boost, all of the other above libraries are referenced as git
-submodules.
+Boost must be downloaded and extracted separately.  Set the `BOOST_HOME`
+environment variable to point to the path where the archive was extracted.
+The SQLite source amalgamation is distributed within this repository.  All
+all other libraries are referenced as git submodules.
 
 
 ## Building
