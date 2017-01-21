@@ -70,14 +70,14 @@ force-pushes.
 
 ## Libraries 
  - [Boost](http://www.boost.org/) (External; 1.63 or newer recommended)
- - [Catch 1.6.0](https://github.com/philsquared/Catch)
- - [GLFW 3.1.2](https://github.com/magicmoremagic/glfw) (Fork)
- - [GLM 0.9.8](https://github.com/magicmoremagic/glm) (Fork)
+ - [GLFW](https://github.com/magicmoremagic/glfw) (Fork; 3.1.2+)
+ - [GLM](https://github.com/magicmoremagic/glm) (Fork; 0.9.8.3+)
+ - [Lua 5.3](https://github.com/magicmoremagic/lua) (Fork; 5.3.3+)
  - [GSL](https://github.com/Microsoft/GSL)
- - [Lua 5.3.3](https://github.com/magicmoremagic/lua) (Fork)
- - [pugixml 1.9](https://github.com/zeux/pugixml)
  - [STB](https://github.com/nothings/stb)
- - [SQLite 3.15.2](http://sqlite.org/) (Internal)
+ - [Catch 1.6.1](https://github.com/philsquared/Catch)
+ - [pugixml 1.9](https://github.com/zeux/pugixml)
+ - [SQLite 3.16.2](http://sqlite.org/) (Internal)
  - [zlib 1.2.11](https://github.com/madler/zlib)
 
 The SQLite source amalgamation is distributed within this repository.  With the
