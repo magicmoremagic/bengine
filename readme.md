@@ -45,6 +45,7 @@ force-pushes.
  - [platform](https://github.com/magicmoremagic/bengine-platform)
  - [sqlite](https://github.com/magicmoremagic/bengine-sqlite)
  - [testing](https://github.com/magicmoremagic/bengine-testing)
+ - [texi](https://github.com/magicmoremagic/bengine-texi)
  - [util](https://github.com/magicmoremagic/bengine-util)
  
 ### Lua Interface Modules
@@ -57,6 +58,7 @@ force-pushes.
  - [`bltc`](https://github.com/magicmoremagic/bengine-bltc)
  - [`bstyle`](https://github.com/magicmoremagic/bengine-bstyle)
  - [`ccolor`](https://github.com/magicmoremagic/bengine-ccolor)
+ - [`concur`](https://github.com/magicmoremagic/bengine-concur)
  - [`idgen`](https://github.com/magicmoremagic/bengine-idgen)
  - [`limp`](https://github.com/magicmoremagic/bengine-limp)
  - [`sizeof`](https://github.com/magicmoremagic/bengine-sizeof)
@@ -70,9 +72,10 @@ force-pushes.
 
 ## Libraries 
  - [Boost](http://www.boost.org/) (External; 1.63 or newer recommended)
+ - [Lua 5.3](https://github.com/magicmoremagic/lua) (Fork; 5.3.3+)
  - [GLFW](https://github.com/magicmoremagic/glfw) (Fork; 3.1.2+)
  - [GLM](https://github.com/magicmoremagic/glm) (Fork; 0.9.8.3+)
- - [Lua 5.3](https://github.com/magicmoremagic/lua) (Fork; 5.3.3+)
+ - [GLI](https://github.com/g-truc/gli)
  - [GSL](https://github.com/Microsoft/GSL)
  - [STB](https://github.com/nothings/stb)
  - [glbinding 2.1.1](https://github.com/cginternals/glbinding)

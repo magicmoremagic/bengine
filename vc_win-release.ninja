@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2321 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2401 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.5
 
@@ -19,11 +19,11 @@ cl_base_defines = /DSYSTEM_WINDOWS /DWIN32 /D_WIN32 /D_WIN32_WINNT=0x0601 /D_WIN
 cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /std:c++latest /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast
 cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
-cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /GS- /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4201 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_extlib_release = /LTCG /IGNORE:4221
@@ -136,6 +136,7 @@ build $deps_dir: mkdir
 build $ext_include_dir: mkdir
 build $ext_lib_dir: mkdir
 build $ext_include_dir\glm: lndir dep_modules\glm\glm | $ext_include_dir
+build $ext_include_dir\gli: lndir dep_modules\gli\gli | $ext_include_dir
 build $ext_include_dir\gsl: lndir dep_modules\gsl\gsl | $ext_include_dir
 build $ext_include_dir\glbinding: lndir dep_modules\glbinding\source\glbinding\include\glbinding | $ext_include_dir
 build $ext_include_dir\glfw: lndir dep_modules\glfw\include\GLFW | $ext_include_dir
@@ -156,13 +157,14 @@ build $include_dir\be\perf: lndir modules\perf\include | $include_dir\be
 build $include_dir\be\platform: lndir modules\platform\include | $include_dir\be
 build $include_dir\be\sqlite: lndir modules\sqlite\include | $include_dir\be
 build $include_dir\be\testing: lndir modules\testing\include | $include_dir\be
+build $include_dir\be\texi: lndir modules\texi\include | $include_dir\be
 build $include_dir\be\util: lndir modules\util\include | $include_dir\be
-build init_include_links!: phony $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\luablt $include_dir\be\luacore $include_dir\be\luautil $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\util
+build init_include_links!: phony $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\luablt $include_dir\be\luacore $include_dir\be\luautil $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\texi $include_dir\be\util
 build $build_dir\.boost_log: build_boost | $build_dir
 build %BOOST_HOME%\boost: phony || $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
 
-build $build_dir\.i9d: putfile | $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+build $build_dir\.i9d: putfile || $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gli $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
    contents = .
 build init!: phony $build_dir\.i9d
 
@@ -1856,6 +1858,58 @@ build project-testing-test!: phony project-testing-test-release!
 build group-testing-release!: phony project-testing-release! project-testing-test-release!
 build group-testing!: phony project-testing! project-testing-test!
 
+build modules\texi\include\read_image.hpp!: limp | modules\texi\meta\read_image.blt modules\texi\meta\read_x_image.blt
+   path = modules\texi\include\read_image.hpp
+   extra = -f
+
+build modules\texi\src\read_image.cpp!: limp | modules\texi\meta\read_stbi_image_impl.blt
+   path = modules\texi\src\read_image.cpp
+   extra = -f
+
+build $build_dir\release\texi\src\pch.obj: cl modules\texi\src\pch.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\texi.pdb
+   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi.pch" /Yc"pch.hpp"
+build $build_dir\texi.pch: phony $build_dir\release\texi\src\pch.obj
+
+build $build_dir\release\texi\src\read_image.obj: cl modules\texi\src\read_image.cpp | $build_dir\texi.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\texi.pdb
+   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi.pch" /Yu"pch.hpp"
+
+build $build_dir\release\texi\src\resize_image.obj: cl modules\texi\src\resize_image.cpp | $build_dir\texi.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\texi.pdb
+   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi.pch" /Yu"pch.hpp"
+
+build $build_dir\release\texi\src\write_image.obj: cl modules\texi\src\write_image.cpp | $build_dir\texi.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\texi.pdb
+   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi.pch" /Yu"pch.hpp"
+
+build $build_dir\release\texi\src\stbi_detail.obj: cl modules\texi\src\stbi_detail.c || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\texi.pdb
+   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include"
+
+build $build_dir\release\texi\src\stbir_detail.obj: cl modules\texi\src\stbir_detail.c || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\texi.pdb
+   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include"
+
+build $build_dir\release\texi\src\stbiw_detail.obj: cl modules\texi\src\stbiw_detail.c || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\texi.pdb
+   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include"
+
+build $out_dir\texi.lib: lib $build_dir\release\texi\src\pch.obj $build_dir\release\texi\src\read_image.obj $build_dir\release\texi\src\resize_image.obj $build_dir\release\texi\src\write_image.obj $build_dir\release\texi\src\stbi_detail.obj $build_dir\release\texi\src\stbir_detail.obj $build_dir\release\texi\src\stbiw_detail.obj || init!
+   out_file = texi.lib
+   flags = $lib_flags_release
+build project-texi-release!: phony $out_dir\texi.lib
+build project-texi!: phony project-texi-release!
+build group-texi-release!: phony project-texi-release!
+build group-texi!: phony project-texi!
+
 build $build_dir\release\util\src\pch.obj: cl modules\util\src\pch.cpp || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\util.pdb
@@ -2132,6 +2186,32 @@ build project-ccolor!: phony project-ccolor-release!
 build group-ccolor-release!: phony project-ccolor-release!
 build group-ccolor!: phony project-ccolor!
 
+build $build_dir\release\concur\src\concur.obj: cl tools\concur\src\concur.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\concur.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=concur /DBE_TARGET_BASE=concur /I"include" /I"tools\concur\include"
+
+build $build_dir\release\concur\src\concur_app.obj: cl tools\concur\src\concur_app.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\concur.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=concur /DBE_TARGET_BASE=concur /I"include" /I"tools\concur\include"
+
+build $build_dir\concur.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\concur.icon.res: rc $build_dir\concur.icon.rc || init!
+
+build $out_dir\concur.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util.lib $build_dir\release\concur\src\concur.obj $build_dir\release\concur\src\concur_app.obj $build_dir\concur.icon.res $build_dir\default.manifest.res || init!
+   out_file = concur.exe
+   pdb = $out_dir\concur.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\concur.exe: cp $out_dir\concur.exe
+build project-concur-release!: phony $stage_dir\concur.exe
+build project-concur!: phony project-concur-release!
+build group-concur-release!: phony project-concur-release!
+build group-concur!: phony project-concur!
+
 build $build_dir\release\idgen\src\idgen.obj: cl tools\idgen\src\idgen.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\idgen.pdb
@@ -2308,10 +2388,10 @@ build project-consolecolors-release!: phony $stage_dir\consolecolors.exe
 build project-consolecolors!: phony project-consolecolors-release!
 build group-consolecolors-release!: phony project-consolecolors-release!
 build group-consolecolors!: phony project-consolecolors!
-build all-release!: phony group-deps-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-luablt-release! group-luacore-release! group-luautil-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
-build all!: phony group-deps! group-blt! group-cli! group-core! group-ctable! group-luablt! group-luacore! group-luautil! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
+build all-release!: phony group-deps-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-luablt-release! group-luacore-release! group-luautil-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-texi-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
+build all!: phony group-deps! group-blt! group-cli! group-core! group-ctable! group-luablt! group-luacore! group-luautil! group-perf! group-platform! group-sqlite! group-testing! group-texi! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\luablt\src\blt.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\luablt\src\blt.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! modules\texi\include\read_image.hpp! modules\texi\src\read_image.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
 build pdb!: phony

@@ -1,5 +1,6 @@
 deps {
    ext_include_dir 'glm'       { path 'glm/glm' },
+   ext_include_dir 'gli'       { path 'gli/gli' },
    ext_include_dir 'gsl'       { path 'gsl/gsl' },
    ext_include_dir 'glbinding' { path 'glbinding/source/glbinding/include/glbinding' },
    ext_include_dir 'glfw'      { path 'glfw/include/GLFW' },
@@ -49,7 +50,6 @@ deps {
    ext_lib 'glfw' {
       path 'glfw',
       force_c,
-      --include { 'include', 'src' },
       include 'include',
       src {
          'src/context.c',
