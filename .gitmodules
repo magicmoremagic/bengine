@@ -43,12 +43,6 @@
 [submodule "modules/util"]
 	path = modules/util
 	url = https://github.com/magicmoremagic/bengine-util
-[submodule "modules/luablt"]
-	path = modules/luablt
-	url = https://github.com/magicmoremagic/bengine-luablt
-[submodule "modules/luautil"]
-	path = modules/luautil
-	url = https://github.com/magicmoremagic/bengine-luautil
 [submodule "modules/ctable"]
 	path = modules/ctable
 	url = https://github.com/magicmoremagic/bengine-ctable
