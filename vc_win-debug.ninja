@@ -150,20 +150,18 @@ build $ext_include_dir\lua: lndir dep_modules\lua | $ext_include_dir
 build $ext_include_dir\stb: lndir dep_modules\stb | $ext_include_dir
 build $ext_include_dir\zlib: lndir dep_modules\zlib | $ext_include_dir
 build $include_dir\be: mkdir | $include_dir
+build $include_dir\be\belua: lndir modules\belua\include | $include_dir\be
 build $include_dir\be\blt: lndir modules\blt\include | $include_dir\be
 build $include_dir\be\cli: lndir modules\cli\include | $include_dir\be
 build $include_dir\be\core: lndir modules\core\include | $include_dir\be
 build $include_dir\be\ctable: lndir modules\ctable\include | $include_dir\be
-build $include_dir\be\luablt: lndir modules\luablt\include | $include_dir\be
-build $include_dir\be\luacore: lndir modules\luacore\include | $include_dir\be
-build $include_dir\be\luautil: lndir modules\luautil\include | $include_dir\be
 build $include_dir\be\perf: lndir modules\perf\include | $include_dir\be
 build $include_dir\be\platform: lndir modules\platform\include | $include_dir\be
 build $include_dir\be\sqlite: lndir modules\sqlite\include | $include_dir\be
 build $include_dir\be\testing: lndir modules\testing\include | $include_dir\be
 build $include_dir\be\texi: lndir modules\texi\include | $include_dir\be
 build $include_dir\be\util: lndir modules\util\include | $include_dir\be
-build init_include_links!: phony $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\luablt $include_dir\be\luacore $include_dir\be\luautil $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\texi $include_dir\be\util
+build init_include_links!: phony $include_dir\be\belua $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\texi $include_dir\be\util
 build $build_dir\.boost_log: build_boost | $build_dir
 build %BOOST_HOME%\boost: phony || $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
@@ -958,6 +956,34 @@ build project-luaxx!: phony project-luaxx-debug!
 build group-deps-debug!: phony project-zlib-static-debug! project-glbinding-debug! project-glfw-debug! project-luaxx-debug!
 build group-deps!: phony project-zlib-static! project-glbinding! project-glfw! project-luaxx!
 
+build $build_dir\debug\belua\src\context.obj: cl modules\belua\src\context.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\belua-debug.pdb
+   extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /I"include" /I"modules\belua\include"
+
+build $build_dir\debug\belua\src\lua_exception.obj: cl modules\belua\src\lua_exception.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\belua-debug.pdb
+   extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /I"include" /I"modules\belua\include"
+
+build $build_dir\debug\belua\src\lua_helpers.obj: cl modules\belua\src\lua_helpers.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\belua-debug.pdb
+   extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /I"include" /I"modules\belua\include"
+
+build $build_dir\debug\belua\src\open_module.obj: cl modules\belua\src\open_module.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\belua-debug.pdb
+   extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /I"include" /I"modules\belua\include"
+
+build $out_dir\belua-debug.lib: lib $build_dir\debug\belua\src\context.obj $build_dir\debug\belua\src\lua_exception.obj $build_dir\debug\belua\src\lua_helpers.obj $build_dir\debug\belua\src\open_module.obj || init!
+   out_file = belua-debug.lib
+   flags = $lib_flags_debug
+build project-belua-debug!: phony $out_dir\belua-debug.lib
+build project-belua!: phony project-belua-debug!
+build group-belua-debug!: phony project-belua-debug!
+build group-belua!: phony project-belua!
+
 build modules\blt\src\lexer.cpp: ragel modules\blt\meta\lexer.rl
    flags = -s -C -L -G2
 
@@ -997,8 +1023,28 @@ build $out_dir\blt-debug.lib: lib $build_dir\debug\blt\src\pch.obj $build_dir\de
    flags = $lib_flags_debug
 build project-blt-debug!: phony $out_dir\blt-debug.lib
 build project-blt!: phony project-blt-debug!
-build group-blt-debug!: phony project-blt-debug!
-build group-blt!: phony project-blt!
+
+build modules\blt\src-lua\lua_blt.cpp!: limp | modules\blt\meta\lua_blt.lua
+   path = modules\blt\src-lua\lua_blt.cpp
+   extra = -f
+
+build $build_dir\debug\blt-lua\src-lua\lua_blt.obj: cl modules\blt\src-lua\lua_blt.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\blt-lua-debug.pdb
+   extra = /DBE_BLT_LUA_IMPL /DBE_TARGET=blt-lua /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include"
+
+build $build_dir\debug\blt-lua\src-lua\lua_blt_debug.obj: cl modules\blt\src-lua\lua_blt_debug.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\blt-lua-debug.pdb
+   extra = /DBE_BLT_LUA_IMPL /DBE_TARGET=blt-lua /DBE_TARGET_BASE=blt /I"include" /I"modules\blt\include"
+
+build $out_dir\blt-lua-debug.lib: lib $build_dir\debug\blt-lua\src-lua\lua_blt.obj $build_dir\debug\blt-lua\src-lua\lua_blt_debug.obj || init!
+   out_file = blt-lua-debug.lib
+   flags = $lib_flags_debug
+build project-blt-lua-debug!: phony $out_dir\blt-lua-debug.lib
+build project-blt-lua!: phony project-blt-lua-debug!
+build group-blt-debug!: phony project-blt-debug! project-blt-lua-debug!
+build group-blt!: phony project-blt! project-blt-lua!
 
 build modules\cli\include\section_ids.hpp!: limp
    path = modules\cli\include\section_ids.hpp
@@ -1250,6 +1296,32 @@ build $out_dir\core-id-with-names-debug.lib: lib $build_dir\debug\core-id-with-n
 build project-core-id-with-names-debug!: phony $out_dir\core-id-with-names-debug.lib
 build project-core-id-with-names!: phony project-core-id-with-names-debug!
 
+build $build_dir\debug\core-lua\src-lua\lua_id.obj: cl modules\core\src-lua\lua_id.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-lua-debug.pdb
+   extra = /DBE_CORE_LUA_IMPL /DBE_TARGET=core-lua /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\debug\core-lua\src-lua\lua_interpolate_string.obj: cl modules\core\src-lua\lua_interpolate_string.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-lua-debug.pdb
+   extra = /DBE_CORE_LUA_IMPL /DBE_TARGET=core-lua /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\debug\core-lua\src-lua\lua_logging.obj: cl modules\core\src-lua\lua_logging.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-lua-debug.pdb
+   extra = /DBE_CORE_LUA_IMPL /DBE_TARGET=core-lua /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $build_dir\debug\core-lua\src-lua\lua_time.obj: cl modules\core\src-lua\lua_time.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-lua-debug.pdb
+   extra = /DBE_CORE_LUA_IMPL /DBE_TARGET=core-lua /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
+build $out_dir\core-lua-debug.lib: lib $build_dir\debug\core-lua\src-lua\lua_id.obj $build_dir\debug\core-lua\src-lua\lua_interpolate_string.obj $build_dir\debug\core-lua\src-lua\lua_logging.obj $build_dir\debug\core-lua\src-lua\lua_time.obj || init!
+   out_file = core-lua-debug.lib
+   flags = $lib_flags_debug
+build project-core-lua-debug!: phony $out_dir\core-lua-debug.lib
+build project-core-lua!: phony project-core-lua-debug!
+
 build $build_dir\debug\core-test\test\test_a3_aligned_malloc_alloc.obj: cl modules\core\test\test_a3_aligned_malloc_alloc.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\core-test-debug.pdb
@@ -1389,8 +1461,8 @@ build run-project-core-perf-debug!: run | $stage_dir\core-perf-debug.exe
    extra = 
 build project-core-perf-debug!: phony $stage_dir\core-perf-debug.exe
 build project-core-perf!: phony project-core-perf-debug!
-build group-core-debug!: phony project-core-debug! project-core-id-debug! project-core-id-with-names-debug! project-core-test-debug! project-core-perf-debug!
-build group-core!: phony project-core! project-core-id! project-core-id-with-names! project-core-test! project-core-perf!
+build group-core-debug!: phony project-core-debug! project-core-id-debug! project-core-id-with-names-debug! project-core-lua-debug! project-core-test-debug! project-core-perf-debug!
+build group-core!: phony project-core! project-core-id! project-core-id-with-names! project-core-lua! project-core-test! project-core-perf!
 
 build $build_dir\debug\ctable\src\pch.obj: cl modules\ctable\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -1494,99 +1566,6 @@ build project-ctable-test-debug!: phony $stage_dir\ctable-test-debug.exe
 build project-ctable-test!: phony project-ctable-test-debug!
 build group-ctable-debug!: phony project-ctable-debug! project-ctable-test-debug!
 build group-ctable!: phony project-ctable! project-ctable-test!
-
-build modules\luablt\src\blt.cpp!: limp | modules\luablt\meta\blt.lua
-   path = modules\luablt\src\blt.cpp
-   extra = -f
-
-build $build_dir\debug\luablt\src\blt.obj: cl modules\luablt\src\blt.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luablt-debug.pdb
-   extra = /DBE_LUABLT_IMPL /DBE_TARGET=luablt /DBE_TARGET_BASE=luablt /I"include" /I"modules\luablt\include"
-
-build $build_dir\debug\luablt\src\blt_debug.obj: cl modules\luablt\src\blt_debug.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luablt-debug.pdb
-   extra = /DBE_LUABLT_IMPL /DBE_TARGET=luablt /DBE_TARGET_BASE=luablt /I"include" /I"modules\luablt\include"
-
-build $out_dir\luablt-debug.lib: lib $build_dir\debug\luablt\src\blt.obj $build_dir\debug\luablt\src\blt_debug.obj || init!
-   out_file = luablt-debug.lib
-   flags = $lib_flags_debug
-build project-luablt-debug!: phony $out_dir\luablt-debug.lib
-build project-luablt!: phony project-luablt-debug!
-build group-luablt-debug!: phony project-luablt-debug!
-build group-luablt!: phony project-luablt!
-
-build $build_dir\debug\luacore\src\context.obj: cl modules\luacore\src\context.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $build_dir\debug\luacore\src\id.obj: cl modules\luacore\src\id.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $build_dir\debug\luacore\src\interpolate_string.obj: cl modules\luacore\src\interpolate_string.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $build_dir\debug\luacore\src\logging.obj: cl modules\luacore\src\logging.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $build_dir\debug\luacore\src\lua_exception.obj: cl modules\luacore\src\lua_exception.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $build_dir\debug\luacore\src\lua_helpers.obj: cl modules\luacore\src\lua_helpers.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $build_dir\debug\luacore\src\open_module.obj: cl modules\luacore\src\open_module.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $build_dir\debug\luacore\src\time.obj: cl modules\luacore\src\time.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luacore-debug.pdb
-   extra = /DBE_LUACORE_IMPL /DBE_TARGET=luacore /DBE_TARGET_BASE=luacore /I"include" /I"modules\luacore\include"
-
-build $out_dir\luacore-debug.lib: lib $build_dir\debug\luacore\src\context.obj $build_dir\debug\luacore\src\id.obj $build_dir\debug\luacore\src\interpolate_string.obj $build_dir\debug\luacore\src\logging.obj $build_dir\debug\luacore\src\lua_exception.obj $build_dir\debug\luacore\src\lua_helpers.obj $build_dir\debug\luacore\src\open_module.obj $build_dir\debug\luacore\src\time.obj || init!
-   out_file = luacore-debug.lib
-   flags = $lib_flags_debug
-build project-luacore-debug!: phony $out_dir\luacore-debug.lib
-build project-luacore!: phony project-luacore-debug!
-build group-luacore-debug!: phony project-luacore-debug!
-build group-luacore!: phony project-luacore!
-
-build $build_dir\debug\luautil\src\fnv256.obj: cl modules\luautil\src\fnv256.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luautil-debug.pdb
-   extra = /DBE_LUAUTIL_IMPL /DBE_TARGET=luautil /DBE_TARGET_BASE=luautil /I"include" /I"modules\luautil\include"
-
-build $build_dir\debug\luautil\src\fs.obj: cl modules\luautil\src\fs.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luautil-debug.pdb
-   extra = /DBE_LUAUTIL_IMPL /DBE_TARGET=luautil /DBE_TARGET_BASE=luautil /I"include" /I"modules\luautil\include"
-
-build $build_dir\debug\luautil\src\util.obj: cl modules\luautil\src\util.cpp || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\luautil-debug.pdb
-   extra = /DBE_LUAUTIL_IMPL /DBE_TARGET=luautil /DBE_TARGET_BASE=luautil /I"include" /I"modules\luautil\include"
-
-build $out_dir\luautil-debug.lib: lib $build_dir\debug\luautil\src\fnv256.obj $build_dir\debug\luautil\src\fs.obj $build_dir\debug\luautil\src\util.obj || init!
-   out_file = luautil-debug.lib
-   flags = $lib_flags_debug
-build project-luautil-debug!: phony $out_dir\luautil-debug.lib
-build project-luautil!: phony project-luautil-debug!
-build group-luautil-debug!: phony project-luautil-debug!
-build group-luautil!: phony project-luautil!
 
 build $build_dir\debug\perf\src\pch.obj: cl modules\perf\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2001,6 +1980,27 @@ build $out_dir\util-debug.lib: lib $build_dir\debug\util\src\pch.obj $build_dir\
 build project-util-debug!: phony $out_dir\util-debug.lib
 build project-util!: phony project-util-debug!
 
+build $build_dir\debug\util-lua\src-lua\lua_fnv256.obj: cl modules\util\src-lua\lua_fnv256.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\util-lua-debug.pdb
+   extra = /DBE_TARGET=util-lua /DBE_TARGET_BASE=util /DBE_UTIL_LUA_IMPL /I"include" /I"modules\util\include"
+
+build $build_dir\debug\util-lua\src-lua\lua_fs.obj: cl modules\util\src-lua\lua_fs.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\util-lua-debug.pdb
+   extra = /DBE_TARGET=util-lua /DBE_TARGET_BASE=util /DBE_UTIL_LUA_IMPL /I"include" /I"modules\util\include"
+
+build $build_dir\debug\util-lua\src-lua\lua_util.obj: cl modules\util\src-lua\lua_util.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\util-lua-debug.pdb
+   extra = /DBE_TARGET=util-lua /DBE_TARGET_BASE=util /DBE_UTIL_LUA_IMPL /I"include" /I"modules\util\include"
+
+build $out_dir\util-lua-debug.lib: lib $build_dir\debug\util-lua\src-lua\lua_fnv256.obj $build_dir\debug\util-lua\src-lua\lua_fs.obj $build_dir\debug\util-lua\src-lua\lua_util.obj || init!
+   out_file = util-lua-debug.lib
+   flags = $lib_flags_debug
+build project-util-lua-debug!: phony $out_dir\util-lua-debug.lib
+build project-util-lua!: phony project-util-lua-debug!
+
 build $build_dir\debug\util-test\test\test_binary_units.obj: cl modules\util\test\test_binary_units.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\util-test-debug.pdb
@@ -2093,8 +2093,8 @@ build run-project-util-perf-debug!: run | $stage_dir\util-perf-debug.exe
    extra = 
 build project-util-perf-debug!: phony $stage_dir\util-perf-debug.exe
 build project-util-perf!: phony project-util-perf-debug!
-build group-util-debug!: phony project-util-debug! project-util-test-debug! project-util-perf-debug!
-build group-util!: phony project-util! project-util-test! project-util-perf!
+build group-util-debug!: phony project-util-debug! project-util-lua-debug! project-util-test-debug! project-util-perf-debug!
+build group-util!: phony project-util! project-util-lua! project-util-test! project-util-perf!
 
 build $build_dir\debug\bltc\src\bltc.obj: cl tools\bltc\src\bltc.cpp || init!
    flags = $cl_flags_debug
@@ -2274,7 +2274,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\limp-debug.icon.res: rc $build_dir\limp-debug.icon.rc || init!
 build $out_dir\limp-debug.pdb!: pdb $out_dir\limp-debug.pdb
 
-build $out_dir\limp-debug.exe | $out_dir\limp-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\blt-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\luablt-debug.lib $out_dir\luacore-debug.lib $out_dir\luautil-debug.lib $out_dir\util-debug.lib $build_dir\debug\limp\src\limp.obj $build_dir\debug\limp\src\limp_app.obj $build_dir\debug\limp\src\limp_processor.obj $build_dir\limp-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\limp-debug.exe | $out_dir\limp-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\blt-debug.lib $out_dir\blt-lua-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\util-debug.lib $out_dir\util-lua-debug.lib $build_dir\debug\limp\src\limp.obj $build_dir\debug\limp\src\limp_app.obj $build_dir\debug\limp\src\limp_processor.obj $build_dir\limp-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = limp-debug.exe
    pdb = $out_dir\limp-debug.pdb
    flags = $link_flags_console_debug
@@ -2374,10 +2374,10 @@ build project-consolecolors-debug!: phony $stage_dir\consolecolors-debug.exe
 build project-consolecolors!: phony project-consolecolors-debug!
 build group-consolecolors-debug!: phony project-consolecolors-debug!
 build group-consolecolors!: phony project-consolecolors!
-build all-debug!: phony group-deps-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-luablt-debug! group-luacore-debug! group-luautil-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-texi-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug!
-build all!: phony group-deps! group-blt! group-cli! group-core! group-ctable! group-luablt! group-luacore! group-luautil! group-perf! group-platform! group-sqlite! group-testing! group-texi! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
+build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-texi-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug!
+build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-perf! group-platform! group-sqlite! group-testing! group-texi! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\luaxx-debug.lib
-build limp!: phony modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\luablt\src\blt.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! modules\texi\include\read_image.hpp! modules\texi\src\read_image.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! modules\texi\include\read_image.hpp! modules\texi\src\read_image.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb!

@@ -37,6 +37,7 @@ force-pushes.
 
 
 ## Modules
+ - [belua](https://github.com/magicmoremagic/bengine-belua)
  - [blt](https://github.com/magicmoremagic/bengine-blt)
  - [cli](https://github.com/magicmoremagic/bengine-cli)
  - [core](https://github.com/magicmoremagic/bengine-core)
@@ -48,11 +49,6 @@ force-pushes.
  - [texi](https://github.com/magicmoremagic/bengine-texi)
  - [util](https://github.com/magicmoremagic/bengine-util)
  
-### Lua Interface Modules
- - [luablt](https://github.com/magicmoremagic/bengine-luablt)
- - [luacore](https://github.com/magicmoremagic/bengine-luacore)
- - [luautil](https://github.com/magicmoremagic/bengine-luautil)
-
 
 ## Tools
  - [`bltc`](https://github.com/magicmoremagic/bengine-bltc)

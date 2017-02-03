@@ -43,9 +43,6 @@
 [submodule "modules/util"]
 	path = modules/util
 	url = https://github.com/magicmoremagic/bengine-util
-[submodule "modules/luacore"]
-	path = modules/luacore
-	url = https://github.com/magicmoremagic/bengine-luacore
 [submodule "modules/luablt"]
 	path = modules/luablt
 	url = https://github.com/magicmoremagic/bengine-luablt
@@ -104,3 +101,6 @@
 [submodule "modules/texi"]
 	path = modules/texi
 	url = https://github.com/magicmoremagic/bengine-texi
+[submodule "modules/belua"]
+	path = modules/belua
+	url = https://github.com/magicmoremagic/bengine-belua
