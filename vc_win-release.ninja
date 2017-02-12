@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2425 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2453 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.5
 
@@ -1910,8 +1910,36 @@ build $out_dir\texi.lib: lib $build_dir\release\texi\src\pch.obj $build_dir\rele
    flags = $lib_flags_release
 build project-texi-release!: phony $out_dir\texi.lib
 build project-texi!: phony project-texi-release!
-build group-texi-release!: phony project-texi-release!
-build group-texi!: phony project-texi!
+
+build $build_dir\release\texi-test\test\test_main.obj: cl modules\texi\test\test_main.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\texi-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=texi-test /DBE_TARGET_BASE=texi /I"include" /I"modules\texi\include"
+
+build $build_dir\release\texi-test\test\test_read_write_image.obj: cl modules\texi\test\test_read_write_image.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\texi-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=texi-test /DBE_TARGET_BASE=texi /I"include" /I"modules\texi\include"
+
+build $build_dir\texi-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\texi-test.icon.res: rc $build_dir\texi-test.icon.rc || init!
+
+build $out_dir\texi-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\texi.lib $out_dir\util.lib $build_dir\release\texi-test\test\test_main.obj $build_dir\release\texi-test\test\test_read_write_image.obj $build_dir\texi-test.icon.res $build_dir\default.manifest.res || init!
+   out_file = texi-test.exe
+   pdb = $out_dir\texi-test.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\texi-test.exe: cp $out_dir\texi-test.exe
+
+build run-project-texi-test-release!: run | $stage_dir\texi-test.exe
+   cmd = $stage_dir\texi-test.exe
+   extra = 
+build project-texi-test-release!: phony $stage_dir\texi-test.exe
+build project-texi-test!: phony project-texi-test-release!
+build group-texi-release!: phony project-texi-release! project-texi-test-release!
+build group-texi!: phony project-texi! project-texi-test!
 
 build $build_dir\release\util\src\pch.obj: cl modules\util\src\pch.cpp || init!
    flags = $cl_flags_lib_release
@@ -2417,7 +2445,7 @@ build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! gro
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
 build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! modules\texi\include\read_image.hpp! modules\texi\include\write_image.hpp! modules\texi\src\read_image.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
-build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
+build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-texi-test-release! run-project-util-test-release!
 build pdb!: phony
 
 default all!

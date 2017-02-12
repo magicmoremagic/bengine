@@ -178,6 +178,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules-perf", "modules-per
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules-lua", "modules-lua", "{2B4A2CEB-9FD1-4001-9D56-A8CFAEEB144E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "texi-test", "modules\texi\texi-test.vcxproj", "{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		debug|x64 = debug|x64
@@ -385,6 +387,12 @@ Global
 		{07FA65B2-E314-490A-B33F-A05BCC38C1B8}.release|x64.ActiveCfg = release|x64
 		{07FA65B2-E314-490A-B33F-A05BCC38C1B8}.release|x64.Build.0 = release|x64
 		{07FA65B2-E314-490A-B33F-A05BCC38C1B8}.release|x86.ActiveCfg = release|x64
+		{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94}.debug|x64.ActiveCfg = debug|x64
+		{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94}.debug|x64.Build.0 = debug|x64
+		{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94}.debug|x86.ActiveCfg = debug|x64
+		{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94}.release|x64.ActiveCfg = release|x64
+		{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94}.release|x64.Build.0 = release|x64
+		{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94}.release|x86.ActiveCfg = release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -423,5 +431,6 @@ Global
 		{FCA8F7D1-669B-4D78-BE76-6BAC84D5E71C} = {2B4A2CEB-9FD1-4001-9D56-A8CFAEEB144E}
 		{B1F3AD08-357D-4175-B2E3-2871064F7C55} = {2B4A2CEB-9FD1-4001-9D56-A8CFAEEB144E}
 		{07FA65B2-E314-490A-B33F-A05BCC38C1B8} = {2B4A2CEB-9FD1-4001-9D56-A8CFAEEB144E}
+		{D8FEF884-A157-4C9F-9C5B-4EEE9B296C94} = {C83E38D7-7FA0-4690-A20C-ED1A6D11A24F}
 	EndGlobalSection
 EndGlobal
