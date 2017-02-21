@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2440 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2435 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.7
 
@@ -1869,11 +1869,6 @@ build $build_dir\debug\texi\src\pch.obj: cl modules\texi\src\pch.cpp || init!
    extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi-debug.pch" /Yc"pch.hpp"
 build $build_dir\texi-debug.pch: phony $build_dir\debug\texi\src\pch.obj
 
-build $build_dir\debug\texi\src\fixed_size_median_kernel.obj: cl modules\texi\src\fixed_size_median_kernel.cpp | $build_dir\texi-debug.pch || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\texi-debug.pdb
-   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi-debug.pch" /Yu"pch.hpp"
-
 build $build_dir\debug\texi\src\read_image.obj: cl modules\texi\src\read_image.cpp | $build_dir\texi-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\texi-debug.pdb
@@ -1885,11 +1880,6 @@ build $build_dir\debug\texi\src\resize_image.obj: cl modules\texi\src\resize_ima
    extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi-debug.pch" /Yu"pch.hpp"
 
 build $build_dir\debug\texi\src\stbi_util_detail.obj: cl modules\texi\src\stbi_util_detail.cpp | $build_dir\texi-debug.pch || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\texi-debug.pdb
-   extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi-debug.pch" /Yu"pch.hpp"
-
-build $build_dir\debug\texi\src\variable_size_median_kernel.obj: cl modules\texi\src\variable_size_median_kernel.cpp | $build_dir\texi-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\texi-debug.pdb
    extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include" /Fp"$build_dir\texi-debug.pch" /Yu"pch.hpp"
@@ -1914,7 +1904,7 @@ build $build_dir\debug\texi\src\stbiw_detail.obj: cl modules\texi\src\stbiw_deta
    pdb = $build_dir\texi-debug.pdb
    extra = /DBE_TARGET=texi /DBE_TARGET_BASE=texi /DBE_TEXI_IMPL /I"include" /I"modules\texi\include"
 
-build $out_dir\texi-debug.lib: lib $build_dir\debug\texi\src\pch.obj $build_dir\debug\texi\src\fixed_size_median_kernel.obj $build_dir\debug\texi\src\read_image.obj $build_dir\debug\texi\src\resize_image.obj $build_dir\debug\texi\src\stbi_util_detail.obj $build_dir\debug\texi\src\variable_size_median_kernel.obj $build_dir\debug\texi\src\write_image.obj $build_dir\debug\texi\src\stbi_detail.obj $build_dir\debug\texi\src\stbir_detail.obj $build_dir\debug\texi\src\stbiw_detail.obj || init!
+build $out_dir\texi-debug.lib: lib $build_dir\debug\texi\src\pch.obj $build_dir\debug\texi\src\read_image.obj $build_dir\debug\texi\src\resize_image.obj $build_dir\debug\texi\src\stbi_util_detail.obj $build_dir\debug\texi\src\write_image.obj $build_dir\debug\texi\src\stbi_detail.obj $build_dir\debug\texi\src\stbir_detail.obj $build_dir\debug\texi\src\stbiw_detail.obj || init!
    out_file = texi-debug.lib
    flags = $lib_flags_debug
 build project-texi-debug!: phony $out_dir\texi-debug.lib
@@ -1930,13 +1920,18 @@ build $build_dir\debug\texi-test\test\test_read_write_image.obj: cl modules\texi
    pdb = $build_dir\texi-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=texi-test /DBE_TARGET_BASE=texi /I"include" /I"modules\texi\include"
 
+build $build_dir\debug\texi-test\test\test_uniform_resample.obj: cl modules\texi\test\test_uniform_resample.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\texi-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=texi-test /DBE_TARGET_BASE=texi /I"include" /I"modules\texi\include"
+
 build $build_dir\texi-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\texi-test-debug.icon.res: rc $build_dir\texi-test-debug.icon.rc || init!
 build $out_dir\texi-test-debug.pdb!: pdb $out_dir\texi-test-debug.pdb
 
-build $out_dir\texi-test-debug.exe | $out_dir\texi-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\texi-debug.lib $out_dir\util-debug.lib $build_dir\debug\texi-test\test\test_main.obj $build_dir\debug\texi-test\test\test_read_write_image.obj $build_dir\texi-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\texi-test-debug.exe | $out_dir\texi-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\texi-debug.lib $out_dir\util-debug.lib $build_dir\debug\texi-test\test\test_main.obj $build_dir\debug\texi-test\test\test_read_write_image.obj $build_dir\debug\texi-test\test\test_uniform_resample.obj $build_dir\texi-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = texi-test-debug.exe
    pdb = $out_dir\texi-test-debug.pdb
    flags = $link_flags_console_debug
