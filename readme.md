@@ -42,11 +42,11 @@ force-pushes.
  - [cli](https://github.com/magicmoremagic/bengine-cli)
  - [core](https://github.com/magicmoremagic/bengine-core)
  - [ctable](https://github.com/magicmoremagic/bengine-ctable)
+ - [gfx](https://github.com/magicmoremagic/bengine-gfx)
  - [perf](https://github.com/magicmoremagic/bengine-perf)
  - [platform](https://github.com/magicmoremagic/bengine-platform)
  - [sqlite](https://github.com/magicmoremagic/bengine-sqlite)
  - [testing](https://github.com/magicmoremagic/bengine-testing)
- - [texi](https://github.com/magicmoremagic/bengine-texi)
  - [util](https://github.com/magicmoremagic/bengine-util)
  
 

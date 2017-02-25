@@ -98,3 +98,6 @@
 [submodule "modules/belua"]
 	path = modules/belua
 	url = https://github.com/magicmoremagic/bengine-belua
+[submodule "modules/gfx"]
+	path = modules/gfx
+	url = https://github.com/magicmoremagic/bengine-gfx
