@@ -91,10 +91,6 @@
 [submodule "tools/concur"]
 	path = tools/concur
 	url = https://github.com/magicmoremagic/bengine-concur
-
-[submodule "modules/texi"]
-	path = modules/texi
-	url = https://github.com/magicmoremagic/bengine-texi
 [submodule "modules/belua"]
 	path = modules/belua
 	url = https://github.com/magicmoremagic/bengine-belua
