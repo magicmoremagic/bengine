@@ -1,4 +1,5 @@
 file_dir = be.fs.parent_path(file_path)
+file_ext = be.fs.path_extension(file_path)
 project_dir = be.fs.parent_path(file_dir)
 meta_dir = be.fs.compose_path(project_dir, 'meta')
 root_dir = be.fs.parent_path(limprc_path)

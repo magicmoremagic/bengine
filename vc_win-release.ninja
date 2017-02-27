@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2443 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2459 ##
 # ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
 ninja_required_version = 1.5
 
@@ -1353,11 +1353,6 @@ build $build_dir\release\core-test\test\test_buf.obj: cl modules\core\test\test_
    pdb = $build_dir\core-test.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
 
-build $build_dir\release\core-test\test\test_handles.obj: cl modules\core\test\test_handles.cpp || init!
-   flags = $cl_flags_test_release
-   pdb = $build_dir\core-test.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
-
 build $build_dir\release\core-test\test\test_inline_executors.obj: cl modules\core\test\test_inline_executors.cpp || init!
    flags = $cl_flags_test_release
    pdb = $build_dir\core-test.pdb
@@ -1410,7 +1405,7 @@ build $build_dir\default.manifest.rc: putfile | $build_dir\default.manifest
 1 RT_MANIFEST ^"default.manifest^"
 build $build_dir\default.manifest.res: rc $build_dir\default.manifest.rc || init!
 
-build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_buf.obj $build_dir\release\core-test\test\test_handles.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_string_interpolation.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_buf.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_string_interpolation.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
    out_file = core-test.exe
    pdb = $out_dir\core-test.pdb
    flags = $link_flags_console_release
@@ -1423,11 +1418,6 @@ build run-project-core-test-release!: run | $stage_dir\core-test.exe
 build project-core-test-release!: phony $stage_dir\core-test.exe
 build project-core-test!: phony project-core-test-release!
 
-build $build_dir\release\core-perf\perf\perf_handle_retirement.obj: cl modules\core\perf\perf_handle_retirement.cpp || init!
-   flags = $cl_flags_perf_release
-   pdb = $build_dir\core-perf.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
-
 build $build_dir\release\core-perf\perf\perf_logging.obj: cl modules\core\perf\perf_logging.cpp || init!
    flags = $cl_flags_perf_release
    pdb = $build_dir\core-perf.pdb
@@ -1438,17 +1428,12 @@ build $build_dir\release\core-perf\perf\perf_main.obj: cl modules\core\perf\perf
    pdb = $build_dir\core-perf.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
 
-build $build_dir\release\core-perf\perf\perf_thread_local.obj: cl modules\core\perf\perf_thread_local.cpp || init!
-   flags = $cl_flags_perf_release
-   pdb = $build_dir\core-perf.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
-
 build $build_dir\core-perf.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\core-perf.icon.res: rc $build_dir\core-perf.icon.rc || init!
 
-build $out_dir\core-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\perf.lib $out_dir\testing.lib $build_dir\release\core-perf\perf\perf_handle_retirement.obj $build_dir\release\core-perf\perf\perf_logging.obj $build_dir\release\core-perf\perf\perf_main.obj $build_dir\release\core-perf\perf\perf_thread_local.obj $build_dir\core-perf.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\perf.lib $out_dir\testing.lib $build_dir\release\core-perf\perf\perf_logging.obj $build_dir\release\core-perf\perf\perf_main.obj $build_dir\core-perf.icon.res $build_dir\default.manifest.res || init!
    out_file = core-perf.exe
    pdb = $out_dir\core-perf.pdb
    flags = $link_flags_console_release
@@ -1565,6 +1550,22 @@ build project-ctable-test!: phony project-ctable-test-release!
 build group-ctable-release!: phony project-ctable-release! project-ctable-test-release!
 build group-ctable!: phony project-ctable! project-ctable-test!
 
+build modules\gfx\include\colorspace.hpp!: limp | limp\common\enum_decl.blt modules\gfx\meta\colorspace.lua
+   path = modules\gfx\include\colorspace.hpp
+   extra = -f
+
+build modules\gfx\src\colorspace.cpp!: limp | limp\common\enum_name.blt modules\gfx\meta\colorspace.lua
+   path = modules\gfx\src\colorspace.cpp
+   extra = -f
+
+build modules\gfx\include\swizzle.hpp!: limp | limp\common\enum_decl.blt modules\gfx\meta\colorspace.lua
+   path = modules\gfx\include\swizzle.hpp
+   extra = -f
+
+build modules\gfx\src\swizzle.cpp!: limp | limp\common\enum_name.blt modules\gfx\meta\colorspace.lua
+   path = modules\gfx\src\swizzle.cpp
+   extra = -f
+
 build modules\gfx\include\read_image.hpp!: limp | modules\gfx\meta\read_image.blt modules\gfx\meta\read_x_image.blt
    path = modules\gfx\include\read_image.hpp
    extra = -f
@@ -1583,6 +1584,11 @@ build $build_dir\release\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yc"pch.hpp"
 build $build_dir\gfx.pch: phony $build_dir\release\gfx\src\pch.obj
 
+build $build_dir\release\gfx\src\colorspace.obj: cl modules\gfx\src\colorspace.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
 build $build_dir\release\gfx\src\read_image.obj: cl modules\gfx\src\read_image.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
@@ -1594,6 +1600,16 @@ build $build_dir\release\gfx\src\resize_image.obj: cl modules\gfx\src\resize_ima
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
 
 build $build_dir\release\gfx\src\stbi_util_detail.obj: cl modules\gfx\src\stbi_util_detail.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\swizzle.obj: cl modules\gfx\src\swizzle.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\texture_storage.obj: cl modules\gfx\src\texture_storage.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
@@ -1613,7 +1629,7 @@ build $build_dir\release\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_deta
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
    out_file = gfx.lib
    flags = $lib_flags_release
 build project-gfx-release!: phony $out_dir\gfx.lib
@@ -2433,7 +2449,7 @@ build group-consolecolors!: phony project-consolecolors!
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\read_image.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\include\swizzle.hpp! modules\gfx\src\swizzle.cpp! modules\gfx\include\read_image.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\read_image.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
 build pdb!: phony
