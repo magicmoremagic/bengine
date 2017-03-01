@@ -1,5 +1,5 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2459 ##
-# ######## !! GENERATED CODE -- DO NOT MODIFY !! ######## ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2439 ##
+# ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.5
 
 bin_dir = bin
@@ -39,8 +39,15 @@ rule ninjatool
    description = ninja -t $tool
 
 rule limp
-   command = "$bin_dir\limp.exe" $extra $path
-   description = limp $path
+   command = "$bin_dir\limp.exe" --depfile "$build_dir\$out.d" -f $out
+   depfile = $build_dir\$out.d
+   deps = gcc
+   description = limp $out
+   generator = true
+
+rule limpin
+   command = "$bin_dir\limp.exe" -f $in
+   description = limp $in
    generator = true
 
 rule run
@@ -106,6 +113,7 @@ rule build_boost
    generator = true
    rspfile = build_boost.cmd
    rspfile_content = @echo off & $
+(if not exist build md build) & $
 cd %BOOST_HOME% & $
 (if not exist b2.exe call bootstrap.bat) & $
 ((.\b2.exe "--stagedir=%~dp0$ext_lib_dir" "--build-dir=%~dp0$build_dir" $
@@ -127,7 +135,6 @@ rule ragel
    restat = true
 
 build configure!: configure
-build $build_dir: mkdir
 build $out_dir: mkdir
 build $include_dir: mkdir
 build $stage_dir: mkdir
@@ -146,23 +153,23 @@ build $ext_include_dir\lua: lndir dep_modules\lua | $ext_include_dir
 build $ext_include_dir\stb: lndir dep_modules\stb | $ext_include_dir
 build $ext_include_dir\zlib: lndir dep_modules\zlib | $ext_include_dir
 build $include_dir\be: mkdir | $include_dir
-build $include_dir\be\belua: lndir modules\belua\include | $include_dir\be
-build $include_dir\be\blt: lndir modules\blt\include | $include_dir\be
-build $include_dir\be\cli: lndir modules\cli\include | $include_dir\be
-build $include_dir\be\core: lndir modules\core\include | $include_dir\be
-build $include_dir\be\ctable: lndir modules\ctable\include | $include_dir\be
-build $include_dir\be\gfx: lndir modules\gfx\include | $include_dir\be
-build $include_dir\be\perf: lndir modules\perf\include | $include_dir\be
-build $include_dir\be\platform: lndir modules\platform\include | $include_dir\be
-build $include_dir\be\sqlite: lndir modules\sqlite\include | $include_dir\be
-build $include_dir\be\testing: lndir modules\testing\include | $include_dir\be
-build $include_dir\be\util: lndir modules\util\include | $include_dir\be
+build $include_dir\be\belua: lndir modules\belua\include || $include_dir\be
+build $include_dir\be\blt: lndir modules\blt\include || $include_dir\be
+build $include_dir\be\cli: lndir modules\cli\include || $include_dir\be
+build $include_dir\be\core: lndir modules\core\include || $include_dir\be
+build $include_dir\be\ctable: lndir modules\ctable\include || $include_dir\be
+build $include_dir\be\gfx: lndir modules\gfx\include || $include_dir\be
+build $include_dir\be\perf: lndir modules\perf\include || $include_dir\be
+build $include_dir\be\platform: lndir modules\platform\include || $include_dir\be
+build $include_dir\be\sqlite: lndir modules\sqlite\include || $include_dir\be
+build $include_dir\be\testing: lndir modules\testing\include || $include_dir\be
+build $include_dir\be\util: lndir modules\util\include || $include_dir\be
 build init_include_links!: phony $include_dir\be\belua $include_dir\be\blt $include_dir\be\cli $include_dir\be\core $include_dir\be\ctable $include_dir\be\gfx $include_dir\be\perf $include_dir\be\platform $include_dir\be\sqlite $include_dir\be\testing $include_dir\be\util
-build $build_dir\.boost_log: build_boost | $build_dir
+build $build_dir\.boost_log: build_boost
 build %BOOST_HOME%\boost: phony || $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
 
-build $build_dir\.i9d: putfile || $build_dir $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gli $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+build $build_dir\.i9d: putfile || $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gli $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
    contents = .
 build init!: phony $build_dir\.i9d
 
@@ -1019,10 +1026,8 @@ build $out_dir\blt.lib: lib $build_dir\release\blt\src\pch.obj $build_dir\releas
    flags = $lib_flags_release
 build project-blt-release!: phony $out_dir\blt.lib
 build project-blt!: phony project-blt-release!
-
-build modules\blt\src-lua\lua_blt.cpp!: limp | modules\blt\meta\lua_blt.lua
-   path = modules\blt\src-lua\lua_blt.cpp
-   extra = -f
+build modules\blt\src-lua\lua_blt.cpp: limp
+build modules\blt\src-lua\lua_blt.cpp!: limpin modules\blt\src-lua\lua_blt.cpp
 
 build $build_dir\release\blt-lua\src-lua\lua_blt.obj: cl modules\blt\src-lua\lua_blt.cpp || init!
    flags = $cl_flags_lib_release
@@ -1041,10 +1046,8 @@ build project-blt-lua-release!: phony $out_dir\blt-lua.lib
 build project-blt-lua!: phony project-blt-lua-release!
 build group-blt-release!: phony project-blt-release! project-blt-lua-release!
 build group-blt!: phony project-blt! project-blt-lua!
-
-build modules\cli\include\section_ids.hpp!: limp
-   path = modules\cli\include\section_ids.hpp
-   extra = -f
+build modules\cli\include\section_ids.hpp: limp
+build modules\cli\include\section_ids.hpp!: limpin modules\cli\include\section_ids.hpp
 
 build $build_dir\release\cli\src\pch.obj: cl modules\cli\src\pch.cpp || init!
    flags = $cl_flags_lib_release
@@ -1099,14 +1102,10 @@ build project-cli-release!: phony $out_dir\cli.lib
 build project-cli!: phony project-cli-release!
 build group-cli-release!: phony project-cli-release!
 build group-cli!: phony project-cli!
-
-build modules\core\include\log_attrib_ids.hpp!: limp
-   path = modules\core\include\log_attrib_ids.hpp
-   extra = -f
-
-build modules\core\include\service_ids.hpp!: limp
-   path = modules\core\include\service_ids.hpp
-   extra = -f
+build modules\core\include\log_attrib_ids.hpp: limp
+build modules\core\include\log_attrib_ids.hpp!: limpin modules\core\include\log_attrib_ids.hpp
+build modules\core\include\service_ids.hpp: limp
+build modules\core\include\service_ids.hpp!: limpin modules\core\include\service_ids.hpp
 
 build $build_dir\release\core\src\pch.obj: cl modules\core\src\pch.cpp || init!
    flags = $cl_flags_lib_release
@@ -1549,34 +1548,20 @@ build project-ctable-test-release!: phony $stage_dir\ctable-test.exe
 build project-ctable-test!: phony project-ctable-test-release!
 build group-ctable-release!: phony project-ctable-release! project-ctable-test-release!
 build group-ctable!: phony project-ctable! project-ctable-test!
-
-build modules\gfx\include\colorspace.hpp!: limp | limp\common\enum_decl.blt modules\gfx\meta\colorspace.lua
-   path = modules\gfx\include\colorspace.hpp
-   extra = -f
-
-build modules\gfx\src\colorspace.cpp!: limp | limp\common\enum_name.blt modules\gfx\meta\colorspace.lua
-   path = modules\gfx\src\colorspace.cpp
-   extra = -f
-
-build modules\gfx\include\swizzle.hpp!: limp | limp\common\enum_decl.blt modules\gfx\meta\colorspace.lua
-   path = modules\gfx\include\swizzle.hpp
-   extra = -f
-
-build modules\gfx\src\swizzle.cpp!: limp | limp\common\enum_name.blt modules\gfx\meta\colorspace.lua
-   path = modules\gfx\src\swizzle.cpp
-   extra = -f
-
-build modules\gfx\include\read_image.hpp!: limp | modules\gfx\meta\read_image.blt modules\gfx\meta\read_x_image.blt
-   path = modules\gfx\include\read_image.hpp
-   extra = -f
-
-build modules\gfx\include\write_image.hpp!: limp | modules\gfx\meta\write_x_image.blt
-   path = modules\gfx\include\write_image.hpp
-   extra = -f
-
-build modules\gfx\src\read_image.cpp!: limp | modules\gfx\meta\read_stbi_image_impl.blt
-   path = modules\gfx\src\read_image.cpp
-   extra = -f
+build modules\gfx\include\colorspace.hpp: limp
+build modules\gfx\include\colorspace.hpp!: limpin modules\gfx\include\colorspace.hpp
+build modules\gfx\include\read_image.hpp: limp
+build modules\gfx\include\read_image.hpp!: limpin modules\gfx\include\read_image.hpp
+build modules\gfx\include\swizzle.hpp: limp
+build modules\gfx\include\swizzle.hpp!: limpin modules\gfx\include\swizzle.hpp
+build modules\gfx\include\write_image.hpp: limp
+build modules\gfx\include\write_image.hpp!: limpin modules\gfx\include\write_image.hpp
+build modules\gfx\src\colorspace.cpp: limp
+build modules\gfx\src\colorspace.cpp!: limpin modules\gfx\src\colorspace.cpp
+build modules\gfx\src\read_image.cpp: limp
+build modules\gfx\src\read_image.cpp!: limpin modules\gfx\src\read_image.cpp
+build modules\gfx\src\swizzle.cpp: limp
+build modules\gfx\src\swizzle.cpp!: limpin modules\gfx\src\swizzle.cpp
 
 build $build_dir\release\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
    flags = $cl_flags_lib_release
@@ -1585,6 +1570,11 @@ build $build_dir\release\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
 build $build_dir\gfx.pch: phony $build_dir\release\gfx\src\pch.obj
 
 build $build_dir\release\gfx\src\colorspace.obj: cl modules\gfx\src\colorspace.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\image_format.obj: cl modules\gfx\src\image_format.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
@@ -1629,7 +1619,7 @@ build $build_dir\release\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_deta
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
    out_file = gfx.lib
    flags = $lib_flags_release
 build project-gfx-release!: phony $out_dir\gfx.lib
@@ -1762,22 +1752,14 @@ build project-platform-release!: phony $out_dir\platform.lib
 build project-platform!: phony project-platform-release!
 build group-platform-release!: phony project-platform-release!
 build group-platform!: phony project-platform!
-
-build modules\sqlite\include\transaction_type.hpp!: limp | modules\sqlite\meta\transaction_type.lua modules\sqlite\meta\transaction_type_hpp.blt
-   path = modules\sqlite\include\transaction_type.hpp
-   extra = -f
-
-build modules\sqlite\src\transaction_type.cpp!: limp | modules\sqlite\meta\transaction_type.lua modules\sqlite\meta\transaction_type_cpp.blt
-   path = modules\sqlite\src\transaction_type.cpp
-   extra = -f
-
-build modules\sqlite\include\result_type.hpp!: limp | modules\sqlite\meta\result_type.lua modules\sqlite\meta\result_type_hpp.blt
-   path = modules\sqlite\include\result_type.hpp
-   extra = -f
-
-build modules\sqlite\src\result_type.cpp!: limp | modules\sqlite\meta\result_type.lua modules\sqlite\meta\result_type_cpp.blt
-   path = modules\sqlite\src\result_type.cpp
-   extra = -f
+build modules\sqlite\include\result_type.hpp: limp
+build modules\sqlite\include\result_type.hpp!: limpin modules\sqlite\include\result_type.hpp
+build modules\sqlite\include\transaction_type.hpp: limp
+build modules\sqlite\include\transaction_type.hpp!: limpin modules\sqlite\include\transaction_type.hpp
+build modules\sqlite\src\result_type.cpp: limp
+build modules\sqlite\src\result_type.cpp!: limpin modules\sqlite\src\result_type.cpp
+build modules\sqlite\src\transaction_type.cpp: limp
+build modules\sqlite\src\transaction_type.cpp!: limpin modules\sqlite\src\transaction_type.cpp
 
 build $build_dir\release\sqlite\src\sqlite.obj: cl modules\sqlite\src\sqlite.c || init!
    flags = $cl_flags_lib_release
@@ -2290,10 +2272,8 @@ build project-idgen-release!: phony $stage_dir\idgen.exe
 build project-idgen!: phony project-idgen-release!
 build group-idgen-release!: phony project-idgen-release!
 build group-idgen!: phony project-idgen!
-
-build tools\limp\include\limp_lua.hpp!: limp | tools\limp\meta\limp.lua
-   path = tools\limp\include\limp_lua.hpp
-   extra = -f
+build tools\limp\include\limp_lua.hpp: limp
+build tools\limp\include\limp_lua.hpp!: limpin tools\limp\include\limp_lua.hpp
 
 build $build_dir\release\limp\src\limp.obj: cl tools\limp\src\limp.cpp || init!
    flags = $cl_flags_release
@@ -2315,7 +2295,7 @@ build $build_dir\limp.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\limp.icon.res: rc $build_dir\limp.icon.rc || init!
 
-build $out_dir\limp.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\blt-lua.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-lua.lib $out_dir\util.lib $build_dir\release\limp\src\limp.obj $build_dir\release\limp\src\limp_app.obj $build_dir\release\limp\src\limp_processor.obj $build_dir\limp.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\limp.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\blt-lua.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core-lua.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-lua.lib $out_dir\util.lib $build_dir\release\limp\src\limp.obj $build_dir\release\limp\src\limp_app.obj $build_dir\release\limp\src\limp_processor.obj $build_dir\limp.icon.res $build_dir\default.manifest.res || init!
    out_file = limp.exe
    pdb = $out_dir\limp.pdb
    flags = $link_flags_console_release
@@ -2449,12 +2429,12 @@ build group-consolecolors!: phony project-consolecolors!
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\include\swizzle.hpp! modules\gfx\src\swizzle.cpp! modules\gfx\include\read_image.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\read_image.cpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\transaction_type.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\src\result_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
 build pdb!: phony
 
 default all!
 
-# ################ END OF GENERATED CODE ################ ##
+# ######################### END OF GENERATED CODE ######################### ##
 
