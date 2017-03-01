@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win') !! 4530 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 4485 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -47,18 +47,6 @@ link_flags_console_release = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG /
 rule ninjatool
    command = ninja -f $file -t $tool $extra
    description = ninja -t $tool
-
-rule limp
-   command = limp --depfile "$build_dir\$out.d" -f $out
-   depfile = $build_dir\$out.d
-   deps = gcc
-   description = limp $out
-   generator = true
-
-rule limpin
-   command = limp -f $in
-   description = limp $in
-   generator = true
 
 rule run
    command = $cmd $extra
@@ -138,7 +126,7 @@ stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
 rd /Q /S %~dp0$ext_lib_dir\lib ) >nul )
 
 rule configure
-   command = limp -f vc_win.ninja
+   command = limp -f vc_win-no-limp.ninja
    description = configure
    generator = true
 
@@ -189,7 +177,7 @@ build init!: phony $build_dir\.i9d
 
 build clean-ninja!: ninjatool
    tool = clean
-   file = vc_win.ninja
+   file = vc_win-no-limp.ninja
 
 build clean-rm-out_dir!: rmfiles | clean-ninja!
    paths = $out_dir\*.*
@@ -1835,8 +1823,6 @@ build $out_dir\blt.lib: lib $build_dir\release\blt\src\pch.obj $build_dir\releas
    flags = $lib_flags_release
 build project-blt-release!: phony $out_dir\blt.lib
 build project-blt!: phony project-blt-debug! project-blt-release!
-build modules\blt\src-lua\lua_blt.cpp: limp
-build modules\blt\src-lua\lua_blt.cpp!: limpin modules\blt\src-lua\lua_blt.cpp
 
 build $build_dir\debug\blt-lua\src-lua\lua_blt.obj: cl modules\blt\src-lua\lua_blt.cpp || init!
    flags = $cl_flags_lib_debug
@@ -1871,8 +1857,6 @@ build project-blt-lua!: phony project-blt-lua-debug! project-blt-lua-release!
 build group-blt-debug!: phony project-blt-debug! project-blt-lua-debug!
 build group-blt-release!: phony project-blt-release! project-blt-lua-release!
 build group-blt!: phony project-blt! project-blt-lua!
-build modules\cli\include\section_ids.hpp: limp
-build modules\cli\include\section_ids.hpp!: limpin modules\cli\include\section_ids.hpp
 
 build $build_dir\debug\cli\src\pch.obj: cl modules\cli\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -1979,10 +1963,6 @@ build project-cli!: phony project-cli-debug! project-cli-release!
 build group-cli-debug!: phony project-cli-debug!
 build group-cli-release!: phony project-cli-release!
 build group-cli!: phony project-cli!
-build modules\core\include\log_attrib_ids.hpp: limp
-build modules\core\include\log_attrib_ids.hpp!: limpin modules\core\include\log_attrib_ids.hpp
-build modules\core\include\service_ids.hpp: limp
-build modules\core\include\service_ids.hpp!: limpin modules\core\include\service_ids.hpp
 
 build $build_dir\debug\core\src\pch.obj: cl modules\core\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2843,20 +2823,6 @@ build project-ctable-test!: phony project-ctable-test-debug! project-ctable-test
 build group-ctable-debug!: phony project-ctable-debug! project-ctable-test-debug!
 build group-ctable-release!: phony project-ctable-release! project-ctable-test-release!
 build group-ctable!: phony project-ctable! project-ctable-test!
-build modules\gfx\include\colorspace.hpp: limp
-build modules\gfx\include\colorspace.hpp!: limpin modules\gfx\include\colorspace.hpp
-build modules\gfx\include\read_image.hpp: limp
-build modules\gfx\include\read_image.hpp!: limpin modules\gfx\include\read_image.hpp
-build modules\gfx\include\swizzle.hpp: limp
-build modules\gfx\include\swizzle.hpp!: limpin modules\gfx\include\swizzle.hpp
-build modules\gfx\include\write_image.hpp: limp
-build modules\gfx\include\write_image.hpp!: limpin modules\gfx\include\write_image.hpp
-build modules\gfx\src\colorspace.cpp: limp
-build modules\gfx\src\colorspace.cpp!: limpin modules\gfx\src\colorspace.cpp
-build modules\gfx\src\read_image.cpp: limp
-build modules\gfx\src\read_image.cpp!: limpin modules\gfx\src\read_image.cpp
-build modules\gfx\src\swizzle.cpp: limp
-build modules\gfx\src\swizzle.cpp!: limpin modules\gfx\src\swizzle.cpp
 
 build $build_dir\debug\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -3231,14 +3197,6 @@ build project-platform!: phony project-platform-debug! project-platform-release!
 build group-platform-debug!: phony project-platform-debug!
 build group-platform-release!: phony project-platform-release!
 build group-platform!: phony project-platform!
-build modules\sqlite\include\result_type.hpp: limp
-build modules\sqlite\include\result_type.hpp!: limpin modules\sqlite\include\result_type.hpp
-build modules\sqlite\include\transaction_type.hpp: limp
-build modules\sqlite\include\transaction_type.hpp!: limpin modules\sqlite\include\transaction_type.hpp
-build modules\sqlite\src\result_type.cpp: limp
-build modules\sqlite\src\result_type.cpp!: limpin modules\sqlite\src\result_type.cpp
-build modules\sqlite\src\transaction_type.cpp: limp
-build modules\sqlite\src\transaction_type.cpp!: limpin modules\sqlite\src\transaction_type.cpp
 
 build $build_dir\debug\sqlite\src\sqlite.obj: cl modules\sqlite\src\sqlite.c || init!
    flags = $cl_flags_lib_debug
@@ -4248,8 +4206,6 @@ build project-idgen!: phony project-idgen-debug! project-idgen-release!
 build group-idgen-debug!: phony project-idgen-debug!
 build group-idgen-release!: phony project-idgen-release!
 build group-idgen!: phony project-idgen!
-build tools\limp\include\limp_lua.hpp: limp
-build tools\limp\include\limp_lua.hpp!: limpin tools\limp\include\limp_lua.hpp
 
 build $build_dir\debug\limp\src\limp.obj: cl tools\limp\src\limp.cpp || init!
    flags = $cl_flags_debug
@@ -4518,7 +4474,6 @@ build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! gr
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!

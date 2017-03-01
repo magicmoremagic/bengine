@@ -39,14 +39,14 @@ rule ninjatool
    description = ninja -t $tool
 
 rule limp
-   command = "$bin_dir\limp.exe" --depfile "$build_dir\$out.d" -f $out
+   command = limp --depfile "$build_dir\$out.d" -f $out
    depfile = $build_dir\$out.d
    deps = gcc
    description = limp $out
    generator = true
 
 rule limpin
-   command = "$bin_dir\limp.exe" -f $in
+   command = limp -f $in
    description = limp $in
    generator = true
 
@@ -128,7 +128,7 @@ stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
 rd /Q /S %~dp0$ext_lib_dir\lib ) >nul )
 
 rule configure
-   command = "$bin_dir\limp.exe" -f vc_win-debug.ninja
+   command = limp -f vc_win-debug.ninja
    description = configure
    generator = true
 
