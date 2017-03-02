@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2439 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2463 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.5
 
@@ -1554,6 +1554,8 @@ build modules\gfx\include\read_image.hpp: limp
 build modules\gfx\include\read_image.hpp!: limpin modules\gfx\include\read_image.hpp
 build modules\gfx\include\swizzle.hpp: limp
 build modules\gfx\include\swizzle.hpp!: limpin modules\gfx\include\swizzle.hpp
+build modules\gfx\include\texture_class.hpp: limp
+build modules\gfx\include\texture_class.hpp!: limpin modules\gfx\include\texture_class.hpp
 build modules\gfx\include\write_image.hpp: limp
 build modules\gfx\include\write_image.hpp!: limpin modules\gfx\include\write_image.hpp
 build modules\gfx\src\colorspace.cpp: limp
@@ -1562,6 +1564,8 @@ build modules\gfx\src\read_image.cpp: limp
 build modules\gfx\src\read_image.cpp!: limpin modules\gfx\src\read_image.cpp
 build modules\gfx\src\swizzle.cpp: limp
 build modules\gfx\src\swizzle.cpp!: limpin modules\gfx\src\swizzle.cpp
+build modules\gfx\src\texture_class.cpp: limp
+build modules\gfx\src\texture_class.cpp!: limpin modules\gfx\src\texture_class.cpp
 
 build $build_dir\release\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
    flags = $cl_flags_lib_release
@@ -1575,6 +1579,11 @@ build $build_dir\release\gfx\src\colorspace.obj: cl modules\gfx\src\colorspace.c
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
 
 build $build_dir\release\gfx\src\image_format.obj: cl modules\gfx\src\image_format.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\image_view.obj: cl modules\gfx\src\image_view.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
@@ -1599,7 +1608,17 @@ build $build_dir\release\gfx\src\swizzle.obj: cl modules\gfx\src\swizzle.cpp | $
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
 
+build $build_dir\release\gfx\src\texture_class.obj: cl modules\gfx\src\texture_class.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
 build $build_dir\release\gfx\src\texture_storage.obj: cl modules\gfx\src\texture_storage.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\texture_view.obj: cl modules\gfx\src\texture_view.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
@@ -1619,11 +1638,16 @@ build $build_dir\release\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_deta
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\image_view.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_class.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\texture_view.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
    out_file = gfx.lib
    flags = $lib_flags_release
 build project-gfx-release!: phony $out_dir\gfx.lib
 build project-gfx!: phony project-gfx-release!
+
+build $build_dir\release\gfx-test\test\test_image_view.obj: cl modules\gfx\test\test_image_view.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\gfx-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
 build $build_dir\release\gfx-test\test\test_main.obj: cl modules\gfx\test\test_main.cpp || init!
    flags = $cl_flags_test_release
@@ -1645,7 +1669,7 @@ build $build_dir\gfx-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\gfx-test.icon.res: rc $build_dir\gfx-test.icon.rc || init!
 
-build $out_dir\gfx-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\gfx-test\test\test_main.obj $build_dir\release\gfx-test\test\test_read_write_image.obj $build_dir\release\gfx-test\test\test_uniform_resample.obj $build_dir\gfx-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\gfx-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\gfx-test\test\test_image_view.obj $build_dir\release\gfx-test\test\test_main.obj $build_dir\release\gfx-test\test\test_read_write_image.obj $build_dir\release\gfx-test\test\test_uniform_resample.obj $build_dir\gfx-test.icon.res $build_dir\default.manifest.res || init!
    out_file = gfx-test.exe
    pdb = $out_dir\gfx-test.pdb
    flags = $link_flags_console_release
@@ -2429,7 +2453,7 @@ build group-consolecolors!: phony project-consolecolors!
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
 build pdb!: phony
