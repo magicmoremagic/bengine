@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 4525 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 4565 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -1975,6 +1975,11 @@ build $build_dir\debug\core\src\a3_vmm_alloc.obj: cl modules\core\src\a3_vmm_all
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\core\src\alg.obj: cl modules\core\src\alg.cpp | $build_dir\core-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-debug.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\core\src\console_color.obj: cl modules\core\src\console_color.cpp | $build_dir\core-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\core-debug.pdb
@@ -2110,7 +2115,7 @@ build $build_dir\debug\core\src\zlib.obj: cl modules\core\src\zlib.cpp | $build_
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
-build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\memory_status.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\filesystem.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj $build_dir\debug\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\zlib.obj || init!
+build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\memory_status.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\filesystem.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj $build_dir\debug\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\zlib.obj || init!
    out_file = core-debug.lib
    flags = $lib_flags_debug
 build project-core-debug!: phony $out_dir\core-debug.lib
@@ -2122,6 +2127,11 @@ build $build_dir\release\core\src\pch.obj: cl modules\core\src\pch.cpp || init!
 build $build_dir\core.pch: phony $build_dir\release\core\src\pch.obj
 
 build $build_dir\release\core\src\a3_vmm_alloc.obj: cl modules\core\src\a3_vmm_alloc.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\alg.obj: cl modules\core\src\alg.cpp | $build_dir\core.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
@@ -2261,7 +2271,7 @@ build $build_dir\release\core\src\zlib.obj: cl modules\core\src\zlib.cpp | $buil
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
-build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\memory_status.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\filesystem.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\zlib.obj || init!
+build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\memory_status.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\filesystem.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\zlib.obj || init!
    out_file = core.lib
    flags = $lib_flags_release
 build project-core-release!: phony $out_dir\core.lib
@@ -2845,6 +2855,21 @@ build $build_dir\debug\gfx\src\image_view.obj: cl modules\gfx\src\image_view.cpp
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\gfx\src\make_image.obj: cl modules\gfx\src\make_image.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\make_texture.obj: cl modules\gfx\src\make_texture.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\mipmapping.obj: cl modules\gfx\src\mipmapping.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\gfx\src\read_image.obj: cl modules\gfx\src\read_image.cpp | $build_dir\gfx-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-debug.pdb
@@ -2895,7 +2920,7 @@ build $build_dir\debug\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_detail
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\make_image.obj $build_dir\debug\gfx\src\make_texture.obj $build_dir\debug\gfx\src\mipmapping.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
    out_file = gfx-debug.lib
    flags = $lib_flags_debug
 build project-gfx-debug!: phony $out_dir\gfx-debug.lib
@@ -2917,6 +2942,21 @@ build $build_dir\release\gfx\src\image_format.obj: cl modules\gfx\src\image_form
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
 
 build $build_dir\release\gfx\src\image_view.obj: cl modules\gfx\src\image_view.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\make_image.obj: cl modules\gfx\src\make_image.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\make_texture.obj: cl modules\gfx\src\make_texture.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\mipmapping.obj: cl modules\gfx\src\mipmapping.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
@@ -2971,7 +3011,7 @@ build $build_dir\release\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_deta
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\image_view.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_class.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\texture_view.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\image_view.obj $build_dir\release\gfx\src\make_image.obj $build_dir\release\gfx\src\make_texture.obj $build_dir\release\gfx\src\mipmapping.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_class.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\texture_view.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
    out_file = gfx.lib
    flags = $lib_flags_release
 build project-gfx-release!: phony $out_dir\gfx.lib

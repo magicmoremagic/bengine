@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2450 ##
+#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2479 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -44,6 +44,7 @@ rule limp
    deps = gcc
    description = limp $out
    generator = true
+   restat = true
 
 rule limpin
    command = limp -f $in
@@ -1122,6 +1123,11 @@ build $build_dir\debug\core\src\a3_vmm_alloc.obj: cl modules\core\src\a3_vmm_all
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\core\src\alg.obj: cl modules\core\src\alg.cpp | $build_dir\core-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-debug.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\core\src\console_color.obj: cl modules\core\src\console_color.cpp | $build_dir\core-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\core-debug.pdb
@@ -1257,7 +1263,7 @@ build $build_dir\debug\core\src\zlib.obj: cl modules\core\src\zlib.cpp | $build_
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
-build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\memory_status.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\filesystem.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj $build_dir\debug\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\zlib.obj || init!
+build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\memory_status.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\filesystem.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj $build_dir\debug\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\zlib.obj || init!
    out_file = core-debug.lib
    flags = $lib_flags_debug
 build project-core-debug!: phony $out_dir\core-debug.lib
@@ -1557,12 +1563,20 @@ build group-ctable-debug!: phony project-ctable-debug! project-ctable-test-debug
 build group-ctable!: phony project-ctable! project-ctable-test!
 build modules\gfx\include\colorspace.hpp: limp
 build modules\gfx\include\colorspace.hpp!: limpin modules\gfx\include\colorspace.hpp
+build modules\gfx\include\image_format_hash.hpp: limp
+build modules\gfx\include\image_format_hash.hpp!: limpin modules\gfx\include\image_format_hash.hpp
+build modules\gfx\include\image_view_hash.hpp: limp
+build modules\gfx\include\image_view_hash.hpp!: limpin modules\gfx\include\image_view_hash.hpp
 build modules\gfx\include\read_image.hpp: limp
 build modules\gfx\include\read_image.hpp!: limpin modules\gfx\include\read_image.hpp
 build modules\gfx\include\swizzle.hpp: limp
 build modules\gfx\include\swizzle.hpp!: limpin modules\gfx\include\swizzle.hpp
 build modules\gfx\include\texture_class.hpp: limp
 build modules\gfx\include\texture_class.hpp!: limpin modules\gfx\include\texture_class.hpp
+build modules\gfx\include\texture_storage_hash.hpp: limp
+build modules\gfx\include\texture_storage_hash.hpp!: limpin modules\gfx\include\texture_storage_hash.hpp
+build modules\gfx\include\texture_view_hash.hpp: limp
+build modules\gfx\include\texture_view_hash.hpp!: limpin modules\gfx\include\texture_view_hash.hpp
 build modules\gfx\include\write_image.hpp: limp
 build modules\gfx\include\write_image.hpp!: limpin modules\gfx\include\write_image.hpp
 build modules\gfx\src\colorspace.cpp: limp
@@ -1591,6 +1605,21 @@ build $build_dir\debug\gfx\src\image_format.obj: cl modules\gfx\src\image_format
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
 
 build $build_dir\debug\gfx\src\image_view.obj: cl modules\gfx\src\image_view.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\make_image.obj: cl modules\gfx\src\make_image.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\make_texture.obj: cl modules\gfx\src\make_texture.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\mipmapping.obj: cl modules\gfx\src\mipmapping.cpp | $build_dir\gfx-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
@@ -1645,7 +1674,7 @@ build $build_dir\debug\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_detail
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\make_image.obj $build_dir\debug\gfx\src\make_texture.obj $build_dir\debug\gfx\src\mipmapping.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
    out_file = gfx-debug.lib
    flags = $lib_flags_debug
 build project-gfx-debug!: phony $out_dir\gfx-debug.lib
@@ -2440,7 +2469,7 @@ build group-consolecolors!: phony project-consolecolors!
 build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\luaxx-debug.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\image_format_hash.hpp! modules\gfx\include\image_view_hash.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\texture_storage_hash.hpp! modules\gfx\include\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb!
