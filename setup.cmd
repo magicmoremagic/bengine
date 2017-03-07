@@ -20,4 +20,5 @@ if not exist %_vcvarsall% (
 call %_vcvarsall% x64
 set PATH="%~dp0stage";"%~dp0bin";%PATH%
 copy /Y vc_win.ninja build.ninja
+limp -f build.ninja
 popd
