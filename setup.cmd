@@ -1,5 +1,4 @@
 pushd %~dp0
-git submodule update --init
 
 if defined VSINSTALLDIR (
    set _vcvarsall="%VSINSTALLDIR%VC\vcvarsall.bat"
