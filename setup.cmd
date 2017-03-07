@@ -1,4 +1,6 @@
 pushd %~dp0
+git lfs pull
+git submodule foreach git lfs pull
 
 if defined VSINSTALLDIR (
    set _vcvarsall="%VSINSTALLDIR%VC\vcvarsall.bat"
