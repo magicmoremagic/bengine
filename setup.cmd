@@ -1,5 +1,6 @@
 pushd %~dp0
 git lfs pull
+git submodule update --init
 git submodule foreach git lfs pull
 
 if defined VSINSTALLDIR (
