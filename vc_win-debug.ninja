@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2479 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 2496 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -19,11 +19,11 @@ cl_base_defines = /DSYSTEM_WINDOWS /DWIN32 /D_WIN32 /D_WIN32_WINNT=0x0601 /D_WIN
 cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /std:c++latest /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast
 cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
-cl_flags_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_debug = /GR- /GA /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_debug = /GR /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_debug = /GR- /GA /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_debug = /GR /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_debug = /WX /IGNORE:4221
@@ -117,16 +117,15 @@ rule build_boost
    description = build_boost
    generator = true
    rspfile = build_boost.cmd
-   rspfile_content = @echo off & $
-(if not exist build md build) & $
-cd %BOOST_HOME% & $
+   rspfile_content = (if not exist build md build) & $
+pushd "%BOOST_HOME%" & $
 (if not exist b2.exe call bootstrap.bat) & $
 ((.\b2.exe "--stagedir=%~dp0$ext_lib_dir" "--build-dir=%~dp0$build_dir" $
 --build-type=complete -d1 -j4 --with-system --with-locale --with-type_erasure $
 define=BOOST_NO_RTTI define=BOOST_NO_TYPEID link=static threading=multi runtime-link=shared address-model=64 $
 stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
-(move /Y %~dp0$ext_lib_dir\lib\*.lib %~dp0$ext_lib_dir && $
-rd /Q /S %~dp0$ext_lib_dir\lib ) >nul )
+(move /Y "%~dp0$ext_lib_dir\lib\*.lib" "%~dp0$ext_lib_dir" && $
+rd /Q /S "%~dp0$ext_lib_dir\lib" ) >nul ) & popd
 
 rule configure
    command = limp -f vc_win-debug.ninja
@@ -1563,6 +1562,10 @@ build group-ctable-debug!: phony project-ctable-debug! project-ctable-test-debug
 build group-ctable!: phony project-ctable! project-ctable-test!
 build modules\gfx\include\colorspace.hpp: limp
 build modules\gfx\include\colorspace.hpp!: limpin modules\gfx\include\colorspace.hpp
+build modules\gfx\include\image_block_packing.hpp: limp
+build modules\gfx\include\image_block_packing.hpp!: limpin modules\gfx\include\image_block_packing.hpp
+build modules\gfx\include\image_component_type.hpp: limp
+build modules\gfx\include\image_component_type.hpp!: limpin modules\gfx\include\image_component_type.hpp
 build modules\gfx\include\image_format_hash.hpp: limp
 build modules\gfx\include\image_format_hash.hpp!: limpin modules\gfx\include\image_format_hash.hpp
 build modules\gfx\include\image_view_hash.hpp: limp
@@ -1581,6 +1584,10 @@ build modules\gfx\include\write_image.hpp: limp
 build modules\gfx\include\write_image.hpp!: limpin modules\gfx\include\write_image.hpp
 build modules\gfx\src\colorspace.cpp: limp
 build modules\gfx\src\colorspace.cpp!: limpin modules\gfx\src\colorspace.cpp
+build modules\gfx\src\image_block_packing.cpp: limp
+build modules\gfx\src\image_block_packing.cpp!: limpin modules\gfx\src\image_block_packing.cpp
+build modules\gfx\src\image_component_type.cpp: limp
+build modules\gfx\src\image_component_type.cpp!: limpin modules\gfx\src\image_component_type.cpp
 build modules\gfx\src\read_image.cpp: limp
 build modules\gfx\src\read_image.cpp!: limpin modules\gfx\src\read_image.cpp
 build modules\gfx\src\swizzle.cpp: limp
@@ -1595,6 +1602,16 @@ build $build_dir\debug\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
 build $build_dir\gfx-debug.pch: phony $build_dir\debug\gfx\src\pch.obj
 
 build $build_dir\debug\gfx\src\colorspace.obj: cl modules\gfx\src\colorspace.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\image_block_packing.obj: cl modules\gfx\src\image_block_packing.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\image_component_type.obj: cl modules\gfx\src\image_component_type.cpp | $build_dir\gfx-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
@@ -1674,7 +1691,7 @@ build $build_dir\debug\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_detail
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\make_image.obj $build_dir\debug\gfx\src\make_texture.obj $build_dir\debug\gfx\src\mipmapping.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_block_packing.obj $build_dir\debug\gfx\src\image_component_type.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\make_image.obj $build_dir\debug\gfx\src\make_texture.obj $build_dir\debug\gfx\src\mipmapping.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
    out_file = gfx-debug.lib
    flags = $lib_flags_debug
 build project-gfx-debug!: phony $out_dir\gfx-debug.lib
@@ -2469,7 +2486,7 @@ build group-consolecolors!: phony project-consolecolors!
 build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\luaxx-debug.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\image_format_hash.hpp! modules\gfx\include\image_view_hash.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\texture_storage_hash.hpp! modules\gfx\include\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\image_block_packing.hpp! modules\gfx\include\image_component_type.hpp! modules\gfx\include\image_format_hash.hpp! modules\gfx\include\image_view_hash.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\texture_storage_hash.hpp! modules\gfx\include\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\image_block_packing.cpp! modules\gfx\src\image_component_type.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb!

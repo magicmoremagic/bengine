@@ -8,3 +8,7 @@ indent_size = 3
 
 [*.{props,vcxproj,vcxproj.filters}]
 indent_size = 2
+
+[*.{tsv,tab}]
+indent_style = tab
+indent_size = 30

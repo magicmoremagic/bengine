@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 4565 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 4584 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -21,16 +21,16 @@ cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd42
 cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
-cl_flags_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_debug = /GR- /GA /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_debug = /GR /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_debug = /GR- /GA /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_debug = /GR /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_debug = /WX /IGNORE:4221
@@ -114,16 +114,15 @@ rule build_boost
    description = build_boost
    generator = true
    rspfile = build_boost.cmd
-   rspfile_content = @echo off & $
-(if not exist build md build) & $
-cd %BOOST_HOME% & $
+   rspfile_content = (if not exist build md build) & $
+pushd "%BOOST_HOME%" & $
 (if not exist b2.exe call bootstrap.bat) & $
 ((.\b2.exe "--stagedir=%~dp0$ext_lib_dir" "--build-dir=%~dp0$build_dir" $
 --build-type=complete -d1 -j4 --with-system --with-locale --with-type_erasure $
 define=BOOST_NO_RTTI define=BOOST_NO_TYPEID link=static threading=multi runtime-link=shared address-model=64 $
 stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
-(move /Y %~dp0$ext_lib_dir\lib\*.lib %~dp0$ext_lib_dir && $
-rd /Q /S %~dp0$ext_lib_dir\lib ) >nul )
+(move /Y "%~dp0$ext_lib_dir\lib\*.lib" "%~dp0$ext_lib_dir" && $
+rd /Q /S "%~dp0$ext_lib_dir\lib" ) >nul ) & popd
 
 rule configure
    command = limp -f vc_win-no-limp.ninja
@@ -2845,6 +2844,16 @@ build $build_dir\debug\gfx\src\colorspace.obj: cl modules\gfx\src\colorspace.cpp
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\gfx\src\image_block_packing.obj: cl modules\gfx\src\image_block_packing.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\gfx\src\image_component_type.obj: cl modules\gfx\src\image_component_type.cpp | $build_dir\gfx-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-debug.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\gfx\src\image_format.obj: cl modules\gfx\src\image_format.cpp | $build_dir\gfx-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-debug.pdb
@@ -2920,7 +2929,7 @@ build $build_dir\debug\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_detail
    pdb = $build_dir\gfx-debug.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\make_image.obj $build_dir\debug\gfx\src\make_texture.obj $build_dir\debug\gfx\src\mipmapping.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx-debug.lib: lib $build_dir\debug\gfx\src\pch.obj $build_dir\debug\gfx\src\colorspace.obj $build_dir\debug\gfx\src\image_block_packing.obj $build_dir\debug\gfx\src\image_component_type.obj $build_dir\debug\gfx\src\image_format.obj $build_dir\debug\gfx\src\image_view.obj $build_dir\debug\gfx\src\make_image.obj $build_dir\debug\gfx\src\make_texture.obj $build_dir\debug\gfx\src\mipmapping.obj $build_dir\debug\gfx\src\read_image.obj $build_dir\debug\gfx\src\resize_image.obj $build_dir\debug\gfx\src\stbi_util_detail.obj $build_dir\debug\gfx\src\swizzle.obj $build_dir\debug\gfx\src\texture_class.obj $build_dir\debug\gfx\src\texture_storage.obj $build_dir\debug\gfx\src\texture_view.obj $build_dir\debug\gfx\src\write_image.obj $build_dir\debug\gfx\src\stbi_detail.obj $build_dir\debug\gfx\src\stbiw_detail.obj || init!
    out_file = gfx-debug.lib
    flags = $lib_flags_debug
 build project-gfx-debug!: phony $out_dir\gfx-debug.lib
@@ -2932,6 +2941,16 @@ build $build_dir\release\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
 build $build_dir\gfx.pch: phony $build_dir\release\gfx\src\pch.obj
 
 build $build_dir\release\gfx\src\colorspace.obj: cl modules\gfx\src\colorspace.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\image_block_packing.obj: cl modules\gfx\src\image_block_packing.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\image_component_type.obj: cl modules\gfx\src\image_component_type.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
@@ -3011,7 +3030,7 @@ build $build_dir\release\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_deta
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\image_view.obj $build_dir\release\gfx\src\make_image.obj $build_dir\release\gfx\src\make_texture.obj $build_dir\release\gfx\src\mipmapping.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_class.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\texture_view.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_block_packing.obj $build_dir\release\gfx\src\image_component_type.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\image_view.obj $build_dir\release\gfx\src\make_image.obj $build_dir\release\gfx\src\make_texture.obj $build_dir\release\gfx\src\mipmapping.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_class.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\texture_view.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
    out_file = gfx.lib
    flags = $lib_flags_release
 build project-gfx-release!: phony $out_dir\gfx.lib

@@ -1,4 +1,4 @@
-#!!--[[ Bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2492 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2509 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.5
 
@@ -19,11 +19,11 @@ cl_base_defines = /DSYSTEM_WINDOWS /DWIN32 /D_WIN32 /D_WIN32_WINNT=0x0601 /D_WIN
 cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /std:c++latest /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast
 cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
-cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_extlib_release = /LTCG /IGNORE:4221
@@ -113,16 +113,15 @@ rule build_boost
    description = build_boost
    generator = true
    rspfile = build_boost.cmd
-   rspfile_content = @echo off & $
-(if not exist build md build) & $
-cd %BOOST_HOME% & $
+   rspfile_content = (if not exist build md build) & $
+pushd "%BOOST_HOME%" & $
 (if not exist b2.exe call bootstrap.bat) & $
 ((.\b2.exe "--stagedir=%~dp0$ext_lib_dir" "--build-dir=%~dp0$build_dir" $
 --build-type=complete -d1 -j4 --with-system --with-locale --with-type_erasure $
 define=BOOST_NO_RTTI define=BOOST_NO_TYPEID link=static threading=multi runtime-link=shared address-model=64 $
 stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
-(move /Y %~dp0$ext_lib_dir\lib\*.lib %~dp0$ext_lib_dir && $
-rd /Q /S %~dp0$ext_lib_dir\lib ) >nul )
+(move /Y "%~dp0$ext_lib_dir\lib\*.lib" "%~dp0$ext_lib_dir" && $
+rd /Q /S "%~dp0$ext_lib_dir\lib" ) >nul ) & popd
 
 rule configure
    command = limp -f vc_win-release.ninja
@@ -1556,6 +1555,10 @@ build group-ctable-release!: phony project-ctable-release! project-ctable-test-r
 build group-ctable!: phony project-ctable! project-ctable-test!
 build modules\gfx\include\colorspace.hpp: limp
 build modules\gfx\include\colorspace.hpp!: limpin modules\gfx\include\colorspace.hpp
+build modules\gfx\include\image_block_packing.hpp: limp
+build modules\gfx\include\image_block_packing.hpp!: limpin modules\gfx\include\image_block_packing.hpp
+build modules\gfx\include\image_component_type.hpp: limp
+build modules\gfx\include\image_component_type.hpp!: limpin modules\gfx\include\image_component_type.hpp
 build modules\gfx\include\image_format_hash.hpp: limp
 build modules\gfx\include\image_format_hash.hpp!: limpin modules\gfx\include\image_format_hash.hpp
 build modules\gfx\include\image_view_hash.hpp: limp
@@ -1574,6 +1577,10 @@ build modules\gfx\include\write_image.hpp: limp
 build modules\gfx\include\write_image.hpp!: limpin modules\gfx\include\write_image.hpp
 build modules\gfx\src\colorspace.cpp: limp
 build modules\gfx\src\colorspace.cpp!: limpin modules\gfx\src\colorspace.cpp
+build modules\gfx\src\image_block_packing.cpp: limp
+build modules\gfx\src\image_block_packing.cpp!: limpin modules\gfx\src\image_block_packing.cpp
+build modules\gfx\src\image_component_type.cpp: limp
+build modules\gfx\src\image_component_type.cpp!: limpin modules\gfx\src\image_component_type.cpp
 build modules\gfx\src\read_image.cpp: limp
 build modules\gfx\src\read_image.cpp!: limpin modules\gfx\src\read_image.cpp
 build modules\gfx\src\swizzle.cpp: limp
@@ -1588,6 +1595,16 @@ build $build_dir\release\gfx\src\pch.obj: cl modules\gfx\src\pch.cpp || init!
 build $build_dir\gfx.pch: phony $build_dir\release\gfx\src\pch.obj
 
 build $build_dir\release\gfx\src\colorspace.obj: cl modules\gfx\src\colorspace.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\image_block_packing.obj: cl modules\gfx\src\image_block_packing.cpp | $build_dir\gfx.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx.pdb
+   extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
+
+build $build_dir\release\gfx\src\image_component_type.obj: cl modules\gfx\src\image_component_type.cpp | $build_dir\gfx.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx.pch" /Yu"pch.hpp"
@@ -1667,7 +1684,7 @@ build $build_dir\release\gfx\src\stbiw_detail.obj: cl modules\gfx\src\stbiw_deta
    pdb = $build_dir\gfx.pdb
    extra = /DBE_GFX_IMPL /DBE_TARGET=gfx /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\image_view.obj $build_dir\release\gfx\src\make_image.obj $build_dir\release\gfx\src\make_texture.obj $build_dir\release\gfx\src\mipmapping.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_class.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\texture_view.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
+build $out_dir\gfx.lib: lib $build_dir\release\gfx\src\pch.obj $build_dir\release\gfx\src\colorspace.obj $build_dir\release\gfx\src\image_block_packing.obj $build_dir\release\gfx\src\image_component_type.obj $build_dir\release\gfx\src\image_format.obj $build_dir\release\gfx\src\image_view.obj $build_dir\release\gfx\src\make_image.obj $build_dir\release\gfx\src\make_texture.obj $build_dir\release\gfx\src\mipmapping.obj $build_dir\release\gfx\src\read_image.obj $build_dir\release\gfx\src\resize_image.obj $build_dir\release\gfx\src\stbi_util_detail.obj $build_dir\release\gfx\src\swizzle.obj $build_dir\release\gfx\src\texture_class.obj $build_dir\release\gfx\src\texture_storage.obj $build_dir\release\gfx\src\texture_view.obj $build_dir\release\gfx\src\write_image.obj $build_dir\release\gfx\src\stbi_detail.obj $build_dir\release\gfx\src\stbiw_detail.obj || init!
    out_file = gfx.lib
    flags = $lib_flags_release
 build project-gfx-release!: phony $out_dir\gfx.lib
@@ -2482,7 +2499,7 @@ build group-consolecolors!: phony project-consolecolors!
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\image_format_hash.hpp! modules\gfx\include\image_view_hash.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\texture_storage_hash.hpp! modules\gfx\include\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\image_block_packing.hpp! modules\gfx\include\image_component_type.hpp! modules\gfx\include\image_format_hash.hpp! modules\gfx\include\image_view_hash.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\texture_storage_hash.hpp! modules\gfx\include\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\image_block_packing.cpp! modules\gfx\src\image_component_type.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
 build pdb!: phony
