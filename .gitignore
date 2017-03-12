@@ -21,3 +21,4 @@ _*
 ipch/
 *.VC.db
 *.VC.opendb
+*.vcxproj.user
