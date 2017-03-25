@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 4614 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 4624 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -2034,6 +2034,11 @@ build $build_dir\debug\core\src\memory_status.obj: cl modules\core\src\memory_st
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\core\src\native\vc_win\builtins.obj: cl modules\core\src\native\vc_win\builtins.cpp | $build_dir\core-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-debug.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\core\src\native\vc_win\console.obj: cl modules\core\src\native\vc_win\console.cpp | $build_dir\core-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\core-debug.pdb
@@ -2114,7 +2119,7 @@ build $build_dir\debug\core\src\zlib.obj: cl modules\core\src\zlib.cpp | $build_
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
-build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\memory_status.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\filesystem.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj $build_dir\debug\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\zlib.obj || init!
+build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\memory_status.obj $build_dir\debug\core\src\native\vc_win\builtins.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\filesystem.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj $build_dir\debug\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\zlib.obj || init!
    out_file = core-debug.lib
    flags = $lib_flags_debug
 build project-core-debug!: phony $out_dir\core-debug.lib
@@ -2186,6 +2191,11 @@ build $build_dir\release\core\src\log_processor.obj: cl modules\core\src\log_pro
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
 build $build_dir\release\core\src\memory_status.obj: cl modules\core\src\memory_status.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\native\vc_win\builtins.obj: cl modules\core\src\native\vc_win\builtins.cpp | $build_dir\core.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
@@ -2270,7 +2280,7 @@ build $build_dir\release\core\src\zlib.obj: cl modules\core\src\zlib.cpp | $buil
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
-build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\memory_status.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\filesystem.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\zlib.obj || init!
+build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\memory_status.obj $build_dir\release\core\src\native\vc_win\builtins.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\filesystem.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\zlib.obj || init!
    out_file = core.lib
    flags = $lib_flags_release
 build project-core-release!: phony $out_dir\core.lib

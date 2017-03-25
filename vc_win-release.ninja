@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2524 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'release') !! 2533 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.5
 
@@ -1178,6 +1178,11 @@ build $build_dir\release\core\src\memory_status.obj: cl modules\core\src\memory_
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
+build $build_dir\release\core\src\native\vc_win\builtins.obj: cl modules\core\src\native\vc_win\builtins.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
 build $build_dir\release\core\src\native\vc_win\console.obj: cl modules\core\src\native\vc_win\console.cpp | $build_dir\core.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\core.pdb
@@ -1258,7 +1263,7 @@ build $build_dir\release\core\src\zlib.obj: cl modules\core\src\zlib.cpp | $buil
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
-build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\memory_status.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\filesystem.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\zlib.obj || init!
+build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\memory_status.obj $build_dir\release\core\src\native\vc_win\builtins.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\filesystem.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj $build_dir\release\core\src\native\vc_win\utf16_widen_narrow.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\zlib.obj || init!
    out_file = core.lib
    flags = $lib_flags_release
 build project-core-release!: phony $out_dir\core.lib
@@ -1561,6 +1566,10 @@ build modules\gfx\include\image_component_type.hpp: limp
 build modules\gfx\include\image_component_type.hpp!: limpin modules\gfx\include\image_component_type.hpp
 build modules\gfx\include\image_format_hash.hpp: limp
 build modules\gfx\include\image_format_hash.hpp!: limpin modules\gfx\include\image_format_hash.hpp
+build modules\gfx\include\image_pixel_access.inl: limp
+build modules\gfx\include\image_pixel_access.inl!: limpin modules\gfx\include\image_pixel_access.inl
+build modules\gfx\include\image_pixel_access_norm.inl: limp
+build modules\gfx\include\image_pixel_access_norm.inl!: limpin modules\gfx\include\image_pixel_access_norm.inl
 build modules\gfx\include\image_view_hash.hpp: limp
 build modules\gfx\include\image_view_hash.hpp!: limpin modules\gfx\include\image_view_hash.hpp
 build modules\gfx\include\read_image.hpp: limp
@@ -2514,7 +2523,7 @@ build group-consolecolors!: phony project-consolecolors!
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
 build externals!: phony $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\image_block_packing.hpp! modules\gfx\include\image_component_type.hpp! modules\gfx\include\image_format_hash.hpp! modules\gfx\include\image_view_hash.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\texture_storage_hash.hpp! modules\gfx\include\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\image_block_packing.cpp! modules\gfx\src\image_component_type.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\colorspace.hpp! modules\gfx\include\image_block_packing.hpp! modules\gfx\include\image_component_type.hpp! modules\gfx\include\image_format_hash.hpp! modules\gfx\include\image_pixel_access.inl! modules\gfx\include\image_pixel_access_norm.inl! modules\gfx\include\image_view_hash.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\swizzle.hpp! modules\gfx\include\texture_class.hpp! modules\gfx\include\texture_storage_hash.hpp! modules\gfx\include\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\colorspace.cpp! modules\gfx\src\image_block_packing.cpp! modules\gfx\src\image_component_type.cpp! modules\gfx\src\read_image.cpp! modules\gfx\src\swizzle.cpp! modules\gfx\src\texture_class.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
 build pdb!: phony
