@@ -75,7 +75,7 @@ force-pushes.
  - [GSL](https://github.com/Microsoft/GSL)
  - [STB](https://github.com/nothings/stb)
  - [glbinding 2.1.1](https://github.com/cginternals/glbinding)
- - [Catch 1.6.1](https://github.com/philsquared/Catch)
+ - [Catch 1.8.2](https://github.com/philsquared/Catch)
  - [pugixml 1.9](https://github.com/zeux/pugixml)
  - [zlib 1.2.11](https://github.com/madler/zlib)
  - [SQLite 3.16.2](http://sqlite.org/) (Internal)
