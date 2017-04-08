@@ -3,6 +3,7 @@ deps {
    ext_include_dir 'gli'       { path 'gli/gli' },
    ext_include_dir 'gsl'       { path 'gsl/gsl' },
    ext_include_dir 'glbinding' { path 'glbinding/source/glbinding/include/glbinding' },
+   ext_include_dir 'globjects' { path 'globjects/source/globjects/include/globjects' },
    ext_include_dir 'glfw'      { path 'glfw/include/GLFW' },
    ext_include_dir 'pugixml'   { path 'pugixml/src' },
    ext_include_dir 'catch'     { path 'catch/single_include' },
@@ -23,7 +24,6 @@ deps {
 
    ext_lib 'glbinding' {
       path 'glbinding',
-      force_cxx,
       include 'source/glbinding/include/glbinding',
       src {
          'source/glbinding/source/Binding_*.cpp',
@@ -45,6 +45,19 @@ deps {
       toolchain 'vc_win' {
          link 'opengl32'
       }
+   },
+
+   ext_lib 'globjects' {
+      path 'globjects',
+      include 'source/globjects/include/globjects',
+      src {
+         'source/globjects/source/*.cpp',
+         'source/globjects/source/base/*.cpp',
+         'source/globjects/source/implementations/*.cpp',
+         'source/globjects/source/registry/*.cpp'
+      },
+      define 'GLOBJECTS_STATIC_DEFINE',
+      link_project 'glbinding'
    },
 
    ext_lib 'glfw' {
