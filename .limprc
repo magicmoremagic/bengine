@@ -1,9 +1,16 @@
-file_dir = be.fs.parent_path(file_path)
-file_ext = be.fs.path_extension(file_path)
-project_dir = be.fs.parent_path(file_dir)
-meta_dir = be.fs.compose_path(project_dir, 'meta')
 root_dir = be.fs.parent_path(limprc_path)
 limp_dir = be.fs.compose_path(root_dir, 'limp')
+
+file_dir = be.fs.parent_path(file_path)
+file_ext = be.fs.path_extension(file_path)
+
+project_dir = file_dir
+while project_dir ~= root_dir and not be.fs.exists(be.fs.compose_path(project_dir, 'build.lua')) do
+   project_dir = be.fs.parent_path(project_dir)
+end
+
+meta_dir = be.fs.compose_path(project_dir, 'meta')
+
 register_include_dir(file_dir)
 register_include_dir(meta_dir)
 register_include_dir(limp_dir)
