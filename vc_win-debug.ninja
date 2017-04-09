@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3043 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3121 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -1444,6 +1444,8 @@ build project-luaxx-debug!: phony $ext_lib_dir\luaxx-debug.lib
 build project-luaxx!: phony project-luaxx-debug!
 build group-deps-debug!: phony project-zlib-static-debug! project-glbinding-debug! project-globjects-debug! project-glfw-debug! project-luaxx-debug!
 build group-deps!: phony project-zlib-static! project-glbinding! project-globjects! project-glfw! project-luaxx!
+build modules\belua\include\version.hpp: limp
+build modules\belua\include\version.hpp!: limpin modules\belua\include\version.hpp
 
 build $build_dir\debug\belua\src\context.obj: cl modules\belua\src\context.cpp || init!
    flags = $cl_flags_lib_debug
@@ -1472,6 +1474,8 @@ build project-belua-debug!: phony $out_dir\belua-debug.lib
 build project-belua!: phony project-belua-debug!
 build group-belua-debug!: phony project-belua-debug!
 build group-belua!: phony project-belua!
+build modules\blt\include\version.hpp: limp
+build modules\blt\include\version.hpp!: limpin modules\blt\include\version.hpp
 
 build modules\blt\src\lexer.cpp: ragel modules\blt\meta\lexer.rl
    flags = -s -C -L -G2
@@ -1534,6 +1538,8 @@ build group-blt-debug!: phony project-blt-debug! project-blt-lua-debug!
 build group-blt!: phony project-blt! project-blt-lua!
 build modules\cli\include\section_ids.hpp: limp
 build modules\cli\include\section_ids.hpp!: limpin modules\cli\include\section_ids.hpp
+build modules\cli\include\version.hpp: limp
+build modules\cli\include\version.hpp!: limpin modules\cli\include\version.hpp
 
 build $build_dir\debug\cli\src\pch.obj: cl modules\cli\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -1592,6 +1598,8 @@ build modules\core\include\log_attrib_ids.hpp: limp
 build modules\core\include\log_attrib_ids.hpp!: limpin modules\core\include\log_attrib_ids.hpp
 build modules\core\include\service_ids.hpp: limp
 build modules\core\include\service_ids.hpp!: limpin modules\core\include\service_ids.hpp
+build modules\core\include\version.hpp: limp
+build modules\core\include\version.hpp!: limpin modules\core\include\version.hpp
 
 build $build_dir\debug\core\src\pch.obj: cl modules\core\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -1878,6 +1886,11 @@ build $build_dir\debug\core-test\test\test_thread_pool_executors.obj: cl modules
    pdb = $build_dir\core-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
 
+build $build_dir\debug\core-test\test\version.obj: cl modules\core\test\version.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\core-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
 build $build_dir\core-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
@@ -1901,7 +1914,7 @@ build $build_dir\default.manifest.rc: putfile | $build_dir\default.manifest
 build $build_dir\default.manifest.res: rc $build_dir\default.manifest.rc || init!
 build $out_dir\core-test-debug.pdb!: pdb $out_dir\core-test-debug.pdb
 
-build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_buf_alloc.obj $build_dir\debug\core-test\test\test_a3_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_null_alloc.obj $build_dir\debug\core-test\test\test_a3_static_alloc.obj $build_dir\debug\core-test\test\test_a3_vmm_alloc.obj $build_dir\debug\core-test\test\test_buf.obj $build_dir\debug\core-test\test\test_inline_executors.obj $build_dir\debug\core-test\test\test_main.obj $build_dir\debug\core-test\test\test_single_thread_executors.obj $build_dir\debug\core-test\test\test_stack_trace.obj $build_dir\debug\core-test\test\test_string_interpolation.obj $build_dir\debug\core-test\test\test_thread_pool_executors.obj $build_dir\core-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_buf_alloc.obj $build_dir\debug\core-test\test\test_a3_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_null_alloc.obj $build_dir\debug\core-test\test\test_a3_static_alloc.obj $build_dir\debug\core-test\test\test_a3_vmm_alloc.obj $build_dir\debug\core-test\test\test_buf.obj $build_dir\debug\core-test\test\test_inline_executors.obj $build_dir\debug\core-test\test\test_main.obj $build_dir\debug\core-test\test\test_single_thread_executors.obj $build_dir\debug\core-test\test\test_stack_trace.obj $build_dir\debug\core-test\test\test_string_interpolation.obj $build_dir\debug\core-test\test\test_thread_pool_executors.obj $build_dir\debug\core-test\test\version.obj $build_dir\core-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = core-test-debug.exe
    pdb = $out_dir\core-test-debug.pdb
    flags = $link_flags_console_debug
@@ -1924,13 +1937,18 @@ build $build_dir\debug\core-perf\perf\perf_main.obj: cl modules\core\perf\perf_m
    pdb = $build_dir\core-perf-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
 
+build $build_dir\debug\core-perf\perf\version.obj: cl modules\core\perf\version.cpp || init!
+   flags = $cl_flags_perf_debug
+   pdb = $build_dir\core-perf-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-perf /DBE_TARGET_BASE=core /I"include" /I"modules\core\include"
+
 build $build_dir\core-perf-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\core-perf-debug.icon.res: rc $build_dir\core-perf-debug.icon.rc || init!
 build $out_dir\core-perf-debug.pdb!: pdb $out_dir\core-perf-debug.pdb
 
-build $out_dir\core-perf-debug.exe | $out_dir\core-perf-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\perf-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-perf\perf\perf_logging.obj $build_dir\debug\core-perf\perf\perf_main.obj $build_dir\core-perf-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-perf-debug.exe | $out_dir\core-perf-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\perf-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-perf\perf\perf_logging.obj $build_dir\debug\core-perf\perf\perf_main.obj $build_dir\debug\core-perf\perf\version.obj $build_dir\core-perf-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = core-perf-debug.exe
    pdb = $out_dir\core-perf-debug.pdb
    flags = $link_flags_console_debug
@@ -1944,6 +1962,8 @@ build project-core-perf-debug!: phony $stage_dir\core-perf-debug.exe
 build project-core-perf!: phony project-core-perf-debug!
 build group-core-debug!: phony project-core-debug! project-core-id-debug! project-core-id-with-names-debug! project-core-lua-debug! project-core-test-debug! project-core-perf-debug!
 build group-core!: phony project-core! project-core-id! project-core-id-with-names! project-core-lua! project-core-test! project-core-perf!
+build modules\ctable\include\version.hpp: limp
+build modules\ctable\include\version.hpp!: limpin modules\ctable\include\version.hpp
 
 build $build_dir\debug\ctable\src\pch.obj: cl modules\ctable\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2027,13 +2047,18 @@ build $build_dir\debug\ctable-test\test\test_main.obj: cl modules\ctable\test\te
    pdb = $build_dir\ctable-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=ctable-test /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include"
 
+build $build_dir\debug\ctable-test\test\version.obj: cl modules\ctable\test\version.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\ctable-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=ctable-test /DBE_TARGET_BASE=ctable /I"include" /I"modules\ctable\include"
+
 build $build_dir\ctable-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\ctable-test-debug.icon.res: rc $build_dir\ctable-test-debug.icon.rc || init!
 build $out_dir\ctable-test-debug.pdb!: pdb $out_dir\ctable-test-debug.pdb
 
-build $out_dir\ctable-test-debug.exe | $out_dir\ctable-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\ctable-test\test\test_ct_border_config.obj $build_dir\debug\ctable-test\test\test_main.obj $build_dir\ctable-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\ctable-test-debug.exe | $out_dir\ctable-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\ctable-test\test\test_ct_border_config.obj $build_dir\debug\ctable-test\test\test_main.obj $build_dir\debug\ctable-test\test\version.obj $build_dir\ctable-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = ctable-test-debug.exe
    pdb = $out_dir\ctable-test-debug.pdb
    flags = $link_flags_console_debug
@@ -2071,6 +2096,8 @@ build modules\gfx\include\tex\texture_storage_hash.hpp: limp
 build modules\gfx\include\tex\texture_storage_hash.hpp!: limpin modules\gfx\include\tex\texture_storage_hash.hpp
 build modules\gfx\include\tex\texture_view_hash.hpp: limp
 build modules\gfx\include\tex\texture_view_hash.hpp!: limpin modules\gfx\include\tex\texture_view_hash.hpp
+build modules\gfx\include\version.hpp: limp
+build modules\gfx\include\version.hpp!: limpin modules\gfx\include\version.hpp
 build modules\gfx\include\write_image.hpp: limp
 build modules\gfx\include\write_image.hpp!: limpin modules\gfx\include\write_image.hpp
 build modules\gfx\src\tex\block_packing.cpp: limp
@@ -2242,13 +2269,18 @@ build $build_dir\debug\gfx-test\test\test_uniform_resample.obj: cl modules\gfx\t
    pdb = $build_dir\gfx-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
 
+build $build_dir\debug\gfx-test\test\version.obj: cl modules\gfx\test\version.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\gfx-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include"
+
 build $build_dir\gfx-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\gfx-test-debug.icon.res: rc $build_dir\gfx-test-debug.icon.rc || init!
 build $out_dir\gfx-test-debug.pdb!: pdb $out_dir\gfx-test-debug.pdb
 
-build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\gfx-test\test\test_image_format.obj $build_dir\debug\gfx-test\test\test_image_region.obj $build_dir\debug\gfx-test\test\test_image_view.obj $build_dir\debug\gfx-test\test\test_main.obj $build_dir\debug\gfx-test\test\test_read_write_image.obj $build_dir\debug\gfx-test\test\test_texture_storage.obj $build_dir\debug\gfx-test\test\test_texture_view.obj $build_dir\debug\gfx-test\test\test_uniform_resample.obj $build_dir\gfx-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\gfx-test\test\test_image_format.obj $build_dir\debug\gfx-test\test\test_image_region.obj $build_dir\debug\gfx-test\test\test_image_view.obj $build_dir\debug\gfx-test\test\test_main.obj $build_dir\debug\gfx-test\test\test_read_write_image.obj $build_dir\debug\gfx-test\test\test_texture_storage.obj $build_dir\debug\gfx-test\test\test_texture_view.obj $build_dir\debug\gfx-test\test\test_uniform_resample.obj $build_dir\debug\gfx-test\test\version.obj $build_dir\gfx-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = gfx-test-debug.exe
    pdb = $out_dir\gfx-test-debug.pdb
    flags = $link_flags_console_debug
@@ -2262,6 +2294,8 @@ build project-gfx-test-debug!: phony $stage_dir\gfx-test-debug.exe
 build project-gfx-test!: phony project-gfx-test-debug!
 build group-gfx-debug!: phony project-gfx-tex-debug! project-gfx-debug! project-gfx-test-debug!
 build group-gfx!: phony project-gfx-tex! project-gfx! project-gfx-test!
+build modules\perf\include\version.hpp: limp
+build modules\perf\include\version.hpp!: limpin modules\perf\include\version.hpp
 
 build $build_dir\debug\perf\src\pch.obj: cl modules\perf\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2331,6 +2365,8 @@ build project-perf-debug!: phony $out_dir\perf-debug.lib
 build project-perf!: phony project-perf-debug!
 build group-perf-debug!: phony project-perf-debug!
 build group-perf!: phony project-perf!
+build modules\platform\include\version.hpp: limp
+build modules\platform\include\version.hpp!: limpin modules\platform\include\version.hpp
 
 build $build_dir\debug\platform\src\pch.obj: cl modules\platform\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2359,6 +2395,8 @@ build modules\sqlite\include\result_type.hpp: limp
 build modules\sqlite\include\result_type.hpp!: limpin modules\sqlite\include\result_type.hpp
 build modules\sqlite\include\transaction_type.hpp: limp
 build modules\sqlite\include\transaction_type.hpp!: limpin modules\sqlite\include\transaction_type.hpp
+build modules\sqlite\include\version.hpp: limp
+build modules\sqlite\include\version.hpp!: limpin modules\sqlite\include\version.hpp
 build modules\sqlite\src\result_type.cpp: limp
 build modules\sqlite\src\result_type.cpp!: limpin modules\sqlite\src\result_type.cpp
 build modules\sqlite\src\transaction_type.cpp: limp
@@ -2471,13 +2509,18 @@ build $build_dir\debug\sqlite-test\test\test_transaction.obj: cl modules\sqlite\
    pdb = $build_dir\sqlite-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
 
+build $build_dir\debug\sqlite-test\test\version.obj: cl modules\sqlite\test\version.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\sqlite-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sqlite-test /DBE_TARGET_BASE=sqlite /I"include" /I"modules\sqlite\include"
+
 build $build_dir\sqlite-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\sqlite-test-debug.icon.res: rc $build_dir\sqlite-test-debug.icon.rc || init!
 build $out_dir\sqlite-test-debug.pdb!: pdb $out_dir\sqlite-test-debug.pdb
 
-build $out_dir\sqlite-test-debug.exe | $out_dir\sqlite-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\sqlite-debug.lib $out_dir\testing-debug.lib $build_dir\debug\sqlite-test\test\test_db.obj $build_dir\debug\sqlite-test\test\test_main.obj $build_dir\debug\sqlite-test\test\test_shared_stmt_cache.obj $build_dir\debug\sqlite-test\test\test_static_stmt_cache.obj $build_dir\debug\sqlite-test\test\test_stmt.obj $build_dir\debug\sqlite-test\test\test_transaction.obj $build_dir\sqlite-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sqlite-test-debug.exe | $out_dir\sqlite-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\sqlite-debug.lib $out_dir\testing-debug.lib $build_dir\debug\sqlite-test\test\test_db.obj $build_dir\debug\sqlite-test\test\test_main.obj $build_dir\debug\sqlite-test\test\test_shared_stmt_cache.obj $build_dir\debug\sqlite-test\test\test_static_stmt_cache.obj $build_dir\debug\sqlite-test\test\test_stmt.obj $build_dir\debug\sqlite-test\test\test_transaction.obj $build_dir\debug\sqlite-test\test\version.obj $build_dir\sqlite-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = sqlite-test-debug.exe
    pdb = $out_dir\sqlite-test-debug.pdb
    flags = $link_flags_console_debug
@@ -2491,6 +2534,8 @@ build project-sqlite-test-debug!: phony $stage_dir\sqlite-test-debug.exe
 build project-sqlite-test!: phony project-sqlite-test-debug!
 build group-sqlite-debug!: phony project-sqlite-debug! project-sqlite-test-debug!
 build group-sqlite!: phony project-sqlite! project-sqlite-test!
+build modules\testing\include\version.hpp: limp
+build modules\testing\include\version.hpp!: limpin modules\testing\include\version.hpp
 
 build $build_dir\debug\testing\src\pch.obj: cl modules\testing\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2513,13 +2558,18 @@ build $build_dir\debug\testing-test\test\test_main.obj: cl modules\testing\test\
    pdb = $build_dir\testing-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing-test /DBE_TARGET_BASE=testing /I"include" /I"modules\testing\include"
 
+build $build_dir\debug\testing-test\test\version.obj: cl modules\testing\test\version.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\testing-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=testing-test /DBE_TARGET_BASE=testing /I"include" /I"modules\testing\include"
+
 build $build_dir\testing-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\testing-test-debug.icon.res: rc $build_dir\testing-test-debug.icon.rc || init!
 build $out_dir\testing-test-debug.pdb!: pdb $out_dir\testing-test-debug.pdb
 
-build $out_dir\testing-test-debug.exe | $out_dir\testing-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\testing-test\test\test_arbitrary.obj $build_dir\debug\testing-test\test\test_main.obj $build_dir\testing-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\testing-test-debug.exe | $out_dir\testing-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\testing-test\test\test_arbitrary.obj $build_dir\debug\testing-test\test\test_main.obj $build_dir\debug\testing-test\test\version.obj $build_dir\testing-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = testing-test-debug.exe
    pdb = $out_dir\testing-test-debug.pdb
    flags = $link_flags_console_debug
@@ -2533,6 +2583,8 @@ build project-testing-test-debug!: phony $stage_dir\testing-test-debug.exe
 build project-testing-test!: phony project-testing-test-debug!
 build group-testing-debug!: phony project-testing-debug! project-testing-test-debug!
 build group-testing!: phony project-testing! project-testing-test!
+build modules\util\include\version.hpp: limp
+build modules\util\include\version.hpp!: limpin modules\util\include\version.hpp
 
 build $build_dir\debug\util\src\pch.obj: cl modules\util\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2677,13 +2729,18 @@ build $build_dir\debug\util-test\test\test_xorshift_128_plus.obj: cl modules\uti
    pdb = $build_dir\util-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
 
+build $build_dir\debug\util-test\test\version.obj: cl modules\util\test\version.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\util-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
 build $build_dir\util-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test-debug.icon.res: rc $build_dir\util-test-debug.icon.rc || init!
 build $out_dir\util-test-debug.pdb!: pdb $out_dir\util-test-debug.pdb
 
-build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test-debug.exe
    pdb = $out_dir\util-test-debug.pdb
    flags = $link_flags_console_debug
@@ -2711,13 +2768,18 @@ build $build_dir\debug\util-perf\perf\sequence_containers.obj: cl modules\util\p
    pdb = $build_dir\util-perf-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-perf /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
 
+build $build_dir\debug\util-perf\perf\version.obj: cl modules\util\perf\version.cpp || init!
+   flags = $cl_flags_perf_debug
+   pdb = $build_dir\util-perf-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-perf /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
 build $build_dir\util-perf-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-perf-debug.icon.res: rc $build_dir\util-perf-debug.icon.rc || init!
 build $out_dir\util-perf-debug.pdb!: pdb $out_dir\util-perf-debug.pdb
 
-build $out_dir\util-perf-debug.exe | $out_dir\util-perf-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-perf\perf\associative_containers.obj $build_dir\debug\util-perf\perf\perf_main.obj $build_dir\debug\util-perf\perf\sequence_containers.obj $build_dir\util-perf-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-perf-debug.exe | $out_dir\util-perf-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-perf\perf\associative_containers.obj $build_dir\debug\util-perf\perf\perf_main.obj $build_dir\debug\util-perf\perf\sequence_containers.obj $build_dir\debug\util-perf\perf\version.obj $build_dir\util-perf-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = util-perf-debug.exe
    pdb = $out_dir\util-perf-debug.pdb
    flags = $link_flags_console_debug
@@ -2731,6 +2793,8 @@ build project-util-perf-debug!: phony $stage_dir\util-perf-debug.exe
 build project-util-perf!: phony project-util-perf-debug!
 build group-util-debug!: phony project-util-debug! project-util-lua-debug! project-util-test-debug! project-util-perf-debug!
 build group-util!: phony project-util! project-util-lua! project-util-test! project-util-perf!
+build tools\bltc\include\version.hpp: limp
+build tools\bltc\include\version.hpp!: limpin tools\bltc\include\version.hpp
 
 build $build_dir\debug\bltc\src\bltc.obj: cl tools\bltc\src\bltc.cpp || init!
    flags = $cl_flags_debug
@@ -2758,6 +2822,8 @@ build project-bltc-debug!: phony $stage_dir\bltc-debug.exe
 build project-bltc!: phony project-bltc-debug!
 build group-bltc-debug!: phony project-bltc-debug!
 build group-bltc!: phony project-bltc!
+build tools\bstyle\include\version.hpp: limp
+build tools\bstyle\include\version.hpp!: limpin tools\bstyle\include\version.hpp
 
 build tools\bstyle\src\cxx_lexer.cpp: ragel tools\bstyle\meta\cxx_lexer.rl
    flags = -s -C -L -G2
@@ -2813,11 +2879,13 @@ build project-bstyle-debug!: phony $stage_dir\bstyle-debug.exe
 build project-bstyle!: phony project-bstyle-debug!
 build group-bstyle-debug!: phony project-bstyle-debug!
 build group-bstyle!: phony project-bstyle!
+build tools\ccolor\include\version.hpp: limp
+build tools\ccolor\include\version.hpp!: limpin tools\ccolor\include\version.hpp
 
 build $build_dir\debug\ccolor\src\ccolor.obj: cl tools\ccolor\src\ccolor.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\ccolor-debug.pdb
-   extra = /DBE_TARGET=ccolor /DBE_TARGET_BASE=ccolor /I"include"
+   extra = /DBE_TARGET=ccolor /DBE_TARGET_BASE=ccolor /I"include" /I"tools\ccolor\include"
 
 build $build_dir\ccolor-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
@@ -2835,6 +2903,8 @@ build project-ccolor-debug!: phony $stage_dir\ccolor-debug.exe
 build project-ccolor!: phony project-ccolor-debug!
 build group-ccolor-debug!: phony project-ccolor-debug!
 build group-ccolor!: phony project-ccolor!
+build tools\concur\include\version.hpp: limp
+build tools\concur\include\version.hpp!: limpin tools\concur\include\version.hpp
 
 build $build_dir\debug\concur\src\concur.obj: cl tools\concur\src\concur.cpp || init!
    flags = $cl_flags_debug
@@ -2862,11 +2932,13 @@ build project-concur-debug!: phony $stage_dir\concur-debug.exe
 build project-concur!: phony project-concur-debug!
 build group-concur-debug!: phony project-concur-debug!
 build group-concur!: phony project-concur!
+build tools\idgen\include\version.hpp: limp
+build tools\idgen\include\version.hpp!: limpin tools\idgen\include\version.hpp
 
 build $build_dir\debug\idgen\src\idgen.obj: cl tools\idgen\src\idgen.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\idgen-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
 
 build $build_dir\idgen-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
@@ -2886,6 +2958,8 @@ build group-idgen-debug!: phony project-idgen-debug!
 build group-idgen!: phony project-idgen!
 build tools\limp\include\limp_lua.hpp: limp
 build tools\limp\include\limp_lua.hpp!: limpin tools\limp\include\limp_lua.hpp
+build tools\limp\include\version.hpp: limp
+build tools\limp\include\version.hpp!: limpin tools\limp\include\version.hpp
 
 build $build_dir\debug\limp\src\limp.obj: cl tools\limp\src\limp.cpp || init!
    flags = $cl_flags_debug
@@ -2918,6 +2992,8 @@ build project-limp-debug!: phony $stage_dir\limp-debug.exe
 build project-limp!: phony project-limp-debug!
 build group-limp-debug!: phony project-limp-debug!
 build group-limp!: phony project-limp!
+build tools\sizeof\include\version.hpp: limp
+build tools\sizeof\include\version.hpp!: limpin tools\sizeof\include\version.hpp
 
 build $build_dir\debug\sizeof\src\size_of_type.obj: cl tools\sizeof\src\size_of_type.cpp || init!
    flags = $cl_flags_debug
@@ -2945,6 +3021,8 @@ build project-sizeof-debug!: phony $stage_dir\sizeof-debug.exe
 build project-sizeof!: phony project-sizeof-debug!
 build group-sizeof-debug!: phony project-sizeof-debug!
 build group-sizeof!: phony project-sizeof!
+build tools\sysinfo\include\version.hpp: limp
+build tools\sysinfo\include\version.hpp!: limpin tools\sysinfo\include\version.hpp
 
 build $build_dir\debug\sysinfo\src\memory_status.obj: cl tools\sysinfo\src\memory_status.cpp || init!
    flags = $cl_flags_debug
@@ -3033,7 +3111,7 @@ build group-d-gfx!: phony project-d-gfx-tex!
 build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug! group-d-gfx-debug!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors! group-d-gfx!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\luaxx-debug.lib
-build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\tex\block_packing.cpp! modules\gfx\src\tex\colorspace.cpp! modules\gfx\src\tex\component_type.cpp! modules\gfx\src\tex\convert_colorspace.cpp! modules\gfx\src\tex\swizzle.cpp! modules\gfx\src\tex\texture_class.cpp! modules\gfx\src\read_image.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
+build limp!: phony modules\belua\include\version.hpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\tex\block_packing.cpp! modules\gfx\src\tex\colorspace.cpp! modules\gfx\src\tex\component_type.cpp! modules\gfx\src\tex\convert_colorspace.cpp! modules\gfx\src\tex\swizzle.cpp! modules\gfx\src\tex\texture_class.cpp! modules\gfx\src\read_image.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\version.hpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\ccolor\include\version.hpp! tools\concur\include\version.hpp! tools\idgen\include\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\sizeof\include\version.hpp! tools\sysinfo\include\version.hpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb! $out_dir\d-gfx-tex-debug.pdb!
