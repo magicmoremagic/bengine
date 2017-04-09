@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3021 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3043 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -3008,13 +3008,35 @@ build project-consolecolors-debug!: phony $stage_dir\consolecolors-debug.exe
 build project-consolecolors!: phony project-consolecolors-debug!
 build group-consolecolors-debug!: phony project-consolecolors-debug!
 build group-consolecolors!: phony project-consolecolors!
-build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug!
-build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
+
+build $build_dir\debug\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\d-gfx-tex-debug.pdb
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /I"include"
+
+build $build_dir\d-gfx-tex-debug.icon.rc: putfile | icon\bengine.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine.ico^"
+build $build_dir\d-gfx-tex-debug.icon.res: rc $build_dir\d-gfx-tex-debug.icon.rc || init!
+build $out_dir\d-gfx-tex-debug.pdb!: pdb $out_dir\d-gfx-tex-debug.pdb
+
+build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $build_dir\debug\d-gfx-tex\src\tex.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
+   out_file = d-gfx-tex-debug.exe
+   pdb = $out_dir\d-gfx-tex-debug.pdb
+   flags = $link_flags_console_debug
+   extra = opengl32.lib
+build $stage_dir\d-gfx-tex-debug.exe: cp $out_dir\d-gfx-tex-debug.exe
+build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
+build project-d-gfx-tex!: phony project-d-gfx-tex-debug!
+build group-d-gfx-debug!: phony project-d-gfx-tex-debug!
+build group-d-gfx!: phony project-d-gfx-tex!
+build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug! group-d-gfx-debug!
+build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors! group-d-gfx!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\luaxx-debug.lib
 build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\tex\block_packing.cpp! modules\gfx\src\tex\colorspace.cpp! modules\gfx\src\tex\component_type.cpp! modules\gfx\src\tex\convert_colorspace.cpp! modules\gfx\src\tex\swizzle.cpp! modules\gfx\src\tex\texture_class.cpp! modules\gfx\src\read_image.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
-build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb!
+build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb! $out_dir\d-gfx-tex-debug.pdb!
 
 default all!
 

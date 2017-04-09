@@ -100,3 +100,6 @@
 [submodule "modules/gfx"]
 	path = modules/gfx
 	url = https://github.com/magicmoremagic/bengine-gfx
+[submodule "demos/gfx"]
+	path = demos/gfx
+	url = https://github.com/magicmoremagic/bengine-demos-gfx
