@@ -24,6 +24,7 @@ deps {
 
    ext_lib 'glbinding' {
       path 'glbinding',
+      force_cxx,
       include 'source/glbinding/include/glbinding',
       src {
          'source/glbinding/source/Binding_*.cpp',
@@ -49,6 +50,7 @@ deps {
 
    ext_lib 'globjects' {
       path 'globjects',
+      force_cxx,
       include 'source/globjects/include/globjects',
       src {
          'source/globjects/source/*.cpp',

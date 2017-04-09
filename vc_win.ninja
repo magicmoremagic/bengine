@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4729 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 5691 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -16,21 +16,21 @@ out_dir = out
 stage_dir = stage
 
 cl_base_defines = /DSYSTEM_WINDOWS /DWIN32 /D_WIN32 /D_WIN32_WINNT=0x0601 /D_WINDOWS
-cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /std:c++latest /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast /diagnostics:column
+cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast /diagnostics:column
 cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
 cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /wd4592 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
-cl_flags_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_debug = /GR- /GA /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_release = /GR- /GA /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_debug = /GR /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_release = /GR- /GA /Gw /Zc:inline /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_debug = /GR- /GA /std:c++latest /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_release = /GR- /GA /std:c++latest /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_debug = /GR /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_FORCE_SSE4 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /W4 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4592 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_FORCE_SSE4 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_debug = /WX /IGNORE:4221
@@ -160,6 +160,7 @@ build $ext_include_dir\glm: lndir dep_modules\glm\glm | $ext_include_dir
 build $ext_include_dir\gli: lndir dep_modules\gli\gli | $ext_include_dir
 build $ext_include_dir\gsl: lndir dep_modules\gsl\gsl | $ext_include_dir
 build $ext_include_dir\glbinding: lndir dep_modules\glbinding\source\glbinding\include\glbinding | $ext_include_dir
+build $ext_include_dir\globjects: lndir dep_modules\globjects\source\globjects\include\globjects | $ext_include_dir
 build $ext_include_dir\glfw: lndir dep_modules\glfw\include\GLFW | $ext_include_dir
 build $ext_include_dir\pugixml: lndir dep_modules\pugixml\src | $ext_include_dir
 build $ext_include_dir\catch: lndir dep_modules\catch\single_include | $ext_include_dir
@@ -183,7 +184,7 @@ build $build_dir\.boost_log: build_boost
 build %BOOST_HOME%\boost: phony || $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
 
-build $build_dir\.i9d: putfile || $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gli $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+build $build_dir\.i9d: putfile || $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gli $ext_include_dir\gsl $ext_include_dir\glbinding $ext_include_dir\globjects $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
    contents = .
 build init!: phony $build_dir\.i9d
 
@@ -1269,6 +1270,967 @@ build $ext_lib_dir\glbinding.lib: lib $build_dir\release\glbinding\source\glbind
 build project-glbinding-release!: phony $ext_lib_dir\glbinding.lib
 build project-glbinding!: phony project-glbinding-debug! project-glbinding-release!
 
+build $build_dir\debug\globjects\source\globjects\source\AbstractState.obj: cl dep_modules\globjects\source\globjects\source\AbstractState.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\AbstractUniform.obj: cl dep_modules\globjects\source\globjects\source\AbstractUniform.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\AttachedRenderbuffer.obj: cl dep_modules\globjects\source\globjects\source\AttachedRenderbuffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\AttachedTexture.obj: cl dep_modules\globjects\source\globjects\source\AttachedTexture.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Buffer.obj: cl dep_modules\globjects\source\globjects\source\Buffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Capability.obj: cl dep_modules\globjects\source\globjects\source\Capability.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\DebugMessage.obj: cl dep_modules\globjects\source\globjects\source\DebugMessage.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Error.obj: cl dep_modules\globjects\source\globjects\source\Error.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Framebuffer.obj: cl dep_modules\globjects\source\globjects\source\Framebuffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\FramebufferAttachment.obj: cl dep_modules\globjects\source\globjects\source\FramebufferAttachment.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\IncludeProcessor.obj: cl dep_modules\globjects\source\globjects\source\IncludeProcessor.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\LocationIdentity.obj: cl dep_modules\globjects\source\globjects\source\LocationIdentity.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\NamedString.obj: cl dep_modules\globjects\source\globjects\source\NamedString.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Object.obj: cl dep_modules\globjects\source\globjects\source\Object.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\ObjectVisitor.obj: cl dep_modules\globjects\source\globjects\source\ObjectVisitor.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Program.obj: cl dep_modules\globjects\source\globjects\source\Program.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\ProgramBinary.obj: cl dep_modules\globjects\source\globjects\source\ProgramBinary.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\ProgramPipeline.obj: cl dep_modules\globjects\source\globjects\source\ProgramPipeline.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Query.obj: cl dep_modules\globjects\source\globjects\source\Query.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Renderbuffer.obj: cl dep_modules\globjects\source\globjects\source\Renderbuffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Resource.obj: cl dep_modules\globjects\source\globjects\source\Resource.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Sampler.obj: cl dep_modules\globjects\source\globjects\source\Sampler.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Shader.obj: cl dep_modules\globjects\source\globjects\source\Shader.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\State.obj: cl dep_modules\globjects\source\globjects\source\State.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\StateSetting.obj: cl dep_modules\globjects\source\globjects\source\StateSetting.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Sync.obj: cl dep_modules\globjects\source\globjects\source\Sync.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\Texture.obj: cl dep_modules\globjects\source\globjects\source\Texture.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\TextureHandle.obj: cl dep_modules\globjects\source\globjects\source\TextureHandle.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\TransformFeedback.obj: cl dep_modules\globjects\source\globjects\source\TransformFeedback.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\UniformBlock.obj: cl dep_modules\globjects\source\globjects\source\UniformBlock.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\VertexArray.obj: cl dep_modules\globjects\source\globjects\source\VertexArray.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\VertexAttributeBinding.obj: cl dep_modules\globjects\source\globjects\source\VertexAttributeBinding.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\AbstractFunctionCall.obj: cl dep_modules\globjects\source\globjects\source\base\AbstractFunctionCall.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\AbstractStringSource.obj: cl dep_modules\globjects\source\globjects\source\base\AbstractStringSource.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\ChangeListener.obj: cl dep_modules\globjects\source\globjects\source\base\ChangeListener.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\Changeable.obj: cl dep_modules\globjects\source\globjects\source\base\Changeable.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\CompositeStringSource.obj: cl dep_modules\globjects\source\globjects\source\base\CompositeStringSource.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\ConsoleLogger.obj: cl dep_modules\globjects\source\globjects\source\base\ConsoleLogger.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\File.obj: cl dep_modules\globjects\source\globjects\source\base\File.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\FileRegistry.obj: cl dep_modules\globjects\source\globjects\source\base\FileRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\HeapOnly.obj: cl dep_modules\globjects\source\globjects\source\base\HeapOnly.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\LogMessage.obj: cl dep_modules\globjects\source\globjects\source\base\LogMessage.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\LogMessageBuilder.obj: cl dep_modules\globjects\source\globjects\source\base\LogMessageBuilder.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\Referenced.obj: cl dep_modules\globjects\source\globjects\source\base\Referenced.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\StaticStringSource.obj: cl dep_modules\globjects\source\globjects\source\base\StaticStringSource.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\StringSourceDecorator.obj: cl dep_modules\globjects\source\globjects\source\base\StringSourceDecorator.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\StringTemplate.obj: cl dep_modules\globjects\source\globjects\source\base\StringTemplate.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\baselogging.obj: cl dep_modules\globjects\source\globjects\source\base\baselogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\base\formatString.obj: cl dep_modules\globjects\source\globjects\source\base\formatString.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\glbindinglogging.obj: cl dep_modules\globjects\source\globjects\source\glbindinglogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\glmlogging.obj: cl dep_modules\globjects\source\globjects\source\glmlogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\globjects.obj: cl dep_modules\globjects\source\globjects\source\globjects.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractBufferImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractBufferImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractDebugImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractDebugImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractFramebufferImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractFramebufferImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractObjectNameImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractObjectNameImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractProgramBinaryImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractProgramBinaryImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractShadingLanguageIncludeImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractShadingLanguageIncludeImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractTextureImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractTextureImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractTextureStorageImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractTextureStorageImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractUniformImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractUniformImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\AbstractVertexAttributeBindingImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractVertexAttributeBindingImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\BufferImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\BufferImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\DebugImplementation_DebugKHR.obj: cl dep_modules\globjects\source\globjects\source\implementations\DebugImplementation_DebugKHR.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\DebugImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\DebugImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\FramebufferImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\FramebufferImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\ObjectNameImplementation_DebugKHR.obj: cl dep_modules\globjects\source\globjects\source\implementations\ObjectNameImplementation_DebugKHR.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\ObjectNameImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\ObjectNameImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_GetProgramBinaryARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_GetProgramBinaryARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_None.obj: cl dep_modules\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_None.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_Fallback.obj: cl dep_modules\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_Fallback.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_ShadingLanguageIncludeARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_ShadingLanguageIncludeARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\TextureImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_Fallback.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_Fallback.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\UniformImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\UniformImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\UniformImplementation_SeparateShaderObjectsARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\UniformImplementation_SeparateShaderObjectsARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_VertexAttribBindingARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_VertexAttribBindingARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\objectlogging.obj: cl dep_modules\globjects\source\globjects\source\objectlogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\pixelformat.obj: cl dep_modules\globjects\source\globjects\source\pixelformat.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\registry\ExtensionRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\ExtensionRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\registry\ImplementationRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\ImplementationRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\registry\NamedStringRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\NamedStringRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\registry\ObjectRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\ObjectRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\debug\globjects\source\globjects\source\registry\Registry.obj: cl dep_modules\globjects\source\globjects\source\registry\Registry.cpp || init!
+   flags = $cl_flags_cxx_extlib_debug
+   pdb = $build_dir\globjects-debug.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $ext_lib_dir\globjects-debug.lib: lib $build_dir\debug\globjects\source\globjects\source\AbstractState.obj $build_dir\debug\globjects\source\globjects\source\AbstractUniform.obj $build_dir\debug\globjects\source\globjects\source\AttachedRenderbuffer.obj $build_dir\debug\globjects\source\globjects\source\AttachedTexture.obj $build_dir\debug\globjects\source\globjects\source\Buffer.obj $build_dir\debug\globjects\source\globjects\source\Capability.obj $build_dir\debug\globjects\source\globjects\source\DebugMessage.obj $build_dir\debug\globjects\source\globjects\source\Error.obj $build_dir\debug\globjects\source\globjects\source\Framebuffer.obj $build_dir\debug\globjects\source\globjects\source\FramebufferAttachment.obj $build_dir\debug\globjects\source\globjects\source\IncludeProcessor.obj $build_dir\debug\globjects\source\globjects\source\LocationIdentity.obj $build_dir\debug\globjects\source\globjects\source\NamedString.obj $build_dir\debug\globjects\source\globjects\source\Object.obj $build_dir\debug\globjects\source\globjects\source\ObjectVisitor.obj $build_dir\debug\globjects\source\globjects\source\Program.obj $build_dir\debug\globjects\source\globjects\source\ProgramBinary.obj $build_dir\debug\globjects\source\globjects\source\ProgramPipeline.obj $build_dir\debug\globjects\source\globjects\source\Query.obj $build_dir\debug\globjects\source\globjects\source\Renderbuffer.obj $build_dir\debug\globjects\source\globjects\source\Resource.obj $build_dir\debug\globjects\source\globjects\source\Sampler.obj $build_dir\debug\globjects\source\globjects\source\Shader.obj $build_dir\debug\globjects\source\globjects\source\State.obj $build_dir\debug\globjects\source\globjects\source\StateSetting.obj $build_dir\debug\globjects\source\globjects\source\Sync.obj $build_dir\debug\globjects\source\globjects\source\Texture.obj $build_dir\debug\globjects\source\globjects\source\TextureHandle.obj $build_dir\debug\globjects\source\globjects\source\TransformFeedback.obj $build_dir\debug\globjects\source\globjects\source\UniformBlock.obj $build_dir\debug\globjects\source\globjects\source\VertexArray.obj $build_dir\debug\globjects\source\globjects\source\VertexAttributeBinding.obj $build_dir\debug\globjects\source\globjects\source\base\AbstractFunctionCall.obj $build_dir\debug\globjects\source\globjects\source\base\AbstractStringSource.obj $build_dir\debug\globjects\source\globjects\source\base\ChangeListener.obj $build_dir\debug\globjects\source\globjects\source\base\Changeable.obj $build_dir\debug\globjects\source\globjects\source\base\CompositeStringSource.obj $build_dir\debug\globjects\source\globjects\source\base\ConsoleLogger.obj $build_dir\debug\globjects\source\globjects\source\base\File.obj $build_dir\debug\globjects\source\globjects\source\base\FileRegistry.obj $build_dir\debug\globjects\source\globjects\source\base\HeapOnly.obj $build_dir\debug\globjects\source\globjects\source\base\LogMessage.obj $build_dir\debug\globjects\source\globjects\source\base\LogMessageBuilder.obj $build_dir\debug\globjects\source\globjects\source\base\Referenced.obj $build_dir\debug\globjects\source\globjects\source\base\StaticStringSource.obj $build_dir\debug\globjects\source\globjects\source\base\StringSourceDecorator.obj $build_dir\debug\globjects\source\globjects\source\base\StringTemplate.obj $build_dir\debug\globjects\source\globjects\source\base\baselogging.obj $build_dir\debug\globjects\source\globjects\source\base\formatString.obj $build_dir\debug\globjects\source\globjects\source\glbindinglogging.obj $build_dir\debug\globjects\source\globjects\source\glmlogging.obj $build_dir\debug\globjects\source\globjects\source\globjects.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractBufferImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractDebugImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractFramebufferImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractObjectNameImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractProgramBinaryImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractShadingLanguageIncludeImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractTextureImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractTextureStorageImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractUniformImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\AbstractVertexAttributeBindingImplementation.obj $build_dir\debug\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessEXT.obj $build_dir\debug\globjects\source\globjects\source\implementations\BufferImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\DebugImplementation_DebugKHR.obj $build_dir\debug\globjects\source\globjects\source\implementations\DebugImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessEXT.obj $build_dir\debug\globjects\source\globjects\source\implementations\FramebufferImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\ObjectNameImplementation_DebugKHR.obj $build_dir\debug\globjects\source\globjects\source\implementations\ObjectNameImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_GetProgramBinaryARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_None.obj $build_dir\debug\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_Fallback.obj $build_dir\debug\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_ShadingLanguageIncludeARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessEXT.obj $build_dir\debug\globjects\source\globjects\source\implementations\TextureImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessEXT.obj $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_Fallback.obj $build_dir\debug\globjects\source\globjects\source\implementations\TextureStorageImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\UniformImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\UniformImplementation_SeparateShaderObjectsARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_DirectStateAccessARB.obj $build_dir\debug\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_Legacy.obj $build_dir\debug\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_VertexAttribBindingARB.obj $build_dir\debug\globjects\source\globjects\source\objectlogging.obj $build_dir\debug\globjects\source\globjects\source\pixelformat.obj $build_dir\debug\globjects\source\globjects\source\registry\ExtensionRegistry.obj $build_dir\debug\globjects\source\globjects\source\registry\ImplementationRegistry.obj $build_dir\debug\globjects\source\globjects\source\registry\NamedStringRegistry.obj $build_dir\debug\globjects\source\globjects\source\registry\ObjectRegistry.obj $build_dir\debug\globjects\source\globjects\source\registry\Registry.obj || init!
+   out_file = globjects-debug.lib
+   flags = $lib_flags_extlib_debug
+build project-globjects-debug!: phony $ext_lib_dir\globjects-debug.lib
+
+build $build_dir\release\globjects\source\globjects\source\AbstractState.obj: cl dep_modules\globjects\source\globjects\source\AbstractState.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\AbstractUniform.obj: cl dep_modules\globjects\source\globjects\source\AbstractUniform.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\AttachedRenderbuffer.obj: cl dep_modules\globjects\source\globjects\source\AttachedRenderbuffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\AttachedTexture.obj: cl dep_modules\globjects\source\globjects\source\AttachedTexture.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Buffer.obj: cl dep_modules\globjects\source\globjects\source\Buffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Capability.obj: cl dep_modules\globjects\source\globjects\source\Capability.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\DebugMessage.obj: cl dep_modules\globjects\source\globjects\source\DebugMessage.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Error.obj: cl dep_modules\globjects\source\globjects\source\Error.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Framebuffer.obj: cl dep_modules\globjects\source\globjects\source\Framebuffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\FramebufferAttachment.obj: cl dep_modules\globjects\source\globjects\source\FramebufferAttachment.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\IncludeProcessor.obj: cl dep_modules\globjects\source\globjects\source\IncludeProcessor.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\LocationIdentity.obj: cl dep_modules\globjects\source\globjects\source\LocationIdentity.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\NamedString.obj: cl dep_modules\globjects\source\globjects\source\NamedString.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Object.obj: cl dep_modules\globjects\source\globjects\source\Object.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\ObjectVisitor.obj: cl dep_modules\globjects\source\globjects\source\ObjectVisitor.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Program.obj: cl dep_modules\globjects\source\globjects\source\Program.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\ProgramBinary.obj: cl dep_modules\globjects\source\globjects\source\ProgramBinary.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\ProgramPipeline.obj: cl dep_modules\globjects\source\globjects\source\ProgramPipeline.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Query.obj: cl dep_modules\globjects\source\globjects\source\Query.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Renderbuffer.obj: cl dep_modules\globjects\source\globjects\source\Renderbuffer.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Resource.obj: cl dep_modules\globjects\source\globjects\source\Resource.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Sampler.obj: cl dep_modules\globjects\source\globjects\source\Sampler.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Shader.obj: cl dep_modules\globjects\source\globjects\source\Shader.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\State.obj: cl dep_modules\globjects\source\globjects\source\State.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\StateSetting.obj: cl dep_modules\globjects\source\globjects\source\StateSetting.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Sync.obj: cl dep_modules\globjects\source\globjects\source\Sync.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\Texture.obj: cl dep_modules\globjects\source\globjects\source\Texture.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\TextureHandle.obj: cl dep_modules\globjects\source\globjects\source\TextureHandle.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\TransformFeedback.obj: cl dep_modules\globjects\source\globjects\source\TransformFeedback.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\UniformBlock.obj: cl dep_modules\globjects\source\globjects\source\UniformBlock.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\VertexArray.obj: cl dep_modules\globjects\source\globjects\source\VertexArray.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\VertexAttributeBinding.obj: cl dep_modules\globjects\source\globjects\source\VertexAttributeBinding.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\AbstractFunctionCall.obj: cl dep_modules\globjects\source\globjects\source\base\AbstractFunctionCall.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\AbstractStringSource.obj: cl dep_modules\globjects\source\globjects\source\base\AbstractStringSource.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\ChangeListener.obj: cl dep_modules\globjects\source\globjects\source\base\ChangeListener.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\Changeable.obj: cl dep_modules\globjects\source\globjects\source\base\Changeable.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\CompositeStringSource.obj: cl dep_modules\globjects\source\globjects\source\base\CompositeStringSource.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\ConsoleLogger.obj: cl dep_modules\globjects\source\globjects\source\base\ConsoleLogger.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\File.obj: cl dep_modules\globjects\source\globjects\source\base\File.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\FileRegistry.obj: cl dep_modules\globjects\source\globjects\source\base\FileRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\HeapOnly.obj: cl dep_modules\globjects\source\globjects\source\base\HeapOnly.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\LogMessage.obj: cl dep_modules\globjects\source\globjects\source\base\LogMessage.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\LogMessageBuilder.obj: cl dep_modules\globjects\source\globjects\source\base\LogMessageBuilder.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\Referenced.obj: cl dep_modules\globjects\source\globjects\source\base\Referenced.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\StaticStringSource.obj: cl dep_modules\globjects\source\globjects\source\base\StaticStringSource.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\StringSourceDecorator.obj: cl dep_modules\globjects\source\globjects\source\base\StringSourceDecorator.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\StringTemplate.obj: cl dep_modules\globjects\source\globjects\source\base\StringTemplate.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\baselogging.obj: cl dep_modules\globjects\source\globjects\source\base\baselogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\base\formatString.obj: cl dep_modules\globjects\source\globjects\source\base\formatString.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\glbindinglogging.obj: cl dep_modules\globjects\source\globjects\source\glbindinglogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\glmlogging.obj: cl dep_modules\globjects\source\globjects\source\glmlogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\globjects.obj: cl dep_modules\globjects\source\globjects\source\globjects.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractBufferImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractBufferImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractDebugImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractDebugImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractFramebufferImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractFramebufferImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractObjectNameImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractObjectNameImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractProgramBinaryImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractProgramBinaryImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractShadingLanguageIncludeImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractShadingLanguageIncludeImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractTextureImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractTextureImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractTextureStorageImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractTextureStorageImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractUniformImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractUniformImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\AbstractVertexAttributeBindingImplementation.obj: cl dep_modules\globjects\source\globjects\source\implementations\AbstractVertexAttributeBindingImplementation.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\BufferImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\BufferImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\DebugImplementation_DebugKHR.obj: cl dep_modules\globjects\source\globjects\source\implementations\DebugImplementation_DebugKHR.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\DebugImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\DebugImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\FramebufferImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\FramebufferImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\ObjectNameImplementation_DebugKHR.obj: cl dep_modules\globjects\source\globjects\source\implementations\ObjectNameImplementation_DebugKHR.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\ObjectNameImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\ObjectNameImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_GetProgramBinaryARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_GetProgramBinaryARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_None.obj: cl dep_modules\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_None.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_Fallback.obj: cl dep_modules\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_Fallback.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_ShadingLanguageIncludeARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_ShadingLanguageIncludeARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\TextureImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessEXT.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessEXT.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_Fallback.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_Fallback.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\TextureStorageImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\UniformImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\UniformImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\UniformImplementation_SeparateShaderObjectsARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\UniformImplementation_SeparateShaderObjectsARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_DirectStateAccessARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_DirectStateAccessARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_Legacy.obj: cl dep_modules\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_Legacy.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_VertexAttribBindingARB.obj: cl dep_modules\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_VertexAttribBindingARB.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\objectlogging.obj: cl dep_modules\globjects\source\globjects\source\objectlogging.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\pixelformat.obj: cl dep_modules\globjects\source\globjects\source\pixelformat.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\registry\ExtensionRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\ExtensionRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\registry\ImplementationRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\ImplementationRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\registry\NamedStringRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\NamedStringRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\registry\ObjectRegistry.obj: cl dep_modules\globjects\source\globjects\source\registry\ObjectRegistry.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $build_dir\release\globjects\source\globjects\source\registry\Registry.obj: cl dep_modules\globjects\source\globjects\source\registry\Registry.cpp || init!
+   flags = $cl_flags_cxx_extlib_release
+   pdb = $build_dir\globjects.pdb
+   extra = /DGLOBJECTS_STATIC_DEFINE /I"dep_modules\globjects\source\globjects\include\globjects"
+
+build $ext_lib_dir\globjects.lib: lib $build_dir\release\globjects\source\globjects\source\AbstractState.obj $build_dir\release\globjects\source\globjects\source\AbstractUniform.obj $build_dir\release\globjects\source\globjects\source\AttachedRenderbuffer.obj $build_dir\release\globjects\source\globjects\source\AttachedTexture.obj $build_dir\release\globjects\source\globjects\source\Buffer.obj $build_dir\release\globjects\source\globjects\source\Capability.obj $build_dir\release\globjects\source\globjects\source\DebugMessage.obj $build_dir\release\globjects\source\globjects\source\Error.obj $build_dir\release\globjects\source\globjects\source\Framebuffer.obj $build_dir\release\globjects\source\globjects\source\FramebufferAttachment.obj $build_dir\release\globjects\source\globjects\source\IncludeProcessor.obj $build_dir\release\globjects\source\globjects\source\LocationIdentity.obj $build_dir\release\globjects\source\globjects\source\NamedString.obj $build_dir\release\globjects\source\globjects\source\Object.obj $build_dir\release\globjects\source\globjects\source\ObjectVisitor.obj $build_dir\release\globjects\source\globjects\source\Program.obj $build_dir\release\globjects\source\globjects\source\ProgramBinary.obj $build_dir\release\globjects\source\globjects\source\ProgramPipeline.obj $build_dir\release\globjects\source\globjects\source\Query.obj $build_dir\release\globjects\source\globjects\source\Renderbuffer.obj $build_dir\release\globjects\source\globjects\source\Resource.obj $build_dir\release\globjects\source\globjects\source\Sampler.obj $build_dir\release\globjects\source\globjects\source\Shader.obj $build_dir\release\globjects\source\globjects\source\State.obj $build_dir\release\globjects\source\globjects\source\StateSetting.obj $build_dir\release\globjects\source\globjects\source\Sync.obj $build_dir\release\globjects\source\globjects\source\Texture.obj $build_dir\release\globjects\source\globjects\source\TextureHandle.obj $build_dir\release\globjects\source\globjects\source\TransformFeedback.obj $build_dir\release\globjects\source\globjects\source\UniformBlock.obj $build_dir\release\globjects\source\globjects\source\VertexArray.obj $build_dir\release\globjects\source\globjects\source\VertexAttributeBinding.obj $build_dir\release\globjects\source\globjects\source\base\AbstractFunctionCall.obj $build_dir\release\globjects\source\globjects\source\base\AbstractStringSource.obj $build_dir\release\globjects\source\globjects\source\base\ChangeListener.obj $build_dir\release\globjects\source\globjects\source\base\Changeable.obj $build_dir\release\globjects\source\globjects\source\base\CompositeStringSource.obj $build_dir\release\globjects\source\globjects\source\base\ConsoleLogger.obj $build_dir\release\globjects\source\globjects\source\base\File.obj $build_dir\release\globjects\source\globjects\source\base\FileRegistry.obj $build_dir\release\globjects\source\globjects\source\base\HeapOnly.obj $build_dir\release\globjects\source\globjects\source\base\LogMessage.obj $build_dir\release\globjects\source\globjects\source\base\LogMessageBuilder.obj $build_dir\release\globjects\source\globjects\source\base\Referenced.obj $build_dir\release\globjects\source\globjects\source\base\StaticStringSource.obj $build_dir\release\globjects\source\globjects\source\base\StringSourceDecorator.obj $build_dir\release\globjects\source\globjects\source\base\StringTemplate.obj $build_dir\release\globjects\source\globjects\source\base\baselogging.obj $build_dir\release\globjects\source\globjects\source\base\formatString.obj $build_dir\release\globjects\source\globjects\source\glbindinglogging.obj $build_dir\release\globjects\source\globjects\source\glmlogging.obj $build_dir\release\globjects\source\globjects\source\globjects.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractBufferImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractDebugImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractFramebufferImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractObjectNameImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractProgramBinaryImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractShadingLanguageIncludeImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractTextureImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractTextureStorageImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractUniformImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\AbstractVertexAttributeBindingImplementation.obj $build_dir\release\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessARB.obj $build_dir\release\globjects\source\globjects\source\implementations\BufferImplementation_DirectStateAccessEXT.obj $build_dir\release\globjects\source\globjects\source\implementations\BufferImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\DebugImplementation_DebugKHR.obj $build_dir\release\globjects\source\globjects\source\implementations\DebugImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessARB.obj $build_dir\release\globjects\source\globjects\source\implementations\FramebufferImplementation_DirectStateAccessEXT.obj $build_dir\release\globjects\source\globjects\source\implementations\FramebufferImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\ObjectNameImplementation_DebugKHR.obj $build_dir\release\globjects\source\globjects\source\implementations\ObjectNameImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_GetProgramBinaryARB.obj $build_dir\release\globjects\source\globjects\source\implementations\ProgramBinaryImplementation_None.obj $build_dir\release\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_Fallback.obj $build_dir\release\globjects\source\globjects\source\implementations\ShadingLanguageIncludeImplementation_ShadingLanguageIncludeARB.obj $build_dir\release\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessARB.obj $build_dir\release\globjects\source\globjects\source\implementations\TextureImplementation_DirectStateAccessEXT.obj $build_dir\release\globjects\source\globjects\source\implementations\TextureImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessARB.obj $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_DirectStateAccessEXT.obj $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_Fallback.obj $build_dir\release\globjects\source\globjects\source\implementations\TextureStorageImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\UniformImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\UniformImplementation_SeparateShaderObjectsARB.obj $build_dir\release\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_DirectStateAccessARB.obj $build_dir\release\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_Legacy.obj $build_dir\release\globjects\source\globjects\source\implementations\VertexAttributeBindingImplementation_VertexAttribBindingARB.obj $build_dir\release\globjects\source\globjects\source\objectlogging.obj $build_dir\release\globjects\source\globjects\source\pixelformat.obj $build_dir\release\globjects\source\globjects\source\registry\ExtensionRegistry.obj $build_dir\release\globjects\source\globjects\source\registry\ImplementationRegistry.obj $build_dir\release\globjects\source\globjects\source\registry\NamedStringRegistry.obj $build_dir\release\globjects\source\globjects\source\registry\ObjectRegistry.obj $build_dir\release\globjects\source\globjects\source\registry\Registry.obj || init!
+   out_file = globjects.lib
+   flags = $lib_flags_extlib_release
+build project-globjects-release!: phony $ext_lib_dir\globjects.lib
+build project-globjects!: phony project-globjects-debug! project-globjects-release!
+
 build $build_dir\debug\glfw\src\context.obj: cl dep_modules\glfw\src\context.c || init!
    flags = $cl_flags_c_extlib_debug
    pdb = $build_dir\glfw-debug.pdb
@@ -1702,9 +2664,9 @@ build $ext_lib_dir\luaxx.lib: lib $build_dir\release\luaxx\lapi.obj $build_dir\r
    flags = $lib_flags_extlib_release
 build project-luaxx-release!: phony $ext_lib_dir\luaxx.lib
 build project-luaxx!: phony project-luaxx-debug! project-luaxx-release!
-build group-deps-debug!: phony project-zlib-static-debug! project-glbinding-debug! project-glfw-debug! project-luaxx-debug!
-build group-deps-release!: phony project-zlib-static-release! project-glbinding-release! project-glfw-release! project-luaxx-release!
-build group-deps!: phony project-zlib-static! project-glbinding! project-glfw! project-luaxx!
+build group-deps-debug!: phony project-zlib-static-debug! project-glbinding-debug! project-globjects-debug! project-glfw-debug! project-luaxx-debug!
+build group-deps-release!: phony project-zlib-static-release! project-glbinding-release! project-globjects-release! project-glfw-release! project-luaxx-release!
+build group-deps!: phony project-zlib-static! project-glbinding! project-globjects! project-glfw! project-luaxx!
 
 build $build_dir\debug\belua\src\context.obj: cl modules\belua\src\context.cpp || init!
    flags = $cl_flags_lib_debug
@@ -3176,11 +4138,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\gfx-test-debug.icon.res: rc $build_dir\gfx-test-debug.icon.rc || init!
 build $out_dir\gfx-test-debug.pdb!: pdb $out_dir\gfx-test-debug.pdb
 
-build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\gfx-test\test\test_image_format.obj $build_dir\debug\gfx-test\test\test_image_region.obj $build_dir\debug\gfx-test\test\test_image_view.obj $build_dir\debug\gfx-test\test\test_main.obj $build_dir\debug\gfx-test\test\test_read_write_image.obj $build_dir\debug\gfx-test\test\test_texture_storage.obj $build_dir\debug\gfx-test\test\test_texture_view.obj $build_dir\debug\gfx-test\test\test_uniform_resample.obj $build_dir\gfx-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\gfx-test\test\test_image_format.obj $build_dir\debug\gfx-test\test\test_image_region.obj $build_dir\debug\gfx-test\test\test_image_view.obj $build_dir\debug\gfx-test\test\test_main.obj $build_dir\debug\gfx-test\test\test_read_write_image.obj $build_dir\debug\gfx-test\test\test_texture_storage.obj $build_dir\debug\gfx-test\test\test_texture_view.obj $build_dir\debug\gfx-test\test\test_uniform_resample.obj $build_dir\gfx-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = gfx-test-debug.exe
    pdb = $out_dir\gfx-test-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra = opengl32.lib
 build $stage_dir\gfx-test-debug.exe: cp $out_dir\gfx-test-debug.exe
 
 build run-project-gfx-test-debug!: run | $stage_dir\gfx-test-debug.exe
@@ -3233,11 +4195,11 @@ build $build_dir\gfx-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\gfx-test.icon.res: rc $build_dir\gfx-test.icon.rc || init!
 
-build $out_dir\gfx-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\gfx-test\test\test_image_format.obj $build_dir\release\gfx-test\test\test_image_region.obj $build_dir\release\gfx-test\test\test_image_view.obj $build_dir\release\gfx-test\test\test_main.obj $build_dir\release\gfx-test\test\test_read_write_image.obj $build_dir\release\gfx-test\test\test_texture_storage.obj $build_dir\release\gfx-test\test\test_texture_view.obj $build_dir\release\gfx-test\test\test_uniform_resample.obj $build_dir\gfx-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\gfx-test.exe: link $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\gfx-test\test\test_image_format.obj $build_dir\release\gfx-test\test\test_image_region.obj $build_dir\release\gfx-test\test\test_image_view.obj $build_dir\release\gfx-test\test\test_main.obj $build_dir\release\gfx-test\test\test_read_write_image.obj $build_dir\release\gfx-test\test\test_texture_storage.obj $build_dir\release\gfx-test\test\test_texture_view.obj $build_dir\release\gfx-test\test\test_uniform_resample.obj $build_dir\gfx-test.icon.res $build_dir\default.manifest.res || init!
    out_file = gfx-test.exe
    pdb = $out_dir\gfx-test.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra = opengl32.lib
 build $stage_dir\gfx-test.exe: cp $out_dir\gfx-test.exe
 
 build run-project-gfx-test-release!: run | $stage_dir\gfx-test.exe
@@ -4372,11 +5334,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\concur-debug.icon.res: rc $build_dir\concur-debug.icon.rc || init!
 build $out_dir\concur-debug.pdb!: pdb $out_dir\concur-debug.pdb
 
-build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-debug.lib $build_dir\debug\concur\src\concur.obj $build_dir\debug\concur\src\concur_app.obj $build_dir\concur-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-debug.lib $build_dir\debug\concur\src\concur.obj $build_dir\debug\concur\src\concur_app.obj $build_dir\concur-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = concur-debug.exe
    pdb = $out_dir\concur-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra = opengl32.lib
 build $stage_dir\concur-debug.exe: cp $out_dir\concur-debug.exe
 build project-concur-debug!: phony $stage_dir\concur-debug.exe
 
@@ -4395,11 +5357,11 @@ build $build_dir\concur.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\concur.icon.res: rc $build_dir\concur.icon.rc || init!
 
-build $out_dir\concur.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\util.lib $build_dir\release\concur\src\concur.obj $build_dir\release\concur\src\concur_app.obj $build_dir\concur.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\concur.exe: link $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects.lib $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\util.lib $build_dir\release\concur\src\concur.obj $build_dir\release\concur\src\concur_app.obj $build_dir\concur.icon.res $build_dir\default.manifest.res || init!
    out_file = concur.exe
    pdb = $out_dir\concur.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra = opengl32.lib
 build $stage_dir\concur.exe: cp $out_dir\concur.exe
 build project-concur-release!: phony $stage_dir\concur.exe
 build project-concur!: phony project-concur-debug! project-concur-release!
@@ -4716,7 +5678,7 @@ build group-consolecolors!: phony project-consolecolors!
 build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug!
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors!
-build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
+build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\globjects.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
 build limp!: phony modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\gfx\include\read_image.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\write_image.hpp! modules\gfx\src\tex\block_packing.cpp! modules\gfx\src\tex\colorspace.cpp! modules\gfx\src\tex\component_type.cpp! modules\gfx\src\tex\convert_colorspace.cpp! modules\gfx\src\tex\swizzle.cpp! modules\gfx\src\tex\texture_class.cpp! modules\gfx\src\read_image.cpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! tools\limp\include\limp_lua.hpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
