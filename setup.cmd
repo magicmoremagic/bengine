@@ -1,7 +1,7 @@
 pushd %~dp0
 git lfs pull
 git submodule update --init
-git submodule foreach git lfs pull
+git submodule foreach --quiet git lfs pull
 
 for /f "usebackq tokens=*" %%i in (`"%~dp0bin\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Workload.NativeDesktop -property installationPath`) do (
   set _vcvarsall="%%i\VC\Auxiliary\Build\vcvarsall.bat"
