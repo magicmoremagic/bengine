@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 5850 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 5860 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -5797,7 +5797,12 @@ build group-consolecolors!: phony project-consolecolors!
 build $build_dir\debug\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\d-gfx-tex-debug.pdb
-   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /I"include"
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLM_ENABLE_EXPERIMENTAL /I"demos\gfx\include" /I"include"
+
+build $build_dir\debug\d-gfx-tex\src\tex_demo.obj: cl demos\gfx\src\tex_demo.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\d-gfx-tex-debug.pdb
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLM_ENABLE_EXPERIMENTAL /I"demos\gfx\include" /I"include"
 
 build $build_dir\d-gfx-tex-debug.icon.rc: putfile | icon\bengine.ico || init!
    contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
@@ -5805,7 +5810,7 @@ GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\d-gfx-tex-debug.icon.res: rc $build_dir\d-gfx-tex-debug.icon.rc || init!
 build $out_dir\d-gfx-tex-debug.pdb!: pdb $out_dir\d-gfx-tex-debug.pdb
 
-build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $build_dir\debug\d-gfx-tex\src\tex.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $build_dir\debug\d-gfx-tex\src\tex.obj $build_dir\debug\d-gfx-tex\src\tex_demo.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = d-gfx-tex-debug.exe
    pdb = $out_dir\d-gfx-tex-debug.pdb
    flags = $link_flags_console_debug
@@ -5816,14 +5821,19 @@ build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
 build $build_dir\release\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\d-gfx-tex.pdb
-   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /I"include"
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLM_ENABLE_EXPERIMENTAL /I"demos\gfx\include" /I"include"
+
+build $build_dir\release\d-gfx-tex\src\tex_demo.obj: cl demos\gfx\src\tex_demo.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\d-gfx-tex.pdb
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLM_ENABLE_EXPERIMENTAL /I"demos\gfx\include" /I"include"
 
 build $build_dir\d-gfx-tex.icon.rc: putfile | icon\bengine.ico || init!
    contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\d-gfx-tex.icon.res: rc $build_dir\d-gfx-tex.icon.rc || init!
 
-build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\globjects.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util.lib $build_dir\release\d-gfx-tex\src\tex.obj $build_dir\d-gfx-tex.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\globjects.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util.lib $build_dir\release\d-gfx-tex\src\tex.obj $build_dir\release\d-gfx-tex\src\tex_demo.obj $build_dir\d-gfx-tex.icon.res $build_dir\default.manifest.res || init!
    out_file = d-gfx-tex.exe
    pdb = $out_dir\d-gfx-tex.pdb
    flags = $link_flags_console_release

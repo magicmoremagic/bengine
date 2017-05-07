@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3121 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3126 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -3090,7 +3090,12 @@ build group-consolecolors!: phony project-consolecolors!
 build $build_dir\debug\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\d-gfx-tex-debug.pdb
-   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /I"include"
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLM_ENABLE_EXPERIMENTAL /I"demos\gfx\include" /I"include"
+
+build $build_dir\debug\d-gfx-tex\src\tex_demo.obj: cl demos\gfx\src\tex_demo.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\d-gfx-tex-debug.pdb
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLM_ENABLE_EXPERIMENTAL /I"demos\gfx\include" /I"include"
 
 build $build_dir\d-gfx-tex-debug.icon.rc: putfile | icon\bengine.ico || init!
    contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
@@ -3098,7 +3103,7 @@ GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\d-gfx-tex-debug.icon.res: rc $build_dir\d-gfx-tex-debug.icon.rc || init!
 build $out_dir\d-gfx-tex-debug.pdb!: pdb $out_dir\d-gfx-tex-debug.pdb
 
-build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $build_dir\debug\d-gfx-tex\src\tex.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $build_dir\debug\d-gfx-tex\src\tex.obj $build_dir\debug\d-gfx-tex\src\tex_demo.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = d-gfx-tex-debug.exe
    pdb = $out_dir\d-gfx-tex-debug.pdb
    flags = $link_flags_console_debug
