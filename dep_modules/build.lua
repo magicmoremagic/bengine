@@ -1,6 +1,5 @@
 deps {
    ext_include_dir 'glm'       { path 'glm/glm' },
-   ext_include_dir 'gli'       { path 'gli/gli' },
    ext_include_dir 'gsl'       { path 'gsl/gsl' },
    ext_include_dir 'glbinding' { path 'glbinding/source/glbinding/include/glbinding' },
    ext_include_dir 'globjects' { path 'globjects/source/globjects/include/globjects' },
@@ -43,6 +42,7 @@ deps {
          exclude 'source/glbinding/source/gl/functions_*.cpp'
       },
       define 'GLBINDING_STATIC_DEFINE',
+      export_define 'GLFW_INCLUDE_NONE',
       toolchain 'vc_win' {
          link 'opengl32'
       }

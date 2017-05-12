@@ -3,8 +3,8 @@
   <ImportGroup Label="PropertySheets" />
   
   <PropertyGroup>
-    <TargetName>$(ProjectName)-$(Configuration)</TargetName>
     <OutDir>$(SolutionDir)msvc_out\</OutDir>
+    <TargetName>$(ProjectName)-$(Configuration)</TargetName>
     <IntDir>$(SolutionDir)msvc_build\$(ProjectName)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)include;$(SolutionDir)deps;$(SolutionDir)ext_include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)msvc_out;$(SolutionDir)ext_lib;$(LibraryPath)</LibraryPath>
@@ -51,14 +51,19 @@
       <AdditionalIncludeDirectories>$(ProjectDir)include;</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)%(RelativeDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)pdb\$(TargetName).pdb</ProgramDataBaseFileName>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>BE_TARGET=$(ProjectName);GLM_FORCE_SSE4;GLM_ENABLE_EXPERIMENTAL;BE_ID_EXTERNS;BOOST_NO_TYPEID;BOOST_NO_RTTI;SQLITE_WIN32_GETVERSIONEX=0;_WIN32;WIN32;_WIN32_WINNT=0x0601;NOMINMAX;_HAS_AUTO_PTR_ETC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BE_TARGET=$(ProjectName);BE_ID_EXTERNS;GLM_FORCE_SSE3;GLM_ENABLE_EXPERIMENTAL;GLFW_INCLUDE_NONE;BOOST_NO_TYPEID;BOOST_NO_RTTI;SQLITE_WIN32_GETVERSIONEX=0;_WIN32;WIN32;_WIN32_WINNT=0x0601;NOMINMAX;_HAS_AUTO_PTR_ETC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4100;4201;4310;4324;4458;4503;4592;5030</DisableSpecificWarnings>
     </ClCompile>
+    <Lib>
+      <AdditionalOptions>/IGNORE:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   
@@ -67,9 +72,6 @@
     <ClCompile>
       <PreprocessorDefinitions>BE_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Lib>
-      <AdditionalOptions>/IGNORE:4221 %(AdditionalOptions)</AdditionalOptions>
-    </Lib>
   </ItemDefinitionGroup>
   
   <!-- Copy .exes and .dlls to stage/ -->
