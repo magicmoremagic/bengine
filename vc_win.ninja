@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 5863 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6105 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -3882,6 +3882,8 @@ build modules\gfx\include\tex\swizzle.hpp: limp
 build modules\gfx\include\tex\swizzle.hpp!: limpin modules\gfx\include\tex\swizzle.hpp
 build modules\gfx\include\tex\texture_class.hpp: limp
 build modules\gfx\include\tex\texture_class.hpp!: limpin modules\gfx\include\tex\texture_class.hpp
+build modules\gfx\include\tex\texture_file_format.hpp: limp
+build modules\gfx\include\tex\texture_file_format.hpp!: limpin modules\gfx\include\tex\texture_file_format.hpp
 build modules\gfx\include\tex\texture_storage_hash.hpp: limp
 build modules\gfx\include\tex\texture_storage_hash.hpp!: limpin modules\gfx\include\tex\texture_storage_hash.hpp
 build modules\gfx\include\tex\texture_view_hash.hpp: limp
@@ -3900,6 +3902,8 @@ build modules\gfx\src\tex\swizzle.cpp: limp
 build modules\gfx\src\tex\swizzle.cpp!: limpin modules\gfx\src\tex\swizzle.cpp
 build modules\gfx\src\tex\texture_class.cpp: limp
 build modules\gfx\src\tex\texture_class.cpp!: limpin modules\gfx\src\tex\texture_class.cpp
+build modules\gfx\src\tex\texture_file_format.cpp: limp
+build modules\gfx\src\tex\texture_file_format.cpp!: limpin modules\gfx\src\tex\texture_file_format.cpp
 
 build $build_dir\debug\gfx-tex\src\tex\pch.obj: cl modules\gfx\src\tex\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -3962,12 +3966,97 @@ build $build_dir\debug\gfx-tex\src\tex\premultiply_alpha.obj: cl modules\gfx\src
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
 
+build $build_dir\debug\gfx-tex\src\tex\read.obj: cl modules\gfx\src\tex\read.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
 build $build_dir\debug\gfx-tex\src\tex\swizzle.obj: cl modules\gfx\src\tex\swizzle.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
 
 build $build_dir\debug\gfx-tex\src\tex\texture_class.obj: cl modules\gfx\src\tex\texture_class.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format.obj: cl modules\gfx\src\tex\texture_file_format.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_betx.obj: cl modules\gfx\src\tex\texture_file_format_betx.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_bmp.obj: cl modules\gfx\src\tex\texture_file_format_bmp.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_dds.obj: cl modules\gfx\src\tex\texture_file_format_dds.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_etc.obj: cl modules\gfx\src\tex\texture_file_format_etc.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_gif.obj: cl modules\gfx\src\tex\texture_file_format_gif.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_glraw.obj: cl modules\gfx\src\tex\texture_file_format_glraw.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_hdr.obj: cl modules\gfx\src\tex\texture_file_format_hdr.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_jpeg.obj: cl modules\gfx\src\tex\texture_file_format_jpeg.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_kmg.obj: cl modules\gfx\src\tex\texture_file_format_kmg.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_ktx.obj: cl modules\gfx\src\tex\texture_file_format_ktx.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_pic.obj: cl modules\gfx\src\tex\texture_file_format_pic.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_png.obj: cl modules\gfx\src\tex\texture_file_format_png.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_pnm.obj: cl modules\gfx\src\tex\texture_file_format_pnm.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_psd.obj: cl modules\gfx\src\tex\texture_file_format_psd.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\debug\gfx-tex\src\tex\texture_file_format_tga.obj: cl modules\gfx\src\tex\texture_file_format_tga.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
@@ -3982,7 +4071,7 @@ build $build_dir\debug\gfx-tex\src\tex\texture_view.obj: cl modules\gfx\src\tex\
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
 
-build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src\tex\pch.obj $build_dir\debug\gfx-tex\src\tex\block_packing.obj $build_dir\debug\gfx-tex\src\tex\colorspace.obj $build_dir\debug\gfx-tex\src\tex\component_type.obj $build_dir\debug\gfx-tex\src\tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src\tex\image_format.obj $build_dir\debug\gfx-tex\src\tex\image_format_gl.obj $build_dir\debug\gfx-tex\src\tex\image_region.obj $build_dir\debug\gfx-tex\src\tex\image_view.obj $build_dir\debug\gfx-tex\src\tex\make_texture.obj $build_dir\debug\gfx-tex\src\tex\mipmapping.obj $build_dir\debug\gfx-tex\src\tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src\tex\swizzle.obj $build_dir\debug\gfx-tex\src\tex\texture_class.obj $build_dir\debug\gfx-tex\src\tex\texture_storage.obj $build_dir\debug\gfx-tex\src\tex\texture_view.obj || init!
+build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src\tex\pch.obj $build_dir\debug\gfx-tex\src\tex\block_packing.obj $build_dir\debug\gfx-tex\src\tex\colorspace.obj $build_dir\debug\gfx-tex\src\tex\component_type.obj $build_dir\debug\gfx-tex\src\tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src\tex\image_format.obj $build_dir\debug\gfx-tex\src\tex\image_format_gl.obj $build_dir\debug\gfx-tex\src\tex\image_region.obj $build_dir\debug\gfx-tex\src\tex\image_view.obj $build_dir\debug\gfx-tex\src\tex\make_texture.obj $build_dir\debug\gfx-tex\src\tex\mipmapping.obj $build_dir\debug\gfx-tex\src\tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src\tex\read.obj $build_dir\debug\gfx-tex\src\tex\swizzle.obj $build_dir\debug\gfx-tex\src\tex\texture_class.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_betx.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_bmp.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_dds.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_etc.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_gif.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_glraw.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_hdr.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_jpeg.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_kmg.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_ktx.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_pic.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_png.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_pnm.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_psd.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_tga.obj $build_dir\debug\gfx-tex\src\tex\texture_storage.obj $build_dir\debug\gfx-tex\src\tex\texture_view.obj || init!
    out_file = gfx-tex-debug.lib
    flags = $lib_flags_debug
 build project-gfx-tex-debug!: phony $out_dir\gfx-tex-debug.lib
@@ -4048,12 +4137,97 @@ build $build_dir\release\gfx-tex\src\tex\premultiply_alpha.obj: cl modules\gfx\s
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
 
+build $build_dir\release\gfx-tex\src\tex\read.obj: cl modules\gfx\src\tex\read.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
 build $build_dir\release\gfx-tex\src\tex\swizzle.obj: cl modules\gfx\src\tex\swizzle.cpp | $build_dir\gfx-tex.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
 
 build $build_dir\release\gfx-tex\src\tex\texture_class.obj: cl modules\gfx\src\tex\texture_class.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format.obj: cl modules\gfx\src\tex\texture_file_format.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_betx.obj: cl modules\gfx\src\tex\texture_file_format_betx.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_bmp.obj: cl modules\gfx\src\tex\texture_file_format_bmp.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_dds.obj: cl modules\gfx\src\tex\texture_file_format_dds.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_etc.obj: cl modules\gfx\src\tex\texture_file_format_etc.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_gif.obj: cl modules\gfx\src\tex\texture_file_format_gif.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_glraw.obj: cl modules\gfx\src\tex\texture_file_format_glraw.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_hdr.obj: cl modules\gfx\src\tex\texture_file_format_hdr.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_jpeg.obj: cl modules\gfx\src\tex\texture_file_format_jpeg.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_kmg.obj: cl modules\gfx\src\tex\texture_file_format_kmg.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_ktx.obj: cl modules\gfx\src\tex\texture_file_format_ktx.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_pic.obj: cl modules\gfx\src\tex\texture_file_format_pic.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_png.obj: cl modules\gfx\src\tex\texture_file_format_png.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_pnm.obj: cl modules\gfx\src\tex\texture_file_format_pnm.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_psd.obj: cl modules\gfx\src\tex\texture_file_format_psd.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
+
+build $build_dir\release\gfx-tex\src\tex\texture_file_format_tga.obj: cl modules\gfx\src\tex\texture_file_format_tga.cpp | $build_dir\gfx-tex.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
@@ -4068,7 +4242,7 @@ build $build_dir\release\gfx-tex\src\tex\texture_view.obj: cl modules\gfx\src\te
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"tex/pch.hpp"
 
-build $out_dir\gfx-tex.lib: lib $build_dir\release\gfx-tex\src\tex\pch.obj $build_dir\release\gfx-tex\src\tex\block_packing.obj $build_dir\release\gfx-tex\src\tex\colorspace.obj $build_dir\release\gfx-tex\src\tex\component_type.obj $build_dir\release\gfx-tex\src\tex\convert_colorspace.obj $build_dir\release\gfx-tex\src\tex\image_format.obj $build_dir\release\gfx-tex\src\tex\image_format_gl.obj $build_dir\release\gfx-tex\src\tex\image_region.obj $build_dir\release\gfx-tex\src\tex\image_view.obj $build_dir\release\gfx-tex\src\tex\make_texture.obj $build_dir\release\gfx-tex\src\tex\mipmapping.obj $build_dir\release\gfx-tex\src\tex\premultiply_alpha.obj $build_dir\release\gfx-tex\src\tex\swizzle.obj $build_dir\release\gfx-tex\src\tex\texture_class.obj $build_dir\release\gfx-tex\src\tex\texture_storage.obj $build_dir\release\gfx-tex\src\tex\texture_view.obj || init!
+build $out_dir\gfx-tex.lib: lib $build_dir\release\gfx-tex\src\tex\pch.obj $build_dir\release\gfx-tex\src\tex\block_packing.obj $build_dir\release\gfx-tex\src\tex\colorspace.obj $build_dir\release\gfx-tex\src\tex\component_type.obj $build_dir\release\gfx-tex\src\tex\convert_colorspace.obj $build_dir\release\gfx-tex\src\tex\image_format.obj $build_dir\release\gfx-tex\src\tex\image_format_gl.obj $build_dir\release\gfx-tex\src\tex\image_region.obj $build_dir\release\gfx-tex\src\tex\image_view.obj $build_dir\release\gfx-tex\src\tex\make_texture.obj $build_dir\release\gfx-tex\src\tex\mipmapping.obj $build_dir\release\gfx-tex\src\tex\premultiply_alpha.obj $build_dir\release\gfx-tex\src\tex\read.obj $build_dir\release\gfx-tex\src\tex\swizzle.obj $build_dir\release\gfx-tex\src\tex\texture_class.obj $build_dir\release\gfx-tex\src\tex\texture_file_format.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_betx.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_bmp.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_dds.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_etc.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_gif.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_glraw.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_hdr.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_jpeg.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_kmg.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_ktx.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_pic.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_png.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_pnm.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_psd.obj $build_dir\release\gfx-tex\src\tex\texture_file_format_tga.obj $build_dir\release\gfx-tex\src\tex\texture_storage.obj $build_dir\release\gfx-tex\src\tex\texture_view.obj || init!
    out_file = gfx-tex.lib
    flags = $lib_flags_release
 build project-gfx-tex-release!: phony $out_dir\gfx-tex.lib
@@ -4815,8 +4989,12 @@ build project-testing-test!: phony project-testing-test-debug! project-testing-t
 build group-testing-debug!: phony project-testing-debug! project-testing-test-debug!
 build group-testing-release!: phony project-testing-release! project-testing-test-release!
 build group-testing!: phony project-testing! project-testing-test!
+build modules\util\include\parse_string_error.hpp: limp
+build modules\util\include\parse_string_error.hpp!: limpin modules\util\include\parse_string_error.hpp
 build modules\util\include\version.hpp: limp
 build modules\util\include\version.hpp!: limpin modules\util\include\version.hpp
+build modules\util\src\parse_string_error.cpp: limp
+build modules\util\src\parse_string_error.cpp!: limpin modules\util\src\parse_string_error.cpp
 
 build $build_dir\debug\util\src\pch.obj: cl modules\util\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -4845,6 +5023,11 @@ build $build_dir\debug\util\src\ids.obj: cl modules\util\src\ids.cpp | $build_di
    extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util-debug.pch" /Yu"pch.hpp"
 
 build $build_dir\debug\util\src\native\vc_win\paths.obj: cl modules\util\src\native\vc_win\paths.cpp | $build_dir\util-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\util-debug.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\util\src\parse_string_error.obj: cl modules\util\src\parse_string_error.cpp | $build_dir\util-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\util-debug.pdb
    extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util-debug.pch" /Yu"pch.hpp"
@@ -4894,7 +5077,7 @@ build $build_dir\debug\util\src\utf8_iterator.obj: cl modules\util\src\utf8_iter
    pdb = $build_dir\util-debug.pdb
    extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util-debug.pch" /Yu"pch.hpp"
 
-build $out_dir\util-debug.lib: lib $build_dir\debug\util\src\pch.obj $build_dir\debug\util\src\binary_units.obj $build_dir\debug\util\src\files.obj $build_dir\debug\util\src\fnv.obj $build_dir\debug\util\src\ids.obj $build_dir\debug\util\src\native\vc_win\paths.obj $build_dir\debug\util\src\path_glob.obj $build_dir\debug\util\src\paths.obj $build_dir\debug\util\src\pointer_to_string.obj $build_dir\debug\util\src\service_split_mix_64.obj $build_dir\debug\util\src\service_xoroshiro_128_plus.obj $build_dir\debug\util\src\service_xorshift_1024_star.obj $build_dir\debug\util\src\service_xorshift_128_plus.obj $build_dir\debug\util\src\utf8_codepoint.obj $build_dir\debug\util\src\utf8_iterator.obj || init!
+build $out_dir\util-debug.lib: lib $build_dir\debug\util\src\pch.obj $build_dir\debug\util\src\binary_units.obj $build_dir\debug\util\src\files.obj $build_dir\debug\util\src\fnv.obj $build_dir\debug\util\src\ids.obj $build_dir\debug\util\src\native\vc_win\paths.obj $build_dir\debug\util\src\parse_string_error.obj $build_dir\debug\util\src\path_glob.obj $build_dir\debug\util\src\paths.obj $build_dir\debug\util\src\pointer_to_string.obj $build_dir\debug\util\src\service_split_mix_64.obj $build_dir\debug\util\src\service_xoroshiro_128_plus.obj $build_dir\debug\util\src\service_xorshift_1024_star.obj $build_dir\debug\util\src\service_xorshift_128_plus.obj $build_dir\debug\util\src\utf8_codepoint.obj $build_dir\debug\util\src\utf8_iterator.obj || init!
    out_file = util-debug.lib
    flags = $lib_flags_debug
 build project-util-debug!: phony $out_dir\util-debug.lib
@@ -4926,6 +5109,11 @@ build $build_dir\release\util\src\ids.obj: cl modules\util\src\ids.cpp | $build_
    extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
 
 build $build_dir\release\util\src\native\vc_win\paths.obj: cl modules\util\src\native\vc_win\paths.cpp | $build_dir\util.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util.pdb
+   extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util\src\parse_string_error.obj: cl modules\util\src\parse_string_error.cpp | $build_dir\util.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\util.pdb
    extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
@@ -4975,7 +5163,7 @@ build $build_dir\release\util\src\utf8_iterator.obj: cl modules\util\src\utf8_it
    pdb = $build_dir\util.pdb
    extra = /DBE_TARGET=util /DBE_TARGET_BASE=util /DBE_UTIL_IMPL /I"include" /I"modules\util\include" /Fp"$build_dir\util.pch" /Yu"pch.hpp"
 
-build $out_dir\util.lib: lib $build_dir\release\util\src\pch.obj $build_dir\release\util\src\binary_units.obj $build_dir\release\util\src\files.obj $build_dir\release\util\src\fnv.obj $build_dir\release\util\src\ids.obj $build_dir\release\util\src\native\vc_win\paths.obj $build_dir\release\util\src\path_glob.obj $build_dir\release\util\src\paths.obj $build_dir\release\util\src\pointer_to_string.obj $build_dir\release\util\src\service_split_mix_64.obj $build_dir\release\util\src\service_xoroshiro_128_plus.obj $build_dir\release\util\src\service_xorshift_1024_star.obj $build_dir\release\util\src\service_xorshift_128_plus.obj $build_dir\release\util\src\utf8_codepoint.obj $build_dir\release\util\src\utf8_iterator.obj || init!
+build $out_dir\util.lib: lib $build_dir\release\util\src\pch.obj $build_dir\release\util\src\binary_units.obj $build_dir\release\util\src\files.obj $build_dir\release\util\src\fnv.obj $build_dir\release\util\src\ids.obj $build_dir\release\util\src\native\vc_win\paths.obj $build_dir\release\util\src\parse_string_error.obj $build_dir\release\util\src\path_glob.obj $build_dir\release\util\src\paths.obj $build_dir\release\util\src\pointer_to_string.obj $build_dir\release\util\src\service_split_mix_64.obj $build_dir\release\util\src\service_xoroshiro_128_plus.obj $build_dir\release\util\src\service_xorshift_1024_star.obj $build_dir\release\util\src\service_xorshift_128_plus.obj $build_dir\release\util\src\utf8_codepoint.obj $build_dir\release\util\src\utf8_iterator.obj || init!
    out_file = util.lib
    flags = $lib_flags_release
 build project-util-release!: phony $out_dir\util.lib
@@ -5481,10 +5669,42 @@ build project-concur!: phony project-concur-debug! project-concur-release!
 build group-concur-debug!: phony project-concur-debug!
 build group-concur-release!: phony project-concur-release!
 build group-concur!: phony project-concur!
+build tools\idgen\include\format.hpp: limp
+build tools\idgen\include\format.hpp!: limpin tools\idgen\include\format.hpp
+build tools\idgen\include\mode.hpp: limp
+build tools\idgen\include\mode.hpp!: limpin tools\idgen\include\mode.hpp
+build tools\idgen\include\type.hpp: limp
+build tools\idgen\include\type.hpp!: limpin tools\idgen\include\type.hpp
 build tools\idgen\include\version.hpp: limp
 build tools\idgen\include\version.hpp!: limpin tools\idgen\include\version.hpp
+build tools\idgen\src\format.cpp: limp
+build tools\idgen\src\format.cpp!: limpin tools\idgen\src\format.cpp
+build tools\idgen\src\mode.cpp: limp
+build tools\idgen\src\mode.cpp!: limpin tools\idgen\src\mode.cpp
+build tools\idgen\src\type.cpp: limp
+build tools\idgen\src\type.cpp!: limpin tools\idgen\src\type.cpp
+
+build $build_dir\debug\idgen\src\format.obj: cl tools\idgen\src\format.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
 
 build $build_dir\debug\idgen\src\idgen.obj: cl tools\idgen\src\idgen.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
+
+build $build_dir\debug\idgen\src\idgen_app.obj: cl tools\idgen\src\idgen_app.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
+
+build $build_dir\debug\idgen\src\mode.obj: cl tools\idgen\src\mode.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
+
+build $build_dir\debug\idgen\src\type.obj: cl tools\idgen\src\type.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\idgen-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
@@ -5495,7 +5715,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\idgen-debug.icon.res: rc $build_dir\idgen-debug.icon.rc || init!
 build $out_dir\idgen-debug.pdb!: pdb $out_dir\idgen-debug.pdb
 
-build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $build_dir\debug\idgen\src\idgen.obj $build_dir\idgen-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $build_dir\debug\idgen\src\format.obj $build_dir\debug\idgen\src\idgen.obj $build_dir\debug\idgen\src\idgen_app.obj $build_dir\debug\idgen\src\mode.obj $build_dir\debug\idgen\src\type.obj $build_dir\idgen-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = idgen-debug.exe
    pdb = $out_dir\idgen-debug.pdb
    flags = $link_flags_console_debug
@@ -5503,7 +5723,27 @@ build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zli
 build $stage_dir\idgen-debug.exe: cp $out_dir\idgen-debug.exe
 build project-idgen-debug!: phony $stage_dir\idgen-debug.exe
 
+build $build_dir\release\idgen\src\format.obj: cl tools\idgen\src\format.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\idgen.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
+
 build $build_dir\release\idgen\src\idgen.obj: cl tools\idgen\src\idgen.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\idgen.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
+
+build $build_dir\release\idgen\src\idgen_app.obj: cl tools\idgen\src\idgen_app.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\idgen.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
+
+build $build_dir\release\idgen\src\mode.obj: cl tools\idgen\src\mode.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\idgen.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
+
+build $build_dir\release\idgen\src\type.obj: cl tools\idgen\src\type.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\idgen.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /I"include" /I"tools\idgen\include"
@@ -5513,7 +5753,7 @@ build $build_dir\idgen.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\idgen.icon.res: rc $build_dir\idgen.icon.rc || init!
 
-build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $build_dir\release\idgen\src\idgen.obj $build_dir\idgen.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $build_dir\release\idgen\src\format.obj $build_dir\release\idgen\src\idgen.obj $build_dir\release\idgen\src\idgen_app.obj $build_dir\release\idgen\src\mode.obj $build_dir\release\idgen\src\type.obj $build_dir\idgen.icon.res $build_dir\default.manifest.res || init!
    out_file = idgen.exe
    pdb = $out_dir\idgen.pdb
    flags = $link_flags_console_release
@@ -5796,6 +6036,8 @@ build project-consolecolors!: phony project-consolecolors-debug! project-console
 build group-consolecolors-debug!: phony project-consolecolors-debug!
 build group-consolecolors-release!: phony project-consolecolors-release!
 build group-consolecolors!: phony project-consolecolors!
+build demos\gfx\src\tex_demo.cpp: limp
+build demos\gfx\src\tex_demo.cpp!: limpin demos\gfx\src\tex_demo.cpp
 
 build $build_dir\debug\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
    flags = $cl_flags_debug
@@ -5851,7 +6093,7 @@ build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! gr
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release! group-d-gfx-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors! group-d-gfx!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\globjects.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\belua\include\version.hpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src\tex\block_packing.cpp! modules\gfx\src\tex\colorspace.cpp! modules\gfx\src\tex\component_type.cpp! modules\gfx\src\tex\convert_colorspace.cpp! modules\gfx\src\tex\swizzle.cpp! modules\gfx\src\tex\texture_class.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\version.hpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\ccolor\include\version.hpp! tools\concur\include\version.hpp! tools\idgen\include\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\sizeof\include\version.hpp! tools\sysinfo\include\version.hpp!
+build limp!: phony modules\belua\include\version.hpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src\tex\block_packing.cpp! modules\gfx\src\tex\colorspace.cpp! modules\gfx\src\tex\component_type.cpp! modules\gfx\src\tex\convert_colorspace.cpp! modules\gfx\src\tex\swizzle.cpp! modules\gfx\src\tex\texture_class.cpp! modules\gfx\src\tex\texture_file_format.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error.hpp! modules\util\include\version.hpp! modules\util\src\parse_string_error.cpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\ccolor\include\version.hpp! tools\concur\include\version.hpp! tools\idgen\include\format.hpp! tools\idgen\include\mode.hpp! tools\idgen\include\type.hpp! tools\idgen\include\version.hpp! tools\idgen\src\format.cpp! tools\idgen\src\mode.cpp! tools\idgen\src\type.cpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\sizeof\include\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
