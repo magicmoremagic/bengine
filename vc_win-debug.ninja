@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3256 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3261 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -2785,6 +2785,11 @@ build $out_dir\util-lua-debug.lib: lib $build_dir\debug\util-lua\src-lua\lua_fnv
 build project-util-lua-debug!: phony $out_dir\util-lua-debug.lib
 build project-util-lua!: phony project-util-lua-debug!
 
+build $build_dir\debug\util-test\test\test_base64.obj: cl modules\util\test\test_base64.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\util-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /I"include" /I"modules\util\include"
+
 build $build_dir\debug\util-test\test\test_binary_units.obj: cl modules\util\test\test_binary_units.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\util-test-debug.pdb
@@ -2836,7 +2841,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test-debug.icon.res: rc $build_dir\util-test-debug.icon.rc || init!
 build $out_dir\util-test-debug.pdb!: pdb $out_dir\util-test-debug.pdb
 
-build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-test\test\test_base64.obj $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test-debug.exe
    pdb = $out_dir\util-test-debug.pdb
    flags = $link_flags_console_debug
