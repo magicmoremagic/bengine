@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3261 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3256 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -128,7 +128,7 @@ stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
 rd /Q /S "%~dp0$ext_lib_dir\lib" ) >nul ) & popd
 
 rule configure
-   command = limp -f vc_win-debug.ninja
+   command = limp -f debug.ninja
    description = configure
    generator = true
 
@@ -179,7 +179,7 @@ build init!: phony $build_dir\.i9d
 
 build clean-ninja!: ninjatool
    tool = clean
-   file = vc_win-debug.ninja
+   file = debug.ninja
 
 build clean-rm-out_dir!: rmfiles | clean-ninja!
    paths = $out_dir\*.*
@@ -2183,6 +2183,11 @@ build $build_dir\debug\gfx-tex\src\tex\swizzle.obj: cl modules\gfx\src\tex\swizz
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
 
+build $build_dir\debug\gfx-tex\src\tex\texture_alignment.obj: cl modules\gfx\src\tex\texture_alignment.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
+
 build $build_dir\debug\gfx-tex\src\tex\texture_class.obj: cl modules\gfx\src\tex\texture_class.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
@@ -2208,11 +2213,6 @@ build $build_dir\debug\gfx-tex\src\tex\texture_file_format_dds.obj: cl modules\g
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
 
-build $build_dir\debug\gfx-tex\src\tex\texture_file_format_etc.obj: cl modules\gfx\src\tex\texture_file_format_etc.cpp | $build_dir\gfx-tex-debug.pch || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\gfx-tex-debug.pdb
-   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
-
 build $build_dir\debug\gfx-tex\src\tex\texture_file_format_gif.obj: cl modules\gfx\src\tex\texture_file_format_gif.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
@@ -2229,11 +2229,6 @@ build $build_dir\debug\gfx-tex\src\tex\texture_file_format_hdr.obj: cl modules\g
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
 
 build $build_dir\debug\gfx-tex\src\tex\texture_file_format_jpeg.obj: cl modules\gfx\src\tex\texture_file_format_jpeg.cpp | $build_dir\gfx-tex-debug.pch || init!
-   flags = $cl_flags_lib_debug
-   pdb = $build_dir\gfx-tex-debug.pdb
-   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
-
-build $build_dir\debug\gfx-tex\src\tex\texture_file_format_kmg.obj: cl modules\gfx\src\tex\texture_file_format_kmg.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
@@ -2278,7 +2273,7 @@ build $build_dir\debug\gfx-tex\src\tex\texture_view.obj: cl modules\gfx\src\tex\
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"tex/pch.hpp"
 
-build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src\tex\pch.obj $build_dir\debug\gfx-tex\src\tex\block_packing.obj $build_dir\debug\gfx-tex\src\tex\colorspace.obj $build_dir\debug\gfx-tex\src\tex\component_type.obj $build_dir\debug\gfx-tex\src\tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src\tex\image_format.obj $build_dir\debug\gfx-tex\src\tex\image_format_gl.obj $build_dir\debug\gfx-tex\src\tex\image_region.obj $build_dir\debug\gfx-tex\src\tex\image_view.obj $build_dir\debug\gfx-tex\src\tex\make_texture.obj $build_dir\debug\gfx-tex\src\tex\mipmapping.obj $build_dir\debug\gfx-tex\src\tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src\tex\read.obj $build_dir\debug\gfx-tex\src\tex\swizzle.obj $build_dir\debug\gfx-tex\src\tex\texture_class.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_betx.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_bmp.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_dds.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_etc.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_gif.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_glraw.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_hdr.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_jpeg.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_kmg.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_ktx.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_pic.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_png.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_pnm.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_psd.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_tga.obj $build_dir\debug\gfx-tex\src\tex\texture_storage.obj $build_dir\debug\gfx-tex\src\tex\texture_view.obj || init!
+build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src\tex\pch.obj $build_dir\debug\gfx-tex\src\tex\block_packing.obj $build_dir\debug\gfx-tex\src\tex\colorspace.obj $build_dir\debug\gfx-tex\src\tex\component_type.obj $build_dir\debug\gfx-tex\src\tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src\tex\image_format.obj $build_dir\debug\gfx-tex\src\tex\image_format_gl.obj $build_dir\debug\gfx-tex\src\tex\image_region.obj $build_dir\debug\gfx-tex\src\tex\image_view.obj $build_dir\debug\gfx-tex\src\tex\make_texture.obj $build_dir\debug\gfx-tex\src\tex\mipmapping.obj $build_dir\debug\gfx-tex\src\tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src\tex\read.obj $build_dir\debug\gfx-tex\src\tex\swizzle.obj $build_dir\debug\gfx-tex\src\tex\texture_alignment.obj $build_dir\debug\gfx-tex\src\tex\texture_class.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_betx.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_bmp.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_dds.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_gif.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_glraw.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_hdr.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_jpeg.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_ktx.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_pic.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_png.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_pnm.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_psd.obj $build_dir\debug\gfx-tex\src\tex\texture_file_format_tga.obj $build_dir\debug\gfx-tex\src\tex\texture_storage.obj $build_dir\debug\gfx-tex\src\tex\texture_view.obj || init!
    out_file = gfx-tex-debug.lib
    flags = $lib_flags_debug
 build project-gfx-tex-debug!: phony $out_dir\gfx-tex-debug.lib
