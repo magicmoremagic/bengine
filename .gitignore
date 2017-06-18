@@ -12,7 +12,6 @@ _*
 *.limphash
 /.ninja_deps
 /.ninja_log
-/build.ninja
 
 /msvc_out/
 /msvc_build/

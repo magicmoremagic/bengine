@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', nil, nil, true) !! 6121 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6267 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -47,6 +47,19 @@ link_flags_console_release = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG /
 rule ninjatool
    command = ninja -f $file -t $tool $extra
    description = ninja -t $tool
+
+rule limp
+   command = limp --depfile "$build_dir\$out.d" -f $out
+   depfile = $build_dir\$out.d
+   deps = gcc
+   description = limp $out
+   generator = true
+   restat = true
+
+rule limpin
+   command = limp -f $in
+   description = limp $in
+   generator = true
 
 rule run
    command = $cmd $extra
@@ -125,7 +138,7 @@ stage > "%~dp0$build_dir\.boost_log" 2>&1 ) && $
 rd /Q /S "%~dp0$ext_lib_dir\lib" ) >nul ) & popd
 
 rule configure
-   command = limp -f no-limp.ninja
+   command = limp -f build.ninja
    description = configure
    generator = true
 
@@ -176,7 +189,7 @@ build init!: phony $build_dir\.i9d
 
 build clean-ninja!: ninjatool
    tool = clean
-   file = no-limp.ninja
+   file = build.ninja
 
 build clean-rm-out_dir!: rmfiles | clean-ninja!
    paths = $out_dir\*.*
@@ -2653,6 +2666,8 @@ build project-luaxx!: phony project-luaxx-debug! project-luaxx-release!
 build group-deps-debug!: phony project-zlib-static-debug! project-glbinding-debug! project-globjects-debug! project-glfw-debug! project-luaxx-debug!
 build group-deps-release!: phony project-zlib-static-release! project-glbinding-release! project-globjects-release! project-glfw-release! project-luaxx-release!
 build group-deps!: phony project-zlib-static! project-glbinding! project-globjects! project-glfw! project-luaxx!
+build modules\belua\include\version.hpp: limp
+build modules\belua\include\version.hpp!: limpin modules\belua\include\version.hpp
 
 build $build_dir\debug\belua\src\context.obj: cl modules\belua\src\context.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2707,6 +2722,8 @@ build project-belua!: phony project-belua-debug! project-belua-release!
 build group-belua-debug!: phony project-belua-debug!
 build group-belua-release!: phony project-belua-release!
 build group-belua!: phony project-belua!
+build modules\blt\include\version.hpp: limp
+build modules\blt\include\version.hpp!: limpin modules\blt\include\version.hpp
 
 build modules\blt\src\lexer.cpp: ragel modules\blt\meta\lexer.rl
    flags = -s -C -L -G2
@@ -2783,6 +2800,8 @@ build $out_dir\blt.lib: lib $build_dir\release\blt\src\pch.obj $build_dir\releas
    flags = $lib_flags_release
 build project-blt-release!: phony $out_dir\blt.lib
 build project-blt!: phony project-blt-debug! project-blt-release!
+build modules\blt\src-lua\lua_blt.cpp: limp
+build modules\blt\src-lua\lua_blt.cpp!: limpin modules\blt\src-lua\lua_blt.cpp
 
 build $build_dir\debug\blt-lua\src-lua\lua_blt.obj: cl modules\blt\src-lua\lua_blt.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2817,6 +2836,10 @@ build project-blt-lua!: phony project-blt-lua-debug! project-blt-lua-release!
 build group-blt-debug!: phony project-blt-debug! project-blt-lua-debug!
 build group-blt-release!: phony project-blt-release! project-blt-lua-release!
 build group-blt!: phony project-blt! project-blt-lua!
+build modules\cli\include\section_ids.hpp: limp
+build modules\cli\include\section_ids.hpp!: limpin modules\cli\include\section_ids.hpp
+build modules\cli\include\version.hpp: limp
+build modules\cli\include\version.hpp!: limpin modules\cli\include\version.hpp
 
 build $build_dir\debug\cli\src\pch.obj: cl modules\cli\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2923,6 +2946,12 @@ build project-cli!: phony project-cli-debug! project-cli-release!
 build group-cli-debug!: phony project-cli-debug!
 build group-cli-release!: phony project-cli-release!
 build group-cli!: phony project-cli!
+build modules\core\include\log_attrib_ids.hpp: limp
+build modules\core\include\log_attrib_ids.hpp!: limpin modules\core\include\log_attrib_ids.hpp
+build modules\core\include\service_ids.hpp: limp
+build modules\core\include\service_ids.hpp!: limpin modules\core\include\service_ids.hpp
+build modules\core\include\version.hpp: limp
+build modules\core\include\version.hpp!: limpin modules\core\include\version.hpp
 
 build $build_dir\debug\core\src\pch.obj: cl modules\core\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -3581,6 +3610,8 @@ build project-core-perf!: phony project-core-perf-debug! project-core-perf-relea
 build group-core-debug!: phony project-core-debug! project-core-id-debug! project-core-id-with-names-debug! project-core-lua-debug! project-core-test-debug! project-core-perf-debug!
 build group-core-release!: phony project-core-release! project-core-id-release! project-core-id-with-names-release! project-core-lua-release! project-core-test-release! project-core-perf-release!
 build group-core!: phony project-core! project-core-id! project-core-id-with-names! project-core-lua! project-core-test! project-core-perf!
+build modules\ctable\include\version.hpp: limp
+build modules\ctable\include\version.hpp!: limpin modules\ctable\include\version.hpp
 
 build $build_dir\debug\ctable\src\pch.obj: cl modules\ctable\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -3793,6 +3824,58 @@ build project-ctable-test!: phony project-ctable-test-debug! project-ctable-test
 build group-ctable-debug!: phony project-ctable-debug! project-ctable-test-debug!
 build group-ctable-release!: phony project-ctable-release! project-ctable-test-release!
 build group-ctable!: phony project-ctable! project-ctable-test!
+build modules\gfx\include\tex\block_packing.hpp: limp
+build modules\gfx\include\tex\block_packing.hpp!: limpin modules\gfx\include\tex\block_packing.hpp
+build modules\gfx\include\tex\colorspace.hpp: limp
+build modules\gfx\include\tex\colorspace.hpp!: limpin modules\gfx\include\tex\colorspace.hpp
+build modules\gfx\include\tex\component_type.hpp: limp
+build modules\gfx\include\tex\component_type.hpp!: limpin modules\gfx\include\tex\component_type.hpp
+build modules\gfx\include\tex\image_format_hash.hpp: limp
+build modules\gfx\include\tex\image_format_hash.hpp!: limpin modules\gfx\include\tex\image_format_hash.hpp
+build modules\gfx\include\tex\image_region_hash.hpp: limp
+build modules\gfx\include\tex\image_region_hash.hpp!: limpin modules\gfx\include\tex\image_region_hash.hpp
+build modules\gfx\include\tex\image_view_hash.hpp: limp
+build modules\gfx\include\tex\image_view_hash.hpp!: limpin modules\gfx\include\tex\image_view_hash.hpp
+build modules\gfx\include\tex\pixel_access_norm.inl: limp
+build modules\gfx\include\tex\pixel_access_norm.inl!: limpin modules\gfx\include\tex\pixel_access_norm.inl
+build modules\gfx\include\tex\swizzle.hpp: limp
+build modules\gfx\include\tex\swizzle.hpp!: limpin modules\gfx\include\tex\swizzle.hpp
+build modules\gfx\include\tex\texture_class.hpp: limp
+build modules\gfx\include\tex\texture_class.hpp!: limpin modules\gfx\include\tex\texture_class.hpp
+build modules\gfx\include\tex\texture_file_format.hpp: limp
+build modules\gfx\include\tex\texture_file_format.hpp!: limpin modules\gfx\include\tex\texture_file_format.hpp
+build modules\gfx\include\tex\texture_file_read_error.hpp: limp
+build modules\gfx\include\tex\texture_file_read_error.hpp!: limpin modules\gfx\include\tex\texture_file_read_error.hpp
+build modules\gfx\include\tex\texture_file_write_error.hpp: limp
+build modules\gfx\include\tex\texture_file_write_error.hpp!: limpin modules\gfx\include\tex\texture_file_write_error.hpp
+build modules\gfx\include\tex\texture_storage_hash.hpp: limp
+build modules\gfx\include\tex\texture_storage_hash.hpp!: limpin modules\gfx\include\tex\texture_storage_hash.hpp
+build modules\gfx\include\tex\texture_view_hash.hpp: limp
+build modules\gfx\include\tex\texture_view_hash.hpp!: limpin modules\gfx\include\tex\texture_view_hash.hpp
+build modules\gfx\include\version.hpp: limp
+build modules\gfx\include\version.hpp!: limpin modules\gfx\include\version.hpp
+build modules\gfx\src-tex\betx_payload_compression_mode_.cpp: limp
+build modules\gfx\src-tex\betx_payload_compression_mode_.cpp!: limpin modules\gfx\src-tex\betx_payload_compression_mode_.cpp
+build modules\gfx\src-tex\block_packing.cpp: limp
+build modules\gfx\src-tex\block_packing.cpp!: limpin modules\gfx\src-tex\block_packing.cpp
+build modules\gfx\src-tex\colorspace.cpp: limp
+build modules\gfx\src-tex\colorspace.cpp!: limpin modules\gfx\src-tex\colorspace.cpp
+build modules\gfx\src-tex\component_type.cpp: limp
+build modules\gfx\src-tex\component_type.cpp!: limpin modules\gfx\src-tex\component_type.cpp
+build modules\gfx\src-tex\convert_colorspace.cpp: limp
+build modules\gfx\src-tex\convert_colorspace.cpp!: limpin modules\gfx\src-tex\convert_colorspace.cpp
+build modules\gfx\src-tex\swizzle.cpp: limp
+build modules\gfx\src-tex\swizzle.cpp!: limpin modules\gfx\src-tex\swizzle.cpp
+build modules\gfx\src-tex\texture_class.cpp: limp
+build modules\gfx\src-tex\texture_class.cpp!: limpin modules\gfx\src-tex\texture_class.cpp
+build modules\gfx\src-tex\texture_file_format.cpp: limp
+build modules\gfx\src-tex\texture_file_format.cpp!: limpin modules\gfx\src-tex\texture_file_format.cpp
+build modules\gfx\src-tex\texture_file_read_error.cpp: limp
+build modules\gfx\src-tex\texture_file_read_error.cpp!: limpin modules\gfx\src-tex\texture_file_read_error.cpp
+build modules\gfx\src-tex\texture_file_write_error.cpp: limp
+build modules\gfx\src-tex\texture_file_write_error.cpp!: limpin modules\gfx\src-tex\texture_file_write_error.cpp
+build modules\gfx\src-tex\betx_payload_compression_mode_.hpp: limp
+build modules\gfx\src-tex\betx_payload_compression_mode_.hpp!: limpin modules\gfx\src-tex\betx_payload_compression_mode_.hpp
 
 build $build_dir\debug\gfx-tex\src-tex\pch.obj: cl modules\gfx\src-tex\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -4358,6 +4441,8 @@ build project-gfx-test!: phony project-gfx-test-debug! project-gfx-test-release!
 build group-gfx-debug!: phony project-gfx-tex-debug! project-gfx-debug! project-gfx-test-debug!
 build group-gfx-release!: phony project-gfx-tex-release! project-gfx-release! project-gfx-test-release!
 build group-gfx!: phony project-gfx-tex! project-gfx! project-gfx-test!
+build modules\perf\include\version.hpp: limp
+build modules\perf\include\version.hpp!: limpin modules\perf\include\version.hpp
 
 build $build_dir\debug\perf\src\pch.obj: cl modules\perf\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -4494,6 +4579,8 @@ build project-perf!: phony project-perf-debug! project-perf-release!
 build group-perf-debug!: phony project-perf-debug!
 build group-perf-release!: phony project-perf-release!
 build group-perf!: phony project-perf!
+build modules\platform\include\version.hpp: limp
+build modules\platform\include\version.hpp!: limpin modules\platform\include\version.hpp
 
 build $build_dir\debug\platform\src\pch.obj: cl modules\platform\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -4540,6 +4627,16 @@ build project-platform!: phony project-platform-debug! project-platform-release!
 build group-platform-debug!: phony project-platform-debug!
 build group-platform-release!: phony project-platform-release!
 build group-platform!: phony project-platform!
+build modules\sqlite\include\result_type.hpp: limp
+build modules\sqlite\include\result_type.hpp!: limpin modules\sqlite\include\result_type.hpp
+build modules\sqlite\include\transaction_type.hpp: limp
+build modules\sqlite\include\transaction_type.hpp!: limpin modules\sqlite\include\transaction_type.hpp
+build modules\sqlite\include\version.hpp: limp
+build modules\sqlite\include\version.hpp!: limpin modules\sqlite\include\version.hpp
+build modules\sqlite\src\result_type.cpp: limp
+build modules\sqlite\src\result_type.cpp!: limpin modules\sqlite\src\result_type.cpp
+build modules\sqlite\src\transaction_type.cpp: limp
+build modules\sqlite\src\transaction_type.cpp!: limpin modules\sqlite\src\transaction_type.cpp
 
 build $build_dir\debug\sqlite\src\sqlite.obj: cl modules\sqlite\src\sqlite.c || init!
    flags = $cl_flags_lib_debug
@@ -4802,6 +4899,8 @@ build project-sqlite-test!: phony project-sqlite-test-debug! project-sqlite-test
 build group-sqlite-debug!: phony project-sqlite-debug! project-sqlite-test-debug!
 build group-sqlite-release!: phony project-sqlite-release! project-sqlite-test-release!
 build group-sqlite!: phony project-sqlite! project-sqlite-test!
+build modules\testing\include\version.hpp: limp
+build modules\testing\include\version.hpp!: limpin modules\testing\include\version.hpp
 
 build $build_dir\debug\testing\src\pch.obj: cl modules\testing\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -4892,6 +4991,14 @@ build project-testing-test!: phony project-testing-test-debug! project-testing-t
 build group-testing-debug!: phony project-testing-debug! project-testing-test-debug!
 build group-testing-release!: phony project-testing-release! project-testing-test-release!
 build group-testing!: phony project-testing! project-testing-test!
+build modules\util\include\file_read_error.hpp: limp
+build modules\util\include\file_read_error.hpp!: limpin modules\util\include\file_read_error.hpp
+build modules\util\include\file_write_error.hpp: limp
+build modules\util\include\file_write_error.hpp!: limpin modules\util\include\file_write_error.hpp
+build modules\util\include\parse_string_error.hpp: limp
+build modules\util\include\parse_string_error.hpp!: limpin modules\util\include\parse_string_error.hpp
+build modules\util\include\version.hpp: limp
+build modules\util\include\version.hpp!: limpin modules\util\include\version.hpp
 
 build $build_dir\debug\util\src\pch.obj: cl modules\util\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -5021,6 +5128,8 @@ build $out_dir\util-prng.lib: lib $build_dir\release\util-prng\src-prng\pch.obj 
    flags = $lib_flags_release
 build project-util-prng-release!: phony $out_dir\util-prng.lib
 build project-util-prng!: phony project-util-prng-debug! project-util-prng-release!
+build modules\util\src-string\parse_string_error.cpp: limp
+build modules\util\src-string\parse_string_error.cpp!: limpin modules\util\src-string\parse_string_error.cpp
 
 build $build_dir\debug\util-string\src-string\pch.obj: cl modules\util\src-string\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -5104,6 +5213,10 @@ build $out_dir\util-string.lib: lib $build_dir\release\util-string\src-string\pc
    flags = $lib_flags_release
 build project-util-string-release!: phony $out_dir\util-string.lib
 build project-util-string!: phony project-util-string-debug! project-util-string-release!
+build modules\util\src-fs\file_read_error.cpp: limp
+build modules\util\src-fs\file_read_error.cpp!: limpin modules\util\src-fs\file_read_error.cpp
+build modules\util\src-fs\file_write_error.cpp: limp
+build modules\util\src-fs\file_write_error.cpp!: limpin modules\util\src-fs\file_write_error.cpp
 
 build $build_dir\debug\util-fs\src-fs\pch.obj: cl modules\util\src-fs\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -5463,6 +5576,8 @@ build project-util-perf!: phony project-util-perf-debug! project-util-perf-relea
 build group-util-debug!: phony project-util-debug! project-util-compression-debug! project-util-prng-debug! project-util-string-debug! project-util-fs-debug! project-util-lua-debug! project-util-test-debug! project-util-perf-debug!
 build group-util-release!: phony project-util-release! project-util-compression-release! project-util-prng-release! project-util-string-release! project-util-fs-release! project-util-lua-release! project-util-test-release! project-util-perf-release!
 build group-util!: phony project-util! project-util-compression! project-util-prng! project-util-string! project-util-fs! project-util-lua! project-util-test! project-util-perf!
+build tools\bltc\include\version.hpp: limp
+build tools\bltc\include\version.hpp!: limpin tools\bltc\include\version.hpp
 
 build $build_dir\debug\bltc\src\bltc.obj: cl tools\bltc\src\bltc.cpp || init!
    flags = $cl_flags_debug
@@ -5514,6 +5629,8 @@ build project-bltc!: phony project-bltc-debug! project-bltc-release!
 build group-bltc-debug!: phony project-bltc-debug!
 build group-bltc-release!: phony project-bltc-release!
 build group-bltc!: phony project-bltc!
+build tools\bstyle\include\version.hpp: limp
+build tools\bstyle\include\version.hpp!: limpin tools\bstyle\include\version.hpp
 
 build tools\bstyle\src\cxx_lexer.cpp: ragel tools\bstyle\meta\cxx_lexer.rl
    flags = -s -C -L -G2
@@ -5618,6 +5735,8 @@ build project-bstyle!: phony project-bstyle-debug! project-bstyle-release!
 build group-bstyle-debug!: phony project-bstyle-debug!
 build group-bstyle-release!: phony project-bstyle-release!
 build group-bstyle!: phony project-bstyle!
+build tools\ccolor\include\version.hpp: limp
+build tools\ccolor\include\version.hpp!: limpin tools\ccolor\include\version.hpp
 
 build $build_dir\debug\ccolor\src\ccolor.obj: cl tools\ccolor\src\ccolor.cpp || init!
    flags = $cl_flags_debug
@@ -5659,6 +5778,8 @@ build project-ccolor!: phony project-ccolor-debug! project-ccolor-release!
 build group-ccolor-debug!: phony project-ccolor-debug!
 build group-ccolor-release!: phony project-ccolor-release!
 build group-ccolor!: phony project-ccolor!
+build tools\concur\include\version.hpp: limp
+build tools\concur\include\version.hpp!: limpin tools\concur\include\version.hpp
 
 build $build_dir\debug\concur\src\concur.obj: cl tools\concur\src\concur.cpp || init!
    flags = $cl_flags_debug
@@ -5710,6 +5831,20 @@ build project-concur!: phony project-concur-debug! project-concur-release!
 build group-concur-debug!: phony project-concur-debug!
 build group-concur-release!: phony project-concur-release!
 build group-concur!: phony project-concur!
+build tools\idgen\include\format.hpp: limp
+build tools\idgen\include\format.hpp!: limpin tools\idgen\include\format.hpp
+build tools\idgen\include\mode.hpp: limp
+build tools\idgen\include\mode.hpp!: limpin tools\idgen\include\mode.hpp
+build tools\idgen\include\type.hpp: limp
+build tools\idgen\include\type.hpp!: limpin tools\idgen\include\type.hpp
+build tools\idgen\include\version.hpp: limp
+build tools\idgen\include\version.hpp!: limpin tools\idgen\include\version.hpp
+build tools\idgen\src\format.cpp: limp
+build tools\idgen\src\format.cpp!: limpin tools\idgen\src\format.cpp
+build tools\idgen\src\mode.cpp: limp
+build tools\idgen\src\mode.cpp!: limpin tools\idgen\src\mode.cpp
+build tools\idgen\src\type.cpp: limp
+build tools\idgen\src\type.cpp!: limpin tools\idgen\src\type.cpp
 
 build $build_dir\debug\idgen\src\format.obj: cl tools\idgen\src\format.cpp || init!
    flags = $cl_flags_debug
@@ -5791,6 +5926,10 @@ build project-idgen!: phony project-idgen-debug! project-idgen-release!
 build group-idgen-debug!: phony project-idgen-debug!
 build group-idgen-release!: phony project-idgen-release!
 build group-idgen!: phony project-idgen!
+build tools\limp\include\limp_lua.hpp: limp
+build tools\limp\include\limp_lua.hpp!: limpin tools\limp\include\limp_lua.hpp
+build tools\limp\include\version.hpp: limp
+build tools\limp\include\version.hpp!: limpin tools\limp\include\version.hpp
 
 build $build_dir\debug\limp\src\limp.obj: cl tools\limp\src\limp.cpp || init!
    flags = $cl_flags_debug
@@ -5852,6 +5991,8 @@ build project-limp!: phony project-limp-debug! project-limp-release!
 build group-limp-debug!: phony project-limp-debug!
 build group-limp-release!: phony project-limp-release!
 build group-limp!: phony project-limp!
+build tools\sizeof\include\version.hpp: limp
+build tools\sizeof\include\version.hpp!: limpin tools\sizeof\include\version.hpp
 
 build $build_dir\debug\sizeof\src\size_of_type.obj: cl tools\sizeof\src\size_of_type.cpp || init!
    flags = $cl_flags_debug
@@ -5903,6 +6044,8 @@ build project-sizeof!: phony project-sizeof-debug! project-sizeof-release!
 build group-sizeof-debug!: phony project-sizeof-debug!
 build group-sizeof-release!: phony project-sizeof-release!
 build group-sizeof!: phony project-sizeof!
+build tools\sysinfo\include\version.hpp: limp
+build tools\sysinfo\include\version.hpp!: limpin tools\sysinfo\include\version.hpp
 
 build $build_dir\debug\sysinfo\src\memory_status.obj: cl tools\sysinfo\src\memory_status.cpp || init!
    flags = $cl_flags_debug
@@ -6055,6 +6198,8 @@ build project-consolecolors!: phony project-consolecolors-debug! project-console
 build group-consolecolors-debug!: phony project-consolecolors-debug!
 build group-consolecolors-release!: phony project-consolecolors-release!
 build group-consolecolors!: phony project-consolecolors!
+build demos\gfx\src\tex_demo.cpp: limp
+build demos\gfx\src\tex_demo.cpp!: limpin demos\gfx\src\tex_demo.cpp
 
 build $build_dir\debug\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
    flags = $cl_flags_debug
@@ -6110,6 +6255,7 @@ build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! gr
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-ccolor-release! group-concur-release! group-idgen-release! group-limp-release! group-sizeof-release! group-sysinfo-release! group-wedo-release! group-consolecolors-release! group-d-gfx-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors! group-d-gfx!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\globjects.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
+build limp!: phony modules\belua\include\version.hpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_file_read_error.hpp! modules\gfx\include\tex\texture_file_write_error.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\texture_file_read_error.cpp! modules\gfx\src-tex\texture_file_write_error.cpp! modules\gfx\src-tex\betx_payload_compression_mode_.hpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\file_read_error.hpp! modules\util\include\file_write_error.hpp! modules\util\include\parse_string_error.hpp! modules\util\include\version.hpp! modules\util\src-string\parse_string_error.cpp! modules\util\src-fs\file_read_error.cpp! modules\util\src-fs\file_write_error.cpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\ccolor\include\version.hpp! tools\concur\include\version.hpp! tools\idgen\include\format.hpp! tools\idgen\include\mode.hpp! tools\idgen\include\type.hpp! tools\idgen\include\version.hpp! tools\idgen\src\format.cpp! tools\idgen\src\mode.cpp! tools\idgen\src\type.cpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\sizeof\include\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
