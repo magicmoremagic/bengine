@@ -64,33 +64,6 @@
 [submodule "demos/consolecolors"]
 	path = demos/consolecolors
 	url = https://github.com/magicmoremagic/bengine-consolecolors
-[submodule "tools/bltc"]
-	path = tools/bltc
-	url = https://github.com/magicmoremagic/bengine-bltc
-[submodule "tools/bstyle"]
-	path = tools/bstyle
-	url = https://github.com/magicmoremagic/bengine-bstyle
-[submodule "tools/ccolor"]
-	path = tools/ccolor
-	url = https://github.com/magicmoremagic/bengine-ccolor
-[submodule "tools/idgen"]
-	path = tools/idgen
-	url = https://github.com/magicmoremagic/bengine-idgen
-[submodule "tools/sizeof"]
-	path = tools/sizeof
-	url = https://github.com/magicmoremagic/bengine-sizeof
-[submodule "tools/limp"]
-	path = tools/limp
-	url = https://github.com/magicmoremagic/bengine-limp
-[submodule "tools/sysinfo"]
-	path = tools/sysinfo
-	url = https://github.com/magicmoremagic/bengine-sysinfo
-[submodule "tools/wedo"]
-	path = tools/wedo
-	url = https://github.com/magicmoremagic/bengine-wedo
-[submodule "tools/concur"]
-	path = tools/concur
-	url = https://github.com/magicmoremagic/bengine-concur
 [submodule "modules/belua"]
 	path = modules/belua
 	url = https://github.com/magicmoremagic/bengine-belua
