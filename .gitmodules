@@ -61,9 +61,6 @@
 [submodule "modules/cli"]
 	path = modules/cli
 	url = https://github.com/magicmoremagic/bengine-cli
-[submodule "demos/consolecolors"]
-	path = demos/consolecolors
-	url = https://github.com/magicmoremagic/bengine-consolecolors
 [submodule "modules/belua"]
 	path = modules/belua
 	url = https://github.com/magicmoremagic/bengine-belua
