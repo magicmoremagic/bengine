@@ -53,7 +53,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(OutDir)pdb\$(TargetName).pdb</ProgramDataBaseFileName>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>BE_TARGET=$(ProjectName);BE_ID_EXTERNS;GLM_FORCE_SSE3;GLM_ENABLE_EXPERIMENTAL;GLFW_INCLUDE_NONE;BOOST_NO_TYPEID;BOOST_NO_RTTI;SQLITE_WIN32_GETVERSIONEX=0;_WIN32;WIN32;_WIN32_WINNT=0x0601;NOMINMAX;_HAS_AUTO_PTR_ETC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BE_TARGET=$(ProjectName);BE_ID_EXTERNS;Z_SOLO;ZLIB_CONST;GLM_FORCE_SSE3;GLM_ENABLE_EXPERIMENTAL;GLFW_INCLUDE_NONE;BOOST_NO_TYPEID;BOOST_NO_RTTI;SQLITE_WIN32_GETVERSIONEX=0;_WIN32;WIN32;_WIN32_WINNT=0x0601;NOMINMAX;_HAS_AUTO_PTR_ETC=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4065;4100;4201;4310;4324;4458;4503;4592;5030</DisableSpecificWarnings>
     </ClCompile>
     <Lib>

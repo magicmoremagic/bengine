@@ -13,11 +13,27 @@ deps {
    ext_lib 'zlib-static' {
       path 'zlib',
       force_c,
-      src '*.c',
+      src {
+         'adler32.c',
+         'crc32.c',
+         'deflate.c',
+         'infback.c',
+         'inffast.c',
+         'inflate.c',
+         'inftrees.c',
+         'trees.c',
+         'zutil.c'
+      },
       define {
+         'Z_SOLO',
+         'ZLIB_CONST',
          'NO_FSEEKO',
          '_CRT_SECURE_NO_DEPRECATE',
          '_CRT_NONSTDC_NO_DEPRECATE'
+      },
+      export_define {
+         'Z_SOLO',
+         'ZLIB_CONST'
       }
    },
 
