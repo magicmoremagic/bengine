@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3387 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win', 'debug') !! 3349 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -3106,42 +3106,16 @@ build project-bstyle-debug!: phony $stage_dir\bstyle-debug.exe
 build project-bstyle!: phony project-bstyle-debug!
 build group-bstyle-debug!: phony project-bstyle-debug!
 build group-bstyle!: phony project-bstyle!
-build tools\ccolor\include\version.hpp: limp
-build tools\ccolor\include\version.hpp!: limpin tools\ccolor\include\version.hpp
 
-build $build_dir\debug\ccolor\src\ccolor.obj: cl tools\ccolor\src\ccolor.cpp || init!
-   flags = $cl_flags_debug
-   pdb = $build_dir\ccolor-debug.pdb
-   extra = /DBE_TARGET=ccolor /DBE_TARGET_BASE=ccolor /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\ccolor\include"
-
-build $build_dir\ccolor-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
-   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
-GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
-build $build_dir\ccolor-debug.icon.res: rc $build_dir\ccolor-debug.icon.rc || init!
-build $out_dir\ccolor-debug.pdb!: pdb $out_dir\ccolor-debug.pdb
-
-build $out_dir\ccolor-debug.exe | $out_dir\ccolor-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $build_dir\debug\ccolor\src\ccolor.obj $build_dir\ccolor-debug.icon.res $build_dir\default.manifest.res || init!
-   out_file = ccolor-debug.exe
-   pdb = $out_dir\ccolor-debug.pdb
-   flags = $link_flags_console_debug
-   extra = 
-build $stage_dir\ccolor-debug.exe: cp $out_dir\ccolor-debug.exe
-build project-ccolor-debug!: phony $stage_dir\ccolor-debug.exe
-build project-ccolor!: phony project-ccolor-debug!
-build group-ccolor-debug!: phony project-ccolor-debug!
-build group-ccolor!: phony project-ccolor!
-build tools\concur\include\version.hpp: limp
-build tools\concur\include\version.hpp!: limpin tools\concur\include\version.hpp
-
-build $build_dir\debug\concur\src\concur.obj: cl tools\concur\src\concur.cpp || init!
+build $build_dir\debug\concur\src-concur\concur.obj: cl tools\gfx\src-concur\concur.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\concur-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=concur /DBE_TARGET_BASE=concur /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\concur\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=concur /DBE_TARGET_BASE=tools-gfx /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include"
 
-build $build_dir\debug\concur\src\concur_app.obj: cl tools\concur\src\concur_app.cpp || init!
+build $build_dir\debug\concur\src-concur\concur_app.obj: cl tools\gfx\src-concur\concur_app.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\concur-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=concur /DBE_TARGET_BASE=concur /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\concur\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=concur /DBE_TARGET_BASE=tools-gfx /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include"
 
 build $build_dir\concur-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
@@ -3149,7 +3123,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\concur-debug.icon.res: rc $build_dir\concur-debug.icon.rc || init!
 build $out_dir\concur-debug.pdb!: pdb $out_dir\concur-debug.pdb
 
-build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\concur\src\concur.obj $build_dir\debug\concur\src\concur_app.obj $build_dir\concur-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\concur\src-concur\concur.obj $build_dir\debug\concur\src-concur\concur_app.obj $build_dir\concur-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = concur-debug.exe
    pdb = $out_dir\concur-debug.pdb
    flags = $link_flags_console_debug
@@ -3157,64 +3131,8 @@ build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\g
 build $stage_dir\concur-debug.exe: cp $out_dir\concur-debug.exe
 build project-concur-debug!: phony $stage_dir\concur-debug.exe
 build project-concur!: phony project-concur-debug!
-build group-concur-debug!: phony project-concur-debug!
-build group-concur!: phony project-concur!
-build tools\idgen\include\format.hpp: limp
-build tools\idgen\include\format.hpp!: limpin tools\idgen\include\format.hpp
-build tools\idgen\include\mode.hpp: limp
-build tools\idgen\include\mode.hpp!: limpin tools\idgen\include\mode.hpp
-build tools\idgen\include\type.hpp: limp
-build tools\idgen\include\type.hpp!: limpin tools\idgen\include\type.hpp
-build tools\idgen\include\version.hpp: limp
-build tools\idgen\include\version.hpp!: limpin tools\idgen\include\version.hpp
-build tools\idgen\src\format.cpp: limp
-build tools\idgen\src\format.cpp!: limpin tools\idgen\src\format.cpp
-build tools\idgen\src\mode.cpp: limp
-build tools\idgen\src\mode.cpp!: limpin tools\idgen\src\mode.cpp
-build tools\idgen\src\type.cpp: limp
-build tools\idgen\src\type.cpp!: limpin tools\idgen\src\type.cpp
-
-build $build_dir\debug\idgen\src\format.obj: cl tools\idgen\src\format.cpp || init!
-   flags = $cl_flags_debug
-   pdb = $build_dir\idgen-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\idgen\include"
-
-build $build_dir\debug\idgen\src\idgen.obj: cl tools\idgen\src\idgen.cpp || init!
-   flags = $cl_flags_debug
-   pdb = $build_dir\idgen-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\idgen\include"
-
-build $build_dir\debug\idgen\src\idgen_app.obj: cl tools\idgen\src\idgen_app.cpp || init!
-   flags = $cl_flags_debug
-   pdb = $build_dir\idgen-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\idgen\include"
-
-build $build_dir\debug\idgen\src\mode.obj: cl tools\idgen\src\mode.cpp || init!
-   flags = $cl_flags_debug
-   pdb = $build_dir\idgen-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\idgen\include"
-
-build $build_dir\debug\idgen\src\type.obj: cl tools\idgen\src\type.cpp || init!
-   flags = $cl_flags_debug
-   pdb = $build_dir\idgen-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=idgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\idgen\include"
-
-build $build_dir\idgen-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
-   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
-GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
-build $build_dir\idgen-debug.icon.res: rc $build_dir\idgen-debug.icon.rc || init!
-build $out_dir\idgen-debug.pdb!: pdb $out_dir\idgen-debug.pdb
-
-build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\idgen\src\format.obj $build_dir\debug\idgen\src\idgen.obj $build_dir\debug\idgen\src\idgen_app.obj $build_dir\debug\idgen\src\mode.obj $build_dir\debug\idgen\src\type.obj $build_dir\idgen-debug.icon.res $build_dir\default.manifest.res || init!
-   out_file = idgen-debug.exe
-   pdb = $out_dir\idgen-debug.pdb
-   flags = $link_flags_console_debug
-   extra = 
-build $stage_dir\idgen-debug.exe: cp $out_dir\idgen-debug.exe
-build project-idgen-debug!: phony $stage_dir\idgen-debug.exe
-build project-idgen!: phony project-idgen-debug!
-build group-idgen-debug!: phony project-idgen-debug!
-build group-idgen!: phony project-idgen!
+build group-tools-gfx-debug!: phony project-concur-debug!
+build group-tools-gfx!: phony project-concur!
 build tools\limp\include\limp_lua.hpp: limp
 build tools\limp\include\limp_lua.hpp!: limpin tools\limp\include\limp_lua.hpp
 build tools\limp\include\version.hpp: limp
@@ -3251,18 +3169,62 @@ build project-limp-debug!: phony $stage_dir\limp-debug.exe
 build project-limp!: phony project-limp-debug!
 build group-limp-debug!: phony project-limp-debug!
 build group-limp!: phony project-limp!
-build tools\sizeof\include\version.hpp: limp
-build tools\sizeof\include\version.hpp!: limpin tools\sizeof\include\version.hpp
+build tools\misc\src-idgen\format.cpp: limp
+build tools\misc\src-idgen\format.cpp!: limpin tools\misc\src-idgen\format.cpp
+build tools\misc\src-idgen\mode.cpp: limp
+build tools\misc\src-idgen\mode.cpp!: limpin tools\misc\src-idgen\mode.cpp
+build tools\misc\src-idgen\type.cpp: limp
+build tools\misc\src-idgen\type.cpp!: limpin tools\misc\src-idgen\type.cpp
 
-build $build_dir\debug\sizeof\src\size_of_type.obj: cl tools\sizeof\src\size_of_type.cpp || init!
+build $build_dir\debug\idgen\src-idgen\format.obj: cl tools\misc\src-idgen\format.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=tools-misc /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\debug\idgen\src-idgen\idgen.obj: cl tools\misc\src-idgen\idgen.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=tools-misc /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\debug\idgen\src-idgen\idgen_app.obj: cl tools\misc\src-idgen\idgen_app.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=tools-misc /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\debug\idgen\src-idgen\mode.obj: cl tools\misc\src-idgen\mode.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=tools-misc /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\debug\idgen\src-idgen\type.obj: cl tools\misc\src-idgen\type.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\idgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=idgen /DBE_TARGET_BASE=tools-misc /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\idgen-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\idgen-debug.icon.res: rc $build_dir\idgen-debug.icon.rc || init!
+build $out_dir\idgen-debug.pdb!: pdb $out_dir\idgen-debug.pdb
+
+build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\idgen\src-idgen\format.obj $build_dir\debug\idgen\src-idgen\idgen.obj $build_dir\debug\idgen\src-idgen\idgen_app.obj $build_dir\debug\idgen\src-idgen\mode.obj $build_dir\debug\idgen\src-idgen\type.obj $build_dir\idgen-debug.icon.res $build_dir\default.manifest.res || init!
+   out_file = idgen-debug.exe
+   pdb = $out_dir\idgen-debug.pdb
+   flags = $link_flags_console_debug
+   extra = 
+build $stage_dir\idgen-debug.exe: cp $out_dir\idgen-debug.exe
+build project-idgen-debug!: phony $stage_dir\idgen-debug.exe
+build project-idgen!: phony project-idgen-debug!
+
+build $build_dir\debug\sizeof\src-sizeof\size_of_type.obj: cl tools\misc\src-sizeof\size_of_type.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\sizeof-debug.pdb
-   extra = /DBE_TARGET=sizeof /DBE_TARGET_BASE=sizeof /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sizeof\include"
+   extra = /DBE_TARGET=sizeof /DBE_TARGET_BASE=tools-misc /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include"
 
-build $build_dir\debug\sizeof\src\sizeof.obj: cl tools\sizeof\src\sizeof.cpp || init!
+build $build_dir\debug\sizeof\src-sizeof\sizeof.obj: cl tools\misc\src-sizeof\sizeof.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\sizeof-debug.pdb
-   extra = /DBE_TARGET=sizeof /DBE_TARGET_BASE=sizeof /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sizeof\include"
+   extra = /DBE_TARGET=sizeof /DBE_TARGET_BASE=tools-misc /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include"
 
 build $build_dir\sizeof-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
@@ -3270,7 +3232,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\sizeof-debug.icon.res: rc $build_dir\sizeof-debug.icon.rc || init!
 build $out_dir\sizeof-debug.pdb!: pdb $out_dir\sizeof-debug.pdb
 
-build $out_dir\sizeof-debug.exe | $out_dir\sizeof-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-debug.lib $build_dir\debug\sizeof\src\size_of_type.obj $build_dir\debug\sizeof\src\sizeof.obj $build_dir\sizeof-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sizeof-debug.exe | $out_dir\sizeof-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-debug.lib $build_dir\debug\sizeof\src-sizeof\size_of_type.obj $build_dir\debug\sizeof\src-sizeof\sizeof.obj $build_dir\sizeof-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = sizeof-debug.exe
    pdb = $out_dir\sizeof-debug.pdb
    flags = $link_flags_console_debug
@@ -3278,8 +3240,12 @@ build $out_dir\sizeof-debug.exe | $out_dir\sizeof-debug.pdb: link $ext_lib_dir\g
 build $stage_dir\sizeof-debug.exe: cp $out_dir\sizeof-debug.exe
 build project-sizeof-debug!: phony $stage_dir\sizeof-debug.exe
 build project-sizeof!: phony project-sizeof-debug!
-build group-sizeof-debug!: phony project-sizeof-debug!
-build group-sizeof!: phony project-sizeof!
+build project-ccolor-debug!: phony
+build project-ccolor!: phony project-ccolor-debug!
+build project-wedo-debug!: phony
+build project-wedo!: phony project-wedo-debug!
+build group-tools-misc-debug!: phony project-idgen-debug! project-sizeof-debug! project-ccolor-debug! project-wedo-debug!
+build group-tools-misc!: phony project-idgen! project-sizeof! project-ccolor! project-wedo!
 build tools\sysinfo\include\version.hpp: limp
 build tools\sysinfo\include\version.hpp!: limpin tools\sysinfo\include\version.hpp
 
@@ -3319,32 +3285,6 @@ build project-sysinfo-debug!: phony $stage_dir\sysinfo-debug.exe
 build project-sysinfo!: phony project-sysinfo-debug!
 build group-sysinfo-debug!: phony project-sysinfo-debug!
 build group-sysinfo!: phony project-sysinfo!
-build project-wedo-debug!: phony
-build project-wedo!: phony project-wedo-debug!
-build group-wedo-debug!: phony project-wedo-debug!
-build group-wedo!: phony project-wedo!
-
-build $build_dir\debug\consolecolors\src\consolecolors.obj: cl demos\consolecolors\src\consolecolors.cpp || init!
-   flags = $cl_flags_debug
-   pdb = $build_dir\consolecolors-debug.pdb
-   extra = /DBE_TARGET=consolecolors /DBE_TARGET_BASE=consolecolors /DZLIB_CONST /DZ_SOLO /I"include"
-
-build $build_dir\consolecolors-debug.icon.rc: putfile | icon\bengine.ico || init!
-   contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
-GLFW_ICON ICON ^"icon^\^\bengine.ico^"
-build $build_dir\consolecolors-debug.icon.res: rc $build_dir\consolecolors-debug.icon.rc || init!
-build $out_dir\consolecolors-debug.pdb!: pdb $out_dir\consolecolors-debug.pdb
-
-build $out_dir\consolecolors-debug.exe | $out_dir\consolecolors-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $build_dir\debug\consolecolors\src\consolecolors.obj $build_dir\consolecolors-debug.icon.res $build_dir\default.manifest.res || init!
-   out_file = consolecolors-debug.exe
-   pdb = $out_dir\consolecolors-debug.pdb
-   flags = $link_flags_console_debug
-   extra = 
-build $stage_dir\consolecolors-debug.exe: cp $out_dir\consolecolors-debug.exe
-build project-consolecolors-debug!: phony $stage_dir\consolecolors-debug.exe
-build project-consolecolors!: phony project-consolecolors-debug!
-build group-consolecolors-debug!: phony project-consolecolors-debug!
-build group-consolecolors!: phony project-consolecolors!
 build demos\gfx\src\tex_demo.cpp: limp
 build demos\gfx\src\tex_demo.cpp!: limpin demos\gfx\src\tex_demo.cpp
 
@@ -3374,13 +3314,35 @@ build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
 build project-d-gfx-tex!: phony project-d-gfx-tex-debug!
 build group-d-gfx-debug!: phony project-d-gfx-tex-debug!
 build group-d-gfx!: phony project-d-gfx-tex!
-build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-ccolor-debug! group-concur-debug! group-idgen-debug! group-limp-debug! group-sizeof-debug! group-sysinfo-debug! group-wedo-debug! group-consolecolors-debug! group-d-gfx-debug!
-build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-ccolor! group-concur! group-idgen! group-limp! group-sizeof! group-sysinfo! group-wedo! group-consolecolors! group-d-gfx!
+
+build $build_dir\debug\consolecolors\src-consolecolors\consolecolors.obj: cl demos\misc\src-consolecolors\consolecolors.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\consolecolors-debug.pdb
+   extra = /DBE_TARGET=consolecolors /DBE_TARGET_BASE=d-misc /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\consolecolors-debug.icon.rc: putfile | icon\bengine.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine.ico^"
+build $build_dir\consolecolors-debug.icon.res: rc $build_dir\consolecolors-debug.icon.rc || init!
+build $out_dir\consolecolors-debug.pdb!: pdb $out_dir\consolecolors-debug.pdb
+
+build $out_dir\consolecolors-debug.exe | $out_dir\consolecolors-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $build_dir\debug\consolecolors\src-consolecolors\consolecolors.obj $build_dir\consolecolors-debug.icon.res $build_dir\default.manifest.res || init!
+   out_file = consolecolors-debug.exe
+   pdb = $out_dir\consolecolors-debug.pdb
+   flags = $link_flags_console_debug
+   extra = 
+build $stage_dir\consolecolors-debug.exe: cp $out_dir\consolecolors-debug.exe
+build project-consolecolors-debug!: phony $stage_dir\consolecolors-debug.exe
+build project-consolecolors!: phony project-consolecolors-debug!
+build group-d-misc-debug!: phony project-consolecolors-debug!
+build group-d-misc!: phony project-consolecolors!
+build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-tools-gfx-debug! group-limp-debug! group-tools-misc-debug! group-sysinfo-debug! group-d-gfx-debug! group-d-misc-debug!
+build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\luaxx-debug.lib
-build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\ccolor\include\version.hpp! tools\concur\include\version.hpp! tools\idgen\include\format.hpp! tools\idgen\include\mode.hpp! tools\idgen\include\type.hpp! tools\idgen\include\version.hpp! tools\idgen\src\format.cpp! tools\idgen\src\mode.cpp! tools\idgen\src\type.cpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\sizeof\include\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src\tex_demo.cpp!
+build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\sysinfo\include\version.hpp! demos\gfx\src\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
-build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\ccolor-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\consolecolors-debug.pdb! $out_dir\d-gfx-tex-debug.pdb!
+build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
 
 default all!
 

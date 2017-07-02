@@ -51,19 +51,17 @@ force-pushes.
  
 
 ## Tools
- - [`bltc`](https://github.com/magicmoremagic/bengine-bltc)
- - [`bstyle`](https://github.com/magicmoremagic/bengine-bstyle)
- - [`ccolor`](https://github.com/magicmoremagic/bengine-ccolor)
- - [`concur`](https://github.com/magicmoremagic/bengine-concur)
- - [`idgen`](https://github.com/magicmoremagic/bengine-idgen)
- - [`limp`](https://github.com/magicmoremagic/bengine-limp)
- - [`sizeof`](https://github.com/magicmoremagic/bengine-sizeof)
- - [`sysinfo`](https://github.com/magicmoremagic/bengine-sysinfo)
- - [`wedo`](https://github.com/magicmoremagic/bengine-wedo)
+ - [`bltc`](https://github.com/magicmoremagic/bengine-tools-bltc)
+ - [`limp`](https://github.com/magicmoremagic/bengine-tools-limp)
+ - [Graphics Tools](https://github.com/magicmoremagic/bengine-tools-gfx)
+ - [Miscellaneous Tools](https://github.com/magicmoremagic/bengine-tools-misc)
+ - [`sysinfo`](https://github.com/magicmoremagic/bengine-tools-sysinfo) (WIP)
+ - [`bstyle`](https://github.com/magicmoremagic/bengine-tools-bstyle) (WIP, on hold)
 
 
 ## Demos
- - [`consolecolors`](https://github.com/magicmoremagic/bengine-consolecolors)
+ - [`consolecolors`](https://github.com/magicmoremagic/bengine-demos-consolecolors)
+ - [Graphics Demos](https://github.com/magicmoremagic/bengine-demos-gfx)
 
 
 ## Libraries 
