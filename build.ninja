@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6294 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6408 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -2618,7 +2618,7 @@ build $build_dir\debug\belua\src\context.obj: cl modules\belua\src\context.cpp |
    pdb = $build_dir\belua-debug.pdb
    extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\belua\include"
 
-build $build_dir\debug\belua\src\log_error.obj: cl modules\belua\src\log_error.cpp || init!
+build $build_dir\debug\belua\src\log_exception.obj: cl modules\belua\src\log_exception.cpp || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\belua-debug.pdb
    extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\belua\include"
@@ -2643,7 +2643,7 @@ build $build_dir\debug\belua\src\result_code.obj: cl modules\belua\src\result_co
    pdb = $build_dir\belua-debug.pdb
    extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\belua\include"
 
-build $out_dir\belua-debug.lib: lib $build_dir\debug\belua\src\context.obj $build_dir\debug\belua\src\log_error.obj $build_dir\debug\belua\src\lua_error.obj $build_dir\debug\belua\src\lua_helpers.obj $build_dir\debug\belua\src\open_module.obj $build_dir\debug\belua\src\result_code.obj || init!
+build $out_dir\belua-debug.lib: lib $build_dir\debug\belua\src\context.obj $build_dir\debug\belua\src\log_exception.obj $build_dir\debug\belua\src\lua_error.obj $build_dir\debug\belua\src\lua_helpers.obj $build_dir\debug\belua\src\open_module.obj $build_dir\debug\belua\src\result_code.obj || init!
    out_file = belua-debug.lib
    flags = $lib_flags_debug
 build project-belua-debug!: phony $out_dir\belua-debug.lib
@@ -2653,7 +2653,7 @@ build $build_dir\release\belua\src\context.obj: cl modules\belua\src\context.cpp
    pdb = $build_dir\belua.pdb
    extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\belua\include"
 
-build $build_dir\release\belua\src\log_error.obj: cl modules\belua\src\log_error.cpp || init!
+build $build_dir\release\belua\src\log_exception.obj: cl modules\belua\src\log_exception.cpp || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\belua.pdb
    extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\belua\include"
@@ -2678,7 +2678,7 @@ build $build_dir\release\belua\src\result_code.obj: cl modules\belua\src\result_
    pdb = $build_dir\belua.pdb
    extra = /DBE_BELUA_IMPL /DBE_TARGET=belua /DBE_TARGET_BASE=belua /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\belua\include"
 
-build $out_dir\belua.lib: lib $build_dir\release\belua\src\context.obj $build_dir\release\belua\src\log_error.obj $build_dir\release\belua\src\lua_error.obj $build_dir\release\belua\src\lua_helpers.obj $build_dir\release\belua\src\open_module.obj $build_dir\release\belua\src\result_code.obj || init!
+build $out_dir\belua.lib: lib $build_dir\release\belua\src\context.obj $build_dir\release\belua\src\log_exception.obj $build_dir\release\belua\src\lua_error.obj $build_dir\release\belua\src\lua_helpers.obj $build_dir\release\belua\src\open_module.obj $build_dir\release\belua\src\result_code.obj || init!
    out_file = belua.lib
    flags = $lib_flags_release
 build project-belua-release!: phony $out_dir\belua.lib
@@ -2841,6 +2841,11 @@ build $build_dir\debug\cli\src\ids.obj: cl modules\cli\src\ids.cpp | $build_dir\
    pdb = $build_dir\cli-debug.pdb
    extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\cli\include" /Fp"$build_dir\cli-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\cli\src\log_exception.obj: cl modules\cli\src\log_exception.cpp | $build_dir\cli-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\cli-debug.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\cli\include" /Fp"$build_dir\cli-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\cli\src\option_error.obj: cl modules\cli\src\option_error.cpp | $build_dir\cli-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\cli-debug.pdb
@@ -2861,7 +2866,7 @@ build $build_dir\debug\cli\src\native\vc_win\escape_cli_arg.obj: cl modules\cli\
    pdb = $build_dir\cli-debug.pdb
    extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\cli\include"
 
-build $out_dir\cli-debug.lib: lib $build_dir\debug\cli\src\pch.obj $build_dir\debug\cli\src\app_name.obj $build_dir\debug\cli\src\argument_error.obj $build_dir\debug\cli\src\default_option_parser.obj $build_dir\debug\cli\src\describe_config.obj $build_dir\debug\cli\src\handler_context.obj $build_dir\debug\cli\src\ids.obj $build_dir\debug\cli\src\option_error.obj $build_dir\debug\cli\src\processor.obj $build_dir\debug\cli\src\verbosity_param.obj $build_dir\debug\cli\src\native\vc_win\escape_cli_arg.obj || init!
+build $out_dir\cli-debug.lib: lib $build_dir\debug\cli\src\pch.obj $build_dir\debug\cli\src\app_name.obj $build_dir\debug\cli\src\argument_error.obj $build_dir\debug\cli\src\default_option_parser.obj $build_dir\debug\cli\src\describe_config.obj $build_dir\debug\cli\src\handler_context.obj $build_dir\debug\cli\src\ids.obj $build_dir\debug\cli\src\log_exception.obj $build_dir\debug\cli\src\option_error.obj $build_dir\debug\cli\src\processor.obj $build_dir\debug\cli\src\verbosity_param.obj $build_dir\debug\cli\src\native\vc_win\escape_cli_arg.obj || init!
    out_file = cli-debug.lib
    flags = $lib_flags_debug
 build project-cli-debug!: phony $out_dir\cli-debug.lib
@@ -2902,6 +2907,11 @@ build $build_dir\release\cli\src\ids.obj: cl modules\cli\src\ids.cpp | $build_di
    pdb = $build_dir\cli.pdb
    extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
 
+build $build_dir\release\cli\src\log_exception.obj: cl modules\cli\src\log_exception.cpp | $build_dir\cli.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\cli.pdb
+   extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\cli\include" /Fp"$build_dir\cli.pch" /Yu"pch.hpp"
+
 build $build_dir\release\cli\src\option_error.obj: cl modules\cli\src\option_error.cpp | $build_dir\cli.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\cli.pdb
@@ -2922,7 +2932,7 @@ build $build_dir\release\cli\src\native\vc_win\escape_cli_arg.obj: cl modules\cl
    pdb = $build_dir\cli.pdb
    extra = /DBE_CLI_IMPL /DBE_TARGET=cli /DBE_TARGET_BASE=cli /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\cli\include"
 
-build $out_dir\cli.lib: lib $build_dir\release\cli\src\pch.obj $build_dir\release\cli\src\app_name.obj $build_dir\release\cli\src\argument_error.obj $build_dir\release\cli\src\default_option_parser.obj $build_dir\release\cli\src\describe_config.obj $build_dir\release\cli\src\handler_context.obj $build_dir\release\cli\src\ids.obj $build_dir\release\cli\src\option_error.obj $build_dir\release\cli\src\processor.obj $build_dir\release\cli\src\verbosity_param.obj $build_dir\release\cli\src\native\vc_win\escape_cli_arg.obj || init!
+build $out_dir\cli.lib: lib $build_dir\release\cli\src\pch.obj $build_dir\release\cli\src\app_name.obj $build_dir\release\cli\src\argument_error.obj $build_dir\release\cli\src\default_option_parser.obj $build_dir\release\cli\src\describe_config.obj $build_dir\release\cli\src\handler_context.obj $build_dir\release\cli\src\ids.obj $build_dir\release\cli\src\log_exception.obj $build_dir\release\cli\src\option_error.obj $build_dir\release\cli\src\processor.obj $build_dir\release\cli\src\verbosity_param.obj $build_dir\release\cli\src\native\vc_win\escape_cli_arg.obj || init!
    out_file = cli.lib
    flags = $lib_flags_release
 build project-cli-release!: phony $out_dir\cli.lib
@@ -2999,6 +3009,11 @@ build $build_dir\debug\core\src\lifecycle.obj: cl modules\core\src\lifecycle.cpp
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
 build $build_dir\debug\core\src\log.obj: cl modules\core\src\log.cpp | $build_dir\core-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-debug.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\core\src\log_exception.obj: cl modules\core\src\log_exception.cpp | $build_dir\core-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
@@ -3088,7 +3103,7 @@ build $build_dir\debug\core\src\native\vc_win\time.obj: cl modules\core\src\nati
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
-build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\exceptions.obj $build_dir\debug\core\src\filesystem.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\native\vc_win\builtins.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\memory_status.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj || init!
+build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\exceptions.obj $build_dir\debug\core\src\filesystem.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_exception.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_log.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\native\vc_win\builtins.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\memory_status.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj || init!
    out_file = core-debug.lib
    flags = $lib_flags_debug
 build project-core-debug!: phony $out_dir\core-debug.lib
@@ -3155,6 +3170,11 @@ build $build_dir\release\core\src\lifecycle.obj: cl modules\core\src\lifecycle.c
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
 build $build_dir\release\core\src\log.obj: cl modules\core\src\log.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\log_exception.obj: cl modules\core\src\log_exception.cpp | $build_dir\core.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
@@ -3244,7 +3264,7 @@ build $build_dir\release\core\src\native\vc_win\time.obj: cl modules\core\src\na
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
-build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\exceptions.obj $build_dir\release\core\src\filesystem.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\native\vc_win\builtins.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\memory_status.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj || init!
+build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\exceptions.obj $build_dir\release\core\src\filesystem.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_exception.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_log.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\native\vc_win\builtins.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\memory_status.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj || init!
    out_file = core.lib
    flags = $lib_flags_release
 build project-core-release!: phony $out_dir\core.lib
@@ -3996,6 +4016,11 @@ build $build_dir\debug\gfx-tex\src-tex\ktx_reader.obj: cl modules\gfx\src-tex\kt
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\gfx-tex\src-tex\log_texture_info.obj: cl modules\gfx\src-tex\log_texture_info.cpp | $build_dir\gfx-tex-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\gfx-tex-debug.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\gfx-tex\src-tex\make_texture.obj: cl modules\gfx\src-tex\make_texture.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
@@ -4091,7 +4116,7 @@ build $build_dir\debug\gfx-tex\src-tex\stbi_.obj: cl modules\gfx\src-tex\stbi_.c
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src-tex\pch.obj $build_dir\debug\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\debug\gfx-tex\src-tex\betx_read_error_.obj $build_dir\debug\gfx-tex\src-tex\betx_reader.obj $build_dir\debug\gfx-tex\src-tex\betx_v1_.obj $build_dir\debug\gfx-tex\src-tex\betx_write_error_.obj $build_dir\debug\gfx-tex\src-tex\betx_writer.obj $build_dir\debug\gfx-tex\src-tex\block_packing.obj $build_dir\debug\gfx-tex\src-tex\bmp_reader.obj $build_dir\debug\gfx-tex\src-tex\byte_order.obj $build_dir\debug\gfx-tex\src-tex\colorspace.obj $build_dir\debug\gfx-tex\src-tex\component_type.obj $build_dir\debug\gfx-tex\src-tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src-tex\dds_reader.obj $build_dir\debug\gfx-tex\src-tex\default_texture_reader.obj $build_dir\debug\gfx-tex\src-tex\gif_reader.obj $build_dir\debug\gfx-tex\src-tex\glraw_reader.obj $build_dir\debug\gfx-tex\src-tex\hdr_reader.obj $build_dir\debug\gfx-tex\src-tex\image_format.obj $build_dir\debug\gfx-tex\src-tex\image_format_gl.obj $build_dir\debug\gfx-tex\src-tex\image_region.obj $build_dir\debug\gfx-tex\src-tex\image_view.obj $build_dir\debug\gfx-tex\src-tex\jpeg_reader.obj $build_dir\debug\gfx-tex\src-tex\ktx_reader.obj $build_dir\debug\gfx-tex\src-tex\make_texture.obj $build_dir\debug\gfx-tex\src-tex\mipmapping.obj $build_dir\debug\gfx-tex\src-tex\pic_reader.obj $build_dir\debug\gfx-tex\src-tex\png_reader.obj $build_dir\debug\gfx-tex\src-tex\pnm_reader.obj $build_dir\debug\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src-tex\psd_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_util_.obj $build_dir\debug\gfx-tex\src-tex\swizzle.obj $build_dir\debug\gfx-tex\src-tex\texture_alignment.obj $build_dir\debug\gfx-tex\src-tex\texture_class.obj $build_dir\debug\gfx-tex\src-tex\texture_file_error.obj $build_dir\debug\gfx-tex\src-tex\texture_file_format.obj $build_dir\debug\gfx-tex\src-tex\texture_reader.obj $build_dir\debug\gfx-tex\src-tex\texture_reader_base.obj $build_dir\debug\gfx-tex\src-tex\texture_storage.obj $build_dir\debug\gfx-tex\src-tex\texture_view.obj $build_dir\debug\gfx-tex\src-tex\tga_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_.obj || init!
+build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src-tex\pch.obj $build_dir\debug\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\debug\gfx-tex\src-tex\betx_read_error_.obj $build_dir\debug\gfx-tex\src-tex\betx_reader.obj $build_dir\debug\gfx-tex\src-tex\betx_v1_.obj $build_dir\debug\gfx-tex\src-tex\betx_write_error_.obj $build_dir\debug\gfx-tex\src-tex\betx_writer.obj $build_dir\debug\gfx-tex\src-tex\block_packing.obj $build_dir\debug\gfx-tex\src-tex\bmp_reader.obj $build_dir\debug\gfx-tex\src-tex\byte_order.obj $build_dir\debug\gfx-tex\src-tex\colorspace.obj $build_dir\debug\gfx-tex\src-tex\component_type.obj $build_dir\debug\gfx-tex\src-tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src-tex\dds_reader.obj $build_dir\debug\gfx-tex\src-tex\default_texture_reader.obj $build_dir\debug\gfx-tex\src-tex\gif_reader.obj $build_dir\debug\gfx-tex\src-tex\glraw_reader.obj $build_dir\debug\gfx-tex\src-tex\hdr_reader.obj $build_dir\debug\gfx-tex\src-tex\image_format.obj $build_dir\debug\gfx-tex\src-tex\image_format_gl.obj $build_dir\debug\gfx-tex\src-tex\image_region.obj $build_dir\debug\gfx-tex\src-tex\image_view.obj $build_dir\debug\gfx-tex\src-tex\jpeg_reader.obj $build_dir\debug\gfx-tex\src-tex\ktx_reader.obj $build_dir\debug\gfx-tex\src-tex\log_texture_info.obj $build_dir\debug\gfx-tex\src-tex\make_texture.obj $build_dir\debug\gfx-tex\src-tex\mipmapping.obj $build_dir\debug\gfx-tex\src-tex\pic_reader.obj $build_dir\debug\gfx-tex\src-tex\png_reader.obj $build_dir\debug\gfx-tex\src-tex\pnm_reader.obj $build_dir\debug\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src-tex\psd_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_util_.obj $build_dir\debug\gfx-tex\src-tex\swizzle.obj $build_dir\debug\gfx-tex\src-tex\texture_alignment.obj $build_dir\debug\gfx-tex\src-tex\texture_class.obj $build_dir\debug\gfx-tex\src-tex\texture_file_error.obj $build_dir\debug\gfx-tex\src-tex\texture_file_format.obj $build_dir\debug\gfx-tex\src-tex\texture_reader.obj $build_dir\debug\gfx-tex\src-tex\texture_reader_base.obj $build_dir\debug\gfx-tex\src-tex\texture_storage.obj $build_dir\debug\gfx-tex\src-tex\texture_view.obj $build_dir\debug\gfx-tex\src-tex\tga_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_.obj || init!
    out_file = gfx-tex-debug.lib
    flags = $lib_flags_debug
 build project-gfx-tex-debug!: phony $out_dir\gfx-tex-debug.lib
@@ -4217,6 +4242,11 @@ build $build_dir\release\gfx-tex\src-tex\ktx_reader.obj: cl modules\gfx\src-tex\
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"pch.hpp"
 
+build $build_dir\release\gfx-tex\src-tex\log_texture_info.obj: cl modules\gfx\src-tex\log_texture_info.cpp | $build_dir\gfx-tex.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\gfx-tex.pdb
+   extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"pch.hpp"
+
 build $build_dir\release\gfx-tex\src-tex\make_texture.obj: cl modules\gfx\src-tex\make_texture.cpp | $build_dir\gfx-tex.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx-tex.pdb
@@ -4312,7 +4342,7 @@ build $build_dir\release\gfx-tex\src-tex\stbi_.obj: cl modules\gfx\src-tex\stbi_
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-tex.lib: lib $build_dir\release\gfx-tex\src-tex\pch.obj $build_dir\release\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\release\gfx-tex\src-tex\betx_read_error_.obj $build_dir\release\gfx-tex\src-tex\betx_reader.obj $build_dir\release\gfx-tex\src-tex\betx_v1_.obj $build_dir\release\gfx-tex\src-tex\betx_write_error_.obj $build_dir\release\gfx-tex\src-tex\betx_writer.obj $build_dir\release\gfx-tex\src-tex\block_packing.obj $build_dir\release\gfx-tex\src-tex\bmp_reader.obj $build_dir\release\gfx-tex\src-tex\byte_order.obj $build_dir\release\gfx-tex\src-tex\colorspace.obj $build_dir\release\gfx-tex\src-tex\component_type.obj $build_dir\release\gfx-tex\src-tex\convert_colorspace.obj $build_dir\release\gfx-tex\src-tex\dds_reader.obj $build_dir\release\gfx-tex\src-tex\default_texture_reader.obj $build_dir\release\gfx-tex\src-tex\gif_reader.obj $build_dir\release\gfx-tex\src-tex\glraw_reader.obj $build_dir\release\gfx-tex\src-tex\hdr_reader.obj $build_dir\release\gfx-tex\src-tex\image_format.obj $build_dir\release\gfx-tex\src-tex\image_format_gl.obj $build_dir\release\gfx-tex\src-tex\image_region.obj $build_dir\release\gfx-tex\src-tex\image_view.obj $build_dir\release\gfx-tex\src-tex\jpeg_reader.obj $build_dir\release\gfx-tex\src-tex\ktx_reader.obj $build_dir\release\gfx-tex\src-tex\make_texture.obj $build_dir\release\gfx-tex\src-tex\mipmapping.obj $build_dir\release\gfx-tex\src-tex\pic_reader.obj $build_dir\release\gfx-tex\src-tex\png_reader.obj $build_dir\release\gfx-tex\src-tex\pnm_reader.obj $build_dir\release\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\release\gfx-tex\src-tex\psd_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_util_.obj $build_dir\release\gfx-tex\src-tex\swizzle.obj $build_dir\release\gfx-tex\src-tex\texture_alignment.obj $build_dir\release\gfx-tex\src-tex\texture_class.obj $build_dir\release\gfx-tex\src-tex\texture_file_error.obj $build_dir\release\gfx-tex\src-tex\texture_file_format.obj $build_dir\release\gfx-tex\src-tex\texture_reader.obj $build_dir\release\gfx-tex\src-tex\texture_reader_base.obj $build_dir\release\gfx-tex\src-tex\texture_storage.obj $build_dir\release\gfx-tex\src-tex\texture_view.obj $build_dir\release\gfx-tex\src-tex\tga_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_.obj || init!
+build $out_dir\gfx-tex.lib: lib $build_dir\release\gfx-tex\src-tex\pch.obj $build_dir\release\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\release\gfx-tex\src-tex\betx_read_error_.obj $build_dir\release\gfx-tex\src-tex\betx_reader.obj $build_dir\release\gfx-tex\src-tex\betx_v1_.obj $build_dir\release\gfx-tex\src-tex\betx_write_error_.obj $build_dir\release\gfx-tex\src-tex\betx_writer.obj $build_dir\release\gfx-tex\src-tex\block_packing.obj $build_dir\release\gfx-tex\src-tex\bmp_reader.obj $build_dir\release\gfx-tex\src-tex\byte_order.obj $build_dir\release\gfx-tex\src-tex\colorspace.obj $build_dir\release\gfx-tex\src-tex\component_type.obj $build_dir\release\gfx-tex\src-tex\convert_colorspace.obj $build_dir\release\gfx-tex\src-tex\dds_reader.obj $build_dir\release\gfx-tex\src-tex\default_texture_reader.obj $build_dir\release\gfx-tex\src-tex\gif_reader.obj $build_dir\release\gfx-tex\src-tex\glraw_reader.obj $build_dir\release\gfx-tex\src-tex\hdr_reader.obj $build_dir\release\gfx-tex\src-tex\image_format.obj $build_dir\release\gfx-tex\src-tex\image_format_gl.obj $build_dir\release\gfx-tex\src-tex\image_region.obj $build_dir\release\gfx-tex\src-tex\image_view.obj $build_dir\release\gfx-tex\src-tex\jpeg_reader.obj $build_dir\release\gfx-tex\src-tex\ktx_reader.obj $build_dir\release\gfx-tex\src-tex\log_texture_info.obj $build_dir\release\gfx-tex\src-tex\make_texture.obj $build_dir\release\gfx-tex\src-tex\mipmapping.obj $build_dir\release\gfx-tex\src-tex\pic_reader.obj $build_dir\release\gfx-tex\src-tex\png_reader.obj $build_dir\release\gfx-tex\src-tex\pnm_reader.obj $build_dir\release\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\release\gfx-tex\src-tex\psd_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_util_.obj $build_dir\release\gfx-tex\src-tex\swizzle.obj $build_dir\release\gfx-tex\src-tex\texture_alignment.obj $build_dir\release\gfx-tex\src-tex\texture_class.obj $build_dir\release\gfx-tex\src-tex\texture_file_error.obj $build_dir\release\gfx-tex\src-tex\texture_file_format.obj $build_dir\release\gfx-tex\src-tex\texture_reader.obj $build_dir\release\gfx-tex\src-tex\texture_reader_base.obj $build_dir\release\gfx-tex\src-tex\texture_storage.obj $build_dir\release\gfx-tex\src-tex\texture_view.obj $build_dir\release\gfx-tex\src-tex\tga_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_.obj || init!
    out_file = gfx-tex.lib
    flags = $lib_flags_release
 build project-gfx-tex-release!: phony $out_dir\gfx-tex.lib
@@ -4716,6 +4746,11 @@ build $build_dir\debug\sqlite\src\db.obj: cl modules\sqlite\src\db.cpp | $build_
    pdb = $build_dir\sqlite-debug.pdb
    extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\sqlite\src\log_exception.obj: cl modules\sqlite\src\log_exception.cpp | $build_dir\sqlite-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\sqlite-debug.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\sqlite\src\queries.obj: cl modules\sqlite\src\queries.cpp | $build_dir\sqlite-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\sqlite-debug.pdb
@@ -4776,7 +4811,7 @@ build $build_dir\debug\sqlite\src\transaction_type.obj: cl modules\sqlite\src\tr
    pdb = $build_dir\sqlite-debug.pdb
    extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite-debug.pch" /Yu"pch.hpp"
 
-build $out_dir\sqlite-debug.lib: lib $build_dir\debug\sqlite\src\sqlite.obj $build_dir\debug\sqlite\src\pch.obj $build_dir\debug\sqlite\src\db.obj $build_dir\debug\sqlite\src\queries.obj $build_dir\debug\sqlite\src\result_code.obj $build_dir\debug\sqlite\src\result_type.obj $build_dir\debug\sqlite\src\shared_stmt_cache.obj $build_dir\debug\sqlite\src\sql_error.obj $build_dir\debug\sqlite\src\static_stmt_cache.obj $build_dir\debug\sqlite\src\stmt.obj $build_dir\debug\sqlite\src\stmt_base.obj $build_dir\debug\sqlite\src\stmt_cache.obj $build_dir\debug\sqlite\src\stmt_proxy.obj $build_dir\debug\sqlite\src\transaction.obj $build_dir\debug\sqlite\src\transaction_type.obj || init!
+build $out_dir\sqlite-debug.lib: lib $build_dir\debug\sqlite\src\sqlite.obj $build_dir\debug\sqlite\src\pch.obj $build_dir\debug\sqlite\src\db.obj $build_dir\debug\sqlite\src\log_exception.obj $build_dir\debug\sqlite\src\queries.obj $build_dir\debug\sqlite\src\result_code.obj $build_dir\debug\sqlite\src\result_type.obj $build_dir\debug\sqlite\src\shared_stmt_cache.obj $build_dir\debug\sqlite\src\sql_error.obj $build_dir\debug\sqlite\src\static_stmt_cache.obj $build_dir\debug\sqlite\src\stmt.obj $build_dir\debug\sqlite\src\stmt_base.obj $build_dir\debug\sqlite\src\stmt_cache.obj $build_dir\debug\sqlite\src\stmt_proxy.obj $build_dir\debug\sqlite\src\transaction.obj $build_dir\debug\sqlite\src\transaction_type.obj || init!
    out_file = sqlite-debug.lib
    flags = $lib_flags_debug
 build project-sqlite-debug!: phony $out_dir\sqlite-debug.lib
@@ -4793,6 +4828,11 @@ build $build_dir\release\sqlite\src\pch.obj: cl modules\sqlite\src\pch.cpp || in
 build $build_dir\sqlite.pch: phony $build_dir\release\sqlite\src\pch.obj
 
 build $build_dir\release\sqlite\src\db.obj: cl modules\sqlite\src\db.cpp | $build_dir\sqlite.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\sqlite.pdb
+   extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
+
+build $build_dir\release\sqlite\src\log_exception.obj: cl modules\sqlite\src\log_exception.cpp | $build_dir\sqlite.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\sqlite.pdb
    extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
@@ -4857,7 +4897,7 @@ build $build_dir\release\sqlite\src\transaction_type.obj: cl modules\sqlite\src\
    pdb = $build_dir\sqlite.pdb
    extra = /DBE_SQLITE_IMPL /DBE_TARGET=sqlite /DBE_TARGET_BASE=sqlite /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\sqlite\include" /Fp"$build_dir\sqlite.pch" /Yu"pch.hpp"
 
-build $out_dir\sqlite.lib: lib $build_dir\release\sqlite\src\sqlite.obj $build_dir\release\sqlite\src\pch.obj $build_dir\release\sqlite\src\db.obj $build_dir\release\sqlite\src\queries.obj $build_dir\release\sqlite\src\result_code.obj $build_dir\release\sqlite\src\result_type.obj $build_dir\release\sqlite\src\shared_stmt_cache.obj $build_dir\release\sqlite\src\sql_error.obj $build_dir\release\sqlite\src\static_stmt_cache.obj $build_dir\release\sqlite\src\stmt.obj $build_dir\release\sqlite\src\stmt_base.obj $build_dir\release\sqlite\src\stmt_cache.obj $build_dir\release\sqlite\src\stmt_proxy.obj $build_dir\release\sqlite\src\transaction.obj $build_dir\release\sqlite\src\transaction_type.obj || init!
+build $out_dir\sqlite.lib: lib $build_dir\release\sqlite\src\sqlite.obj $build_dir\release\sqlite\src\pch.obj $build_dir\release\sqlite\src\db.obj $build_dir\release\sqlite\src\log_exception.obj $build_dir\release\sqlite\src\queries.obj $build_dir\release\sqlite\src\result_code.obj $build_dir\release\sqlite\src\result_type.obj $build_dir\release\sqlite\src\shared_stmt_cache.obj $build_dir\release\sqlite\src\sql_error.obj $build_dir\release\sqlite\src\static_stmt_cache.obj $build_dir\release\sqlite\src\stmt.obj $build_dir\release\sqlite\src\stmt_base.obj $build_dir\release\sqlite\src\stmt_cache.obj $build_dir\release\sqlite\src\stmt_proxy.obj $build_dir\release\sqlite\src\transaction.obj $build_dir\release\sqlite\src\transaction_type.obj || init!
    out_file = sqlite.lib
    flags = $lib_flags_release
 build project-sqlite-release!: phony $out_dir\sqlite.lib
@@ -5803,6 +5843,68 @@ build project-bstyle!: phony project-bstyle-debug! project-bstyle-release!
 build group-bstyle-debug!: phony project-bstyle-debug!
 build group-bstyle-release!: phony project-bstyle-release!
 build group-bstyle!: phony project-bstyle!
+build tools\gfx\src-atex\version.hpp: limp
+build tools\gfx\src-atex\version.hpp!: limpin tools\gfx\src-atex\version.hpp
+
+build $build_dir\debug\atex\src-atex\atex.obj: cl tools\gfx\src-atex\atex.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\atex-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=atex /DBE_TARGET_BASE=tools-gfx /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\debug\atex\src-atex\atex_app.obj: cl tools\gfx\src-atex\atex_app.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\atex-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=atex /DBE_TARGET_BASE=tools-gfx /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\debug\atex\src-atex\atex_app_cli.obj: cl tools\gfx\src-atex\atex_app_cli.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\atex-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=atex /DBE_TARGET_BASE=tools-gfx /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\atex-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\atex-debug.icon.res: rc $build_dir\atex-debug.icon.rc || init!
+build $out_dir\atex-debug.pdb!: pdb $out_dir\atex-debug.pdb
+
+build $out_dir\atex-debug.exe | $out_dir\atex-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\atex\src-atex\atex.obj $build_dir\debug\atex\src-atex\atex_app.obj $build_dir\debug\atex\src-atex\atex_app_cli.obj $build_dir\atex-debug.icon.res $build_dir\default.manifest.res || init!
+   out_file = atex-debug.exe
+   pdb = $out_dir\atex-debug.pdb
+   flags = $link_flags_console_debug
+   extra = 
+build $stage_dir\atex-debug.exe: cp $out_dir\atex-debug.exe
+build project-atex-debug!: phony $stage_dir\atex-debug.exe
+
+build $build_dir\release\atex\src-atex\atex.obj: cl tools\gfx\src-atex\atex.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\atex.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=atex /DBE_TARGET_BASE=tools-gfx /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\release\atex\src-atex\atex_app.obj: cl tools\gfx\src-atex\atex_app.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\atex.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=atex /DBE_TARGET_BASE=tools-gfx /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\release\atex\src-atex\atex_app_cli.obj: cl tools\gfx\src-atex\atex_app_cli.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\atex.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=atex /DBE_TARGET_BASE=tools-gfx /DZLIB_CONST /DZ_SOLO /I"include"
+
+build $build_dir\atex.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\atex.icon.res: rc $build_dir\atex.icon.rc || init!
+
+build $out_dir\atex.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\gfx-tex.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\atex\src-atex\atex.obj $build_dir\release\atex\src-atex\atex_app.obj $build_dir\release\atex\src-atex\atex_app_cli.obj $build_dir\atex.icon.res $build_dir\default.manifest.res || init!
+   out_file = atex.exe
+   pdb = $out_dir\atex.pdb
+   flags = $link_flags_console_release
+   extra = 
+build $stage_dir\atex.exe: cp $out_dir\atex.exe
+build project-atex-release!: phony $stage_dir\atex.exe
+build project-atex!: phony project-atex-debug! project-atex-release!
+build tools\gfx\src-concur\version.hpp: limp
+build tools\gfx\src-concur\version.hpp!: limpin tools\gfx\src-concur\version.hpp
 
 build $build_dir\debug\concur\src-concur\concur.obj: cl tools\gfx\src-concur\concur.cpp || init!
    flags = $cl_flags_debug
@@ -5851,9 +5953,9 @@ build $out_dir\concur.exe: link $ext_lib_dir\glbinding.lib $ext_lib_dir\globject
 build $stage_dir\concur.exe: cp $out_dir\concur.exe
 build project-concur-release!: phony $stage_dir\concur.exe
 build project-concur!: phony project-concur-debug! project-concur-release!
-build group-tools-gfx-debug!: phony project-concur-debug!
-build group-tools-gfx-release!: phony project-concur-release!
-build group-tools-gfx!: phony project-concur!
+build group-tools-gfx-debug!: phony project-atex-debug! project-concur-debug!
+build group-tools-gfx-release!: phony project-atex-release! project-concur-release!
+build group-tools-gfx!: phony project-atex! project-concur!
 build tools\limp\include\limp_lua.hpp: limp
 build tools\limp\include\limp_lua.hpp!: limpin tools\limp\include\limp_lua.hpp
 build tools\limp\include\version.hpp: limp
@@ -5925,6 +6027,14 @@ build tools\misc\src-idgen\mode.cpp: limp
 build tools\misc\src-idgen\mode.cpp!: limpin tools\misc\src-idgen\mode.cpp
 build tools\misc\src-idgen\type.cpp: limp
 build tools\misc\src-idgen\type.cpp!: limpin tools\misc\src-idgen\type.cpp
+build tools\misc\src-idgen\format.hpp: limp
+build tools\misc\src-idgen\format.hpp!: limpin tools\misc\src-idgen\format.hpp
+build tools\misc\src-idgen\mode.hpp: limp
+build tools\misc\src-idgen\mode.hpp!: limpin tools\misc\src-idgen\mode.hpp
+build tools\misc\src-idgen\type.hpp: limp
+build tools\misc\src-idgen\type.hpp!: limpin tools\misc\src-idgen\type.hpp
+build tools\misc\src-idgen\version.hpp: limp
+build tools\misc\src-idgen\version.hpp!: limpin tools\misc\src-idgen\version.hpp
 
 build $build_dir\debug\idgen\src-idgen\format.obj: cl tools\misc\src-idgen\format.cpp || init!
    flags = $cl_flags_debug
@@ -6003,6 +6113,8 @@ build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-wit
 build $stage_dir\idgen.exe: cp $out_dir\idgen.exe
 build project-idgen-release!: phony $stage_dir\idgen.exe
 build project-idgen!: phony project-idgen-debug! project-idgen-release!
+build tools\misc\src-sizeof\version.hpp: limp
+build tools\misc\src-sizeof\version.hpp!: limpin tools\misc\src-sizeof\version.hpp
 
 build $build_dir\debug\sizeof\src-sizeof\size_of_type.obj: cl tools\misc\src-sizeof\size_of_type.cpp || init!
    flags = $cl_flags_debug
@@ -6052,6 +6164,8 @@ build $stage_dir\sizeof.exe: cp $out_dir\sizeof.exe
 build project-sizeof-release!: phony $stage_dir\sizeof.exe
 build project-sizeof!: phony project-sizeof-debug! project-sizeof-release!
 build project-ccolor-debug!: phony
+build tools\misc\src-ccolor\version.hpp: limp
+build tools\misc\src-ccolor\version.hpp!: limpin tools\misc\src-ccolor\version.hpp
 
 build $build_dir\release\ccolor\src-ccolor\ccolor.obj: cl tools\misc\src-ccolor\ccolor.cpp || init!
    flags = $cl_flags_release
@@ -6184,18 +6298,18 @@ build project-sysinfo!: phony project-sysinfo-debug! project-sysinfo-release!
 build group-sysinfo-debug!: phony project-sysinfo-debug!
 build group-sysinfo-release!: phony project-sysinfo-release!
 build group-sysinfo!: phony project-sysinfo!
-build demos\gfx\src\tex_demo.cpp: limp
-build demos\gfx\src\tex_demo.cpp!: limpin demos\gfx\src\tex_demo.cpp
+build demos\gfx\src-tex\tex_demo.cpp: limp
+build demos\gfx\src-tex\tex_demo.cpp!: limpin demos\gfx\src-tex\tex_demo.cpp
 
-build $build_dir\debug\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
+build $build_dir\debug\d-gfx-tex\src-tex\tex.obj: cl demos\gfx\src-tex\tex.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\d-gfx-tex-debug.pdb
-   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\gfx\include" /I"include"
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"include"
 
-build $build_dir\debug\d-gfx-tex\src\tex_demo.obj: cl demos\gfx\src\tex_demo.cpp || init!
+build $build_dir\debug\d-gfx-tex\src-tex\tex_demo.obj: cl demos\gfx\src-tex\tex_demo.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\d-gfx-tex-debug.pdb
-   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\gfx\include" /I"include"
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"include"
 
 build $build_dir\d-gfx-tex-debug.icon.rc: putfile | icon\bengine.ico || init!
    contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
@@ -6203,7 +6317,7 @@ GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\d-gfx-tex-debug.icon.res: rc $build_dir\d-gfx-tex-debug.icon.rc || init!
 build $out_dir\d-gfx-tex-debug.pdb!: pdb $out_dir\d-gfx-tex-debug.pdb
 
-build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\d-gfx-tex\src\tex.obj $build_dir\debug\d-gfx-tex\src\tex_demo.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\d-gfx-tex\src-tex\tex.obj $build_dir\debug\d-gfx-tex\src-tex\tex_demo.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = d-gfx-tex-debug.exe
    pdb = $out_dir\d-gfx-tex-debug.pdb
    flags = $link_flags_console_debug
@@ -6211,22 +6325,22 @@ build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib
 build $stage_dir\d-gfx-tex-debug.exe: cp $out_dir\d-gfx-tex-debug.exe
 build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
 
-build $build_dir\release\d-gfx-tex\src\tex.obj: cl demos\gfx\src\tex.cpp || init!
+build $build_dir\release\d-gfx-tex\src-tex\tex.obj: cl demos\gfx\src-tex\tex.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\d-gfx-tex.pdb
-   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\gfx\include" /I"include"
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"include"
 
-build $build_dir\release\d-gfx-tex\src\tex_demo.obj: cl demos\gfx\src\tex_demo.cpp || init!
+build $build_dir\release\d-gfx-tex\src-tex\tex_demo.obj: cl demos\gfx\src-tex\tex_demo.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\d-gfx-tex.pdb
-   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\gfx\include" /I"include"
+   extra = /DBE_TARGET=d-gfx-tex /DBE_TARGET_BASE=d-gfx /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"include"
 
 build $build_dir\d-gfx-tex.icon.rc: putfile | icon\bengine.ico || init!
    contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\d-gfx-tex.icon.res: rc $build_dir\d-gfx-tex.icon.rc || init!
 
-build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\globjects.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\d-gfx-tex\src\tex.obj $build_dir\release\d-gfx-tex\src\tex_demo.obj $build_dir\d-gfx-tex.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glbinding.lib $ext_lib_dir\glfw.lib $ext_lib_dir\globjects.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\d-gfx-tex\src-tex\tex.obj $build_dir\release\d-gfx-tex\src-tex\tex_demo.obj $build_dir\d-gfx-tex.icon.res $build_dir\default.manifest.res || init!
    out_file = d-gfx-tex.exe
    pdb = $out_dir\d-gfx-tex.pdb
    flags = $link_flags_console_release
@@ -6282,12 +6396,12 @@ build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! gr
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\globjects.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\sysinfo\include\version.hpp! demos\gfx\src\tex_demo.cpp!
+build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
-build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
+build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
 
 default all-debug!
 

@@ -68,23 +68,23 @@
 	path = modules/gfx
 	url = https://github.com/magicmoremagic/bengine-gfx
 [submodule "tools/misc"]
-  path = tools/misc
-  url = https://github.com/magicmoremagic/bengine-tools-misc
+	path = tools/misc
+	url = https://github.com/magicmoremagic/bengine-tools-misc
 [submodule "tools/bltc"]
-  path = tools/bltc
-  url = https://github.com/magicmoremagic/bengine-tools-bltc
+	path = tools/bltc
+	url = https://github.com/magicmoremagic/bengine-tools-bltc
 [submodule "tools/bstyle"]
-  path = tools/bstyle
-  url = https://github.com/magicmoremagic/bengine-tools-bstyle
+	path = tools/bstyle
+	url = https://github.com/magicmoremagic/bengine-tools-bstyle
 [submodule "tools/limp"]
-  path = tools/limp
-  url = https://github.com/magicmoremagic/bengine-tools-limp
+	path = tools/limp
+	url = https://github.com/magicmoremagic/bengine-tools-limp
 [submodule "tools/sysinfo"]
-  path = tools/sysinfo
-  url = https://github.com/magicmoremagic/bengine-tools-sysinfo
+	path = tools/sysinfo
+	url = https://github.com/magicmoremagic/bengine-tools-sysinfo
 [submodule "tools/gfx"]
-  path = tools/gfx
-  url = https://github.com/magicmoremagic/bengine-tools-gfx
+	path = tools/gfx
+	url = https://github.com/magicmoremagic/bengine-tools-gfx
 [submodule "demos/gfx"]
 	path = demos/gfx
 	url = https://github.com/magicmoremagic/bengine-demos-gfx
