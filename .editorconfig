@@ -16,3 +16,6 @@ indent_size = 2
 [*.{tsv,tab}]
 indent_style = tab
 indent_size = 30
+
+[*.{hpp,inl,cpp,h,c}]
+trim_trailing_whitespace = true
