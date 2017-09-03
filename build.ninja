@@ -5703,7 +5703,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\bltc-debug.icon.res: rc $build_dir\bltc-debug.icon.rc || init!
 build $out_dir\bltc-debug.pdb!: pdb $out_dir\bltc-debug.pdb
 
-build $out_dir\bltc-debug.exe | $out_dir\bltc-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\blt-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\bltc\src\bltc.obj $build_dir\debug\bltc\src\bltc_app.obj $build_dir\bltc-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\bltc-debug.exe | $out_dir\bltc-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\blt-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\bltc\src\bltc.obj $build_dir\debug\bltc\src\bltc_app.obj $build_dir\bltc-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = bltc-debug.exe
    pdb = $out_dir\bltc-debug.pdb
    flags = $link_flags_console_debug
@@ -5726,7 +5726,7 @@ build $build_dir\bltc.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\bltc.icon.res: rc $build_dir\bltc.icon.rc || init!
 
-build $out_dir\bltc.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\bltc\src\bltc.obj $build_dir\release\bltc\src\bltc_app.obj $build_dir\bltc.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\bltc.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\bltc\src\bltc.obj $build_dir\release\bltc\src\bltc_app.obj $build_dir\bltc.icon.res $build_dir\default.manifest.res || init!
    out_file = bltc.exe
    pdb = $out_dir\bltc.pdb
    flags = $link_flags_console_release
