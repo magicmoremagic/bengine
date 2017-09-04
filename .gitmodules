@@ -73,9 +73,6 @@
 [submodule "tools/bltc"]
 	path = tools/bltc
 	url = https://github.com/magicmoremagic/bengine-tools-bltc
-[submodule "tools/bstyle"]
-	path = tools/bstyle
-	url = https://github.com/magicmoremagic/bengine-tools-bstyle
 [submodule "tools/limp"]
 	path = tools/limp
 	url = https://github.com/magicmoremagic/bengine-tools-limp
