@@ -56,7 +56,6 @@ force-pushes.
  - [Graphics Tools](https://github.com/magicmoremagic/bengine-tools-gfx)
  - [Miscellaneous Tools](https://github.com/magicmoremagic/bengine-tools-misc)
  - [`sysinfo`](https://github.com/magicmoremagic/bengine-tools-sysinfo) (WIP)
- - [`bstyle`](https://github.com/magicmoremagic/bengine-tools-bstyle) (WIP, on hold)
 
 
 ## Demos
