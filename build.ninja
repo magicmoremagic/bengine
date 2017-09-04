@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6408 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6300 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -27,8 +27,6 @@ cl_flags_lib_release = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Ox 
 cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
 cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_debug = /GR /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_rtti_release = /GR /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
 cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 
@@ -3465,12 +3463,12 @@ build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib
    out_file = core-test-debug.exe
    pdb = $out_dir\core-test-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\core-test-debug.exe: cp $out_dir\core-test-debug.exe
 
 build run-project-core-test-debug!: run | $stage_dir\core-test-debug.exe
    cmd = $stage_dir\core-test-debug.exe
-   extra = 
+   extra =
 build project-core-test-debug!: phony $stage_dir\core-test-debug.exe
 
 build $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj: cl modules\core\test\test_a3_aligned_malloc_alloc.cpp || init!
@@ -3547,12 +3545,12 @@ build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    out_file = core-test.exe
    pdb = $out_dir\core-test.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\core-test.exe: cp $out_dir\core-test.exe
 
 build run-project-core-test-release!: run | $stage_dir\core-test.exe
    cmd = $stage_dir\core-test.exe
-   extra = 
+   extra =
 build project-core-test-release!: phony $stage_dir\core-test.exe
 build project-core-test!: phony project-core-test-debug! project-core-test-release!
 
@@ -3581,12 +3579,12 @@ build $out_dir\core-perf-debug.exe | $out_dir\core-perf-debug.pdb: link $ext_lib
    out_file = core-perf-debug.exe
    pdb = $out_dir\core-perf-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\core-perf-debug.exe: cp $out_dir\core-perf-debug.exe
 
 build run-project-core-perf-debug!: run | $stage_dir\core-perf-debug.exe
    cmd = $stage_dir\core-perf-debug.exe
-   extra = 
+   extra =
 build project-core-perf-debug!: phony $stage_dir\core-perf-debug.exe
 
 build $build_dir\release\core-perf\perf\perf_logging.obj: cl modules\core\perf\perf_logging.cpp || init!
@@ -3613,12 +3611,12 @@ build $out_dir\core-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    out_file = core-perf.exe
    pdb = $out_dir\core-perf.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\core-perf.exe: cp $out_dir\core-perf.exe
 
 build run-project-core-perf-release!: run | $stage_dir\core-perf.exe
    cmd = $stage_dir\core-perf.exe
-   extra = 
+   extra =
 build project-core-perf-release!: phony $stage_dir\core-perf.exe
 build project-core-perf!: phony project-core-perf-debug! project-core-perf-release!
 build group-core-debug!: phony project-core-debug! project-core-id-debug! project-core-id-with-names-debug! project-core-lua-debug! project-core-test-debug! project-core-perf-debug!
@@ -3795,12 +3793,12 @@ build $out_dir\ctable-test-debug.exe | $out_dir\ctable-test-debug.pdb: link $ext
    out_file = ctable-test-debug.exe
    pdb = $out_dir\ctable-test-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\ctable-test-debug.exe: cp $out_dir\ctable-test-debug.exe
 
 build run-project-ctable-test-debug!: run | $stage_dir\ctable-test-debug.exe
    cmd = $stage_dir\ctable-test-debug.exe
-   extra = 
+   extra =
 build project-ctable-test-debug!: phony $stage_dir\ctable-test-debug.exe
 
 build $build_dir\release\ctable-test\test\test_ct_border_config.obj: cl modules\ctable\test\test_ct_border_config.cpp || init!
@@ -3827,12 +3825,12 @@ build $out_dir\ctable-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-
    out_file = ctable-test.exe
    pdb = $out_dir\ctable-test.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\ctable-test.exe: cp $out_dir\ctable-test.exe
 
 build run-project-ctable-test-release!: run | $stage_dir\ctable-test.exe
    cmd = $stage_dir\ctable-test.exe
-   extra = 
+   extra =
 build project-ctable-test-release!: phony $stage_dir\ctable-test.exe
 build project-ctable-test!: phony project-ctable-test-debug! project-ctable-test-release!
 build group-ctable-debug!: phony project-ctable-debug! project-ctable-test-debug!
@@ -4461,7 +4459,7 @@ build $stage_dir\gfx-test-debug.exe: cp $out_dir\gfx-test-debug.exe
 
 build run-project-gfx-test-debug!: run | $stage_dir\gfx-test-debug.exe
    cmd = $stage_dir\gfx-test-debug.exe
-   extra = 
+   extra =
 build project-gfx-test-debug!: phony $stage_dir\gfx-test-debug.exe
 
 build $build_dir\release\gfx-test\test\test_image_format.obj: cl modules\gfx\test\test_image_format.cpp || init!
@@ -4523,7 +4521,7 @@ build $stage_dir\gfx-test.exe: cp $out_dir\gfx-test.exe
 
 build run-project-gfx-test-release!: run | $stage_dir\gfx-test.exe
    cmd = $stage_dir\gfx-test.exe
-   extra = 
+   extra =
 build project-gfx-test-release!: phony $stage_dir\gfx-test.exe
 build project-gfx-test!: phony project-gfx-test-debug! project-gfx-test-release!
 build group-gfx-debug!: phony project-gfx-tex-debug! project-gfx-debug! project-gfx-test-debug!
@@ -4948,12 +4946,12 @@ build $out_dir\sqlite-test-debug.exe | $out_dir\sqlite-test-debug.pdb: link $ext
    out_file = sqlite-test-debug.exe
    pdb = $out_dir\sqlite-test-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\sqlite-test-debug.exe: cp $out_dir\sqlite-test-debug.exe
 
 build run-project-sqlite-test-debug!: run | $stage_dir\sqlite-test-debug.exe
    cmd = $stage_dir\sqlite-test-debug.exe
-   extra = 
+   extra =
 build project-sqlite-test-debug!: phony $stage_dir\sqlite-test-debug.exe
 
 build $build_dir\release\sqlite-test\test\test_db.obj: cl modules\sqlite\test\test_db.cpp || init!
@@ -5000,12 +4998,12 @@ build $out_dir\sqlite-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-
    out_file = sqlite-test.exe
    pdb = $out_dir\sqlite-test.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\sqlite-test.exe: cp $out_dir\sqlite-test.exe
 
 build run-project-sqlite-test-release!: run | $stage_dir\sqlite-test.exe
    cmd = $stage_dir\sqlite-test.exe
-   extra = 
+   extra =
 build project-sqlite-test-release!: phony $stage_dir\sqlite-test.exe
 build project-sqlite-test!: phony project-sqlite-test-debug! project-sqlite-test-release!
 build group-sqlite-debug!: phony project-sqlite-debug! project-sqlite-test-debug!
@@ -5060,12 +5058,12 @@ build $out_dir\testing-test-debug.exe | $out_dir\testing-test-debug.pdb: link $e
    out_file = testing-test-debug.exe
    pdb = $out_dir\testing-test-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\testing-test-debug.exe: cp $out_dir\testing-test-debug.exe
 
 build run-project-testing-test-debug!: run | $stage_dir\testing-test-debug.exe
    cmd = $stage_dir\testing-test-debug.exe
-   extra = 
+   extra =
 build project-testing-test-debug!: phony $stage_dir\testing-test-debug.exe
 
 build $build_dir\release\testing-test\test\test_arbitrary.obj: cl modules\testing\test\test_arbitrary.cpp || init!
@@ -5092,12 +5090,12 @@ build $out_dir\testing-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core
    out_file = testing-test.exe
    pdb = $out_dir\testing-test.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\testing-test.exe: cp $out_dir\testing-test.exe
 
 build run-project-testing-test-release!: run | $stage_dir\testing-test.exe
    cmd = $stage_dir\testing-test.exe
-   extra = 
+   extra =
 build project-testing-test-release!: phony $stage_dir\testing-test.exe
 build project-testing-test!: phony project-testing-test-debug! project-testing-test-release!
 build group-testing-debug!: phony project-testing-debug! project-testing-test-debug!
@@ -5525,12 +5523,12 @@ build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib
    out_file = util-test-debug.exe
    pdb = $out_dir\util-test-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\util-test-debug.exe: cp $out_dir\util-test-debug.exe
 
 build run-project-util-test-debug!: run | $stage_dir\util-test-debug.exe
    cmd = $stage_dir\util-test-debug.exe
-   extra = 
+   extra =
 build project-util-test-debug!: phony $stage_dir\util-test-debug.exe
 
 build $build_dir\release\util-test\test\test_base64.obj: cl modules\util\test\test_base64.cpp || init!
@@ -5597,12 +5595,12 @@ build $out_dir\util-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    out_file = util-test.exe
    pdb = $out_dir\util-test.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\util-test.exe: cp $out_dir\util-test.exe
 
 build run-project-util-test-release!: run | $stage_dir\util-test.exe
    cmd = $stage_dir\util-test.exe
-   extra = 
+   extra =
 build project-util-test-release!: phony $stage_dir\util-test.exe
 build project-util-test!: phony project-util-test-debug! project-util-test-release!
 
@@ -5636,12 +5634,12 @@ build $out_dir\util-perf-debug.exe | $out_dir\util-perf-debug.pdb: link $ext_lib
    out_file = util-perf-debug.exe
    pdb = $out_dir\util-perf-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\util-perf-debug.exe: cp $out_dir\util-perf-debug.exe
 
 build run-project-util-perf-debug!: run | $stage_dir\util-perf-debug.exe
    cmd = $stage_dir\util-perf-debug.exe
-   extra = 
+   extra =
 build project-util-perf-debug!: phony $stage_dir\util-perf-debug.exe
 
 build $build_dir\release\util-perf\perf\associative_containers.obj: cl modules\util\perf\associative_containers.cpp || init!
@@ -5673,12 +5671,12 @@ build $out_dir\util-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    out_file = util-perf.exe
    pdb = $out_dir\util-perf.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\util-perf.exe: cp $out_dir\util-perf.exe
 
 build run-project-util-perf-release!: run | $stage_dir\util-perf.exe
    cmd = $stage_dir\util-perf.exe
-   extra = 
+   extra =
 build project-util-perf-release!: phony $stage_dir\util-perf.exe
 build project-util-perf!: phony project-util-perf-debug! project-util-perf-release!
 build group-util-debug!: phony project-util-debug! project-util-compression-debug! project-util-prng-debug! project-util-string-debug! project-util-fs-debug! project-util-lua-debug! project-util-test-debug! project-util-perf-debug!
@@ -5707,7 +5705,7 @@ build $out_dir\bltc-debug.exe | $out_dir\bltc-debug.pdb: link $ext_lib_dir\zlib-
    out_file = bltc-debug.exe
    pdb = $out_dir\bltc-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\bltc-debug.exe: cp $out_dir\bltc-debug.exe
 build project-bltc-debug!: phony $stage_dir\bltc-debug.exe
 
@@ -5730,119 +5728,13 @@ build $out_dir\bltc.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out
    out_file = bltc.exe
    pdb = $out_dir\bltc.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\bltc.exe: cp $out_dir\bltc.exe
 build project-bltc-release!: phony $stage_dir\bltc.exe
 build project-bltc!: phony project-bltc-debug! project-bltc-release!
 build group-bltc-debug!: phony project-bltc-debug!
 build group-bltc-release!: phony project-bltc-release!
 build group-bltc!: phony project-bltc!
-build tools\bstyle\include\version.hpp: limp
-build tools\bstyle\include\version.hpp!: limpin tools\bstyle\include\version.hpp
-
-build tools\bstyle\src\cxx_lexer.cpp: ragel tools\bstyle\meta\cxx_lexer.rl
-   flags = -s -C -L -G2
-
-build $build_dir\debug\bstyle\src\all_rules.obj: cl tools\bstyle\src\all_rules.cpp || init!
-   flags = $cl_flags_rtti_debug
-   pdb = $build_dir\bstyle-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\debug\bstyle\src\bstyle.obj: cl tools\bstyle\src\bstyle.cpp || init!
-   flags = $cl_flags_rtti_debug
-   pdb = $build_dir\bstyle-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\debug\bstyle\src\bstyle_app.obj: cl tools\bstyle\src\bstyle_app.cpp || init!
-   flags = $cl_flags_rtti_debug
-   pdb = $build_dir\bstyle-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\debug\bstyle\src\cxx_lexer.obj: cl tools\bstyle\src\cxx_lexer.cpp || init!
-   flags = $cl_flags_rtti_debug
-   pdb = $build_dir\bstyle-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\debug\bstyle\src\document.obj: cl tools\bstyle\src\document.cpp || init!
-   flags = $cl_flags_rtti_debug
-   pdb = $build_dir\bstyle-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\debug\bstyle\src\token.obj: cl tools\bstyle\src\token.cpp || init!
-   flags = $cl_flags_rtti_debug
-   pdb = $build_dir\bstyle-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\debug\bstyle\src\token_type.obj: cl tools\bstyle\src\token_type.cpp || init!
-   flags = $cl_flags_rtti_debug
-   pdb = $build_dir\bstyle-debug.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\bstyle-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
-   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
-GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
-build $build_dir\bstyle-debug.icon.res: rc $build_dir\bstyle-debug.icon.rc || init!
-build $out_dir\bstyle-debug.pdb!: pdb $out_dir\bstyle-debug.pdb
-
-build $out_dir\bstyle-debug.exe | $out_dir\bstyle-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\bstyle\src\all_rules.obj $build_dir\debug\bstyle\src\bstyle.obj $build_dir\debug\bstyle\src\bstyle_app.obj $build_dir\debug\bstyle\src\cxx_lexer.obj $build_dir\debug\bstyle\src\document.obj $build_dir\debug\bstyle\src\token.obj $build_dir\debug\bstyle\src\token_type.obj $build_dir\bstyle-debug.icon.res $build_dir\default.manifest.res || init!
-   out_file = bstyle-debug.exe
-   pdb = $out_dir\bstyle-debug.pdb
-   flags = $link_flags_console_debug
-   extra = 
-build $stage_dir\bstyle-debug.exe: cp $out_dir\bstyle-debug.exe
-build project-bstyle-debug!: phony $stage_dir\bstyle-debug.exe
-
-build $build_dir\release\bstyle\src\all_rules.obj: cl tools\bstyle\src\all_rules.cpp || init!
-   flags = $cl_flags_rtti_release
-   pdb = $build_dir\bstyle.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\release\bstyle\src\bstyle.obj: cl tools\bstyle\src\bstyle.cpp || init!
-   flags = $cl_flags_rtti_release
-   pdb = $build_dir\bstyle.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\release\bstyle\src\bstyle_app.obj: cl tools\bstyle\src\bstyle_app.cpp || init!
-   flags = $cl_flags_rtti_release
-   pdb = $build_dir\bstyle.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\release\bstyle\src\cxx_lexer.obj: cl tools\bstyle\src\cxx_lexer.cpp || init!
-   flags = $cl_flags_rtti_release
-   pdb = $build_dir\bstyle.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\release\bstyle\src\document.obj: cl tools\bstyle\src\document.cpp || init!
-   flags = $cl_flags_rtti_release
-   pdb = $build_dir\bstyle.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\release\bstyle\src\token.obj: cl tools\bstyle\src\token.cpp || init!
-   flags = $cl_flags_rtti_release
-   pdb = $build_dir\bstyle.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\release\bstyle\src\token_type.obj: cl tools\bstyle\src\token_type.cpp || init!
-   flags = $cl_flags_rtti_release
-   pdb = $build_dir\bstyle.pdb
-   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bstyle /DBE_TARGET_BASE=bstyle /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bstyle\include"
-
-build $build_dir\bstyle.icon.rc: putfile | icon\bengine-warm.ico || init!
-   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
-GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
-build $build_dir\bstyle.icon.res: rc $build_dir\bstyle.icon.rc || init!
-
-build $out_dir\bstyle.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\bstyle\src\all_rules.obj $build_dir\release\bstyle\src\bstyle.obj $build_dir\release\bstyle\src\bstyle_app.obj $build_dir\release\bstyle\src\cxx_lexer.obj $build_dir\release\bstyle\src\document.obj $build_dir\release\bstyle\src\token.obj $build_dir\release\bstyle\src\token_type.obj $build_dir\bstyle.icon.res $build_dir\default.manifest.res || init!
-   out_file = bstyle.exe
-   pdb = $out_dir\bstyle.pdb
-   flags = $link_flags_console_release
-   extra = 
-build $stage_dir\bstyle.exe: cp $out_dir\bstyle.exe
-build project-bstyle-release!: phony $stage_dir\bstyle.exe
-build project-bstyle!: phony project-bstyle-debug! project-bstyle-release!
-build group-bstyle-debug!: phony project-bstyle-debug!
-build group-bstyle-release!: phony project-bstyle-release!
-build group-bstyle!: phony project-bstyle!
 build tools\gfx\src-atex\version.hpp: limp
 build tools\gfx\src-atex\version.hpp!: limpin tools\gfx\src-atex\version.hpp
 
@@ -5871,7 +5763,7 @@ build $out_dir\atex-debug.exe | $out_dir\atex-debug.pdb: link $ext_lib_dir\zlib-
    out_file = atex-debug.exe
    pdb = $out_dir\atex-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\atex-debug.exe: cp $out_dir\atex-debug.exe
 build project-atex-debug!: phony $stage_dir\atex-debug.exe
 
@@ -5899,7 +5791,7 @@ build $out_dir\atex.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out
    out_file = atex.exe
    pdb = $out_dir\atex.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\atex.exe: cp $out_dir\atex.exe
 build project-atex-release!: phony $stage_dir\atex.exe
 build project-atex!: phony project-atex-debug! project-atex-release!
@@ -5986,7 +5878,7 @@ build $out_dir\limp-debug.exe | $out_dir\limp-debug.pdb: link $ext_lib_dir\luaxx
    out_file = limp-debug.exe
    pdb = $out_dir\limp-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\limp-debug.exe: cp $out_dir\limp-debug.exe
 build project-limp-debug!: phony $stage_dir\limp-debug.exe
 
@@ -6014,7 +5906,7 @@ build $out_dir\limp.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.li
    out_file = limp.exe
    pdb = $out_dir\limp.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\limp.exe: cp $out_dir\limp.exe
 build project-limp-release!: phony $stage_dir\limp.exe
 build project-limp!: phony project-limp-debug! project-limp-release!
@@ -6071,7 +5963,7 @@ build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zli
    out_file = idgen-debug.exe
    pdb = $out_dir\idgen-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\idgen-debug.exe: cp $out_dir\idgen-debug.exe
 build project-idgen-debug!: phony $stage_dir\idgen-debug.exe
 
@@ -6109,7 +6001,7 @@ build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-wit
    out_file = idgen.exe
    pdb = $out_dir\idgen.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\idgen.exe: cp $out_dir\idgen.exe
 build project-idgen-release!: phony $stage_dir\idgen.exe
 build project-idgen!: phony project-idgen-debug! project-idgen-release!
@@ -6181,7 +6073,7 @@ build $out_dir\ccolor.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.li
    out_file = ccolor.exe
    pdb = $out_dir\ccolor.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\ccolor.exe: cp $out_dir\ccolor.exe
 build project-ccolor-release!: phony $stage_dir\ccolor.exe
 build project-ccolor!: phony project-ccolor-debug! project-ccolor-release!
@@ -6218,7 +6110,7 @@ build $out_dir\wedo.exe: link $build_dir\release\wedo\src-wedo\wedo.obj $build_d
    out_file = wedo.exe
    pdb = $out_dir\wedo.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\wedo.exe: cp $out_dir\wedo.exe
 build project-wedo-release!: phony $stage_dir\wedo.exe
 build project-wedo!: phony project-wedo-debug! project-wedo-release!
@@ -6367,7 +6259,7 @@ build $out_dir\consolecolors-debug.exe | $out_dir\consolecolors-debug.pdb: link 
    out_file = consolecolors-debug.exe
    pdb = $out_dir\consolecolors-debug.pdb
    flags = $link_flags_console_debug
-   extra = 
+   extra =
 build $stage_dir\consolecolors-debug.exe: cp $out_dir\consolecolors-debug.exe
 build project-consolecolors-debug!: phony $stage_dir\consolecolors-debug.exe
 
@@ -6385,23 +6277,23 @@ build $out_dir\consolecolors.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cor
    out_file = consolecolors.exe
    pdb = $out_dir\consolecolors.pdb
    flags = $link_flags_console_release
-   extra = 
+   extra =
 build $stage_dir\consolecolors.exe: cp $out_dir\consolecolors.exe
 build project-consolecolors-release!: phony $stage_dir\consolecolors.exe
 build project-consolecolors!: phony project-consolecolors-debug! project-consolecolors-release!
 build group-d-misc-debug!: phony project-consolecolors-debug!
 build group-d-misc-release!: phony project-consolecolors-release!
 build group-d-misc!: phony project-consolecolors!
-build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-bstyle-debug! group-tools-gfx-debug! group-limp-debug! group-tools-misc-debug! group-sysinfo-debug! group-d-gfx-debug! group-d-misc-debug!
-build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-bstyle-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
-build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-bstyle! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
+build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-tools-gfx-debug! group-limp-debug! group-tools-misc-debug! group-sysinfo-debug! group-d-gfx-debug! group-d-misc-debug!
+build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
+build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\globjects.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bltc\include\version.hpp! tools\bstyle\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
+build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
-build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\bstyle-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
+build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
 
 default all-debug!
 

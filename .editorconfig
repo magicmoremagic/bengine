@@ -17,5 +17,5 @@ indent_size = 2
 indent_style = tab
 indent_size = 30
 
-[*.{hpp,inl,cpp,h,c}]
+[*.{hpp,inl,cpp,h,c,lua}]
 trim_trailing_whitespace = true
