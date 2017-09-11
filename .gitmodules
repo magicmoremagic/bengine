@@ -88,3 +88,6 @@
 [submodule "demos/misc"]
 	path = demos/misc
 	url = https://github.com/magicmoremagic/bengine-demos-misc
+[submodule "tools/bglgen"]
+	path = tools/bglgen
+	url = https://github.com/magicmoremagic/bengine-bglgen

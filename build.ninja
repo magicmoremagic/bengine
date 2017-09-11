@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6362 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 6415 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -5744,6 +5744,59 @@ build project-util-perf!: phony project-util-perf-debug! project-util-perf-relea
 build group-util-debug!: phony project-util-debug! project-util-compression-debug! project-util-prng-debug! project-util-string-debug! project-util-fs-debug! project-util-lua-debug! project-util-test-debug! project-util-perf-debug!
 build group-util-release!: phony project-util-release! project-util-compression-release! project-util-prng-release! project-util-string-release! project-util-fs-release! project-util-lua-release! project-util-test-release! project-util-perf-release!
 build group-util!: phony project-util! project-util-compression! project-util-prng! project-util-string! project-util-fs! project-util-lua! project-util-test! project-util-perf!
+build tools\bglgen\include\version.hpp: limp
+build tools\bglgen\include\version.hpp!: limpin tools\bglgen\include\version.hpp
+
+build $build_dir\debug\bglgen\src\bglgen.obj: cl tools\bglgen\src\bglgen.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\bglgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bglgen /DBE_TARGET_BASE=bglgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bglgen\include"
+
+build $build_dir\debug\bglgen\src\bglgen_app.obj: cl tools\bglgen\src\bglgen_app.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\bglgen-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bglgen /DBE_TARGET_BASE=bglgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bglgen\include"
+
+build $build_dir\bglgen-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\bglgen-debug.icon.res: rc $build_dir\bglgen-debug.icon.rc || init!
+build $out_dir\bglgen-debug.pdb!: pdb $out_dir\bglgen-debug.pdb
+
+build $out_dir\bglgen-debug.exe | $out_dir\bglgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\blt-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\bglgen\src\bglgen.obj $build_dir\debug\bglgen\src\bglgen_app.obj $build_dir\bglgen-debug.icon.res $build_dir\default.manifest.res || init!
+   out_file = bglgen-debug.exe
+   pdb = $out_dir\bglgen-debug.pdb
+   flags = $link_flags_console_debug
+   extra =
+build $stage_dir\bglgen-debug.exe: cp $out_dir\bglgen-debug.exe
+build project-bglgen-debug!: phony $stage_dir\bglgen-debug.exe
+
+build $build_dir\release\bglgen\src\bglgen.obj: cl tools\bglgen\src\bglgen.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\bglgen.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bglgen /DBE_TARGET_BASE=bglgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bglgen\include"
+
+build $build_dir\release\bglgen\src\bglgen_app.obj: cl tools\bglgen\src\bglgen_app.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\bglgen.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=bglgen /DBE_TARGET_BASE=bglgen /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\bglgen\include"
+
+build $build_dir\bglgen.icon.rc: putfile | icon\bengine-warm.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
+build $build_dir\bglgen.icon.res: rc $build_dir\bglgen.icon.rc || init!
+
+build $out_dir\bglgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\bglgen\src\bglgen.obj $build_dir\release\bglgen\src\bglgen_app.obj $build_dir\bglgen.icon.res $build_dir\default.manifest.res || init!
+   out_file = bglgen.exe
+   pdb = $out_dir\bglgen.pdb
+   flags = $link_flags_console_release
+   extra =
+build $stage_dir\bglgen.exe: cp $out_dir\bglgen.exe
+build project-bglgen-release!: phony $stage_dir\bglgen.exe
+build project-bglgen!: phony project-bglgen-debug! project-bglgen-release!
+build group-bglgen-debug!: phony project-bglgen-debug!
+build group-bglgen-release!: phony project-bglgen-release!
+build group-bglgen!: phony project-bglgen!
 build tools\bltc\include\version.hpp: limp
 build tools\bltc\include\version.hpp!: limpin tools\bltc\include\version.hpp
 
@@ -6346,16 +6399,16 @@ build project-consolecolors!: phony project-consolecolors-debug! project-console
 build group-d-misc-debug!: phony project-consolecolors-debug!
 build group-d-misc-release!: phony project-consolecolors-release!
 build group-d-misc!: phony project-consolecolors!
-build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bltc-debug! group-tools-gfx-debug! group-limp-debug! group-tools-misc-debug! group-sysinfo-debug! group-d-gfx-debug! group-d-misc-debug!
-build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bltc-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
-build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bltc! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
+build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bglgen-debug! group-bltc-debug! group-tools-gfx-debug! group-limp-debug! group-tools-misc-debug! group-sysinfo-debug! group-d-gfx-debug! group-d-misc-debug!
+build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bglgen-release! group-bltc-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
+build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bglgen! group-bltc! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glbinding-debug.lib $ext_lib_dir\glbinding.lib $ext_lib_dir\globjects-debug.lib $ext_lib_dir\globjects.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\gfx\test\test_tex_pixel_access_norm.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
+build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\component_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\component_type.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\gfx\test\test_tex_pixel_access_norm.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bglgen\include\version.hpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
-build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
+build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bglgen-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
 
 default all-debug!
 
