@@ -13,6 +13,8 @@ _*
 /.ninja_deps
 /.ninja_log
 
+/gl.xml
+
 /msvc_out/
 /msvc_build/
 .vscode/

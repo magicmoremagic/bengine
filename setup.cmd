@@ -26,5 +26,7 @@ if not exist %_vcvarsall% (
 
 call %_vcvarsall% x64
 set PATH="%~dp0stage";"%~dp0bin";%PATH%
-copy /Y vc_win.ninja build.ninja
+
+powershell -Command "Invoke-WebRequest https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml -OutFile gl.xml"
+
 popd
