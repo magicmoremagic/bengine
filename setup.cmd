@@ -27,6 +27,6 @@ if not exist %_vcvarsall% (
 call %_vcvarsall% x64
 set PATH="%~dp0stage";"%~dp0bin";%PATH%
 
-powershell -Command "Invoke-WebRequest https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml -OutFile gl.xml"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml -OutFile gl.xml"
 
 popd

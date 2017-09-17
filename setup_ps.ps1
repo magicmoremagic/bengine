@@ -39,6 +39,6 @@ cmd /s /c "`"$($_vcvarsall)`" x64 & set" | ForEach-Object {
 
 $ENV:Path = "$($PSScriptRoot)\stage;$($PSScriptRoot)\bin;$($ENV:Path)"
 
-Invoke-WebRequest https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml -OutFile gl.xml
+Invoke-WebRequest https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml -OutFile gl.xml
 
 Pop-Location

@@ -14,6 +14,7 @@ _*
 /.ninja_log
 
 /gl.xml
+/gl.xml.db
 
 /msvc_out/
 /msvc_build/
