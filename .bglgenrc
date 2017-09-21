@@ -1,0 +1,2 @@
+config.auto_related_extensions = false
+config.auto_related_features = false
