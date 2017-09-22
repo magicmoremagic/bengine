@@ -4482,7 +4482,7 @@ build $out_dir\sysinfo-debug.exe | $out_dir\sysinfo-debug.pdb: link $ext_lib_dir
    out_file = sysinfo-debug.exe
    pdb = $out_dir\sysinfo-debug.pdb
    flags = $link_flags_console_debug
-   extra = opengl32.lib
+   extra =
 build $stage_dir\sysinfo-debug.exe: cp $out_dir\sysinfo-debug.exe
 build project-sysinfo-debug!: phony $stage_dir\sysinfo-debug.exe
 
@@ -4515,7 +4515,7 @@ build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.
    out_file = sysinfo.exe
    pdb = $out_dir\sysinfo.pdb
    flags = $link_flags_console_release
-   extra = opengl32.lib
+   extra =
 build $stage_dir\sysinfo.exe: cp $out_dir\sysinfo.exe
 build project-sysinfo-release!: phony $stage_dir\sysinfo.exe
 build project-sysinfo!: phony project-sysinfo-debug! project-sysinfo-release!
@@ -4545,7 +4545,7 @@ build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib
    out_file = d-gfx-tex-debug.exe
    pdb = $out_dir\d-gfx-tex-debug.pdb
    flags = $link_flags_console_debug
-   extra = opengl32.lib
+   extra =
 build $stage_dir\d-gfx-tex-debug.exe: cp $out_dir\d-gfx-tex-debug.exe
 build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
 
@@ -4568,7 +4568,7 @@ build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-stati
    out_file = d-gfx-tex.exe
    pdb = $out_dir\d-gfx-tex.pdb
    flags = $link_flags_console_release
-   extra = opengl32.lib
+   extra =
 build $stage_dir\d-gfx-tex.exe: cp $out_dir\d-gfx-tex.exe
 build project-d-gfx-tex-release!: phony $stage_dir\d-gfx-tex.exe
 build project-d-gfx-tex!: phony project-d-gfx-tex-debug! project-d-gfx-tex-release!
