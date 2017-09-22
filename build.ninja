@@ -1637,7 +1637,7 @@ build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib
    out_file = core-test-debug.exe
    pdb = $out_dir\core-test-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\core-test-debug.exe: cp $out_dir\core-test-debug.exe
 
 build run-project-core-test-debug!: run | $stage_dir\core-test-debug.exe
@@ -1719,7 +1719,7 @@ build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    out_file = core-test.exe
    pdb = $out_dir\core-test.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\core-test.exe: cp $out_dir\core-test.exe
 
 build run-project-core-test-release!: run | $stage_dir\core-test.exe
@@ -1753,7 +1753,7 @@ build $out_dir\core-perf-debug.exe | $out_dir\core-perf-debug.pdb: link $ext_lib
    out_file = core-perf-debug.exe
    pdb = $out_dir\core-perf-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\core-perf-debug.exe: cp $out_dir\core-perf-debug.exe
 
 build run-project-core-perf-debug!: run | $stage_dir\core-perf-debug.exe
@@ -1785,7 +1785,7 @@ build $out_dir\core-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id
    out_file = core-perf.exe
    pdb = $out_dir\core-perf.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\core-perf.exe: cp $out_dir\core-perf.exe
 
 build run-project-core-perf-release!: run | $stage_dir\core-perf.exe
@@ -1963,11 +1963,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\ctable-test-debug.icon.res: rc $build_dir\ctable-test-debug.icon.rc || init!
 build $out_dir\ctable-test-debug.pdb!: pdb $out_dir\ctable-test-debug.pdb
 
-build $out_dir\ctable-test-debug.exe | $out_dir\ctable-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\ctable-test\test\test_ct_border_config.obj $build_dir\debug\ctable-test\test\test_main.obj $build_dir\debug\ctable-test\test\version.obj $build_dir\ctable-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\ctable-test-debug.exe | $out_dir\ctable-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\ctable-test\test\test_ct_border_config.obj $build_dir\debug\ctable-test\test\test_main.obj $build_dir\debug\ctable-test\test\version.obj $build_dir\ctable-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = ctable-test-debug.exe
    pdb = $out_dir\ctable-test-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\ctable-test-debug.exe: cp $out_dir\ctable-test-debug.exe
 
 build run-project-ctable-test-debug!: run | $stage_dir\ctable-test-debug.exe
@@ -1995,11 +1995,11 @@ build $build_dir\ctable-test.icon.rc: putfile | icon\bengine-test-perf.ico || in
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\ctable-test.icon.res: rc $build_dir\ctable-test.icon.rc || init!
 
-build $out_dir\ctable-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\ctable-test\test\test_ct_border_config.obj $build_dir\release\ctable-test\test\test_main.obj $build_dir\release\ctable-test\test\version.obj $build_dir\ctable-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\ctable-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\ctable-test\test\test_ct_border_config.obj $build_dir\release\ctable-test\test\test_main.obj $build_dir\release\ctable-test\test\version.obj $build_dir\ctable-test.icon.res $build_dir\default.manifest.res || init!
    out_file = ctable-test.exe
    pdb = $out_dir\ctable-test.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\ctable-test.exe: cp $out_dir\ctable-test.exe
 
 build run-project-ctable-test-release!: run | $stage_dir\ctable-test.exe
@@ -2667,7 +2667,7 @@ build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_d
    out_file = gfx-test-debug.exe
    pdb = $out_dir\gfx-test-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\gfx-test-debug.exe: cp $out_dir\gfx-test-debug.exe
 
 build run-project-gfx-test-debug!: run | $stage_dir\gfx-test-debug.exe
@@ -2754,7 +2754,7 @@ build $out_dir\gfx-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-
    out_file = gfx-test.exe
    pdb = $out_dir\gfx-test.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\gfx-test.exe: cp $out_dir\gfx-test.exe
 
 build run-project-gfx-test-release!: run | $stage_dir\gfx-test.exe
@@ -3184,7 +3184,7 @@ build $out_dir\sqlite-test-debug.exe | $out_dir\sqlite-test-debug.pdb: link $ext
    out_file = sqlite-test-debug.exe
    pdb = $out_dir\sqlite-test-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\sqlite-test-debug.exe: cp $out_dir\sqlite-test-debug.exe
 
 build run-project-sqlite-test-debug!: run | $stage_dir\sqlite-test-debug.exe
@@ -3236,7 +3236,7 @@ build $out_dir\sqlite-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-
    out_file = sqlite-test.exe
    pdb = $out_dir\sqlite-test.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\sqlite-test.exe: cp $out_dir\sqlite-test.exe
 
 build run-project-sqlite-test-release!: run | $stage_dir\sqlite-test.exe
@@ -3296,7 +3296,7 @@ build $out_dir\testing-test-debug.exe | $out_dir\testing-test-debug.pdb: link $e
    out_file = testing-test-debug.exe
    pdb = $out_dir\testing-test-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\testing-test-debug.exe: cp $out_dir\testing-test-debug.exe
 
 build run-project-testing-test-debug!: run | $stage_dir\testing-test-debug.exe
@@ -3328,7 +3328,7 @@ build $out_dir\testing-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core
    out_file = testing-test.exe
    pdb = $out_dir\testing-test.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\testing-test.exe: cp $out_dir\testing-test.exe
 
 build run-project-testing-test-release!: run | $stage_dir\testing-test.exe
@@ -3757,11 +3757,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test-debug.icon.res: rc $build_dir\util-test-debug.icon.rc || init!
 build $out_dir\util-test-debug.pdb!: pdb $out_dir\util-test-debug.pdb
 
-build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-test\test\test_base64.obj $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_interpolate_string.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\util-test\test\test_base64.obj $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_interpolate_string.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test-debug.exe
    pdb = $out_dir\util-test-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\util-test-debug.exe: cp $out_dir\util-test-debug.exe
 
 build run-project-util-test-debug!: run | $stage_dir\util-test-debug.exe
@@ -3829,11 +3829,11 @@ build $build_dir\util-test.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test.icon.res: rc $build_dir\util-test.icon.rc || init!
 
-build $out_dir\util-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-test\test\test_base64.obj $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_interpolate_string.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\release\util-test\test\version.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\util-test\test\test_base64.obj $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_interpolate_string.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\release\util-test\test\version.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test.exe
    pdb = $out_dir\util-test.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\util-test.exe: cp $out_dir\util-test.exe
 
 build run-project-util-test-release!: run | $stage_dir\util-test.exe
@@ -3868,11 +3868,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-perf-debug.icon.res: rc $build_dir\util-perf-debug.icon.rc || init!
 build $out_dir\util-perf-debug.pdb!: pdb $out_dir\util-perf-debug.pdb
 
-build $out_dir\util-perf-debug.exe | $out_dir\util-perf-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\util-perf\perf\associative_containers.obj $build_dir\debug\util-perf\perf\perf_main.obj $build_dir\debug\util-perf\perf\sequence_containers.obj $build_dir\debug\util-perf\perf\version.obj $build_dir\util-perf-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-perf-debug.exe | $out_dir\util-perf-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\util-perf\perf\associative_containers.obj $build_dir\debug\util-perf\perf\perf_main.obj $build_dir\debug\util-perf\perf\sequence_containers.obj $build_dir\debug\util-perf\perf\version.obj $build_dir\util-perf-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = util-perf-debug.exe
    pdb = $out_dir\util-perf-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\util-perf-debug.exe: cp $out_dir\util-perf-debug.exe
 
 build run-project-util-perf-debug!: run | $stage_dir\util-perf-debug.exe
@@ -3905,11 +3905,11 @@ build $build_dir\util-perf.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-perf.icon.res: rc $build_dir\util-perf.icon.rc || init!
 
-build $out_dir\util-perf.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\util-perf\perf\associative_containers.obj $build_dir\release\util-perf\perf\perf_main.obj $build_dir\release\util-perf\perf\sequence_containers.obj $build_dir\release\util-perf\perf\version.obj $build_dir\util-perf.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-perf.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\util-perf\perf\associative_containers.obj $build_dir\release\util-perf\perf\perf_main.obj $build_dir\release\util-perf\perf\sequence_containers.obj $build_dir\release\util-perf\perf\version.obj $build_dir\util-perf.icon.res $build_dir\default.manifest.res || init!
    out_file = util-perf.exe
    pdb = $out_dir\util-perf.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\util-perf.exe: cp $out_dir\util-perf.exe
 
 build run-project-util-perf-release!: run | $stage_dir\util-perf.exe
@@ -3965,11 +3965,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\bglgen-debug.icon.res: rc $build_dir\bglgen-debug.icon.rc || init!
 build $out_dir\bglgen-debug.pdb!: pdb $out_dir\bglgen-debug.pdb
 
-build $out_dir\bglgen-debug.exe | $out_dir\bglgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\blt-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\sqlite-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\bglgen\src\bglgen.obj $build_dir\debug\bglgen\src\bglgen_app.obj $build_dir\debug\bglgen\src\gl_registry.obj $build_dir\debug\bglgen\src\lexer.obj $build_dir\debug\bglgen\src\pugi.obj $build_dir\bglgen-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\bglgen-debug.exe | $out_dir\bglgen-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\blt-debug.lib $out_dir\blt-lua-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\core-lua-debug.lib $out_dir\ctable-debug.lib $out_dir\sqlite-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\bglgen\src\bglgen.obj $build_dir\debug\bglgen\src\bglgen_app.obj $build_dir\debug\bglgen\src\gl_registry.obj $build_dir\debug\bglgen\src\lexer.obj $build_dir\debug\bglgen\src\pugi.obj $build_dir\bglgen-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = bglgen-debug.exe
    pdb = $out_dir\bglgen-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\bglgen-debug.exe: cp $out_dir\bglgen-debug.exe
 build project-bglgen-debug!: phony $stage_dir\bglgen-debug.exe
 
@@ -4003,11 +4003,11 @@ build $build_dir\bglgen.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\bglgen.icon.res: rc $build_dir\bglgen.icon.rc || init!
 
-build $out_dir\bglgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\sqlite.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\bglgen\src\bglgen.obj $build_dir\release\bglgen\src\bglgen_app.obj $build_dir\release\bglgen\src\gl_registry.obj $build_dir\release\bglgen\src\lexer.obj $build_dir\release\bglgen\src\pugi.obj $build_dir\bglgen.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\bglgen.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\blt-lua.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core-lua.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\sqlite.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\bglgen\src\bglgen.obj $build_dir\release\bglgen\src\bglgen_app.obj $build_dir\release\bglgen\src\gl_registry.obj $build_dir\release\bglgen\src\lexer.obj $build_dir\release\bglgen\src\pugi.obj $build_dir\bglgen.icon.res $build_dir\default.manifest.res || init!
    out_file = bglgen.exe
    pdb = $out_dir\bglgen.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\bglgen.exe: cp $out_dir\bglgen.exe
 build project-bglgen-release!: phony $stage_dir\bglgen.exe
 build project-bglgen!: phony project-bglgen-debug! project-bglgen-release!
@@ -4037,7 +4037,7 @@ build $out_dir\bltc-debug.exe | $out_dir\bltc-debug.pdb: link $ext_lib_dir\zlib-
    out_file = bltc-debug.exe
    pdb = $out_dir\bltc-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\bltc-debug.exe: cp $out_dir\bltc-debug.exe
 build project-bltc-debug!: phony $stage_dir\bltc-debug.exe
 
@@ -4060,7 +4060,7 @@ build $out_dir\bltc.exe: link $ext_lib_dir\zlib-static.lib $out_dir\blt.lib $out
    out_file = bltc.exe
    pdb = $out_dir\bltc.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\bltc.exe: cp $out_dir\bltc.exe
 build project-bltc-release!: phony $stage_dir\bltc.exe
 build project-bltc!: phony project-bltc-debug! project-bltc-release!
@@ -4095,7 +4095,7 @@ build $out_dir\atex-debug.exe | $out_dir\atex-debug.pdb: link $ext_lib_dir\zlib-
    out_file = atex-debug.exe
    pdb = $out_dir\atex-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\atex-debug.exe: cp $out_dir\atex-debug.exe
 build project-atex-debug!: phony $stage_dir\atex-debug.exe
 
@@ -4123,7 +4123,7 @@ build $out_dir\atex.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out
    out_file = atex.exe
    pdb = $out_dir\atex.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\atex.exe: cp $out_dir\atex.exe
 build project-atex-release!: phony $stage_dir\atex.exe
 build project-atex!: phony project-atex-debug! project-atex-release!
@@ -4146,11 +4146,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\concur-debug.icon.res: rc $build_dir\concur-debug.icon.rc || init!
 build $out_dir\concur-debug.pdb!: pdb $out_dir\concur-debug.pdb
 
-build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\concur\src-concur\concur.obj $build_dir\debug\concur\src-concur\concur_app.obj $build_dir\concur-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\concur\src-concur\concur.obj $build_dir\debug\concur\src-concur\concur_app.obj $build_dir\concur-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = concur-debug.exe
    pdb = $out_dir\concur-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\concur-debug.exe: cp $out_dir\concur-debug.exe
 build project-concur-debug!: phony $stage_dir\concur-debug.exe
 
@@ -4169,11 +4169,11 @@ build $build_dir\concur.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\concur.icon.res: rc $build_dir\concur.icon.rc || init!
 
-build $out_dir\concur.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\concur\src-concur\concur.obj $build_dir\release\concur\src-concur\concur_app.obj $build_dir\concur.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\concur.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\concur\src-concur\concur.obj $build_dir\release\concur\src-concur\concur_app.obj $build_dir\concur.icon.res $build_dir\default.manifest.res || init!
    out_file = concur.exe
    pdb = $out_dir\concur.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\concur.exe: cp $out_dir\concur.exe
 build project-concur-release!: phony $stage_dir\concur.exe
 build project-concur!: phony project-concur-debug! project-concur-release!
@@ -4206,11 +4206,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\limp-debug.icon.res: rc $build_dir\limp-debug.icon.rc || init!
 build $out_dir\limp-debug.pdb!: pdb $out_dir\limp-debug.pdb
 
-build $out_dir\limp-debug.exe | $out_dir\limp-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\blt-debug.lib $out_dir\blt-lua-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\core-lua-debug.lib $out_dir\ctable-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\limp\src\limp.obj $build_dir\debug\limp\src\limp_app.obj $build_dir\debug\limp\src\limp_processor.obj $build_dir\limp-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\limp-debug.exe | $out_dir\limp-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\blt-debug.lib $out_dir\blt-lua-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\core-lua-debug.lib $out_dir\ctable-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\limp\src\limp.obj $build_dir\debug\limp\src\limp_app.obj $build_dir\debug\limp\src\limp_processor.obj $build_dir\limp-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = limp-debug.exe
    pdb = $out_dir\limp-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\limp-debug.exe: cp $out_dir\limp-debug.exe
 build project-limp-debug!: phony $stage_dir\limp-debug.exe
 
@@ -4234,11 +4234,11 @@ build $build_dir\limp.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\limp.icon.res: rc $build_dir\limp.icon.rc || init!
 
-build $out_dir\limp.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\blt-lua.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core-lua.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\limp\src\limp.obj $build_dir\release\limp\src\limp_app.obj $build_dir\release\limp\src\limp_processor.obj $build_dir\limp.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\limp.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\blt-lua.lib $out_dir\blt.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core-lua.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\limp\src\limp.obj $build_dir\release\limp\src\limp_app.obj $build_dir\release\limp\src\limp_processor.obj $build_dir\limp.icon.res $build_dir\default.manifest.res || init!
    out_file = limp.exe
    pdb = $out_dir\limp.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\limp.exe: cp $out_dir\limp.exe
 build project-limp-release!: phony $stage_dir\limp.exe
 build project-limp!: phony project-limp-debug! project-limp-release!
@@ -4291,11 +4291,11 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\idgen-debug.icon.res: rc $build_dir\idgen-debug.icon.rc || init!
 build $out_dir\idgen-debug.pdb!: pdb $out_dir\idgen-debug.pdb
 
-build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\idgen\src-idgen\format.obj $build_dir\debug\idgen\src-idgen\idgen.obj $build_dir\debug\idgen\src-idgen\idgen_app.obj $build_dir\debug\idgen\src-idgen\mode.obj $build_dir\debug\idgen\src-idgen\type.obj $build_dir\idgen-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\idgen-debug.exe | $out_dir\idgen-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\ctable-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\idgen\src-idgen\format.obj $build_dir\debug\idgen\src-idgen\idgen.obj $build_dir\debug\idgen\src-idgen\idgen_app.obj $build_dir\debug\idgen\src-idgen\mode.obj $build_dir\debug\idgen\src-idgen\type.obj $build_dir\idgen-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = idgen-debug.exe
    pdb = $out_dir\idgen-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\idgen-debug.exe: cp $out_dir\idgen-debug.exe
 build project-idgen-debug!: phony $stage_dir\idgen-debug.exe
 
@@ -4329,11 +4329,11 @@ build $build_dir\idgen.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\idgen.icon.res: rc $build_dir\idgen.icon.rc || init!
 
-build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $build_dir\release\idgen\src-idgen\format.obj $build_dir\release\idgen\src-idgen\idgen.obj $build_dir\release\idgen\src-idgen\idgen_app.obj $build_dir\release\idgen\src-idgen\mode.obj $build_dir\release\idgen\src-idgen\type.obj $build_dir\idgen.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\idgen.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\idgen\src-idgen\format.obj $build_dir\release\idgen\src-idgen\idgen.obj $build_dir\release\idgen\src-idgen\idgen_app.obj $build_dir\release\idgen\src-idgen\mode.obj $build_dir\release\idgen\src-idgen\type.obj $build_dir\idgen.icon.res $build_dir\default.manifest.res || init!
    out_file = idgen.exe
    pdb = $out_dir\idgen.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\idgen.exe: cp $out_dir\idgen.exe
 build project-idgen-release!: phony $stage_dir\idgen.exe
 build project-idgen!: phony project-idgen-debug! project-idgen-release!
@@ -4360,7 +4360,7 @@ build $out_dir\sizeof-debug.exe | $out_dir\sizeof-debug.pdb: link $ext_lib_dir\z
    out_file = sizeof-debug.exe
    pdb = $out_dir\sizeof-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\sizeof-debug.exe: cp $out_dir\sizeof-debug.exe
 build project-sizeof-debug!: phony $stage_dir\sizeof-debug.exe
 
@@ -4383,7 +4383,7 @@ build $out_dir\sizeof.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.li
    out_file = sizeof.exe
    pdb = $out_dir\sizeof.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\sizeof.exe: cp $out_dir\sizeof.exe
 build project-sizeof-release!: phony $stage_dir\sizeof.exe
 build project-sizeof!: phony project-sizeof-debug! project-sizeof-release!
@@ -4405,7 +4405,7 @@ build $out_dir\ccolor.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id.li
    out_file = ccolor.exe
    pdb = $out_dir\ccolor.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\ccolor.exe: cp $out_dir\ccolor.exe
 build project-ccolor-release!: phony $stage_dir\ccolor.exe
 build project-ccolor!: phony project-ccolor-debug! project-ccolor-release!
@@ -4455,22 +4455,22 @@ build tools\sysinfo\include\version.hpp!: limpin tools\sysinfo\include\version.h
 build $build_dir\debug\sysinfo\src\memory_status.obj: cl tools\sysinfo\src\memory_status.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\sysinfo-debug.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\debug\sysinfo\src\monitor_info.obj: cl tools\sysinfo\src\monitor_info.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\sysinfo-debug.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\debug\sysinfo\src\sysinfo.obj: cl tools\sysinfo\src\sysinfo.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\sysinfo-debug.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\debug\sysinfo\src\versions.obj: cl tools\sysinfo\src\versions.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\sysinfo-debug.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\sysinfo-debug.icon.rc: putfile | icon\bengine-warm.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
@@ -4478,44 +4478,44 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\sysinfo-debug.icon.res: rc $build_dir\sysinfo-debug.icon.rc || init!
 build $out_dir\sysinfo-debug.pdb!: pdb $out_dir\sysinfo-debug.pdb
 
-build $out_dir\sysinfo-debug.exe | $out_dir\sysinfo-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $build_dir\debug\sysinfo\src\memory_status.obj $build_dir\debug\sysinfo\src\monitor_info.obj $build_dir\debug\sysinfo\src\sysinfo.obj $build_dir\debug\sysinfo\src\versions.obj $build_dir\sysinfo-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sysinfo-debug.exe | $out_dir\sysinfo-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\sysinfo\src\memory_status.obj $build_dir\debug\sysinfo\src\monitor_info.obj $build_dir\debug\sysinfo\src\sysinfo.obj $build_dir\debug\sysinfo\src\versions.obj $build_dir\sysinfo-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = sysinfo-debug.exe
    pdb = $out_dir\sysinfo-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\sysinfo-debug.exe: cp $out_dir\sysinfo-debug.exe
 build project-sysinfo-debug!: phony $stage_dir\sysinfo-debug.exe
 
 build $build_dir\release\sysinfo\src\memory_status.obj: cl tools\sysinfo\src\memory_status.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\sysinfo.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\release\sysinfo\src\monitor_info.obj: cl tools\sysinfo\src\monitor_info.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\sysinfo.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\release\sysinfo\src\sysinfo.obj: cl tools\sysinfo\src\sysinfo.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\sysinfo.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\release\sysinfo\src\versions.obj: cl tools\sysinfo\src\versions.cpp || init!
    flags = $cl_flags_release
    pdb = $build_dir\sysinfo.pdb
-   extra = /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=sysinfo /DBE_TARGET_BASE=sysinfo /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"tools\sysinfo\include"
 
 build $build_dir\sysinfo.icon.rc: putfile | icon\bengine-warm.ico || init!
    contents = 101 ICON ^"icon^\^\bengine-warm.ico^"&echo:$
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\sysinfo.icon.res: rc $build_dir\sysinfo.icon.rc || init!
 
-build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\platform.lib $out_dir\util.lib $build_dir\release\sysinfo\src\memory_status.obj $build_dir\release\sysinfo\src\monitor_info.obj $build_dir\release\sysinfo\src\sysinfo.obj $build_dir\release\sysinfo\src\versions.obj $build_dir\sysinfo.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\platform.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\sysinfo\src\memory_status.obj $build_dir\release\sysinfo\src\monitor_info.obj $build_dir\release\sysinfo\src\sysinfo.obj $build_dir\release\sysinfo\src\versions.obj $build_dir\sysinfo.icon.res $build_dir\default.manifest.res || init!
    out_file = sysinfo.exe
    pdb = $out_dir\sysinfo.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\sysinfo.exe: cp $out_dir\sysinfo.exe
 build project-sysinfo-release!: phony $stage_dir\sysinfo.exe
 build project-sysinfo!: phony project-sysinfo-debug! project-sysinfo-release!
@@ -4541,11 +4541,11 @@ GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\d-gfx-tex-debug.icon.res: rc $build_dir\d-gfx-tex-debug.icon.rc || init!
 build $out_dir\d-gfx-tex-debug.pdb!: pdb $out_dir\d-gfx-tex-debug.pdb
 
-build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\d-gfx-tex\src-tex\tex.obj $build_dir\debug\d-gfx-tex\src-tex\tex_demo.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\d-gfx-tex\src-tex\tex.obj $build_dir\debug\d-gfx-tex\src-tex\tex_demo.obj $build_dir\d-gfx-tex-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = d-gfx-tex-debug.exe
    pdb = $out_dir\d-gfx-tex-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\d-gfx-tex-debug.exe: cp $out_dir\d-gfx-tex-debug.exe
 build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
 
@@ -4564,11 +4564,11 @@ build $build_dir\d-gfx-tex.icon.rc: putfile | icon\bengine.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine.ico^"
 build $build_dir\d-gfx-tex.icon.res: rc $build_dir\d-gfx-tex.icon.rc || init!
 
-build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\d-gfx-tex\src-tex\tex.obj $build_dir\release\d-gfx-tex\src-tex\tex_demo.obj $build_dir\d-gfx-tex.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\d-gfx-tex\src-tex\tex.obj $build_dir\release\d-gfx-tex\src-tex\tex_demo.obj $build_dir\d-gfx-tex.icon.res $build_dir\default.manifest.res || init!
    out_file = d-gfx-tex.exe
    pdb = $out_dir\d-gfx-tex.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\d-gfx-tex.exe: cp $out_dir\d-gfx-tex.exe
 build project-d-gfx-tex-release!: phony $stage_dir\d-gfx-tex.exe
 build project-d-gfx-tex!: phony project-d-gfx-tex-debug! project-d-gfx-tex-release!
@@ -4591,7 +4591,7 @@ build $out_dir\consolecolors-debug.exe | $out_dir\consolecolors-debug.pdb: link 
    out_file = consolecolors-debug.exe
    pdb = $out_dir\consolecolors-debug.pdb
    flags = $link_flags_console_debug
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\consolecolors-debug.exe: cp $out_dir\consolecolors-debug.exe
 build project-consolecolors-debug!: phony $stage_dir\consolecolors-debug.exe
 
@@ -4609,7 +4609,7 @@ build $out_dir\consolecolors.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cor
    out_file = consolecolors.exe
    pdb = $out_dir\consolecolors.pdb
    flags = $link_flags_console_release
-   extra =
+   extra = Dbghelp.lib
 build $stage_dir\consolecolors.exe: cp $out_dir\consolecolors.exe
 build project-consolecolors-release!: phony $stage_dir\consolecolors.exe
 build project-consolecolors!: phony project-consolecolors-debug! project-consolecolors-release!
