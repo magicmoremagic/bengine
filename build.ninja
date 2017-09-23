@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4642 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4662 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -3498,6 +3498,11 @@ build $build_dir\debug\util-string\src-string\binary_units.obj: cl modules\util\
    pdb = $build_dir\util-string-debug.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\util-string\src-string\line_endings.obj: cl modules\util\src-string\line_endings.cpp | $build_dir\util-string-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\util-string-debug.pdb
+   extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\util-string\src-string\parse_string_error_condition.obj: cl modules\util\src-string\parse_string_error_condition.cpp | $build_dir\util-string-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\util-string-debug.pdb
@@ -3523,7 +3528,7 @@ build $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.o
    pdb = $build_dir\util-string-debug.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
-build $out_dir\util-string-debug.lib: lib $build_dir\debug\util-string\src-string\pch.obj $build_dir\debug\util-string\src-string\binary_units.obj $build_dir\debug\util-string\src-string\parse_string_error_condition.obj $build_dir\debug\util-string\src-string\pointer_to_string.obj $build_dir\debug\util-string\src-string\utf8_codepoint.obj $build_dir\debug\util-string\src-string\utf8_iterator.obj $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
+build $out_dir\util-string-debug.lib: lib $build_dir\debug\util-string\src-string\pch.obj $build_dir\debug\util-string\src-string\binary_units.obj $build_dir\debug\util-string\src-string\line_endings.obj $build_dir\debug\util-string\src-string\parse_string_error_condition.obj $build_dir\debug\util-string\src-string\pointer_to_string.obj $build_dir\debug\util-string\src-string\utf8_codepoint.obj $build_dir\debug\util-string\src-string\utf8_iterator.obj $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
    out_file = util-string-debug.lib
    flags = $lib_flags_debug
 build project-util-string-debug!: phony $out_dir\util-string-debug.lib
@@ -3535,6 +3540,11 @@ build $build_dir\release\util-string\src-string\pch.obj: cl modules\util\src-str
 build $build_dir\util-string.pch: phony $build_dir\release\util-string\src-string\pch.obj
 
 build $build_dir\release\util-string\src-string\binary_units.obj: cl modules\util\src-string\binary_units.cpp | $build_dir\util-string.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util-string.pdb
+   extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util-string\src-string\line_endings.obj: cl modules\util\src-string\line_endings.cpp | $build_dir\util-string.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\util-string.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string.pch" /Yu"pch.hpp"
@@ -3564,7 +3574,7 @@ build $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow
    pdb = $build_dir\util-string.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
-build $out_dir\util-string.lib: lib $build_dir\release\util-string\src-string\pch.obj $build_dir\release\util-string\src-string\binary_units.obj $build_dir\release\util-string\src-string\parse_string_error_condition.obj $build_dir\release\util-string\src-string\pointer_to_string.obj $build_dir\release\util-string\src-string\utf8_codepoint.obj $build_dir\release\util-string\src-string\utf8_iterator.obj $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
+build $out_dir\util-string.lib: lib $build_dir\release\util-string\src-string\pch.obj $build_dir\release\util-string\src-string\binary_units.obj $build_dir\release\util-string\src-string\line_endings.obj $build_dir\release\util-string\src-string\parse_string_error_condition.obj $build_dir\release\util-string\src-string\pointer_to_string.obj $build_dir\release\util-string\src-string\utf8_codepoint.obj $build_dir\release\util-string\src-string\utf8_iterator.obj $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
    out_file = util-string.lib
    flags = $lib_flags_release
 build project-util-string-release!: phony $out_dir\util-string.lib
@@ -3714,6 +3724,11 @@ build $build_dir\debug\util-test\test\test_interpolate_string.obj: cl modules\ut
    pdb = $build_dir\util-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
+build $build_dir\debug\util-test\test\test_line_endings.obj: cl modules\util\test\test_line_endings.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\util-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
+
 build $build_dir\debug\util-test\test\test_main.obj: cl modules\util\test\test_main.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\util-test-debug.pdb
@@ -3755,7 +3770,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test-debug.icon.res: rc $build_dir\util-test-debug.icon.rc || init!
 build $out_dir\util-test-debug.pdb!: pdb $out_dir\util-test-debug.pdb
 
-build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\util-test\test\test_base64.obj $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_interpolate_string.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\util-test\test\test_base64.obj $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_interpolate_string.obj $build_dir\debug\util-test\test\test_line_endings.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test-debug.exe
    pdb = $out_dir\util-test-debug.pdb
    flags = $link_flags_console_debug
@@ -3783,6 +3798,11 @@ build $build_dir\release\util-test\test\test_chunked_list.obj: cl modules\util\t
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
 build $build_dir\release\util-test\test\test_interpolate_string.obj: cl modules\util\test\test_interpolate_string.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
+
+build $build_dir\release\util-test\test\test_line_endings.obj: cl modules\util\test\test_line_endings.cpp || init!
    flags = $cl_flags_test_release
    pdb = $build_dir\util-test.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
@@ -3827,7 +3847,7 @@ build $build_dir\util-test.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test.icon.res: rc $build_dir\util-test.icon.rc || init!
 
-build $out_dir\util-test.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\util-test\test\test_base64.obj $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_interpolate_string.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\release\util-test\test\version.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\util-test\test\test_base64.obj $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_interpolate_string.obj $build_dir\release\util-test\test\test_line_endings.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\release\util-test\test\version.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test.exe
    pdb = $out_dir\util-test.pdb
    flags = $link_flags_console_release
