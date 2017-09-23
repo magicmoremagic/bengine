@@ -1,2 +1,9 @@
 config.auto_related_extensions = false
 config.auto_related_features = false
+
+default_output_path_ = 'modules/gfx/include/bgl.hpp'
+default_search_paths = {
+   'modules',
+   'tools',
+   'demos'
+}
