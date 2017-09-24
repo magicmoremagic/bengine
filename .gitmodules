@@ -1,45 +1,51 @@
-[submodule "dep_modules/glfw"]
-	path = dep_modules/glfw
-	url = https://github.com/magicmoremagic/glfw
-[submodule "dep_modules/lua"]
-	path = dep_modules/lua
-	url = https://github.com/magicmoremagic/lua
-[submodule "dep_modules/glm"]
-	path = dep_modules/glm
-	url = https://github.com/magicmoremagic/glm
-[submodule "dep_modules/stb"]
-	path = dep_modules/stb
-	url = https://github.com/nothings/stb
-[submodule "dep_modules/gsl"]
-	path = dep_modules/gsl
-	url = https://github.com/Microsoft/GSL
-[submodule "dep_modules/zlib"]
-	path = dep_modules/zlib
-	url = https://github.com/madler/zlib
 [submodule "dep_modules/catch"]
 	path = dep_modules/catch
 	url = https://github.com/philsquared/Catch
+[submodule "dep_modules/glfw"]
+	path = dep_modules/glfw
+	url = https://github.com/magicmoremagic/glfw
+[submodule "dep_modules/glm"]
+	path = dep_modules/glm
+	url = https://github.com/magicmoremagic/glm
+[submodule "dep_modules/gsl"]
+	path = dep_modules/gsl
+	url = https://github.com/Microsoft/GSL
+[submodule "dep_modules/lua"]
+	path = dep_modules/lua
+	url = https://github.com/magicmoremagic/lua
 [submodule "dep_modules/pugixml"]
 	path = dep_modules/pugixml
 	url = https://github.com/zeux/pugixml
+[submodule "dep_modules/stb"]
+	path = dep_modules/stb
+	url = https://github.com/nothings/stb
+[submodule "dep_modules/zlib"]
+	path = dep_modules/zlib
+	url = https://github.com/madler/zlib
 [submodule "limp/common"]
 	path = limp/common
 	url = https://github.com/magicmoremagic/bengine-limp-common
 [submodule "limp/build"]
 	path = limp/build
 	url = https://github.com/magicmoremagic/bengine-limp-build
-[submodule "modules/core"]
-	path = modules/core
-	url = https://github.com/magicmoremagic/bengine-core
+[submodule "modules/belua"]
+	path = modules/belua
+	url = https://github.com/magicmoremagic/bengine-belua
 [submodule "modules/blt"]
 	path = modules/blt
 	url = https://github.com/magicmoremagic/bengine-blt
-[submodule "modules/util"]
-	path = modules/util
-	url = https://github.com/magicmoremagic/bengine-util
+[submodule "modules/cli"]
+	path = modules/cli
+	url = https://github.com/magicmoremagic/bengine-cli
+[submodule "modules/core"]
+	path = modules/core
+	url = https://github.com/magicmoremagic/bengine-core
 [submodule "modules/ctable"]
 	path = modules/ctable
 	url = https://github.com/magicmoremagic/bengine-ctable
+[submodule "modules/gfx"]
+	path = modules/gfx
+	url = https://github.com/magicmoremagic/bengine-gfx
 [submodule "modules/perf"]
 	path = modules/perf
 	url = https://github.com/magicmoremagic/bengine-perf
@@ -52,36 +58,30 @@
 [submodule "modules/testing"]
 	path = modules/testing
 	url = https://github.com/magicmoremagic/bengine-testing
-[submodule "modules/cli"]
-	path = modules/cli
-	url = https://github.com/magicmoremagic/bengine-cli
-[submodule "modules/belua"]
-	path = modules/belua
-	url = https://github.com/magicmoremagic/bengine-belua
-[submodule "modules/gfx"]
-	path = modules/gfx
-	url = https://github.com/magicmoremagic/bengine-gfx
-[submodule "tools/misc"]
-	path = tools/misc
-	url = https://github.com/magicmoremagic/bengine-tools-misc
+[submodule "modules/util"]
+	path = modules/util
+	url = https://github.com/magicmoremagic/bengine-util
+[submodule "tools/bglgen"]
+	path = tools/bglgen
+	url = https://github.com/magicmoremagic/bengine-tools-bglgen
 [submodule "tools/bltc"]
 	path = tools/bltc
 	url = https://github.com/magicmoremagic/bengine-tools-bltc
-[submodule "tools/limp"]
-	path = tools/limp
-	url = https://github.com/magicmoremagic/bengine-tools-limp
-[submodule "tools/sysinfo"]
-	path = tools/sysinfo
-	url = https://github.com/magicmoremagic/bengine-tools-sysinfo
 [submodule "tools/gfx"]
 	path = tools/gfx
 	url = https://github.com/magicmoremagic/bengine-tools-gfx
+[submodule "tools/limp"]
+	path = tools/limp
+	url = https://github.com/magicmoremagic/bengine-tools-limp
+[submodule "tools/misc"]
+	path = tools/misc
+	url = https://github.com/magicmoremagic/bengine-tools-misc
+[submodule "tools/sysinfo"]
+	path = tools/sysinfo
+	url = https://github.com/magicmoremagic/bengine-tools-sysinfo
 [submodule "demos/gfx"]
 	path = demos/gfx
 	url = https://github.com/magicmoremagic/bengine-demos-gfx
 [submodule "demos/misc"]
 	path = demos/misc
 	url = https://github.com/magicmoremagic/bengine-demos-misc
-[submodule "tools/bglgen"]
-	path = tools/bglgen
-	url = https://github.com/magicmoremagic/bengine-bglgen

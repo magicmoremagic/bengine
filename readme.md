@@ -53,6 +53,7 @@ force-pushes.
 ## Tools
  - [`bltc`](https://github.com/magicmoremagic/bengine-tools-bltc)
  - [`limp`](https://github.com/magicmoremagic/bengine-tools-limp)
+ - [`bglgen`](https://github.com/magicmoremagic/bengine-tools-bglgen)
  - [Graphics Tools](https://github.com/magicmoremagic/bengine-tools-gfx)
  - [Miscellaneous Tools](https://github.com/magicmoremagic/bengine-tools-misc)
  - [`sysinfo`](https://github.com/magicmoremagic/bengine-tools-sysinfo) (WIP)
