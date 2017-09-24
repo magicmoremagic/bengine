@@ -54,8 +54,7 @@ deps {
             'src/wgl_*.c',
             'src/egl_*.c'
          },
-         define '_GLFW_WIN32',
-         --link 'opengl32'
+         define '_GLFW_WIN32'
       }
    },
 

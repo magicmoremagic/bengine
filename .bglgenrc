@@ -1,5 +1,6 @@
 config.auto_related_extensions = false
 config.auto_related_features = false
+config.skip_groups = true
 
 default_output_path = 'modules/gfx/include/bgl.hpp'
 default_search_paths = {

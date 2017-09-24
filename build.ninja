@@ -2665,7 +2665,7 @@ build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_d
    out_file = gfx-test-debug.exe
    pdb = $out_dir\gfx-test-debug.pdb
    flags = $link_flags_console_debug
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\gfx-test-debug.exe: cp $out_dir\gfx-test-debug.exe
 
 build run-project-gfx-test-debug!: run | $stage_dir\gfx-test-debug.exe
@@ -2752,7 +2752,7 @@ build $out_dir\gfx-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-
    out_file = gfx-test.exe
    pdb = $out_dir\gfx-test.pdb
    flags = $link_flags_console_release
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\gfx-test.exe: cp $out_dir\gfx-test.exe
 
 build run-project-gfx-test-release!: run | $stage_dir\gfx-test.exe
@@ -4180,7 +4180,7 @@ build $out_dir\concur-debug.exe | $out_dir\concur-debug.pdb: link $ext_lib_dir\z
    out_file = concur-debug.exe
    pdb = $out_dir\concur-debug.pdb
    flags = $link_flags_console_debug
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\concur-debug.exe: cp $out_dir\concur-debug.exe
 build project-concur-debug!: phony $stage_dir\concur-debug.exe
 
@@ -4203,7 +4203,7 @@ build $out_dir\concur.exe: link $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $o
    out_file = concur.exe
    pdb = $out_dir\concur.pdb
    flags = $link_flags_console_release
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\concur.exe: cp $out_dir\concur.exe
 build project-concur-release!: phony $stage_dir\concur.exe
 build project-concur!: phony project-concur-debug! project-concur-release!
@@ -4517,7 +4517,7 @@ build $out_dir\sysinfo-debug.exe | $out_dir\sysinfo-debug.pdb: link $ext_lib_dir
    out_file = sysinfo-debug.exe
    pdb = $out_dir\sysinfo-debug.pdb
    flags = $link_flags_console_debug
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\sysinfo-debug.exe: cp $out_dir\sysinfo-debug.exe
 build project-sysinfo-debug!: phony $stage_dir\sysinfo-debug.exe
 
@@ -4555,7 +4555,7 @@ build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.
    out_file = sysinfo.exe
    pdb = $out_dir\sysinfo.pdb
    flags = $link_flags_console_release
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\sysinfo.exe: cp $out_dir\sysinfo.exe
 build project-sysinfo-release!: phony $stage_dir\sysinfo.exe
 build project-sysinfo!: phony project-sysinfo-debug! project-sysinfo-release!
@@ -4585,7 +4585,7 @@ build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib
    out_file = d-gfx-tex-debug.exe
    pdb = $out_dir\d-gfx-tex-debug.pdb
    flags = $link_flags_console_debug
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\d-gfx-tex-debug.exe: cp $out_dir\d-gfx-tex-debug.exe
 build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
 
@@ -4608,7 +4608,7 @@ build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-stati
    out_file = d-gfx-tex.exe
    pdb = $out_dir\d-gfx-tex.pdb
    flags = $link_flags_console_release
-   extra = Dbghelp.lib
+   extra = Dbghelp.lib opengl32.lib
 build $stage_dir\d-gfx-tex.exe: cp $out_dir\d-gfx-tex.exe
 build project-d-gfx-tex-release!: phony $stage_dir\d-gfx-tex.exe
 build project-d-gfx-tex!: phony project-d-gfx-tex-debug! project-d-gfx-tex-release!
