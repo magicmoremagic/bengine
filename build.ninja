@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4672 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4692 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -2012,6 +2012,10 @@ build group-ctable-release!: phony project-ctable-release! project-ctable-test-r
 build group-ctable!: phony project-ctable! project-ctable-test!
 build modules\gfx\include\tex\betx_payload_compression_mode.hpp: limp
 build modules\gfx\include\tex\betx_payload_compression_mode.hpp!: limpin modules\gfx\include\tex\betx_payload_compression_mode.hpp
+build modules\gfx\include\tex\betx_read_error.hpp: limp
+build modules\gfx\include\tex\betx_read_error.hpp!: limpin modules\gfx\include\tex\betx_read_error.hpp
+build modules\gfx\include\tex\betx_write_error.hpp: limp
+build modules\gfx\include\tex\betx_write_error.hpp!: limpin modules\gfx\include\tex\betx_write_error.hpp
 build modules\gfx\include\tex\block_packing.hpp: limp
 build modules\gfx\include\tex\block_packing.hpp!: limpin modules\gfx\include\tex\block_packing.hpp
 build modules\gfx\include\tex\colorspace.hpp: limp
@@ -2042,10 +2046,10 @@ build modules\gfx\include\version.hpp: limp
 build modules\gfx\include\version.hpp!: limpin modules\gfx\include\version.hpp
 build modules\gfx\src-tex\betx_payload_compression_mode.cpp: limp
 build modules\gfx\src-tex\betx_payload_compression_mode.cpp!: limpin modules\gfx\src-tex\betx_payload_compression_mode.cpp
-build modules\gfx\src-tex\betx_read_error_.cpp: limp
-build modules\gfx\src-tex\betx_read_error_.cpp!: limpin modules\gfx\src-tex\betx_read_error_.cpp
-build modules\gfx\src-tex\betx_write_error_.cpp: limp
-build modules\gfx\src-tex\betx_write_error_.cpp!: limpin modules\gfx\src-tex\betx_write_error_.cpp
+build modules\gfx\src-tex\betx_read_error.cpp: limp
+build modules\gfx\src-tex\betx_read_error.cpp!: limpin modules\gfx\src-tex\betx_read_error.cpp
+build modules\gfx\src-tex\betx_write_error.cpp: limp
+build modules\gfx\src-tex\betx_write_error.cpp!: limpin modules\gfx\src-tex\betx_write_error.cpp
 build modules\gfx\src-tex\block_packing.cpp: limp
 build modules\gfx\src-tex\block_packing.cpp!: limpin modules\gfx\src-tex\block_packing.cpp
 build modules\gfx\src-tex\colorspace.cpp: limp
@@ -2062,10 +2066,6 @@ build modules\gfx\src-tex\texture_file_error.cpp: limp
 build modules\gfx\src-tex\texture_file_error.cpp!: limpin modules\gfx\src-tex\texture_file_error.cpp
 build modules\gfx\src-tex\texture_file_format.cpp: limp
 build modules\gfx\src-tex\texture_file_format.cpp!: limpin modules\gfx\src-tex\texture_file_format.cpp
-build modules\gfx\src-tex\betx_read_error_.hpp: limp
-build modules\gfx\src-tex\betx_read_error_.hpp!: limpin modules\gfx\src-tex\betx_read_error_.hpp
-build modules\gfx\src-tex\betx_write_error_.hpp: limp
-build modules\gfx\src-tex\betx_write_error_.hpp!: limpin modules\gfx\src-tex\betx_write_error_.hpp
 
 build $build_dir\debug\gfx-tex\src-tex\pch.obj: cl modules\gfx\src-tex\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -2078,7 +2078,7 @@ build $build_dir\debug\gfx-tex\src-tex\betx_payload_compression_mode.obj: cl mod
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"pch.hpp"
 
-build $build_dir\debug\gfx-tex\src-tex\betx_read_error_.obj: cl modules\gfx\src-tex\betx_read_error_.cpp | $build_dir\gfx-tex-debug.pch || init!
+build $build_dir\debug\gfx-tex\src-tex\betx_read_error.obj: cl modules\gfx\src-tex\betx_read_error.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"pch.hpp"
@@ -2093,7 +2093,7 @@ build $build_dir\debug\gfx-tex\src-tex\betx_v1_.obj: cl modules\gfx\src-tex\betx
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"pch.hpp"
 
-build $build_dir\debug\gfx-tex\src-tex\betx_write_error_.obj: cl modules\gfx\src-tex\betx_write_error_.cpp | $build_dir\gfx-tex-debug.pch || init!
+build $build_dir\debug\gfx-tex\src-tex\betx_write_error.obj: cl modules\gfx\src-tex\betx_write_error.cpp | $build_dir\gfx-tex-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex-debug.pch" /Yu"pch.hpp"
@@ -2288,7 +2288,7 @@ build $build_dir\debug\gfx-tex\src-tex\stbi_.obj: cl modules\gfx\src-tex\stbi_.c
    pdb = $build_dir\gfx-tex-debug.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src-tex\pch.obj $build_dir\debug\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\debug\gfx-tex\src-tex\betx_read_error_.obj $build_dir\debug\gfx-tex\src-tex\betx_reader.obj $build_dir\debug\gfx-tex\src-tex\betx_v1_.obj $build_dir\debug\gfx-tex\src-tex\betx_write_error_.obj $build_dir\debug\gfx-tex\src-tex\betx_writer.obj $build_dir\debug\gfx-tex\src-tex\block_packing.obj $build_dir\debug\gfx-tex\src-tex\bmp_reader.obj $build_dir\debug\gfx-tex\src-tex\byte_order.obj $build_dir\debug\gfx-tex\src-tex\colorspace.obj $build_dir\debug\gfx-tex\src-tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src-tex\dds_reader.obj $build_dir\debug\gfx-tex\src-tex\default_texture_reader.obj $build_dir\debug\gfx-tex\src-tex\field_type.obj $build_dir\debug\gfx-tex\src-tex\gif_reader.obj $build_dir\debug\gfx-tex\src-tex\glraw_reader.obj $build_dir\debug\gfx-tex\src-tex\hdr_reader.obj $build_dir\debug\gfx-tex\src-tex\image_format.obj $build_dir\debug\gfx-tex\src-tex\image_format_gl.obj $build_dir\debug\gfx-tex\src-tex\image_region.obj $build_dir\debug\gfx-tex\src-tex\image_view.obj $build_dir\debug\gfx-tex\src-tex\jpeg_reader.obj $build_dir\debug\gfx-tex\src-tex\ktx_reader.obj $build_dir\debug\gfx-tex\src-tex\log_texture_info.obj $build_dir\debug\gfx-tex\src-tex\make_texture.obj $build_dir\debug\gfx-tex\src-tex\mipmapping.obj $build_dir\debug\gfx-tex\src-tex\pic_reader.obj $build_dir\debug\gfx-tex\src-tex\png_reader.obj $build_dir\debug\gfx-tex\src-tex\pnm_reader.obj $build_dir\debug\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src-tex\psd_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_util_.obj $build_dir\debug\gfx-tex\src-tex\swizzle.obj $build_dir\debug\gfx-tex\src-tex\texture_alignment.obj $build_dir\debug\gfx-tex\src-tex\texture_class.obj $build_dir\debug\gfx-tex\src-tex\texture_file_error.obj $build_dir\debug\gfx-tex\src-tex\texture_file_format.obj $build_dir\debug\gfx-tex\src-tex\texture_reader.obj $build_dir\debug\gfx-tex\src-tex\texture_reader_base.obj $build_dir\debug\gfx-tex\src-tex\texture_storage.obj $build_dir\debug\gfx-tex\src-tex\texture_view.obj $build_dir\debug\gfx-tex\src-tex\tga_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_.obj || init!
+build $out_dir\gfx-tex-debug.lib: lib $build_dir\debug\gfx-tex\src-tex\pch.obj $build_dir\debug\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\debug\gfx-tex\src-tex\betx_read_error.obj $build_dir\debug\gfx-tex\src-tex\betx_reader.obj $build_dir\debug\gfx-tex\src-tex\betx_v1_.obj $build_dir\debug\gfx-tex\src-tex\betx_write_error.obj $build_dir\debug\gfx-tex\src-tex\betx_writer.obj $build_dir\debug\gfx-tex\src-tex\block_packing.obj $build_dir\debug\gfx-tex\src-tex\bmp_reader.obj $build_dir\debug\gfx-tex\src-tex\byte_order.obj $build_dir\debug\gfx-tex\src-tex\colorspace.obj $build_dir\debug\gfx-tex\src-tex\convert_colorspace.obj $build_dir\debug\gfx-tex\src-tex\dds_reader.obj $build_dir\debug\gfx-tex\src-tex\default_texture_reader.obj $build_dir\debug\gfx-tex\src-tex\field_type.obj $build_dir\debug\gfx-tex\src-tex\gif_reader.obj $build_dir\debug\gfx-tex\src-tex\glraw_reader.obj $build_dir\debug\gfx-tex\src-tex\hdr_reader.obj $build_dir\debug\gfx-tex\src-tex\image_format.obj $build_dir\debug\gfx-tex\src-tex\image_format_gl.obj $build_dir\debug\gfx-tex\src-tex\image_region.obj $build_dir\debug\gfx-tex\src-tex\image_view.obj $build_dir\debug\gfx-tex\src-tex\jpeg_reader.obj $build_dir\debug\gfx-tex\src-tex\ktx_reader.obj $build_dir\debug\gfx-tex\src-tex\log_texture_info.obj $build_dir\debug\gfx-tex\src-tex\make_texture.obj $build_dir\debug\gfx-tex\src-tex\mipmapping.obj $build_dir\debug\gfx-tex\src-tex\pic_reader.obj $build_dir\debug\gfx-tex\src-tex\png_reader.obj $build_dir\debug\gfx-tex\src-tex\pnm_reader.obj $build_dir\debug\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\debug\gfx-tex\src-tex\psd_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_util_.obj $build_dir\debug\gfx-tex\src-tex\swizzle.obj $build_dir\debug\gfx-tex\src-tex\texture_alignment.obj $build_dir\debug\gfx-tex\src-tex\texture_class.obj $build_dir\debug\gfx-tex\src-tex\texture_file_error.obj $build_dir\debug\gfx-tex\src-tex\texture_file_format.obj $build_dir\debug\gfx-tex\src-tex\texture_reader.obj $build_dir\debug\gfx-tex\src-tex\texture_reader_base.obj $build_dir\debug\gfx-tex\src-tex\texture_storage.obj $build_dir\debug\gfx-tex\src-tex\texture_view.obj $build_dir\debug\gfx-tex\src-tex\tga_reader.obj $build_dir\debug\gfx-tex\src-tex\stbi_.obj || init!
    out_file = gfx-tex-debug.lib
    flags = $lib_flags_debug
 build project-gfx-tex-debug!: phony $out_dir\gfx-tex-debug.lib
@@ -2304,7 +2304,7 @@ build $build_dir\release\gfx-tex\src-tex\betx_payload_compression_mode.obj: cl m
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"pch.hpp"
 
-build $build_dir\release\gfx-tex\src-tex\betx_read_error_.obj: cl modules\gfx\src-tex\betx_read_error_.cpp | $build_dir\gfx-tex.pch || init!
+build $build_dir\release\gfx-tex\src-tex\betx_read_error.obj: cl modules\gfx\src-tex\betx_read_error.cpp | $build_dir\gfx-tex.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"pch.hpp"
@@ -2319,7 +2319,7 @@ build $build_dir\release\gfx-tex\src-tex\betx_v1_.obj: cl modules\gfx\src-tex\be
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"pch.hpp"
 
-build $build_dir\release\gfx-tex\src-tex\betx_write_error_.obj: cl modules\gfx\src-tex\betx_write_error_.cpp | $build_dir\gfx-tex.pch || init!
+build $build_dir\release\gfx-tex\src-tex\betx_write_error.obj: cl modules\gfx\src-tex\betx_write_error.cpp | $build_dir\gfx-tex.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include" /Fp"$build_dir\gfx-tex.pch" /Yu"pch.hpp"
@@ -2514,7 +2514,7 @@ build $build_dir\release\gfx-tex\src-tex\stbi_.obj: cl modules\gfx\src-tex\stbi_
    pdb = $build_dir\gfx-tex.pdb
    extra = /DBE_GFX_TEX_IMPL /DBE_TARGET=gfx-tex /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
-build $out_dir\gfx-tex.lib: lib $build_dir\release\gfx-tex\src-tex\pch.obj $build_dir\release\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\release\gfx-tex\src-tex\betx_read_error_.obj $build_dir\release\gfx-tex\src-tex\betx_reader.obj $build_dir\release\gfx-tex\src-tex\betx_v1_.obj $build_dir\release\gfx-tex\src-tex\betx_write_error_.obj $build_dir\release\gfx-tex\src-tex\betx_writer.obj $build_dir\release\gfx-tex\src-tex\block_packing.obj $build_dir\release\gfx-tex\src-tex\bmp_reader.obj $build_dir\release\gfx-tex\src-tex\byte_order.obj $build_dir\release\gfx-tex\src-tex\colorspace.obj $build_dir\release\gfx-tex\src-tex\convert_colorspace.obj $build_dir\release\gfx-tex\src-tex\dds_reader.obj $build_dir\release\gfx-tex\src-tex\default_texture_reader.obj $build_dir\release\gfx-tex\src-tex\field_type.obj $build_dir\release\gfx-tex\src-tex\gif_reader.obj $build_dir\release\gfx-tex\src-tex\glraw_reader.obj $build_dir\release\gfx-tex\src-tex\hdr_reader.obj $build_dir\release\gfx-tex\src-tex\image_format.obj $build_dir\release\gfx-tex\src-tex\image_format_gl.obj $build_dir\release\gfx-tex\src-tex\image_region.obj $build_dir\release\gfx-tex\src-tex\image_view.obj $build_dir\release\gfx-tex\src-tex\jpeg_reader.obj $build_dir\release\gfx-tex\src-tex\ktx_reader.obj $build_dir\release\gfx-tex\src-tex\log_texture_info.obj $build_dir\release\gfx-tex\src-tex\make_texture.obj $build_dir\release\gfx-tex\src-tex\mipmapping.obj $build_dir\release\gfx-tex\src-tex\pic_reader.obj $build_dir\release\gfx-tex\src-tex\png_reader.obj $build_dir\release\gfx-tex\src-tex\pnm_reader.obj $build_dir\release\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\release\gfx-tex\src-tex\psd_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_util_.obj $build_dir\release\gfx-tex\src-tex\swizzle.obj $build_dir\release\gfx-tex\src-tex\texture_alignment.obj $build_dir\release\gfx-tex\src-tex\texture_class.obj $build_dir\release\gfx-tex\src-tex\texture_file_error.obj $build_dir\release\gfx-tex\src-tex\texture_file_format.obj $build_dir\release\gfx-tex\src-tex\texture_reader.obj $build_dir\release\gfx-tex\src-tex\texture_reader_base.obj $build_dir\release\gfx-tex\src-tex\texture_storage.obj $build_dir\release\gfx-tex\src-tex\texture_view.obj $build_dir\release\gfx-tex\src-tex\tga_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_.obj || init!
+build $out_dir\gfx-tex.lib: lib $build_dir\release\gfx-tex\src-tex\pch.obj $build_dir\release\gfx-tex\src-tex\betx_payload_compression_mode.obj $build_dir\release\gfx-tex\src-tex\betx_read_error.obj $build_dir\release\gfx-tex\src-tex\betx_reader.obj $build_dir\release\gfx-tex\src-tex\betx_v1_.obj $build_dir\release\gfx-tex\src-tex\betx_write_error.obj $build_dir\release\gfx-tex\src-tex\betx_writer.obj $build_dir\release\gfx-tex\src-tex\block_packing.obj $build_dir\release\gfx-tex\src-tex\bmp_reader.obj $build_dir\release\gfx-tex\src-tex\byte_order.obj $build_dir\release\gfx-tex\src-tex\colorspace.obj $build_dir\release\gfx-tex\src-tex\convert_colorspace.obj $build_dir\release\gfx-tex\src-tex\dds_reader.obj $build_dir\release\gfx-tex\src-tex\default_texture_reader.obj $build_dir\release\gfx-tex\src-tex\field_type.obj $build_dir\release\gfx-tex\src-tex\gif_reader.obj $build_dir\release\gfx-tex\src-tex\glraw_reader.obj $build_dir\release\gfx-tex\src-tex\hdr_reader.obj $build_dir\release\gfx-tex\src-tex\image_format.obj $build_dir\release\gfx-tex\src-tex\image_format_gl.obj $build_dir\release\gfx-tex\src-tex\image_region.obj $build_dir\release\gfx-tex\src-tex\image_view.obj $build_dir\release\gfx-tex\src-tex\jpeg_reader.obj $build_dir\release\gfx-tex\src-tex\ktx_reader.obj $build_dir\release\gfx-tex\src-tex\log_texture_info.obj $build_dir\release\gfx-tex\src-tex\make_texture.obj $build_dir\release\gfx-tex\src-tex\mipmapping.obj $build_dir\release\gfx-tex\src-tex\pic_reader.obj $build_dir\release\gfx-tex\src-tex\png_reader.obj $build_dir\release\gfx-tex\src-tex\pnm_reader.obj $build_dir\release\gfx-tex\src-tex\premultiply_alpha.obj $build_dir\release\gfx-tex\src-tex\psd_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_util_.obj $build_dir\release\gfx-tex\src-tex\swizzle.obj $build_dir\release\gfx-tex\src-tex\texture_alignment.obj $build_dir\release\gfx-tex\src-tex\texture_class.obj $build_dir\release\gfx-tex\src-tex\texture_file_error.obj $build_dir\release\gfx-tex\src-tex\texture_file_format.obj $build_dir\release\gfx-tex\src-tex\texture_reader.obj $build_dir\release\gfx-tex\src-tex\texture_reader_base.obj $build_dir\release\gfx-tex\src-tex\texture_storage.obj $build_dir\release\gfx-tex\src-tex\texture_view.obj $build_dir\release\gfx-tex\src-tex\tga_reader.obj $build_dir\release\gfx-tex\src-tex\stbi_.obj || init!
    out_file = gfx-tex.lib
    flags = $lib_flags_release
 build project-gfx-tex-release!: phony $out_dir\gfx-tex.lib
@@ -2595,6 +2595,11 @@ build $build_dir\debug\gfx-test\test\test_read_write_image.obj: cl modules\gfx\t
    pdb = $build_dir\gfx-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
+build $build_dir\debug\gfx-test\test\test_tex_betx.obj: cl modules\gfx\test\test_tex_betx.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\gfx-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
+
 build $build_dir\debug\gfx-test\test\test_tex_blit_blocks.obj: cl modules\gfx\test\test_tex_blit_blocks.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\gfx-test-debug.pdb
@@ -2635,6 +2640,11 @@ build $build_dir\debug\gfx-test\test\test_tex_pixel_access_norm.obj: cl modules\
    pdb = $build_dir\gfx-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
+build $build_dir\debug\gfx-test\test\test_tex_srgb_linear.obj: cl modules\gfx\test\test_tex_srgb_linear.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\gfx-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
+
 build $build_dir\debug\gfx-test\test\test_tex_texture_storage.obj: cl modules\gfx\test\test_tex_texture_storage.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\gfx-test-debug.pdb
@@ -2661,7 +2671,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\gfx-test-debug.icon.res: rc $build_dir\gfx-test-debug.icon.rc || init!
 build $out_dir\gfx-test-debug.pdb!: pdb $out_dir\gfx-test-debug.pdb
 
-build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\testing-debug.lib $out_dir\util-debug.lib $build_dir\debug\gfx-test\test\test_main.obj $build_dir\debug\gfx-test\test\test_read_write_image.obj $build_dir\debug\gfx-test\test\test_tex_blit_blocks.obj $build_dir\debug\gfx-test\test\test_tex_blit_pixels.obj $build_dir\debug\gfx-test\test\test_tex_block_access.obj $build_dir\debug\gfx-test\test\test_tex_image_format.obj $build_dir\debug\gfx-test\test\test_tex_image_region.obj $build_dir\debug\gfx-test\test\test_tex_image_view.obj $build_dir\debug\gfx-test\test\test_tex_pixel_access.obj $build_dir\debug\gfx-test\test\test_tex_pixel_access_norm.obj $build_dir\debug\gfx-test\test\test_tex_texture_storage.obj $build_dir\debug\gfx-test\test\test_tex_texture_view.obj $build_dir\debug\gfx-test\test\test_uniform_resample.obj $build_dir\debug\gfx-test\test\version.obj $build_dir\gfx-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\gfx-test-debug.exe | $out_dir\gfx-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $build_dir\debug\gfx-test\test\test_main.obj $build_dir\debug\gfx-test\test\test_read_write_image.obj $build_dir\debug\gfx-test\test\test_tex_betx.obj $build_dir\debug\gfx-test\test\test_tex_blit_blocks.obj $build_dir\debug\gfx-test\test\test_tex_blit_pixels.obj $build_dir\debug\gfx-test\test\test_tex_block_access.obj $build_dir\debug\gfx-test\test\test_tex_image_format.obj $build_dir\debug\gfx-test\test\test_tex_image_region.obj $build_dir\debug\gfx-test\test\test_tex_image_view.obj $build_dir\debug\gfx-test\test\test_tex_pixel_access.obj $build_dir\debug\gfx-test\test\test_tex_pixel_access_norm.obj $build_dir\debug\gfx-test\test\test_tex_srgb_linear.obj $build_dir\debug\gfx-test\test\test_tex_texture_storage.obj $build_dir\debug\gfx-test\test\test_tex_texture_view.obj $build_dir\debug\gfx-test\test\test_uniform_resample.obj $build_dir\debug\gfx-test\test\version.obj $build_dir\gfx-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = gfx-test-debug.exe
    pdb = $out_dir\gfx-test-debug.pdb
    flags = $link_flags_console_debug
@@ -2679,6 +2689,11 @@ build $build_dir\release\gfx-test\test\test_main.obj: cl modules\gfx\test\test_m
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
 build $build_dir\release\gfx-test\test\test_read_write_image.obj: cl modules\gfx\test\test_read_write_image.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\gfx-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
+
+build $build_dir\release\gfx-test\test\test_tex_betx.obj: cl modules\gfx\test\test_tex_betx.cpp || init!
    flags = $cl_flags_test_release
    pdb = $build_dir\gfx-test.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
@@ -2723,6 +2738,11 @@ build $build_dir\release\gfx-test\test\test_tex_pixel_access_norm.obj: cl module
    pdb = $build_dir\gfx-test.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
 
+build $build_dir\release\gfx-test\test\test_tex_srgb_linear.obj: cl modules\gfx\test\test_tex_srgb_linear.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\gfx-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=gfx-test /DBE_TARGET_BASE=gfx /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\gfx\include"
+
 build $build_dir\release\gfx-test\test\test_tex_texture_storage.obj: cl modules\gfx\test\test_tex_texture_storage.cpp || init!
    flags = $cl_flags_test_release
    pdb = $build_dir\gfx-test.pdb
@@ -2748,7 +2768,7 @@ build $build_dir\gfx-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\gfx-test.icon.res: rc $build_dir\gfx-test.icon.rc || init!
 
-build $out_dir\gfx-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\testing.lib $out_dir\util.lib $build_dir\release\gfx-test\test\test_main.obj $build_dir\release\gfx-test\test\test_read_write_image.obj $build_dir\release\gfx-test\test\test_tex_blit_blocks.obj $build_dir\release\gfx-test\test\test_tex_blit_pixels.obj $build_dir\release\gfx-test\test\test_tex_block_access.obj $build_dir\release\gfx-test\test\test_tex_image_format.obj $build_dir\release\gfx-test\test\test_tex_image_region.obj $build_dir\release\gfx-test\test\test_tex_image_view.obj $build_dir\release\gfx-test\test\test_tex_pixel_access.obj $build_dir\release\gfx-test\test\test_tex_pixel_access_norm.obj $build_dir\release\gfx-test\test\test_tex_texture_storage.obj $build_dir\release\gfx-test\test\test_tex_texture_view.obj $build_dir\release\gfx-test\test\test_uniform_resample.obj $build_dir\release\gfx-test\test\version.obj $build_dir\gfx-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\gfx-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util.lib $build_dir\release\gfx-test\test\test_main.obj $build_dir\release\gfx-test\test\test_read_write_image.obj $build_dir\release\gfx-test\test\test_tex_betx.obj $build_dir\release\gfx-test\test\test_tex_blit_blocks.obj $build_dir\release\gfx-test\test\test_tex_blit_pixels.obj $build_dir\release\gfx-test\test\test_tex_block_access.obj $build_dir\release\gfx-test\test\test_tex_image_format.obj $build_dir\release\gfx-test\test\test_tex_image_region.obj $build_dir\release\gfx-test\test\test_tex_image_view.obj $build_dir\release\gfx-test\test\test_tex_pixel_access.obj $build_dir\release\gfx-test\test\test_tex_pixel_access_norm.obj $build_dir\release\gfx-test\test\test_tex_srgb_linear.obj $build_dir\release\gfx-test\test\test_tex_texture_storage.obj $build_dir\release\gfx-test\test\test_tex_texture_view.obj $build_dir\release\gfx-test\test\test_uniform_resample.obj $build_dir\release\gfx-test\test\version.obj $build_dir\gfx-test.icon.res $build_dir\default.manifest.res || init!
    out_file = gfx-test.exe
    pdb = $out_dir\gfx-test.pdb
    flags = $link_flags_console_release
@@ -4513,7 +4533,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\sysinfo-debug.icon.res: rc $build_dir\sysinfo-debug.icon.rc || init!
 build $out_dir\sysinfo-debug.pdb!: pdb $out_dir\sysinfo-debug.pdb
 
-build $out_dir\sysinfo-debug.exe | $out_dir\sysinfo-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\sysinfo\src\gl_extensions.obj $build_dir\debug\sysinfo\src\memory_status.obj $build_dir\debug\sysinfo\src\monitor_info.obj $build_dir\debug\sysinfo\src\sysinfo.obj $build_dir\debug\sysinfo\src\versions.obj $build_dir\sysinfo-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sysinfo-debug.exe | $out_dir\sysinfo-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\sysinfo\src\gl_extensions.obj $build_dir\debug\sysinfo\src\memory_status.obj $build_dir\debug\sysinfo\src\monitor_info.obj $build_dir\debug\sysinfo\src\sysinfo.obj $build_dir\debug\sysinfo\src\versions.obj $build_dir\sysinfo-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = sysinfo-debug.exe
    pdb = $out_dir\sysinfo-debug.pdb
    flags = $link_flags_console_debug
@@ -4551,7 +4571,7 @@ build $build_dir\sysinfo.icon.rc: putfile | icon\bengine-warm.ico || init!
 GLFW_ICON ICON ^"icon^\^\bengine-warm.ico^"
 build $build_dir\sysinfo.icon.res: rc $build_dir\sysinfo.icon.rc || init!
 
-build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\sysinfo\src\gl_extensions.obj $build_dir\release\sysinfo\src\memory_status.obj $build_dir\release\sysinfo\src\monitor_info.obj $build_dir\release\sysinfo\src\sysinfo.obj $build_dir\release\sysinfo\src\versions.obj $build_dir\sysinfo.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\sysinfo\src\gl_extensions.obj $build_dir\release\sysinfo\src\memory_status.obj $build_dir\release\sysinfo\src\monitor_info.obj $build_dir\release\sysinfo\src\sysinfo.obj $build_dir\release\sysinfo\src\versions.obj $build_dir\sysinfo.icon.res $build_dir\default.manifest.res || init!
    out_file = sysinfo.exe
    pdb = $out_dir\sysinfo.pdb
    flags = $link_flags_console_release
@@ -4660,7 +4680,7 @@ build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! gr
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bglgen-release! group-bltc-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bglgen! group-bltc! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\field_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error_.cpp! modules\gfx\src-tex\betx_write_error_.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\field_type.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\src-tex\betx_read_error_.hpp! modules\gfx\src-tex\betx_write_error_.hpp! modules\gfx\test\test_tex_pixel_access_norm.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bglgen\include\bglgen_blt.hpp! tools\bglgen\include\bglgen_lua.hpp! tools\bglgen\include\ids.hpp! tools\bglgen\include\sql_ids.hpp! tools\bglgen\include\version.hpp! tools\bglgen\src\gl_registry.cpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
+build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\betx_read_error.hpp! modules\gfx\include\tex\betx_write_error.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\field_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error.cpp! modules\gfx\src-tex\betx_write_error.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\field_type.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\test\test_tex_pixel_access_norm.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bglgen\include\bglgen_blt.hpp! tools\bglgen\include\bglgen_lua.hpp! tools\bglgen\include\ids.hpp! tools\bglgen\include\sql_ids.hpp! tools\bglgen\include\version.hpp! tools\bglgen\src\gl_registry.cpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
