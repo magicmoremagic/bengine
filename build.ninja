@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4736 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4766 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -21,14 +21,14 @@ cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd42
 cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
 cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
-cl_flags_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_debug = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_release = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_debug = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_lib_release = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_debug = /WX /IGNORE:4221
@@ -1145,6 +1145,11 @@ build $build_dir\debug\core\src\default_log.obj: cl modules\core\src\default_log
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\core\src\event_dispatcher.obj: cl modules\core\src\event_dispatcher.cpp | $build_dir\core-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-debug.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\core\src\exceptions.obj: cl modules\core\src\exceptions.cpp | $build_dir\core-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\core-debug.pdb
@@ -1191,6 +1196,11 @@ build $build_dir\debug\core\src\log_expr_ops.obj: cl modules\core\src\log_expr_o
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
 
 build $build_dir\debug\core\src\log_processor.obj: cl modules\core\src\log_processor.cpp | $build_dir\core-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\core-debug.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\core\src\service_event_dispatcher.obj: cl modules\core\src\service_event_dispatcher.cpp | $build_dir\core-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core-debug.pch" /Yu"pch.hpp"
@@ -1270,7 +1280,7 @@ build $build_dir\debug\core\src\native\vc_win\time.obj: cl modules\core\src\nati
    pdb = $build_dir\core-debug.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
-build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\default_log.obj $build_dir\debug\core\src\exceptions.obj $build_dir\debug\core\src\filesystem.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_exception.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\void_log.obj $build_dir\debug\core\src\native\vc_win\builtins.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\memory_status.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj || init!
+build $out_dir\core-debug.lib: lib $build_dir\debug\core\src\pch.obj $build_dir\debug\core\src\a3_vmm_alloc.obj $build_dir\debug\core\src\alg.obj $build_dir\debug\core\src\console_color.obj $build_dir\debug\core\src\console_indent.obj $build_dir\debug\core\src\console_log_sink.obj $build_dir\debug\core\src\default_log.obj $build_dir\debug\core\src\event_dispatcher.obj $build_dir\debug\core\src\exceptions.obj $build_dir\debug\core\src\filesystem.obj $build_dir\debug\core\src\id_collision_handler.obj $build_dir\debug\core\src\ids.obj $build_dir\debug\core\src\io_service_thread_pool.obj $build_dir\debug\core\src\lifecycle.obj $build_dir\debug\core\src\log.obj $build_dir\debug\core\src\log_exception.obj $build_dir\debug\core\src\log_expr_ops.obj $build_dir\debug\core\src\log_processor.obj $build_dir\debug\core\src\service_event_dispatcher.obj $build_dir\debug\core\src\service_io_service.obj $build_dir\debug\core\src\service_io_service_thread_pool.obj $build_dir\debug\core\src\service_simple_single_thread_executor.obj $build_dir\debug\core\src\stack_trace.obj $build_dir\debug\core\src\time.obj $build_dir\debug\core\src\void_log.obj $build_dir\debug\core\src\native\vc_win\builtins.obj $build_dir\debug\core\src\native\vc_win\console.obj $build_dir\debug\core\src\native\vc_win\console_color.obj $build_dir\debug\core\src\native\vc_win\lifecycle.obj $build_dir\debug\core\src\native\vc_win\memory.obj $build_dir\debug\core\src\native\vc_win\memory_status.obj $build_dir\debug\core\src\native\vc_win\native.obj $build_dir\debug\core\src\native\vc_win\stack_trace.obj $build_dir\debug\core\src\native\vc_win\time.obj || init!
    out_file = core-debug.lib
    flags = $lib_flags_debug
 build project-core-debug!: phony $out_dir\core-debug.lib
@@ -1307,6 +1317,11 @@ build $build_dir\release\core\src\console_log_sink.obj: cl modules\core\src\cons
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
 build $build_dir\release\core\src\default_log.obj: cl modules\core\src\default_log.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\event_dispatcher.obj: cl modules\core\src\event_dispatcher.cpp | $build_dir\core.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
@@ -1357,6 +1372,11 @@ build $build_dir\release\core\src\log_expr_ops.obj: cl modules\core\src\log_expr
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
 
 build $build_dir\release\core\src\log_processor.obj: cl modules\core\src\log_processor.cpp | $build_dir\core.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\core.pdb
+   extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
+
+build $build_dir\release\core\src\service_event_dispatcher.obj: cl modules\core\src\service_event_dispatcher.cpp | $build_dir\core.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include" /Fp"$build_dir\core.pch" /Yu"pch.hpp"
@@ -1436,7 +1456,7 @@ build $build_dir\release\core\src\native\vc_win\time.obj: cl modules\core\src\na
    pdb = $build_dir\core.pdb
    extra = /DBE_CORE_IMPL /DBE_TARGET=core /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
-build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\default_log.obj $build_dir\release\core\src\exceptions.obj $build_dir\release\core\src\filesystem.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_exception.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\void_log.obj $build_dir\release\core\src\native\vc_win\builtins.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\memory_status.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj || init!
+build $out_dir\core.lib: lib $build_dir\release\core\src\pch.obj $build_dir\release\core\src\a3_vmm_alloc.obj $build_dir\release\core\src\alg.obj $build_dir\release\core\src\console_color.obj $build_dir\release\core\src\console_indent.obj $build_dir\release\core\src\console_log_sink.obj $build_dir\release\core\src\default_log.obj $build_dir\release\core\src\event_dispatcher.obj $build_dir\release\core\src\exceptions.obj $build_dir\release\core\src\filesystem.obj $build_dir\release\core\src\id_collision_handler.obj $build_dir\release\core\src\ids.obj $build_dir\release\core\src\io_service_thread_pool.obj $build_dir\release\core\src\lifecycle.obj $build_dir\release\core\src\log.obj $build_dir\release\core\src\log_exception.obj $build_dir\release\core\src\log_expr_ops.obj $build_dir\release\core\src\log_processor.obj $build_dir\release\core\src\service_event_dispatcher.obj $build_dir\release\core\src\service_io_service.obj $build_dir\release\core\src\service_io_service_thread_pool.obj $build_dir\release\core\src\service_simple_single_thread_executor.obj $build_dir\release\core\src\stack_trace.obj $build_dir\release\core\src\time.obj $build_dir\release\core\src\void_log.obj $build_dir\release\core\src\native\vc_win\builtins.obj $build_dir\release\core\src\native\vc_win\console.obj $build_dir\release\core\src\native\vc_win\console_color.obj $build_dir\release\core\src\native\vc_win\lifecycle.obj $build_dir\release\core\src\native\vc_win\memory.obj $build_dir\release\core\src\native\vc_win\memory_status.obj $build_dir\release\core\src\native\vc_win\native.obj $build_dir\release\core\src\native\vc_win\stack_trace.obj $build_dir\release\core\src\native\vc_win\time.obj || init!
    out_file = core.lib
    flags = $lib_flags_release
 build project-core-release!: phony $out_dir\core.lib
@@ -1580,6 +1600,11 @@ build $build_dir\debug\core-test\test\test_buf.obj: cl modules\core\test\test_bu
    pdb = $build_dir\core-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
+build $build_dir\debug\core-test\test\test_event_dispatcher.obj: cl modules\core\test\test_event_dispatcher.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\core-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
+
 build $build_dir\debug\core-test\test\test_inline_executors.obj: cl modules\core\test\test_inline_executors.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\core-test-debug.pdb
@@ -1633,7 +1658,7 @@ build $build_dir\default.manifest.rc: putfile | $build_dir\default.manifest
 build $build_dir\default.manifest.res: rc $build_dir\default.manifest.rc || init!
 build $out_dir\core-test-debug.pdb!: pdb $out_dir\core-test-debug.pdb
 
-build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_buf_alloc.obj $build_dir\debug\core-test\test\test_a3_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_null_alloc.obj $build_dir\debug\core-test\test\test_a3_static_alloc.obj $build_dir\debug\core-test\test\test_a3_vmm_alloc.obj $build_dir\debug\core-test\test\test_buf.obj $build_dir\debug\core-test\test\test_inline_executors.obj $build_dir\debug\core-test\test\test_main.obj $build_dir\debug\core-test\test\test_single_thread_executors.obj $build_dir\debug\core-test\test\test_stack_trace.obj $build_dir\debug\core-test\test\test_thread_pool_executors.obj $build_dir\debug\core-test\test\version.obj $build_dir\core-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_buf_alloc.obj $build_dir\debug\core-test\test\test_a3_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_null_alloc.obj $build_dir\debug\core-test\test\test_a3_static_alloc.obj $build_dir\debug\core-test\test\test_a3_vmm_alloc.obj $build_dir\debug\core-test\test\test_buf.obj $build_dir\debug\core-test\test\test_event_dispatcher.obj $build_dir\debug\core-test\test\test_inline_executors.obj $build_dir\debug\core-test\test\test_main.obj $build_dir\debug\core-test\test\test_single_thread_executors.obj $build_dir\debug\core-test\test\test_stack_trace.obj $build_dir\debug\core-test\test\test_thread_pool_executors.obj $build_dir\debug\core-test\test\version.obj $build_dir\core-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = core-test-debug.exe
    pdb = $out_dir\core-test-debug.pdb
    flags = $link_flags_console_debug
@@ -1680,6 +1705,11 @@ build $build_dir\release\core-test\test\test_buf.obj: cl modules\core\test\test_
    pdb = $build_dir\core-test.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
+build $build_dir\release\core-test\test\test_event_dispatcher.obj: cl modules\core\test\test_event_dispatcher.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
+
 build $build_dir\release\core-test\test\test_inline_executors.obj: cl modules\core\test\test_inline_executors.cpp || init!
    flags = $cl_flags_test_release
    pdb = $build_dir\core-test.pdb
@@ -1715,7 +1745,7 @@ build $build_dir\core-test.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\core-test.icon.res: rc $build_dir\core-test.icon.rc || init!
 
-build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_buf.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\release\core-test\test\version.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_buf.obj $build_dir\release\core-test\test\test_event_dispatcher.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\release\core-test\test\version.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
    out_file = core-test.exe
    pdb = $out_dir\core-test.pdb
    flags = $link_flags_console_release
