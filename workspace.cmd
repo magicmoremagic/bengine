@@ -22,7 +22,7 @@ if not exist %_vcvarsall% (
    )
 )
 
-call %_vcvarsall% x64
+call %_vcvarsall% x86_x64
 set PATH=%~dp0stage;%~dp0bin;%PATH%
 cmd
 popd

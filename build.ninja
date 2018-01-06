@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4766 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4958 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -16,19 +16,19 @@ out_dir = out
 stage_dir = stage
 
 cl_base_defines = /DSYSTEM_WINDOWS /DWIN32 /D_WIN32 /D_WIN32_WINNT=0x0601 /D_WINDOWS
-cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast /diagnostics:column
-cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
-cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
-cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS
-cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
-cl_flags_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_debug = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_lib_release = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1
-cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1
+cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast /diagnostics:caret /errorReport:prompt
+cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_lib_debug = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_lib_release = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_debug = /WX /IGNORE:4221
@@ -38,8 +38,8 @@ lib_flags_release = /WX /LTCG /IGNORE:4221
 
 link_base_flags = /NOLOGO /MACHINE:X64 /DYNAMICBASE /NXCOMPAT /LIBPATH:"$ext_lib_dir" /MANIFEST:NO
 link_base_libs = kernel32.lib user32.lib gdi32.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib
-link_flags_console_debug = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG:FASTLINK /INCREMENTAL /IGNORE:4221
-link_flags_console_release = /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG /LTCG /OPT:REF,ICF /IGNORE:4221
+link_flags_console_debug = /ERRORREPORT:PROMPT /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG:FASTLINK /INCREMENTAL /IGNORE:4221
+link_flags_console_release = /ERRORREPORT:PROMPT /SUBSYSTEM:CONSOLE /LIBPATH:"$out_dir" /WX /DEBUG /LTCG /OPT:REF,ICF /IGNORE:4221
 
 
 rule ninjatool
@@ -178,8 +178,10 @@ build init_include_links!: phony $include_dir\be\belua $include_dir\be\blt $incl
 build $build_dir\.boost_log: build_boost
 build %BOOST_HOME%\boost: phony || $build_dir\.boost_log
 build $ext_include_dir\boost: lndir %BOOST_HOME%\boost | $ext_include_dir
+build %BOOST_HOME%\libs: phony || $build_dir\.boost_log
+build $ext_include_dir\libs: lndir %BOOST_HOME%\libs | $ext_include_dir
 
-build $build_dir\.i9d: putfile || $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost
+build $build_dir\.i9d: putfile || $out_dir $include_dir $stage_dir $bin_dir $deps_dir $ext_include_dir $ext_lib_dir $ext_include_dir\glm $ext_include_dir\gsl $ext_include_dir\glfw $ext_include_dir\pugixml $ext_include_dir\catch $ext_include_dir\lua $ext_include_dir\stb $ext_include_dir\zlib $include_dir\be init_include_links! $ext_include_dir\boost $ext_include_dir\libs
    contents = .
 build init!: phony $build_dir\.i9d
 
@@ -2995,8 +2997,22 @@ build project-perf!: phony project-perf-debug! project-perf-release!
 build group-perf-debug!: phony project-perf-debug!
 build group-perf-release!: phony project-perf-release!
 build group-perf!: phony project-perf!
+build modules\platform\include\context_profile_type.hpp: limp
+build modules\platform\include\context_profile_type.hpp!: limpin modules\platform\include\context_profile_type.hpp
+build modules\platform\include\monitor_id_types.hpp: limp
+build modules\platform\include\monitor_id_types.hpp!: limpin modules\platform\include\monitor_id_types.hpp
+build modules\platform\include\v_sync_mode.hpp: limp
+build modules\platform\include\v_sync_mode.hpp!: limpin modules\platform\include\v_sync_mode.hpp
 build modules\platform\include\version.hpp: limp
 build modules\platform\include\version.hpp!: limpin modules\platform\include\version.hpp
+build modules\platform\include\window_flags.hpp: limp
+build modules\platform\include\window_flags.hpp!: limpin modules\platform\include\window_flags.hpp
+build modules\platform\src\context_profile_type.cpp: limp
+build modules\platform\src\context_profile_type.cpp!: limpin modules\platform\src\context_profile_type.cpp
+build modules\platform\src\v_sync_mode.cpp: limp
+build modules\platform\src\v_sync_mode.cpp!: limpin modules\platform\src\v_sync_mode.cpp
+build modules\platform\src\window_flags.cpp: limp
+build modules\platform\src\window_flags.cpp!: limpin modules\platform\src\window_flags.cpp
 
 build $build_dir\debug\platform\src\pch.obj: cl modules\platform\src\pch.cpp || init!
    flags = $cl_flags_lib_debug
@@ -3004,7 +3020,52 @@ build $build_dir\debug\platform\src\pch.obj: cl modules\platform\src\pch.cpp || 
    extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yc"pch.hpp"
 build $build_dir\platform-debug.pch: phony $build_dir\debug\platform\src\pch.obj
 
+build $build_dir\debug\platform\src\context_profile_type.obj: cl modules\platform\src\context_profile_type.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\glfw_window.obj: cl modules\platform\src\glfw_window.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\platform\src\ids.obj: cl modules\platform\src\ids.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\monitor.obj: cl modules\platform\src\monitor.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\monitor_gamma.obj: cl modules\platform\src\monitor_gamma.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\monitor_manager.obj: cl modules\platform\src\monitor_manager.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\v_sync_mode.obj: cl modules\platform\src\v_sync_mode.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\window.obj: cl modules\platform\src\window.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\window_flags.obj: cl modules\platform\src\window_flags.cpp | $build_dir\platform-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
+
+build $build_dir\debug\platform\src\window_params.obj: cl modules\platform\src\window_params.cpp | $build_dir\platform-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\platform-debug.pdb
    extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform-debug.pch" /Yu"pch.hpp"
@@ -3014,7 +3075,12 @@ build $build_dir\debug\platform\src\native\vc_win\lifecycle.obj: cl modules\plat
    pdb = $build_dir\platform-debug.pdb
    extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
 
-build $out_dir\platform-debug.lib: lib $build_dir\debug\platform\src\pch.obj $build_dir\debug\platform\src\ids.obj $build_dir\debug\platform\src\native\vc_win\lifecycle.obj || init!
+build $build_dir\debug\platform\src\native\vc_win\monitor.obj: cl modules\platform\src\native\vc_win\monitor.cpp || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\platform-debug.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $out_dir\platform-debug.lib: lib $build_dir\debug\platform\src\pch.obj $build_dir\debug\platform\src\context_profile_type.obj $build_dir\debug\platform\src\glfw_window.obj $build_dir\debug\platform\src\ids.obj $build_dir\debug\platform\src\monitor.obj $build_dir\debug\platform\src\monitor_gamma.obj $build_dir\debug\platform\src\monitor_manager.obj $build_dir\debug\platform\src\v_sync_mode.obj $build_dir\debug\platform\src\window.obj $build_dir\debug\platform\src\window_flags.obj $build_dir\debug\platform\src\window_params.obj $build_dir\debug\platform\src\native\vc_win\lifecycle.obj $build_dir\debug\platform\src\native\vc_win\monitor.obj || init!
    out_file = platform-debug.lib
    flags = $lib_flags_debug
 build project-platform-debug!: phony $out_dir\platform-debug.lib
@@ -3025,7 +3091,52 @@ build $build_dir\release\platform\src\pch.obj: cl modules\platform\src\pch.cpp |
    extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yc"pch.hpp"
 build $build_dir\platform.pch: phony $build_dir\release\platform\src\pch.obj
 
+build $build_dir\release\platform\src\context_profile_type.obj: cl modules\platform\src\context_profile_type.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\glfw_window.obj: cl modules\platform\src\glfw_window.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
 build $build_dir\release\platform\src\ids.obj: cl modules\platform\src\ids.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\monitor.obj: cl modules\platform\src\monitor.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\monitor_gamma.obj: cl modules\platform\src\monitor_gamma.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\monitor_manager.obj: cl modules\platform\src\monitor_manager.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\v_sync_mode.obj: cl modules\platform\src\v_sync_mode.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\window.obj: cl modules\platform\src\window.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\window_flags.obj: cl modules\platform\src\window_flags.cpp | $build_dir\platform.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
+
+build $build_dir\release\platform\src\window_params.obj: cl modules\platform\src\window_params.cpp | $build_dir\platform.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\platform.pdb
    extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include" /Fp"$build_dir\platform.pch" /Yu"pch.hpp"
@@ -3035,14 +3146,85 @@ build $build_dir\release\platform\src\native\vc_win\lifecycle.obj: cl modules\pl
    pdb = $build_dir\platform.pdb
    extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
 
-build $out_dir\platform.lib: lib $build_dir\release\platform\src\pch.obj $build_dir\release\platform\src\ids.obj $build_dir\release\platform\src\native\vc_win\lifecycle.obj || init!
+build $build_dir\release\platform\src\native\vc_win\monitor.obj: cl modules\platform\src\native\vc_win\monitor.cpp || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\platform.pdb
+   extra = /DBE_PLATFORM_IMPL /DBE_TARGET=platform /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $out_dir\platform.lib: lib $build_dir\release\platform\src\pch.obj $build_dir\release\platform\src\context_profile_type.obj $build_dir\release\platform\src\glfw_window.obj $build_dir\release\platform\src\ids.obj $build_dir\release\platform\src\monitor.obj $build_dir\release\platform\src\monitor_gamma.obj $build_dir\release\platform\src\monitor_manager.obj $build_dir\release\platform\src\v_sync_mode.obj $build_dir\release\platform\src\window.obj $build_dir\release\platform\src\window_flags.obj $build_dir\release\platform\src\window_params.obj $build_dir\release\platform\src\native\vc_win\lifecycle.obj $build_dir\release\platform\src\native\vc_win\monitor.obj || init!
    out_file = platform.lib
    flags = $lib_flags_release
 build project-platform-release!: phony $out_dir\platform.lib
 build project-platform!: phony project-platform-debug! project-platform-release!
-build group-platform-debug!: phony project-platform-debug!
-build group-platform-release!: phony project-platform-release!
-build group-platform!: phony project-platform!
+
+build $build_dir\debug\platform-test\test\test_main.obj: cl modules\platform\test\test_main.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\platform-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=platform-test /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $build_dir\debug\platform-test\test\test_monitors.obj: cl modules\platform\test\test_monitors.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\platform-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=platform-test /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $build_dir\debug\platform-test\test\version.obj: cl modules\platform\test\version.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\platform-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=platform-test /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $build_dir\platform-test-debug.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\platform-test-debug.icon.res: rc $build_dir\platform-test-debug.icon.rc || init!
+build $out_dir\platform-test-debug.pdb!: pdb $out_dir\platform-test-debug.pdb
+
+build $out_dir\platform-test-debug.exe | $out_dir\platform-test-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\gfx-debug.lib $out_dir\gfx-tex-debug.lib $out_dir\platform-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\platform-test\test\test_main.obj $build_dir\debug\platform-test\test\test_monitors.obj $build_dir\debug\platform-test\test\version.obj $build_dir\platform-test-debug.icon.res $build_dir\default.manifest.res || init!
+   out_file = platform-test-debug.exe
+   pdb = $out_dir\platform-test-debug.pdb
+   flags = $link_flags_console_debug
+   extra = Dbghelp.lib Setupapi.lib opengl32.lib
+build $stage_dir\platform-test-debug.exe: cp $out_dir\platform-test-debug.exe
+
+build run-project-platform-test-debug!: run | $stage_dir\platform-test-debug.exe
+   cmd = $stage_dir\platform-test-debug.exe
+   extra =
+build project-platform-test-debug!: phony $stage_dir\platform-test-debug.exe
+
+build $build_dir\release\platform-test\test\test_main.obj: cl modules\platform\test\test_main.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\platform-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=platform-test /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $build_dir\release\platform-test\test\test_monitors.obj: cl modules\platform\test\test_monitors.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\platform-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=platform-test /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $build_dir\release\platform-test\test\version.obj: cl modules\platform\test\version.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\platform-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=platform-test /DBE_TARGET_BASE=platform /DGLFW_INCLUDE_NONE /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\platform\include"
+
+build $build_dir\platform-test.icon.rc: putfile | icon\bengine-test-perf.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine-test-perf.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
+build $build_dir\platform-test.icon.res: rc $build_dir\platform-test.icon.rc || init!
+
+build $out_dir\platform-test.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\gfx-tex.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\platform-test\test\test_main.obj $build_dir\release\platform-test\test\test_monitors.obj $build_dir\release\platform-test\test\version.obj $build_dir\platform-test.icon.res $build_dir\default.manifest.res || init!
+   out_file = platform-test.exe
+   pdb = $out_dir\platform-test.pdb
+   flags = $link_flags_console_release
+   extra = Dbghelp.lib Setupapi.lib opengl32.lib
+build $stage_dir\platform-test.exe: cp $out_dir\platform-test.exe
+
+build run-project-platform-test-release!: run | $stage_dir\platform-test.exe
+   cmd = $stage_dir\platform-test.exe
+   extra =
+build project-platform-test-release!: phony $stage_dir\platform-test.exe
+build project-platform-test!: phony project-platform-test-debug! project-platform-test-release!
+build group-platform-debug!: phony project-platform-debug! project-platform-test-debug!
+build group-platform-release!: phony project-platform-release! project-platform-test-release!
+build group-platform!: phony project-platform! project-platform-test!
 build modules\sqlite\include\result_code.hpp: limp
 build modules\sqlite\include\result_code.hpp!: limpin modules\sqlite\include\result_code.hpp
 build modules\sqlite\include\result_type.hpp: limp
@@ -3592,6 +3774,11 @@ build $build_dir\debug\util-string\src-string\binary_units.obj: cl modules\util\
    pdb = $build_dir\util-string-debug.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\util-string\src-string\hex_encode.obj: cl modules\util\src-string\hex_encode.cpp | $build_dir\util-string-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\util-string-debug.pdb
+   extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\util-string\src-string\line_endings.obj: cl modules\util\src-string\line_endings.cpp | $build_dir\util-string-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\util-string-debug.pdb
@@ -3622,7 +3809,7 @@ build $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.o
    pdb = $build_dir\util-string-debug.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
-build $out_dir\util-string-debug.lib: lib $build_dir\debug\util-string\src-string\pch.obj $build_dir\debug\util-string\src-string\binary_units.obj $build_dir\debug\util-string\src-string\line_endings.obj $build_dir\debug\util-string\src-string\parse_string_error_condition.obj $build_dir\debug\util-string\src-string\pointer_to_string.obj $build_dir\debug\util-string\src-string\utf8_codepoint.obj $build_dir\debug\util-string\src-string\utf8_iterator.obj $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
+build $out_dir\util-string-debug.lib: lib $build_dir\debug\util-string\src-string\pch.obj $build_dir\debug\util-string\src-string\binary_units.obj $build_dir\debug\util-string\src-string\hex_encode.obj $build_dir\debug\util-string\src-string\line_endings.obj $build_dir\debug\util-string\src-string\parse_string_error_condition.obj $build_dir\debug\util-string\src-string\pointer_to_string.obj $build_dir\debug\util-string\src-string\utf8_codepoint.obj $build_dir\debug\util-string\src-string\utf8_iterator.obj $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
    out_file = util-string-debug.lib
    flags = $lib_flags_debug
 build project-util-string-debug!: phony $out_dir\util-string-debug.lib
@@ -3634,6 +3821,11 @@ build $build_dir\release\util-string\src-string\pch.obj: cl modules\util\src-str
 build $build_dir\util-string.pch: phony $build_dir\release\util-string\src-string\pch.obj
 
 build $build_dir\release\util-string\src-string\binary_units.obj: cl modules\util\src-string\binary_units.cpp | $build_dir\util-string.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util-string.pdb
+   extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string.pch" /Yu"pch.hpp"
+
+build $build_dir\release\util-string\src-string\hex_encode.obj: cl modules\util\src-string\hex_encode.cpp | $build_dir\util-string.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\util-string.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string.pch" /Yu"pch.hpp"
@@ -3668,7 +3860,7 @@ build $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow
    pdb = $build_dir\util-string.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
-build $out_dir\util-string.lib: lib $build_dir\release\util-string\src-string\pch.obj $build_dir\release\util-string\src-string\binary_units.obj $build_dir\release\util-string\src-string\line_endings.obj $build_dir\release\util-string\src-string\parse_string_error_condition.obj $build_dir\release\util-string\src-string\pointer_to_string.obj $build_dir\release\util-string\src-string\utf8_codepoint.obj $build_dir\release\util-string\src-string\utf8_iterator.obj $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
+build $out_dir\util-string.lib: lib $build_dir\release\util-string\src-string\pch.obj $build_dir\release\util-string\src-string\binary_units.obj $build_dir\release\util-string\src-string\hex_encode.obj $build_dir\release\util-string\src-string\line_endings.obj $build_dir\release\util-string\src-string\parse_string_error_condition.obj $build_dir\release\util-string\src-string\pointer_to_string.obj $build_dir\release\util-string\src-string\utf8_codepoint.obj $build_dir\release\util-string\src-string\utf8_iterator.obj $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
    out_file = util-string.lib
    flags = $lib_flags_release
 build project-util-string-release!: phony $out_dir\util-string.lib
@@ -4611,7 +4803,7 @@ build $out_dir\sysinfo-debug.exe | $out_dir\sysinfo-debug.pdb: link $ext_lib_dir
    out_file = sysinfo-debug.exe
    pdb = $out_dir\sysinfo-debug.pdb
    flags = $link_flags_console_debug
-   extra = Dbghelp.lib opengl32.lib
+   extra = Dbghelp.lib Setupapi.lib opengl32.lib
 build $stage_dir\sysinfo-debug.exe: cp $out_dir\sysinfo-debug.exe
 build project-sysinfo-debug!: phony $stage_dir\sysinfo-debug.exe
 
@@ -4649,7 +4841,7 @@ build $out_dir\sysinfo.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.
    out_file = sysinfo.exe
    pdb = $out_dir\sysinfo.pdb
    flags = $link_flags_console_release
-   extra = Dbghelp.lib opengl32.lib
+   extra = Dbghelp.lib Setupapi.lib opengl32.lib
 build $stage_dir\sysinfo.exe: cp $out_dir\sysinfo.exe
 build project-sysinfo-release!: phony $stage_dir\sysinfo.exe
 build project-sysinfo!: phony project-sysinfo-debug! project-sysinfo-release!
@@ -4679,7 +4871,7 @@ build $out_dir\d-gfx-tex-debug.exe | $out_dir\d-gfx-tex-debug.pdb: link $ext_lib
    out_file = d-gfx-tex-debug.exe
    pdb = $out_dir\d-gfx-tex-debug.pdb
    flags = $link_flags_console_debug
-   extra = Dbghelp.lib opengl32.lib
+   extra = Dbghelp.lib opengl32.lib Setupapi.lib
 build $stage_dir\d-gfx-tex-debug.exe: cp $out_dir\d-gfx-tex-debug.exe
 build project-d-gfx-tex-debug!: phony $stage_dir\d-gfx-tex-debug.exe
 
@@ -4702,7 +4894,7 @@ build $out_dir\d-gfx-tex.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-stati
    out_file = d-gfx-tex.exe
    pdb = $out_dir\d-gfx-tex.pdb
    flags = $link_flags_console_release
-   extra = Dbghelp.lib opengl32.lib
+   extra = Dbghelp.lib opengl32.lib Setupapi.lib
 build $stage_dir\d-gfx-tex.exe: cp $out_dir\d-gfx-tex.exe
 build project-d-gfx-tex-release!: phony $stage_dir\d-gfx-tex.exe
 build project-d-gfx-tex!: phony project-d-gfx-tex-debug! project-d-gfx-tex-release!
@@ -4754,12 +4946,12 @@ build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! gr
 build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bglgen-release! group-bltc-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
 build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bglgen! group-bltc! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
-build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\betx_read_error.hpp! modules\gfx\include\tex\betx_write_error.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\field_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\ktx_read_error.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error.cpp! modules\gfx\src-tex\betx_write_error.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\field_type.cpp! modules\gfx\src-tex\ktx_read_error.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\test\test_tex_pixel_access_norm.cpp! modules\perf\include\version.hpp! modules\platform\include\version.hpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bglgen\include\bglgen_blt.hpp! tools\bglgen\include\bglgen_lua.hpp! tools\bglgen\include\ids.hpp! tools\bglgen\include\sql_ids.hpp! tools\bglgen\include\version.hpp! tools\bglgen\src\gl_registry.cpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
+build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\betx_read_error.hpp! modules\gfx\include\tex\betx_write_error.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\field_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\ktx_read_error.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error.cpp! modules\gfx\src-tex\betx_write_error.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\field_type.cpp! modules\gfx\src-tex\ktx_read_error.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\test\test_tex_pixel_access_norm.cpp! modules\perf\include\version.hpp! modules\platform\include\context_profile_type.hpp! modules\platform\include\monitor_id_types.hpp! modules\platform\include\v_sync_mode.hpp! modules\platform\include\version.hpp! modules\platform\include\window_flags.hpp! modules\platform\src\context_profile_type.cpp! modules\platform\src\v_sync_mode.cpp! modules\platform\src\window_flags.cpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bglgen\include\bglgen_blt.hpp! tools\bglgen\include\bglgen_lua.hpp! tools\bglgen\include\ids.hpp! tools\bglgen\include\sql_ids.hpp! tools\bglgen\include\version.hpp! tools\bglgen\src\gl_registry.cpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
-build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
-build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
-build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bglgen-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
+build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-platform-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
+build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-platform-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
+build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\platform-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bglgen-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
 
 default all-debug!
 

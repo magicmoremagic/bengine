@@ -25,7 +25,7 @@ if (-not ($_vcvarsall -and (Test-Path $_vcvarsall))) {
 
 $_oldpath = $ENV:Path
 
-cmd /s /c "`"$($_vcvarsall)`" x64 & set" | ForEach-Object {
+cmd /s /c "`"$($_vcvarsall)`" x86_x64 & set" | ForEach-Object {
    if ($_ -match "=") {
       $v = $_.Split("=")
       Set-Item -force -path "ENV:\$($v[0])" -value "$($v[1])"
