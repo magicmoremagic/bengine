@@ -85,3 +85,6 @@
 [submodule "demos/misc"]
 	path = demos/misc
 	url = https://github.com/magicmoremagic/bengine-demos-misc
+[submodule "demos/kiview"]
+	path = demos/kiview
+	url = https://github.com/magicmoremagic/bengine-kiview

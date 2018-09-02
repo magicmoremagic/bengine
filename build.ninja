@@ -1,4 +1,4 @@
-#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 4958 ##
+#!!--[[ bengine build script ]] include('build/configure', 'vc_win') !! 5069 ##
 # ################# !! GENERATED CODE -- DO NOT MODIFY !! ################# ##
 ninja_required_version = 1.7
 
@@ -17,18 +17,18 @@ stage_dir = stage
 
 cl_base_defines = /DSYSTEM_WINDOWS /DWIN32 /D_WIN32 /D_WIN32_WINNT=0x0601 /D_WINDOWS
 cl_base_flags = /nologo /c /showIncludes /utf-8 /FS /Gd /Gm- /Gy /GF /Zi /EHs /fp:precise /volatile:iso /w44746 /Qpar /Zc:rvalueCast /diagnostics:caret /errorReport:prompt
-cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_lib_debug = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_lib_release = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
-cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_c_extlib_debug = /TC /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_c_extlib_release = /TC /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_cxx_extlib_debug = /TP /GR- /GA /W3 /Zm120 /Od /MDd /RTC1 /sdl- /GS /wd4267 /wd4334 /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_cxx_extlib_release = /TP /GR- /GA /W3 /Zm120 /Ox /MD /GL /GS- /wd4267 /wd4334 /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_lib_debug = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_lib_release = /GR- /GA /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_STATIC_LIB /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_perf_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_perf_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST_PERF /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_test_debug = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Od /MDd /RTC1 /sdl- /GS /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_DEBUG /DBE_DEBUG_TIMERS /DBE_ENABLE_MAIN_THREAD_ASSERTIONS /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DDEBUG /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_DEBUG /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
+cl_flags_test_release = /GR- /GA /Gw /Zc:inline /std:c++latest /permissive- /W4 /w15038 /WX /Ox /MD /GL /GS- /wd4065 /wd4100 /wd4201 /wd4310 /wd4324 /wd4458 /wd4503 /wd4505 /wd4702 /wd5030 /DBE_ID_EXTERNS /DBE_NO_LEAKCHECK /DBE_TEST /DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /DBOOST_NO_RTTI /DBOOST_NO_TYPEID /DGLM_ENABLE_EXPERIMENTAL /DGLM_FORCE_SSE3 /DGSL_UNENFORCED_ON_CONTRACT_VIOLATION /DNDEBUG /DNOMINMAX /DSQLITE_WIN32_GETVERSIONEX=0 /D_HAS_AUTO_PTR_ETC=1 /D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING /D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING /D_SILENCE_CXX17_RESULT_OF_DEPRECATION_WARNING
 
 lib_base_flags = /NOLOGO /MACHINE:X64
 lib_flags_debug = /WX /IGNORE:4221
@@ -1617,6 +1617,11 @@ build $build_dir\debug\core-test\test\test_main.obj: cl modules\core\test\test_m
    pdb = $build_dir\core-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
+build $build_dir\debug\core-test\test\test_ref_ptr.obj: cl modules\core\test\test_ref_ptr.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\core-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
+
 build $build_dir\debug\core-test\test\test_single_thread_executors.obj: cl modules\core\test\test_single_thread_executors.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\core-test-debug.pdb
@@ -1660,7 +1665,7 @@ build $build_dir\default.manifest.rc: putfile | $build_dir\default.manifest
 build $build_dir\default.manifest.res: rc $build_dir\default.manifest.rc || init!
 build $out_dir\core-test-debug.pdb!: pdb $out_dir\core-test-debug.pdb
 
-build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_buf_alloc.obj $build_dir\debug\core-test\test\test_a3_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_null_alloc.obj $build_dir\debug\core-test\test\test_a3_static_alloc.obj $build_dir\debug\core-test\test\test_a3_vmm_alloc.obj $build_dir\debug\core-test\test\test_buf.obj $build_dir\debug\core-test\test\test_event_dispatcher.obj $build_dir\debug\core-test\test\test_inline_executors.obj $build_dir\debug\core-test\test\test_main.obj $build_dir\debug\core-test\test\test_single_thread_executors.obj $build_dir\debug\core-test\test\test_stack_trace.obj $build_dir\debug\core-test\test\test_thread_pool_executors.obj $build_dir\debug\core-test\test\version.obj $build_dir\core-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-test-debug.exe | $out_dir\core-test-debug.pdb: link $ext_lib_dir\zlib-static-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $build_dir\debug\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_buf_alloc.obj $build_dir\debug\core-test\test\test_a3_malloc_alloc.obj $build_dir\debug\core-test\test\test_a3_null_alloc.obj $build_dir\debug\core-test\test\test_a3_static_alloc.obj $build_dir\debug\core-test\test\test_a3_vmm_alloc.obj $build_dir\debug\core-test\test\test_buf.obj $build_dir\debug\core-test\test\test_event_dispatcher.obj $build_dir\debug\core-test\test\test_inline_executors.obj $build_dir\debug\core-test\test\test_main.obj $build_dir\debug\core-test\test\test_ref_ptr.obj $build_dir\debug\core-test\test\test_single_thread_executors.obj $build_dir\debug\core-test\test\test_stack_trace.obj $build_dir\debug\core-test\test\test_thread_pool_executors.obj $build_dir\debug\core-test\test\version.obj $build_dir\core-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = core-test-debug.exe
    pdb = $out_dir\core-test-debug.pdb
    flags = $link_flags_console_debug
@@ -1722,6 +1727,11 @@ build $build_dir\release\core-test\test\test_main.obj: cl modules\core\test\test
    pdb = $build_dir\core-test.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
 
+build $build_dir\release\core-test\test\test_ref_ptr.obj: cl modules\core\test\test_ref_ptr.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\core-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=core-test /DBE_TARGET_BASE=core /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\core\include"
+
 build $build_dir\release\core-test\test\test_single_thread_executors.obj: cl modules\core\test\test_single_thread_executors.cpp || init!
    flags = $cl_flags_test_release
    pdb = $build_dir\core-test.pdb
@@ -1747,7 +1757,7 @@ build $build_dir\core-test.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\core-test.icon.res: rc $build_dir\core-test.icon.rc || init!
 
-build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_buf.obj $build_dir\release\core-test\test\test_event_dispatcher.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\release\core-test\test\version.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\core-test.exe: link $ext_lib_dir\zlib-static.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $build_dir\release\core-test\test\test_a3_aligned_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_buf_alloc.obj $build_dir\release\core-test\test\test_a3_malloc_alloc.obj $build_dir\release\core-test\test\test_a3_null_alloc.obj $build_dir\release\core-test\test\test_a3_static_alloc.obj $build_dir\release\core-test\test\test_a3_vmm_alloc.obj $build_dir\release\core-test\test\test_buf.obj $build_dir\release\core-test\test\test_event_dispatcher.obj $build_dir\release\core-test\test\test_inline_executors.obj $build_dir\release\core-test\test\test_main.obj $build_dir\release\core-test\test\test_ref_ptr.obj $build_dir\release\core-test\test\test_single_thread_executors.obj $build_dir\release\core-test\test\test_stack_trace.obj $build_dir\release\core-test\test\test_thread_pool_executors.obj $build_dir\release\core-test\test\version.obj $build_dir\core-test.icon.res $build_dir\default.manifest.res || init!
    out_file = core-test.exe
    pdb = $out_dir\core-test.pdb
    flags = $link_flags_console_release
@@ -3794,6 +3804,11 @@ build $build_dir\debug\util-string\src-string\pointer_to_string.obj: cl modules\
    pdb = $build_dir\util-string-debug.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string-debug.pch" /Yu"pch.hpp"
 
+build $build_dir\debug\util-string\src-string\string_interner.obj: cl modules\util\src-string\string_interner.cpp | $build_dir\util-string-debug.pch || init!
+   flags = $cl_flags_lib_debug
+   pdb = $build_dir\util-string-debug.pdb
+   extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string-debug.pch" /Yu"pch.hpp"
+
 build $build_dir\debug\util-string\src-string\utf8_codepoint.obj: cl modules\util\src-string\utf8_codepoint.cpp | $build_dir\util-string-debug.pch || init!
    flags = $cl_flags_lib_debug
    pdb = $build_dir\util-string-debug.pdb
@@ -3809,7 +3824,7 @@ build $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.o
    pdb = $build_dir\util-string-debug.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
-build $out_dir\util-string-debug.lib: lib $build_dir\debug\util-string\src-string\pch.obj $build_dir\debug\util-string\src-string\binary_units.obj $build_dir\debug\util-string\src-string\hex_encode.obj $build_dir\debug\util-string\src-string\line_endings.obj $build_dir\debug\util-string\src-string\parse_string_error_condition.obj $build_dir\debug\util-string\src-string\pointer_to_string.obj $build_dir\debug\util-string\src-string\utf8_codepoint.obj $build_dir\debug\util-string\src-string\utf8_iterator.obj $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
+build $out_dir\util-string-debug.lib: lib $build_dir\debug\util-string\src-string\pch.obj $build_dir\debug\util-string\src-string\binary_units.obj $build_dir\debug\util-string\src-string\hex_encode.obj $build_dir\debug\util-string\src-string\line_endings.obj $build_dir\debug\util-string\src-string\parse_string_error_condition.obj $build_dir\debug\util-string\src-string\pointer_to_string.obj $build_dir\debug\util-string\src-string\string_interner.obj $build_dir\debug\util-string\src-string\utf8_codepoint.obj $build_dir\debug\util-string\src-string\utf8_iterator.obj $build_dir\debug\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
    out_file = util-string-debug.lib
    flags = $lib_flags_debug
 build project-util-string-debug!: phony $out_dir\util-string-debug.lib
@@ -3845,6 +3860,11 @@ build $build_dir\release\util-string\src-string\pointer_to_string.obj: cl module
    pdb = $build_dir\util-string.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string.pch" /Yu"pch.hpp"
 
+build $build_dir\release\util-string\src-string\string_interner.obj: cl modules\util\src-string\string_interner.cpp | $build_dir\util-string.pch || init!
+   flags = $cl_flags_lib_release
+   pdb = $build_dir\util-string.pdb
+   extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include" /Fp"$build_dir\util-string.pch" /Yu"pch.hpp"
+
 build $build_dir\release\util-string\src-string\utf8_codepoint.obj: cl modules\util\src-string\utf8_codepoint.cpp | $build_dir\util-string.pch || init!
    flags = $cl_flags_lib_release
    pdb = $build_dir\util-string.pdb
@@ -3860,7 +3880,7 @@ build $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow
    pdb = $build_dir\util-string.pdb
    extra = /DBE_TARGET=util-string /DBE_TARGET_BASE=util /DBE_UTIL_STRING_IMPL /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
-build $out_dir\util-string.lib: lib $build_dir\release\util-string\src-string\pch.obj $build_dir\release\util-string\src-string\binary_units.obj $build_dir\release\util-string\src-string\hex_encode.obj $build_dir\release\util-string\src-string\line_endings.obj $build_dir\release\util-string\src-string\parse_string_error_condition.obj $build_dir\release\util-string\src-string\pointer_to_string.obj $build_dir\release\util-string\src-string\utf8_codepoint.obj $build_dir\release\util-string\src-string\utf8_iterator.obj $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
+build $out_dir\util-string.lib: lib $build_dir\release\util-string\src-string\pch.obj $build_dir\release\util-string\src-string\binary_units.obj $build_dir\release\util-string\src-string\hex_encode.obj $build_dir\release\util-string\src-string\line_endings.obj $build_dir\release\util-string\src-string\parse_string_error_condition.obj $build_dir\release\util-string\src-string\pointer_to_string.obj $build_dir\release\util-string\src-string\string_interner.obj $build_dir\release\util-string\src-string\utf8_codepoint.obj $build_dir\release\util-string\src-string\utf8_iterator.obj $build_dir\release\util-string\src-string\native\vc_win\utf16_widen_narrow.obj || init!
    out_file = util-string.lib
    flags = $lib_flags_release
 build project-util-string-release!: phony $out_dir\util-string.lib
@@ -4025,6 +4045,11 @@ build $build_dir\debug\util-test\test\test_split_mix_64.obj: cl modules\util\tes
    pdb = $build_dir\util-test-debug.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
+build $build_dir\debug\util-test\test\test_string_interner.obj: cl modules\util\test\test_string_interner.cpp || init!
+   flags = $cl_flags_test_debug
+   pdb = $build_dir\util-test-debug.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
+
 build $build_dir\debug\util-test\test\test_utf8_iterator.obj: cl modules\util\test\test_utf8_iterator.cpp || init!
    flags = $cl_flags_test_debug
    pdb = $build_dir\util-test-debug.pdb
@@ -4056,7 +4081,7 @@ GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test-debug.icon.res: rc $build_dir\util-test-debug.icon.rc || init!
 build $out_dir\util-test-debug.pdb!: pdb $out_dir\util-test-debug.pdb
 
-build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\util-test\test\test_base64.obj $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_interpolate_string.obj $build_dir\debug\util-test\test\test_line_endings.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test-debug.exe | $out_dir\util-test-debug.pdb: link $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\belua-debug.lib $out_dir\core-debug.lib $out_dir\core-id-with-names-debug.lib $out_dir\testing-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-lua-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\util-test\test\test_base64.obj $build_dir\debug\util-test\test\test_binary_units.obj $build_dir\debug\util-test\test\test_chunked_list.obj $build_dir\debug\util-test\test\test_interpolate_string.obj $build_dir\debug\util-test\test\test_line_endings.obj $build_dir\debug\util-test\test\test_main.obj $build_dir\debug\util-test\test\test_split_mix_64.obj $build_dir\debug\util-test\test\test_string_interner.obj $build_dir\debug\util-test\test\test_utf8_iterator.obj $build_dir\debug\util-test\test\test_xoroshiro_128_plus.obj $build_dir\debug\util-test\test\test_xorshift_1024_star.obj $build_dir\debug\util-test\test\test_xorshift_128_plus.obj $build_dir\debug\util-test\test\version.obj $build_dir\util-test-debug.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test-debug.exe
    pdb = $out_dir\util-test-debug.pdb
    flags = $link_flags_console_debug
@@ -4103,6 +4128,11 @@ build $build_dir\release\util-test\test\test_split_mix_64.obj: cl modules\util\t
    pdb = $build_dir\util-test.pdb
    extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
 
+build $build_dir\release\util-test\test\test_string_interner.obj: cl modules\util\test\test_string_interner.cpp || init!
+   flags = $cl_flags_test_release
+   pdb = $build_dir\util-test.pdb
+   extra = /DBE_ID_NAMES_ENABLED /DBE_TARGET=util-test /DBE_TARGET_BASE=util /DZLIB_CONST /DZ_SOLO /I"include" /I"modules\util\include"
+
 build $build_dir\release\util-test\test\test_utf8_iterator.obj: cl modules\util\test\test_utf8_iterator.cpp || init!
    flags = $cl_flags_test_release
    pdb = $build_dir\util-test.pdb
@@ -4133,7 +4163,7 @@ build $build_dir\util-test.icon.rc: putfile | icon\bengine-test-perf.ico || init
 GLFW_ICON ICON ^"icon^\^\bengine-test-perf.ico^"
 build $build_dir\util-test.icon.res: rc $build_dir\util-test.icon.rc || init!
 
-build $out_dir\util-test.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\util-test\test\test_base64.obj $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_interpolate_string.obj $build_dir\release\util-test\test\test_line_endings.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\release\util-test\test\version.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
+build $out_dir\util-test.exe: link $ext_lib_dir\luaxx.lib $ext_lib_dir\zlib-static.lib $out_dir\belua.lib $out_dir\core-id-with-names.lib $out_dir\core.lib $out_dir\testing.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-lua.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\util-test\test\test_base64.obj $build_dir\release\util-test\test\test_binary_units.obj $build_dir\release\util-test\test\test_chunked_list.obj $build_dir\release\util-test\test\test_interpolate_string.obj $build_dir\release\util-test\test\test_line_endings.obj $build_dir\release\util-test\test\test_main.obj $build_dir\release\util-test\test\test_split_mix_64.obj $build_dir\release\util-test\test\test_string_interner.obj $build_dir\release\util-test\test\test_utf8_iterator.obj $build_dir\release\util-test\test\test_xoroshiro_128_plus.obj $build_dir\release\util-test\test\test_xorshift_1024_star.obj $build_dir\release\util-test\test\test_xorshift_128_plus.obj $build_dir\release\util-test\test\version.obj $build_dir\util-test.icon.res $build_dir\default.manifest.res || init!
    out_file = util-test.exe
    pdb = $out_dir\util-test.pdb
    flags = $link_flags_console_release
@@ -4902,6 +4932,87 @@ build group-d-gfx-debug!: phony project-d-gfx-tex-debug!
 build group-d-gfx-release!: phony project-d-gfx-tex-release!
 build group-d-gfx!: phony project-d-gfx-tex!
 
+build $build_dir\debug\kiview\src\kiview.obj: cl demos\kiview\src\kiview.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\kiview-debug.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\debug\kiview\src\kiview_app.obj: cl demos\kiview\src\kiview_app.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\kiview-debug.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\debug\kiview\src\pcb_helper.obj: cl demos\kiview\src\pcb_helper.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\kiview-debug.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\debug\kiview\src\polygon.obj: cl demos\kiview\src\polygon.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\kiview-debug.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\debug\kiview\src\render_layer.obj: cl demos\kiview\src\render_layer.cpp || init!
+   flags = $cl_flags_debug
+   pdb = $build_dir\kiview-debug.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\kiview-debug.icon.rc: putfile | icon\bengine.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine.ico^"
+build $build_dir\kiview-debug.icon.res: rc $build_dir\kiview-debug.icon.rc || init!
+build $out_dir\kiview-debug.pdb!: pdb $out_dir\kiview-debug.pdb
+
+build $out_dir\kiview-debug.exe | $out_dir\kiview-debug.pdb: link $ext_lib_dir\glfw-debug.lib $ext_lib_dir\zlib-static-debug.lib $out_dir\cli-debug.lib $out_dir\core-debug.lib $out_dir\core-id-debug.lib $out_dir\ctable-debug.lib $out_dir\gfx-debug.lib $out_dir\platform-debug.lib $out_dir\util-compression-debug.lib $out_dir\util-debug.lib $out_dir\util-fs-debug.lib $out_dir\util-prng-debug.lib $out_dir\util-string-debug.lib $build_dir\debug\kiview\src\kiview.obj $build_dir\debug\kiview\src\kiview_app.obj $build_dir\debug\kiview\src\pcb_helper.obj $build_dir\debug\kiview\src\polygon.obj $build_dir\debug\kiview\src\render_layer.obj $build_dir\kiview-debug.icon.res $build_dir\default.manifest.res || init!
+   out_file = kiview-debug.exe
+   pdb = $out_dir\kiview-debug.pdb
+   flags = $link_flags_console_debug
+   extra = Dbghelp.lib opengl32.lib Setupapi.lib
+build $stage_dir\kiview-debug.exe: cp $out_dir\kiview-debug.exe
+build project-kiview-debug!: phony $stage_dir\kiview-debug.exe
+
+build $build_dir\release\kiview\src\kiview.obj: cl demos\kiview\src\kiview.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\kiview.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\release\kiview\src\kiview_app.obj: cl demos\kiview\src\kiview_app.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\kiview.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\release\kiview\src\pcb_helper.obj: cl demos\kiview\src\pcb_helper.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\kiview.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\release\kiview\src\polygon.obj: cl demos\kiview\src\polygon.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\kiview.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\release\kiview\src\render_layer.obj: cl demos\kiview\src\render_layer.cpp || init!
+   flags = $cl_flags_release
+   pdb = $build_dir\kiview.pdb
+   extra = /DBE_TARGET=kiview /DBE_TARGET_BASE=kiview /DGLFW_INCLUDE_NONE /DGLM_ENABLE_EXPERIMENTAL /DZLIB_CONST /DZ_SOLO /I"demos\kiview\include" /I"include"
+
+build $build_dir\kiview.icon.rc: putfile | icon\bengine.ico || init!
+   contents = 101 ICON ^"icon^\^\bengine.ico^"&echo:$
+GLFW_ICON ICON ^"icon^\^\bengine.ico^"
+build $build_dir\kiview.icon.res: rc $build_dir\kiview.icon.rc || init!
+
+build $out_dir\kiview.exe: link $ext_lib_dir\glfw.lib $ext_lib_dir\zlib-static.lib $out_dir\cli.lib $out_dir\core-id.lib $out_dir\core.lib $out_dir\ctable.lib $out_dir\gfx.lib $out_dir\platform.lib $out_dir\util-compression.lib $out_dir\util-fs.lib $out_dir\util-prng.lib $out_dir\util-string.lib $out_dir\util.lib $build_dir\release\kiview\src\kiview.obj $build_dir\release\kiview\src\kiview_app.obj $build_dir\release\kiview\src\pcb_helper.obj $build_dir\release\kiview\src\polygon.obj $build_dir\release\kiview\src\render_layer.obj $build_dir\kiview.icon.res $build_dir\default.manifest.res || init!
+   out_file = kiview.exe
+   pdb = $out_dir\kiview.pdb
+   flags = $link_flags_console_release
+   extra = Dbghelp.lib opengl32.lib Setupapi.lib
+build $stage_dir\kiview.exe: cp $out_dir\kiview.exe
+build project-kiview-release!: phony $stage_dir\kiview.exe
+build project-kiview!: phony project-kiview-debug! project-kiview-release!
+build group-kiview-debug!: phony project-kiview-debug!
+build group-kiview-release!: phony project-kiview-release!
+build group-kiview!: phony project-kiview!
+
 build $build_dir\debug\consolecolors\src-consolecolors\consolecolors.obj: cl demos\misc\src-consolecolors\consolecolors.cpp || init!
    flags = $cl_flags_debug
    pdb = $build_dir\consolecolors-debug.pdb
@@ -4942,16 +5053,16 @@ build project-consolecolors!: phony project-consolecolors-debug! project-console
 build group-d-misc-debug!: phony project-consolecolors-debug!
 build group-d-misc-release!: phony project-consolecolors-release!
 build group-d-misc!: phony project-consolecolors!
-build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bglgen-debug! group-bltc-debug! group-tools-gfx-debug! group-limp-debug! group-tools-misc-debug! group-sysinfo-debug! group-d-gfx-debug! group-d-misc-debug!
-build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bglgen-release! group-bltc-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-d-misc-release!
-build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bglgen! group-bltc! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-d-misc!
+build all-debug!: phony group-deps-debug! group-belua-debug! group-blt-debug! group-cli-debug! group-core-debug! group-ctable-debug! group-gfx-debug! group-perf-debug! group-platform-debug! group-sqlite-debug! group-testing-debug! group-util-debug! group-bglgen-debug! group-bltc-debug! group-tools-gfx-debug! group-limp-debug! group-tools-misc-debug! group-sysinfo-debug! group-d-gfx-debug! group-kiview-debug! group-d-misc-debug!
+build all-release!: phony group-deps-release! group-belua-release! group-blt-release! group-cli-release! group-core-release! group-ctable-release! group-gfx-release! group-perf-release! group-platform-release! group-sqlite-release! group-testing-release! group-util-release! group-bglgen-release! group-bltc-release! group-tools-gfx-release! group-limp-release! group-tools-misc-release! group-sysinfo-release! group-d-gfx-release! group-kiview-release! group-d-misc-release!
+build all!: phony group-deps! group-belua! group-blt! group-cli! group-core! group-ctable! group-gfx! group-perf! group-platform! group-sqlite! group-testing! group-util! group-bglgen! group-bltc! group-tools-gfx! group-limp! group-tools-misc! group-sysinfo! group-d-gfx! group-kiview! group-d-misc!
 build externals!: phony $ext_lib_dir\zlib-static-debug.lib $ext_lib_dir\zlib-static.lib $ext_lib_dir\glfw-debug.lib $ext_lib_dir\glfw.lib $ext_lib_dir\luaxx-debug.lib $ext_lib_dir\luaxx.lib
 build limp!: phony modules\belua\include\result_code.hpp! modules\belua\include\version.hpp! modules\belua\src\result_code.cpp! modules\blt\include\version.hpp! modules\blt\src-lua\lua_blt.cpp! modules\cli\include\section_ids.hpp! modules\cli\include\version.hpp! modules\core\include\log_attrib_ids.hpp! modules\core\include\service_ids.hpp! modules\core\include\version.hpp! modules\ctable\include\version.hpp! modules\gfx\include\tex\betx_payload_compression_mode.hpp! modules\gfx\include\tex\betx_read_error.hpp! modules\gfx\include\tex\betx_write_error.hpp! modules\gfx\include\tex\block_packing.hpp! modules\gfx\include\tex\colorspace.hpp! modules\gfx\include\tex\field_type.hpp! modules\gfx\include\tex\image_format_hash.hpp! modules\gfx\include\tex\image_region_hash.hpp! modules\gfx\include\tex\image_view_hash.hpp! modules\gfx\include\tex\ktx_read_error.hpp! modules\gfx\include\tex\pixel_access_norm.inl! modules\gfx\include\tex\swizzle.hpp! modules\gfx\include\tex\texture_class.hpp! modules\gfx\include\tex\texture_file_error.hpp! modules\gfx\include\tex\texture_file_format.hpp! modules\gfx\include\tex\texture_storage_hash.hpp! modules\gfx\include\tex\texture_view_hash.hpp! modules\gfx\include\version.hpp! modules\gfx\src-tex\betx_payload_compression_mode.cpp! modules\gfx\src-tex\betx_read_error.cpp! modules\gfx\src-tex\betx_write_error.cpp! modules\gfx\src-tex\block_packing.cpp! modules\gfx\src-tex\colorspace.cpp! modules\gfx\src-tex\convert_colorspace.cpp! modules\gfx\src-tex\field_type.cpp! modules\gfx\src-tex\ktx_read_error.cpp! modules\gfx\src-tex\swizzle.cpp! modules\gfx\src-tex\texture_class.cpp! modules\gfx\src-tex\texture_file_error.cpp! modules\gfx\src-tex\texture_file_format.cpp! modules\gfx\test\test_tex_pixel_access_norm.cpp! modules\perf\include\version.hpp! modules\platform\include\context_profile_type.hpp! modules\platform\include\monitor_id_types.hpp! modules\platform\include\v_sync_mode.hpp! modules\platform\include\version.hpp! modules\platform\include\window_flags.hpp! modules\platform\src\context_profile_type.cpp! modules\platform\src\v_sync_mode.cpp! modules\platform\src\window_flags.cpp! modules\sqlite\include\result_code.hpp! modules\sqlite\include\result_type.hpp! modules\sqlite\include\transaction_type.hpp! modules\sqlite\include\version.hpp! modules\sqlite\src\result_code.cpp! modules\sqlite\src\result_type.cpp! modules\sqlite\src\transaction_type.cpp! modules\testing\include\version.hpp! modules\util\include\parse_string_error_condition.hpp! modules\util\include\version.hpp! modules\util\include\zlib_result_code.hpp! modules\util\src-compression\zlib_result_code.cpp! modules\util\src-string\parse_string_error_condition.cpp! tools\bglgen\include\bglgen_blt.hpp! tools\bglgen\include\bglgen_lua.hpp! tools\bglgen\include\ids.hpp! tools\bglgen\include\sql_ids.hpp! tools\bglgen\include\version.hpp! tools\bglgen\src\gl_registry.cpp! tools\bltc\include\version.hpp! tools\gfx\src-atex\version.hpp! tools\gfx\src-concur\version.hpp! tools\limp\include\limp_lua.hpp! tools\limp\include\version.hpp! tools\misc\src-idgen\format.cpp! tools\misc\src-idgen\mode.cpp! tools\misc\src-idgen\type.cpp! tools\misc\src-idgen\format.hpp! tools\misc\src-idgen\mode.hpp! tools\misc\src-idgen\type.hpp! tools\misc\src-idgen\version.hpp! tools\misc\src-sizeof\version.hpp! tools\misc\src-ccolor\version.hpp! tools\sysinfo\include\version.hpp! demos\gfx\src-tex\tex_demo.cpp!
 build run-perf-debug!: phony run-project-core-perf-debug! run-project-util-perf-debug!
 build run-perf-release!: phony run-project-core-perf-release! run-project-util-perf-release!
 build run-test-debug!: phony run-project-core-test-debug! run-project-ctable-test-debug! run-project-gfx-test-debug! run-project-platform-test-debug! run-project-sqlite-test-debug! run-project-testing-test-debug! run-project-util-test-debug!
 build run-test-release!: phony run-project-core-test-release! run-project-ctable-test-release! run-project-gfx-test-release! run-project-platform-test-release! run-project-sqlite-test-release! run-project-testing-test-release! run-project-util-test-release!
-build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\platform-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bglgen-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\consolecolors-debug.pdb!
+build pdb!: phony $out_dir\core-test-debug.pdb! $out_dir\core-perf-debug.pdb! $out_dir\ctable-test-debug.pdb! $out_dir\gfx-test-debug.pdb! $out_dir\platform-test-debug.pdb! $out_dir\sqlite-test-debug.pdb! $out_dir\testing-test-debug.pdb! $out_dir\util-test-debug.pdb! $out_dir\util-perf-debug.pdb! $out_dir\bglgen-debug.pdb! $out_dir\bltc-debug.pdb! $out_dir\atex-debug.pdb! $out_dir\concur-debug.pdb! $out_dir\limp-debug.pdb! $out_dir\idgen-debug.pdb! $out_dir\sizeof-debug.pdb! $out_dir\sysinfo-debug.pdb! $out_dir\d-gfx-tex-debug.pdb! $out_dir\kiview-debug.pdb! $out_dir\consolecolors-debug.pdb!
 
 default all-debug!
 
